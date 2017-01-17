@@ -1,6 +1,6 @@
 #!/bin/sh -
 
-LOGSDIR=/opt/kaltura/log/nginx
+LOGSDIR=/opt/borhan/log/nginx
 LOGFILE=live_access_log.gz.1
 CASSANDRA_NODE_NAME=$1
 
@@ -19,5 +19,5 @@ gzip ${PREFIX}*
 rm -f ${UNIQLOGNAME}
 
 for splitted_file in ${PREFIX}*; do
-    java -Dlog4j.configuration=file:/opt/kaltura/lib/log4j.properties -cp /opt/kaltura/lib/*:/opt/kaltura/lib/register-file.jar com.kaltura.live.RegisterFile $CASSANDRA_NODE_NAME $LOGSDIR $splitted_file 2>&1 | gzip >> /opt/kaltura/log/register-file.`date +%F`.log.gz
+    java -Dlog4j.configuration=file:/opt/borhan/lib/log4j.properties -cp /opt/borhan/lib/*:/opt/borhan/lib/register-file.jar com.borhan.live.RegisterFile $CASSANDRA_NODE_NAME $LOGSDIR $splitted_file 2>&1 | gzip >> /opt/borhan/log/register-file.`date +%F`.log.gz
 done

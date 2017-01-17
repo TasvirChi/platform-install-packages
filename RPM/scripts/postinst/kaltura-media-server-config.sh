@@ -1,15 +1,15 @@
 #!/bin/bash - 
 #===============================================================================
-#          FILE: kaltura-media-server-config.sh
-#         USAGE: ./kaltura-media-server-config.sh 
+#          FILE: borhan-media-server-config.sh
+#         USAGE: ./borhan-media-server-config.sh 
 #   DESCRIPTION: configure server as a media-server node.
 #       OPTIONS: ---
 # 	LICENSE: AGPLv3+
 #  REQUIREMENTS: ---
 #          BUGS: ---
 #         NOTES: ---
-#        AUTHOR: Tan-Tan <jonathan.kanarek@kaltura.com>
-#  ORGANIZATION: Kaltura, inc.
+#        AUTHOR: Tan-Tan <jonathan.kanarek@borhan.com>
+#  ORGANIZATION: Borhan, inc.
 #       CREATED: 14/12/14
 #      REVISION:  ---
 #===============================================================================
@@ -17,16 +17,16 @@
 #set -o nounset                              # Treat unset variables as an error
 
 
-KALTURA_FUNCTIONS_RC=`dirname $0`/kaltura-functions.rc
-if [ ! -r "$KALTURA_FUNCTIONS_RC" ];then
-	OUT="Could not find $KALTURA_FUNCTIONS_RC so, exiting.."
+BORHAN_FUNCTIONS_RC=`dirname $0`/borhan-functions.rc
+if [ ! -r "$BORHAN_FUNCTIONS_RC" ];then
+	OUT="Could not find $BORHAN_FUNCTIONS_RC so, exiting.."
 	echo $OUT
 	exit 3
 fi
-. $KALTURA_FUNCTIONS_RC
+. $BORHAN_FUNCTIONS_RC
 
-if ! rpm -q kaltura-media-server;then
-	echo -e "${BRIGHT_RED}ERROR: First install kaltura-media-server.${NORMAL}"
+if ! rpm -q borhan-media-server;then
+	echo -e "${BRIGHT_RED}ERROR: First install borhan-media-server.${NORMAL}"
 	exit 0
 fi
 
@@ -48,21 +48,21 @@ BROADCAST_FILE=$APP_DIR/configurations/broadcast.ini
 TEMP_BROADCAST=/tmp/temp_broadcast.ini
 # In case no primary server is configured, there is no point running.
 
-if [ -z "$KALTURA_FULL_VIRTUAL_HOST_NAME" ];
+if [ -z "$BORHAN_FULL_VIRTUAL_HOST_NAME" ];
 then
-	echo -e "${BRIGHT_RED} KALTURA_FULL_VIRTUAL_HOST_NAME value was not found in $1 answer file. \nPlease fix the used answer file.${NORMAL}"
+	echo -e "${BRIGHT_RED} BORHAN_FULL_VIRTUAL_HOST_NAME value was not found in $1 answer file. \nPlease fix the used answer file.${NORMAL}"
 	exit 2
 else
 	echo -e "${CYAN}Copying broadcast.template.ini${NORMAL}"
 	cp $BROADCAST_TEMPLATE_FILE $TEMP_BROADCAST
-	# Resetting the KALTURA_FULL_VIRTUAL_HOST_NAME after template copy
-	sed -i s/@KALTURA_FULL_VIRTUAL_HOST_NAME@/$KALTURA_FULL_VIRTUAL_HOST_NAME/ $TEMP_BROADCAST
+	# Resetting the BORHAN_FULL_VIRTUAL_HOST_NAME after template copy
+	sed -i s/@BORHAN_FULL_VIRTUAL_HOST_NAME@/$BORHAN_FULL_VIRTUAL_HOST_NAME/ $TEMP_BROADCAST
 fi
 
 # Setting the primary server setting. No point of continuing the setup in case there is no server.
 if [ -z "$PRIMARY_MEDIA_SERVER_HOST" ]; then
 	echo -e "${BRIGHT_RED}PRIMARY_MEDIA_SERVER_HOST value was not found in $1 answer file. \nPlease fix the $BROADCAST_FILE if needed.${NORMAL}"
-	echo -e "You can fix this later by running kaltura-media-server-config.sh <answer file>\n"
+	echo -e "You can fix this later by running borhan-media-server-config.sh <answer file>\n"
 	exit 2
 else
 	echo -e "${CYAN}Setting PRIMARY_MEDIA_SERVER_HOST${NORMAL}"
@@ -70,16 +70,16 @@ else
 fi
 
 
-if [ ! -r /opt/kaltura/app/base-config.lock ];then
-	`dirname $0`/kaltura-base-config.sh "$ANSFILE"
+if [ ! -r /opt/borhan/app/base-config.lock ];then
+	`dirname $0`/borhan-base-config.sh "$ANSFILE"
 	if [ $? -ne 0 ];then
 		echo -e "${BRIGHT_RED}ERROR: Base config failed. Please correct and re-run $0.${NORMAL}"
 		exit 21
 	fi
 else
 	echo -e "${BRIGHT_BLUE}base-config completed successfully, if you ever want to re-configure your system (e.g. change DB hostname) run the following script:
-# rm /opt/kaltura/app/base-config.lock
-# $BASE_DIR/bin/kaltura-base-config.sh
+# rm /opt/borhan/app/base-config.lock
+# $BASE_DIR/bin/borhan-base-config.sh
 ${NORMAL}
 "
 fi
@@ -104,7 +104,7 @@ then
 elif [ "$SECONDARY_MEDIA_SERVER_HOST" == "$PRIMARY_MEDIA_SERVER_HOST" ];
 then
 	echo -e "${BRIGHT_RED}Warning: SECONDARY_MEDIA_SERVER_HOST & PRIMARY_MEDIA_SERVER_HOST have the same value in $1 answer file ($PRIMARY_MEDIA_SERVER_HOST). No secondary server will be configured under $BROADCAST_FILE."
-	echo -e "You can fix this later by running kaltura-media-server-config.sh <answer file> ${NORMAL}"
+	echo -e "You can fix this later by running borhan-media-server-config.sh <answer file> ${NORMAL}"
 	
 	# Removing unneeded lines
 	START_LINE=`grep -n @SECONDARY_MEDIA_SERVER_HOST@ $TEMP_BROADCAST | cut -d':' -f1`
@@ -126,7 +126,7 @@ if [ -f $TEMP_BROADCAST ]; then
 fi
 
 
-RC_FILE=/etc/kaltura.d/system.ini
+RC_FILE=/etc/borhan.d/system.ini
 if [ ! -r "$RC_FILE" ];then
 	echo -e "${BRIGHT_RED}ERROR: could not find $RC_FILE so, exiting..${NORMAL}"
 	exit 2

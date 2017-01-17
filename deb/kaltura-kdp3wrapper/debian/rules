@@ -2,13 +2,13 @@
 
 DEB_VERSION := $(shell dpkg-parsechangelog | egrep '^Version:' | cut -f 2 -d ' ')
 RC_FILE :=../../build/sources.rc
-KDP3WRAPPER_VERSION ?= $(shell egrep '^KDP3WRAPPER_VERSION=' $(RC_FILE) | cut -d = -f 2| sed 's@"@@g')
+BDP3WRAPPER_VERSION ?= $(shell egrep '^BDP3WRAPPER_VERSION=' $(RC_FILE) | cut -d = -f 2| sed 's@"@@g')
 SOURCE_PACKAGING_DIR ?= $(shell egrep '^SOURCE_PACKAGING_DIR=' $(RC_FILE) | cut -d = -f 2| sed 's@"@@g')
-KALTURA_PREFIX ?= $(shell egrep '^KALTURA_PREFIX=' $(RC_FILE) | cut -d = -f 2| sed 's@"@@g')
-KDP3WRAPPER_PREFIX=$(KALTURA_PREFIX)/web/flash/kdp3wrapper
+BORHAN_PREFIX ?= $(shell egrep '^BORHAN_PREFIX=' $(RC_FILE) | cut -d = -f 2| sed 's@"@@g')
+BDP3WRAPPER_PREFIX=$(BORHAN_PREFIX)/web/flash/bdp3wrapper
 include ../includes/build-revision.mk
-archive := $(SOURCE_PACKAGING_DIR)/kaltura-kdp3wrapper-$(KDP3WRAPPER_VERSION).tar.bz2
-tree := kaltura-kdp3wrapper
+archive := $(SOURCE_PACKAGING_DIR)/borhan-bdp3wrapper-$(BDP3WRAPPER_VERSION).tar.bz2
+tree := borhan-bdp3wrapper
 
 clean:
 	dh_clean
@@ -16,7 +16,7 @@ clean:
 	rm -rf debian/tmp
 
 $(archive):
-	$(SOURCE_PACKAGING_DIR)/platform-install-packages/build/package_kaltura_kdp3wrapper.sh	
+	$(SOURCE_PACKAGING_DIR)/platform-install-packages/build/package_borhan_bdp3wrapper.sh	
 
 $(tree): $(archive)
 	tar jxf $(archive)
@@ -27,10 +27,10 @@ install: build
 
 binary-indep: install
 	dh_installdirs
-	rm -rf $(KDP3WRAPPER_PREFIX)
-	mkdir -p $(KDP3WRAPPER_PREFIX)
-	mv $(tree)/$(KDP3WRAPPER_VERSION) $(KDP3WRAPPER_PREFIX)/
-	dh_install $(KDP3WRAPPER_PREFIX)
+	rm -rf $(BDP3WRAPPER_PREFIX)
+	mkdir -p $(BDP3WRAPPER_PREFIX)
+	mv $(tree)/$(BDP3WRAPPER_VERSION) $(BDP3WRAPPER_PREFIX)/
+	dh_install $(BDP3WRAPPER_PREFIX)
 	dh_gencontrol -u-v$(DEB_VERSION) 
 	dh_installdebconf
 	dh_installdeb

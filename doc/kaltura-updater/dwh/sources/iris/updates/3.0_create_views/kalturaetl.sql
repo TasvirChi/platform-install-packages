@@ -1,4 +1,4 @@
-USE `kalturaetl`;
+USE `borhanetl`;
 
 DROP VIEW IF EXISTS `update_step` ;
 DROP TABLE IF EXISTS `update_step`;

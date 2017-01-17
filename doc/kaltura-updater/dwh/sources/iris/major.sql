@@ -1,10 +1,10 @@
 /* 6154 - playManifest aggregation */
-CREATE TABLE kalturadw_ds.aggr_type (
+CREATE TABLE borhandw_ds.aggr_type (
 	`aggr_name` varchar(20) NOT NULL,
     `aggr_order` int(6) DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
-REPLACE INTO kalturadw_ds.aggr_type
+REPLACE INTO borhandw_ds.aggr_type
 	(aggr_name,
 	aggr_order)
 VALUES
@@ -12,14 +12,14 @@ VALUES
 	('bandwidth' , 2),
 	('plays' , 3);
 	
-REPLACE INTO kalturadw_ds.fact_tables
+REPLACE INTO borhandw_ds.fact_tables
                 (fact_table_id,
                 fact_table_name)
 VALUES
-        (7,'kalturadw.dwh_fact_plays');
+        (7,'borhandw.dwh_fact_plays');
 
 
-REPLACE INTO kalturadw_ds.staging_areas
+REPLACE INTO borhandw_ds.staging_areas
         (id,
         process_id,
         source_table,
@@ -41,10 +41,10 @@ VALUES
         'play_date_id',
         'play_hour_id');
 
-REPLACE INTO kalturadw_ds.retention_policy VALUES
+REPLACE INTO borhandw_ds.retention_policy VALUES
 ('dwh_fact_plays', 30, 365, DATE('2014-06-01'));
 
-REPLACE INTO kalturadw_ds.aggr_name_resolver
+REPLACE INTO borhandw_ds.aggr_name_resolver
                 (aggr_name,
                 aggr_table,
                 aggr_id_field,
@@ -57,9 +57,9 @@ VALUES
         ('plays_entry','dwh_hourly_plays_entry','entry_id','','plays',NULL,NULL);
 		
 
-USE `kalturadw_ds`;
+USE `borhandw_ds`;
 
-CREATE TABLE `kalturadw_ds`.`ds_plays`(
+CREATE TABLE `borhandw_ds`.`ds_plays`(
   `line_number` INT(10),
   `cycle_id` INT(11) NOT NULL,
   `file_id` INT(11) NOT NULL,
@@ -78,7 +78,7 @@ CREATE TABLE `kalturadw_ds`.`ds_plays`(
 PARTITION BY LIST (cycle_id)
 (PARTITION p_0 VALUES IN (0) ENGINE = INNODB);
 
-USE `kalturadw`;
+USE `borhandw`;
 
 DROP TABLE IF EXISTS `dwh_fact_plays`;
 
@@ -107,7 +107,7 @@ CALL add_daily_partition_for_table('dwh_fact_plays');
 
 DELIMITER $$
 
-USE `kalturadw`$$
+USE `borhandw`$$
 
 DROP PROCEDURE IF EXISTS `calc_aggr_day_play`$$
 
@@ -125,14 +125,14 @@ BEGIN
 
         SELECT DATE(NOW() - INTERVAL archive_delete_days_back DAY), DATE(archive_last_partition)
         INTO v_ignore, v_from_archive
-        FROM kalturadw_ds.retention_policy
+        FROM borhandw_ds.retention_policy
         WHERE table_name = 'dwh_fact_plays';
 
         IF (p_date_val >= v_ignore) THEN
 
                         SELECT aggr_table, aggr_id_field
                         INTO  v_aggr_table, v_aggr_id_field
-                        FROM kalturadw_ds.aggr_name_resolver
+                        FROM borhandw_ds.aggr_name_resolver
                         WHERE aggr_name = p_aggr_name;
 
                         SET extra = CONCAT('pre_aggregation_',p_aggr_name);
@@ -170,12 +170,12 @@ BEGIN
                                                         IF(dim_id_field <> '',  CONCAT(', e.', REPLACE(dim_id_field,',',', e.')), '')
                                                   )
                         INTO  v_aggr_table, v_aggr_id_field
-                        FROM kalturadw_ds.aggr_name_resolver
+                        FROM borhandw_ds.aggr_name_resolver
                         WHERE aggr_name = p_aggr_name;
 
                         SELECT IF(join_table <> '' , CONCAT(',', join_table), ''), IF(join_table <> '', CONCAT(' AND ev.' ,join_id_field,'=',join_table,'.',join_id_field), '')
                         INTO v_join_table, v_join_condition
-                        FROM kalturadw_ds.aggr_name_resolver
+                        FROM borhandw_ds.aggr_name_resolver
                         WHERE aggr_name = p_aggr_name;
 
 
@@ -229,9 +229,9 @@ END$$
 
 DELIMITER ;
 
-USE `kalturadw`;
+USE `borhandw`;
  
-CREATE TABLE kalturadw.`dwh_hourly_plays_partner` (
+CREATE TABLE borhandw.`dwh_hourly_plays_partner` (
   `partner_id` INT DEFAULT NULL,
   `date_id` INT DEFAULT NULL,
   `hour_id` INT DEFAULT NULL,
@@ -243,9 +243,9 @@ CREATE TABLE kalturadw.`dwh_hourly_plays_partner` (
 PARTITION BY RANGE (date_id)
 (PARTITION @PARTITION_NAME@ VALUES LESS THAN (@PARTITION_VALUE@) ENGINE = INNODB);
 
-CALL kalturadw.add_monthly_partition_for_table('dwh_hourly_plays_partner');
+CALL borhandw.add_monthly_partition_for_table('dwh_hourly_plays_partner');
 
-CREATE TABLE kalturadw.`dwh_hourly_plays_entry` (
+CREATE TABLE borhandw.`dwh_hourly_plays_entry` (
   `partner_id` INT DEFAULT NULL,
   `date_id` INT DEFAULT NULL,
   `hour_id` INT DEFAULT NULL,
@@ -259,7 +259,7 @@ CREATE TABLE kalturadw.`dwh_hourly_plays_entry` (
 PARTITION BY RANGE (date_id)
 (PARTITION @PARTITION_NAME@ VALUES LESS THAN (@PARTITION_VALUE@) ENGINE = INNODB);
 
-CALL kalturadw.add_monthly_partition_for_table('dwh_hourly_plays_entry');
+CALL borhandw.add_monthly_partition_for_table('dwh_hourly_plays_entry');
 
 DROP TABLE IF EXISTS `dwh_fact_plays_archive`;
 
@@ -284,7 +284,7 @@ PARTITION BY RANGE (play_date_id)
 
 DELIMITER $$
 
-USE `kalturadw`$$
+USE `borhandw`$$
 
 DROP PROCEDURE IF EXISTS `add_partitions`$$
 
@@ -316,16 +316,16 @@ BEGIN
 		CALL add_monthly_partition_for_table('dwh_hourly_events_context_app_devices');
 		CALL add_monthly_partition_for_table('dwh_daily_ingestion');
         CALL add_monthly_partition_for_table('dwh_daily_partner_ingestion');
-        CALL kalturadw.add_monthly_partition_for_table('dwh_hourly_plays_partner');
-        CALL kalturadw.add_monthly_partition_for_table('dwh_hourly_plays_entry');
+        CALL borhandw.add_monthly_partition_for_table('dwh_hourly_plays_partner');
+        CALL borhandw.add_monthly_partition_for_table('dwh_hourly_plays_entry');
                 
 END$$
 
 DELIMITER ;
 
-DROP TABLE IF EXISTS kalturadw.dwh_dim_client_tag;
+DROP TABLE IF EXISTS borhandw.dwh_dim_client_tag;
 
-CREATE TABLE kalturadw.dwh_dim_client_tag (
+CREATE TABLE borhandw.dwh_dim_client_tag (
   client_tag_id int(11) NOT NULL AUTO_INCREMENT,
   name varchar(100) DEFAULT NULL,
   KEY client_tag_id (client_tag_id),
@@ -336,7 +336,7 @@ CREATE TABLE kalturadw.dwh_dim_client_tag (
 
 DELIMITER $$
 
-USE `kalturadw`$$
+USE `borhandw`$$
 
 DROP PROCEDURE IF EXISTS `calc_aggr_day`$$
 
@@ -354,14 +354,14 @@ BEGIN
 
         SELECT DATE(NOW() - INTERVAL archive_delete_days_back DAY), DATE(archive_last_partition)
         INTO v_ignore, v_from_archive
-        FROM kalturadw_ds.retention_policy
+        FROM borhandw_ds.retention_policy
         WHERE table_name = 'dwh_fact_events';
 
         IF (p_date_val >= v_ignore) THEN
 
                         SELECT aggr_table, aggr_id_field
                         INTO  v_aggr_table, v_aggr_id_field
-                        FROM kalturadw_ds.aggr_name_resolver
+                        FROM borhandw_ds.aggr_name_resolver
                         WHERE aggr_name = p_aggr_name;
 
                         SET extra = CONCAT('pre_aggregation_',p_aggr_name);
@@ -399,12 +399,12 @@ BEGIN
                                                         IF(dim_id_field <> '',  CONCAT(', e.', REPLACE(dim_id_field,',',', e.')), '')
                                                   )
                         INTO  v_aggr_table, v_aggr_id_field
-                        FROM kalturadw_ds.aggr_name_resolver
+                        FROM borhandw_ds.aggr_name_resolver
                         WHERE aggr_name = p_aggr_name;
 
                         SELECT IF(join_table <> '' , CONCAT(',', join_table), ''), IF(join_table <> '', CONCAT(' AND ev.' ,join_id_field,'=',join_table,'.',join_id_field), '')
                         INTO v_join_table, v_join_condition
-                        FROM kalturadw_ds.aggr_name_resolver
+                        FROM borhandw_ds.aggr_name_resolver
                         WHERE aggr_name = p_aggr_name;
 
 
@@ -594,7 +594,7 @@ END$$
 DELIMITER ;
 
 
-CREATE TABLE kalturadw.`dwh_hourly_events_live_entry` (
+CREATE TABLE borhandw.`dwh_hourly_events_live_entry` (
   `partner_id` INT DEFAULT NULL,
   `date_id` INT DEFAULT NULL,
   `hour_id` INT DEFAULT NULL,
@@ -608,7 +608,7 @@ CREATE TABLE kalturadw.`dwh_hourly_events_live_entry` (
 PARTITION BY RANGE (date_id)
 (PARTITION @PARTITION_NAME@ VALUES LESS THAN (@PARTITION_VALUE@) ENGINE = INNODB);
 
-USE kalturadw;
+USE borhandw;
 
 DELIMITER &&
 
@@ -618,7 +618,7 @@ CREATE PROCEDURE add_live_plays_views(p_date_id INT, p_hour_id INT)
 BEGIN
     INSERT INTO dwh_entry_plays_views(entry_id, plays, views)
     SELECT aggr.entry_id, IFNULL(count_plays, 0) plays, IFNULL(count_loads, 0) views
-    FROM kalturadw.dwh_hourly_events_live_entry aggr
+    FROM borhandw.dwh_hourly_events_live_entry aggr
     WHERE date_id = p_date_id AND hour_id = p_hour_id
     ON DUPLICATE KEY UPDATE
         plays = plays + VALUES(plays) ,
@@ -630,7 +630,7 @@ DELIMITER ;
 
 DELIMITER $$
 
-USE `kalturadw`$$
+USE `borhandw`$$
 
 DROP PROCEDURE IF EXISTS `remove_live_plays_views`$$
 
@@ -641,7 +641,7 @@ BEGIN
   DECLARE v_plays INT;
   DECLARE v_views INT;
 
-  DECLARE entries CURSOR FOR SELECT entry_id, count_plays, count_loads FROM kalturadw.dwh_hourly_events_live_entry WHERE date_id = p_date_id AND hour_id = p_hour_id;
+  DECLARE entries CURSOR FOR SELECT entry_id, count_plays, count_loads FROM borhandw.dwh_hourly_events_live_entry WHERE date_id = p_date_id AND hour_id = p_hour_id;
 
   DECLARE CONTINUE HANDLER FOR NOT FOUND SET v_done = TRUE;
 
@@ -673,14 +673,14 @@ END$$
 
 DELIMITER ;
 
-update kalturadw_ds.staging_areas set post_transfer_aggregations = '(\'country\',\'domain\',\'entry\',\'partner\',\'uid\',\'widget\',\'domain_referrer\',\'devices\',\'users\',\'context\',\'app_devices\',\'live_entry\')' where id = 1;
+update borhandw_ds.staging_areas set post_transfer_aggregations = '(\'country\',\'domain\',\'entry\',\'partner\',\'uid\',\'widget\',\'domain_referrer\',\'devices\',\'users\',\'context\',\'app_devices\',\'live_entry\')' where id = 1;
 
-INSERT  INTO kalturadw_ds.aggr_name_resolver(aggr_name,aggr_table,aggr_id_field,dim_id_field,aggr_type,join_table,join_id_field)
+INSERT  INTO borhandw_ds.aggr_name_resolver(aggr_name,aggr_table,aggr_id_field,dim_id_field,aggr_type,join_table,join_id_field)
 VALUES ('live_entry','dwh_hourly_events_live_entry','','entry_id','events','','');
 
 DELIMITER $$
 
-USE `kalturadw`$$
+USE `borhandw`$$
 
 DROP PROCEDURE IF EXISTS `add_partitions`$$
 
@@ -712,9 +712,9 @@ BEGIN
                 CALL add_monthly_partition_for_table('dwh_hourly_events_context_app_devices');
                 CALL add_monthly_partition_for_table('dwh_daily_ingestion');
                 CALL add_monthly_partition_for_table('dwh_daily_partner_ingestion');
-                CALL kalturadw.add_monthly_partition_for_table('dwh_hourly_plays_partner');
-                CALL kalturadw.add_monthly_partition_for_table('dwh_hourly_plays_entry');
-                CALL kalturadw.add_monthly_partition_for_table('dwh_hourly_events_live_entry');
+                CALL borhandw.add_monthly_partition_for_table('dwh_hourly_plays_partner');
+                CALL borhandw.add_monthly_partition_for_table('dwh_hourly_plays_entry');
+                CALL borhandw.add_monthly_partition_for_table('dwh_hourly_events_live_entry');
 
 END$$
 
@@ -722,7 +722,7 @@ DELIMITER ;
 
 DELIMITER $$
 
-USE `kalturadw`$$
+USE `borhandw`$$
 
 DROP PROCEDURE IF EXISTS `pre_aggregation_live_entry`$$
 
@@ -735,7 +735,7 @@ DELIMITER ;
 
 DELIMITER $$
 
-USE `kalturadw`$$
+USE `borhandw`$$
 
 DROP PROCEDURE IF EXISTS `post_aggregation_live_entry`$$
 
@@ -749,11 +749,11 @@ DELIMITER ;
 
 /* live bandwidth */
 
-REPLACE INTO kalturadw_ds.processes (id, process_name, max_files_per_cycle) VALUES (12, 'kaltura_live_bandwidth', 20);
+REPLACE INTO borhandw_ds.processes (id, process_name, max_files_per_cycle) VALUES (12, 'borhan_live_bandwidth', 20);
 
-REPLACE INTO kalturadw.dwh_dim_bandwidth_source (bandwidth_source_id,bandwidth_source_name, is_live) VALUES (10, 'kaltura_live',1);
+REPLACE INTO borhandw.dwh_dim_bandwidth_source (bandwidth_source_id,bandwidth_source_name, is_live) VALUES (10, 'borhan_live',1);
 
-REPLACE INTO kalturadw_ds.staging_areas
+REPLACE INTO borhandw_ds.staging_areas
         (id,
         process_id,
         source_table,
@@ -775,6 +775,6 @@ VALUES
         'activity_date_id',
         'activity_hour_id');
 
-UPDATE kalturadw_ds.retention_policy SET archive_delete_days_back = 365 WHERE archive_delete_days_back > 365;
+UPDATE borhandw_ds.retention_policy SET archive_delete_days_back = 365 WHERE archive_delete_days_back > 365;
 
 

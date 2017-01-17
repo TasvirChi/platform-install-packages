@@ -10,7 +10,7 @@ if [ "$1" != "configure" ]; then
     exit 0
 fi
 
-phpini="/opt/kaltura/app/configurations/php/embed/php.ini"
+phpini="/opt/borhan/app/configurations/php/embed/php.ini"
 
 ucf /usr/share/php5/php.ini-production $phpini
 ucfr libphp5-embed $phpini

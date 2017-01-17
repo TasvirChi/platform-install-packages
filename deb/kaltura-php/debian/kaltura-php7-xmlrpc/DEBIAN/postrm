@@ -4,11 +4,11 @@ set -e
 
 
 
-inidir=/opt/kaltura/app/configurations/php/mods-available
+inidir=/opt/borhan/app/configurations/php/mods-available
 for dsoname in xmlrpc ; do
     inifile=${dsoname}.ini
 
-    dpkg-maintscript-helper mv_conffile /opt/kaltura/app/configurations/php/conf.d/${inifile} ${inidir}/${inifile} 7.0.0-1 -- "$@";
+    dpkg-maintscript-helper mv_conffile /opt/borhan/app/configurations/php/conf.d/${inifile} ${inidir}/${inifile} 7.0.0-1 -- "$@";
 
     # Query which package has this conffile registered
     if which ucfq >/dev/null; then
@@ -26,7 +26,7 @@ for dsoname in xmlrpc ; do
 		ucf --purge ${inidir}/${inifile}
 	    fi
 	    #if which ucfr >/dev/null; then
-	    #	ucfr --purge kaltura-php7-xmlrpc ${inidir}/${inifile}
+	    #	ucfr --purge borhan-php7-xmlrpc ${inidir}/${inifile}
 	    #fi
 	fi
     fi

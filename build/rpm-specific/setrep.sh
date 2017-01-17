@@ -8,8 +8,8 @@
 #  REQUIREMENTS: ---
 #          BUGS: ---
 #         NOTES: ---
-#        AUTHOR: Jess Portnoy (), <jess.portnoy@kaltura.com>
-#  ORGANIZATION: Kaltura, inc.
+#        AUTHOR: Jess Portnoy (), <jess.portnoy@borhan.com>
+#  ORGANIZATION: Borhan, inc.
 #       CREATED: 12/01/14 08:27:56 EST
 #      REVISION:  ---
 #===============================================================================
@@ -24,7 +24,7 @@ VERSION=$1
 mkdir -p /opt/vhosts/repo/releases/$VERSION/RPMS/noarch
 cp /opt/vhosts/repo/releases/latest/RPMS/noarch/*rpm /opt/vhosts/repo/releases/$VERSION/RPMS/noarch/
 cd  /opt/vhosts/repo/releases/$VERSION/RPMS/noarch
-rm  kaltura-base-* kaltura-batch-* kaltura-front-* kaltura-release-* kaltura-server-* kaltura-release-*
+rm  borhan-base-* borhan-batch-* borhan-front-* borhan-release-* borhan-server-* borhan-release-*
 cp -r /opt/vhosts/repo/releases/latest/RPMS/x86_64 /opt/vhosts/repo/releases/$VERSION/RPMS/
 
 

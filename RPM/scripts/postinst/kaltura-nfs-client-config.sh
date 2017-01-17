@@ -1,15 +1,15 @@
 #!/bin/bash - 
 #===============================================================================
-#          FILE: kaltura-nfs-client-config.sh
-#         USAGE: ./kaltura-nfs-client-config.sh 
+#          FILE: borhan-nfs-client-config.sh
+#         USAGE: ./borhan-nfs-client-config.sh 
 #   DESCRIPTION: NFS client side preps. 
 #       OPTIONS: ---
 # 	LICENSE: AGPLv3+
 #  REQUIREMENTS: ---
 #          BUGS: ---
 #         NOTES: ---
-#        AUTHOR: Jess Portnoy <jess.portnoy@kaltura.com>
-#  ORGANIZATION: Kaltura, inc.
+#        AUTHOR: Jess Portnoy <jess.portnoy@borhan.com>
+#  ORGANIZATION: Borhan, inc.
 #       CREATED: 03/12/14 13:06:13 EDT
 #      REVISION:  ---
 #===============================================================================
@@ -24,7 +24,7 @@ DOMAIN=$2
 NOBODY_USER=$3
 NOBODY_GROUP=$4
 IDMAPD_CONFFILE=/etc/idmapd.conf
-PREFIX=/opt/kaltura
+PREFIX=/opt/borhan
 MOUNT_DIR=$PREFIX/web
 mkdir -p $MOUNT_DIR
 DISTRO=`lsb_release -i -s`
@@ -40,9 +40,9 @@ else
 	SERVICES="rpcidmapd rpcbind"
 fi
 # create user/group, and update permissions
-groupadd -r kaltura -g7373 2>/dev/null || true
-useradd -M -r -u7373 -d $PREFIX -s /bin/bash -c "Kaltura server" -g kaltura kaltura 2>/dev/null || true
-usermod -g kaltura kaltura 2>/dev/null || true
+groupadd -r borhan -g7373 2>/dev/null || true
+useradd -M -r -u7373 -d $PREFIX -s /bin/bash -c "Borhan server" -g borhan borhan 2>/dev/null || true
+usermod -g borhan borhan 2>/dev/null || true
 
 if grep -q "^Domain" $IDMAPD_CONFFILE;then
         sed -i "s@^Domain\s*=\s*.*@Domain = $DOMAIN@g" $IDMAPD_CONFFILE
@@ -65,9 +65,9 @@ cat /proc/mounts |grep -q "$NFS_HOST:$MOUNT_DIR.*$MOUNT_DIR"
 if [ $? -ne 0 ];then
 	mount $MOUNT_DIR || echo "Failed to mount" && exit 2
 fi
-su kaltura -c "touch $MOUNT_DIR/"
+su borhan -c "touch $MOUNT_DIR/"
 if [ $? -eq 0 ];then
-	echo "Mount is OK, writable to 'kaltura' user"
+	echo "Mount is OK, writable to 'borhan' user"
 else
-	echo "Could not touch $MOUNT_DIR as 'kaltura' user , you should fix it."
+	echo "Could not touch $MOUNT_DIR as 'borhan' user , you should fix it."
 fi

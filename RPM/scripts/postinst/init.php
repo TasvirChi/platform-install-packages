@@ -1,7 +1,7 @@
 <?php
-require_once('/opt/kaltura/app/alpha/config/kConf.php');
+require_once('/opt/borhan/app/alpha/config/kConf.php');
 
-$configPath = '/opt/kaltura/bin/sanity_config.ini'; 
+$configPath = '/opt/borhan/bin/sanity_config.ini'; 
 if(!file_exists($configPath))
 {
         echo "Configuration file [$configPath] does not exist\n";
@@ -87,9 +87,9 @@ function cUrl($url, $localFilePath, &$headers, $followLocation = true)
         return $errCode;
 }
 
-require_once ('/opt/kaltura/web/content/clientlibs/php5full/KalturaClient.php');
+require_once ('/opt/borhan/web/content/clientlibs/php5full/BorhanClient.php');
 
-class SanityTestLogger implements IKalturaLogger
+class SanityTestLogger implements IBorhanLogger
 {
         function log($msg)
         {
@@ -97,11 +97,11 @@ class SanityTestLogger implements IKalturaLogger
         }
 }
 
-$clientConfig = new KalturaConfiguration();
+$clientConfig = new BorhanConfiguration();
 $clientConfig->setLogger(new SanityTestLogger());
 $clientConfig->partnerId = null;
 foreach($config['client'] as $field => $value)
         $clientConfig->$field = $value;
 
-$client = new KalturaClient($clientConfig);
+$client = new BorhanClient($clientConfig);
 ?>

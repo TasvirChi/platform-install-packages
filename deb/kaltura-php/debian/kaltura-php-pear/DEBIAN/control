@@ -1,12 +1,12 @@
-Package: kaltura-php-pear
-Source: kaltura-php7
+Package: borhan-php-pear
+Source: borhan-php7
 Version: 7.0.0-6
 Architecture: all
-Maintainer: Jess Portnoy <jess.portnoy@kaltura.com>
+Maintainer: Jess Portnoy <jess.portnoy@borhan.com>
 Installed-Size: 48
-Depends: kaltura-php7-common (>= 7.0.0-6), kaltura-php7-cli
+Depends: borhan-php7-common (>= 7.0.0-6), borhan-php7-cli
 Recommends: gnupg
-Suggests: kaltura-php7-dev
+Suggests: borhan-php7-dev
 Conflicts: php-xml-util
 Provides: php-xml-util
 Section: php

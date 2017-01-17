@@ -1,7 +1,7 @@
-Source: kaltura-nginx
+Source: borhan-nginx
 Section: misc
 Priority: extra
-Maintainer: Jess Portnoy <jess.portnoy@kaltura.com>
+Maintainer: Jess Portnoy <jess.portnoy@borhan.com>
 Build-Depends: 
  debhelper (>= 7.0.50),
  autotools-dev,
@@ -17,23 +17,23 @@ Build-Depends:
  libxslt1-dev,
  po-debconf,
  zlib1g-dev,
- kaltura-ffmpeg,
+ borhan-ffmpeg,
  unzip
 
-Package: kaltura-nginx
+Package: borhan-nginx
 Section: misc
 Architecture: any
 Pre-Depends:
  dpkg (>= 1.15.7.2~),
- kaltura-ffmpeg
+ borhan-ffmpeg
 Provides: httpd,
           nginx
 Conflicts: nginx
 Depends: 
- kaltura-postinst,
+ borhan-postinst,
  ${misc:Depends},
  ${shlibs:Depends}
-Description: Nginx web/proxy server - for Kaltura
+Description: Nginx web/proxy server - for Borhan
  Nginx ("engine X") is a high-performance web and reverse proxy server
  created by Igor Sysoev. It can be used both as a standalone web server
  and as a proxy to reduce the load on back-end HTTP or mail servers.

@@ -8,7 +8,7 @@ SOURCE_PACKAGING_DIR ?= $(shell egrep '^SOURCE_PACKAGING_DIR=' $(RC_FILE) | cut 
 include ../includes/build-revision.mk
 archive := $(SOURCE_PACKAGING_DIR)/ffmpeg-$(FFMPEG_VERSION).tar.bz2 
 tree := ffmpeg-$(FFMPEG_VERSION)
-BASE_PREFIX=opt/kaltura/$(tree)
+BASE_PREFIX=opt/borhan/$(tree)
 # These are used for cross-compiling and for saving the configure script
 # from having to guess our platform (since we know it already)
 DEB_HOST_GNU_TYPE   ?= $(shell dpkg-architecture -qDEB_HOST_GNU_TYPE)
@@ -36,8 +36,8 @@ config.status: $(tree)
 		    --prefix="$(BASE_PREFIX)" \
 		    --libdir="$(BASE_PREFIX)/lib" \
 		    --shlibdir="$(BASE_PREFIX)/lib" \
-		    --extra-cflags=" -fPIC -I/opt/kaltura/include" \
-		    --extra-ldflags="-L/opt/kaltura/lib" \
+		    --extra-cflags=" -fPIC -I/opt/borhan/include" \
+		    --extra-ldflags="-L/opt/borhan/lib" \
 		    --disable-devices \
 		    --enable-bzlib \
 		    --enable-libgsm \
@@ -107,7 +107,7 @@ binary-indep:;
 
 # Build architecture-dependent files here.
 binary-arch: build install
-	mkdir -p $(BASE_PREFIX) debian/kaltura-ffmpeg/opt/kaltura/bin/ 
+	mkdir -p $(BASE_PREFIX) debian/borhan-ffmpeg/opt/borhan/bin/ 
 	dh_testdir
 	dh_testroot
 	#dh_installchangelogs ChangeLog
@@ -122,8 +122,8 @@ binary-arch: build install
 	dh_installdebconf	
 	dh_installinit
 	dh_installman
-	dh_link $(BASE_PREFIX)/bin/ffmpeg opt/kaltura/bin/ffmpeg
-	dh_link $(BASE_PREFIX)/bin/qt-faststart opt/kaltura/bin/qt-faststart
+	dh_link $(BASE_PREFIX)/bin/ffmpeg opt/borhan/bin/ffmpeg
+	dh_link $(BASE_PREFIX)/bin/qt-faststart opt/borhan/bin/qt-faststart
 	dh_strip
 	dh_compress
 	dh_fixperms

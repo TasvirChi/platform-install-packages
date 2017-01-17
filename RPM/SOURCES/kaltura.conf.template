@@ -1,4 +1,4 @@
-index kaltura_base
+index borhan_base
 {
 	type	 = rt
 	charset_type	 = utf-8
@@ -75,7 +75,7 @@ index kaltura_base
 }
 
 
-index kaltura_kuser_base:kaltura_base
+index borhan_kuser_base:borhan_base
 {
 	dict	 = keywords
 	min_prefix_len	 = 3
@@ -151,9 +151,9 @@ index kaltura_kuser_base:kaltura_base
 	
 }
 
-index kaltura_entry:kaltura_base
+index borhan_entry:borhan_base
 {
-	path	 = @BASE_DIR@/sphinx/kaltura_rt
+	path	 = @BASE_DIR@/sphinx/borhan_rt
 	rt_field = entry_id
 	rt_attr_string = str_entry_id
 	rt_attr_uint = int_entry_id
@@ -206,10 +206,10 @@ index kaltura_entry:kaltura_base
 	rt_field = plugins_data
 }
 
-index kaltura_category
+index borhan_category
 {
 	type	 = rt
-	path	 = @BASE_DIR@/sphinx/kaltura_category_rt
+	path	 = @BASE_DIR@/sphinx/borhan_category_rt
 	dict	 = keywords
 	min_prefix_len	 = 1
 	enable_star	 = 1
@@ -323,9 +323,9 @@ index kaltura_category
 	rt_field = sphinx_match_optimizations	
 }
 
-index kaltura_kuser:kaltura_kuser_base
+index borhan_kuser:borhan_kuser_base
 {
-	path	 = @BASE_DIR@/sphinx/kaltura_kuser_rt
+	path	 = @BASE_DIR@/sphinx/borhan_kuser_rt
 	rt_attr_uint = login_data_id
 	rt_attr_uint = is_admin
 	rt_field = screen_name
@@ -352,9 +352,9 @@ index kaltura_kuser:kaltura_kuser_base
 	rt_field = plugins_data
 }
 
-index kaltura_category_kuser:kaltura_kuser_base
+index borhan_category_kuser:borhan_kuser_base
 {
-	path	 = @BASE_DIR@/sphinx/kaltura_category_kuser_rt
+	path	 = @BASE_DIR@/sphinx/borhan_category_kuser_rt
 	rt_field = category_id
 	rt_field = kuser_id
 	rt_field = category_full_ids
@@ -368,9 +368,9 @@ index kaltura_category_kuser:kaltura_kuser_base
 	rt_attr_timestamp = updated_at
 }
 
-index kaltura_cue_point:kaltura_base
+index borhan_cue_point:borhan_base
 {
-	path	 = @BASE_DIR@/sphinx/kaltura_cue_point_rt
+	path	 = @BASE_DIR@/sphinx/borhan_cue_point_rt
 	rt_field = parent_id
 	rt_field = entry_id
 	rt_field = name
@@ -399,9 +399,9 @@ index kaltura_cue_point:kaltura_base
 	rt_attr_string = str_cue_point_id
 }
 
-index kaltura_entry_distribution:kaltura_base
+index borhan_entry_distribution:borhan_base
 {
-	path	 = @BASE_DIR@/sphinx/kaltura_distribution_rt
+	path	 = @BASE_DIR@/sphinx/borhan_distribution_rt
 	rt_attr_uint = entry_distribution_id
 	rt_attr_timestamp = created_at
 	rt_attr_timestamp = updated_at
@@ -428,9 +428,9 @@ index kaltura_entry_distribution:kaltura_base
 	rt_attr_uint = int_entry_id
 }
 
-index kaltura_caption_item:kaltura_base
+index borhan_caption_item:borhan_base
 {
-	path	 = @BASE_DIR@/sphinx/kaltura_caption_item_rt
+	path	 = @BASE_DIR@/sphinx/borhan_caption_item_rt
 	rt_field = entry_id
 	rt_field = caption_asset_id
 	rt_field = tags
@@ -454,9 +454,9 @@ index kaltura_caption_item:kaltura_base
 	rt_attr_string = str_caption_asset_id
 }
 
-index kaltura_tag:kaltura_kuser_base
+index borhan_tag:borhan_kuser_base
 {
-	path	 = @BASE_DIR@/sphinx/kaltura_tag_rt
+	path	 = @BASE_DIR@/sphinx/borhan_tag_rt
 	rt_attr_uint = int_id
 	rt_field = tag
 	rt_field = partner_id
@@ -469,8 +469,8 @@ index kaltura_tag:kaltura_kuser_base
 
 searchd
 {
-	log = @LOG_DIR@/sphinx/kaltura_sphinx_searchd.log
-	query_log = @LOG_DIR@/sphinx/kaltura_sphinx_query.log
+	log = @LOG_DIR@/sphinx/borhan_sphinx_searchd.log
+	query_log = @LOG_DIR@/sphinx/borhan_sphinx_query.log
 	query_log_format = sphinxql
 	read_timeout = 5
 	max_children = 30

@@ -1,4 +1,4 @@
-USE `kalturadw`;
+USE `borhandw`;
 
 INSERT INTO dwh_hourly_partner_usage (date_id, hour_id, partner_id, bandwidth_source_id,  billable_storage_mb)
 

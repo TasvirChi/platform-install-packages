@@ -1,5 +1,5 @@
 Summary: Red5 Server
-Name: kaltura-red5
+Name: borhan-red5
 Version: 1.0.6
 Release: 1
 Source0: %{name}-%{version}.tar.gz
@@ -75,20 +75,20 @@ if [ "$1" = 0 ]; then
 fi
 
 %changelog
-* Tue Oct 13  2015 Jess Portnoy <jess.portnoy@kaltura.com> 1.0.6-1
+* Tue Oct 13  2015 Jess Portnoy <jess.portnoy@borhan.com> 1.0.6-1
 - https://github.com/Red5/red5-server/releases/tag/v1.0.6-RELEASE
 
-* Sat Jan 3 2015 Jess Portnoy <jess.portnoy@kaltura.com> 1.0.4-1
+* Sat Jan 3 2015 Jess Portnoy <jess.portnoy@borhan.com> 1.0.4-1
 - New ver.
 - No need to build anymore as Red5 offers prebuilt package.
 
-* Tue Nov 11 2014 Jess Portnoy <jess.portnoy@kaltura.com> 1.0.3-1
+* Tue Nov 11 2014 Jess Portnoy <jess.portnoy@borhan.com> 1.0.3-1
 - New ver.
 
-* Wed Feb 19 2014 Jess Portnoy <jess.portnoy@kaltura.com> 1.0.2-1
+* Wed Feb 19 2014 Jess Portnoy <jess.portnoy@borhan.com> 1.0.2-1
 - Maybe this version is better? LOVE using RC versions.. sigh.
 
-* Thu Feb 13 2014 Jess Portnoy <jess.portnoy@kaltura.com> 1.0.0-2
+* Thu Feb 13 2014 Jess Portnoy <jess.portnoy@borhan.com> 1.0.0-2
 - Start at init.
 
 * Wed Dec 26 2012 Tetsuya Morimoto <tetsuya.morimoto at gmail.com> 1.0.0-1

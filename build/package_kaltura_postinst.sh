@@ -1,15 +1,15 @@
 #!/bin/bash -e 
 #===============================================================================
-#          FILE: package_kaltura_postinst.sh
-#         USAGE: ./package_kaltura_postinst.sh 
+#          FILE: package_borhan_postinst.sh
+#         USAGE: ./package_borhan_postinst.sh 
 #   DESCRIPTION: 
 #       OPTIONS: ---
 # 	LICENSE: AGPLv3+
 #  REQUIREMENTS: ---
 #          BUGS: ---
 #         NOTES: ---
-#        AUTHOR: Jess Portnoy (), <jess.portnoy@kaltura.com>
-#  ORGANIZATION: Kaltura, inc.
+#        AUTHOR: Jess Portnoy (), <jess.portnoy@borhan.com>
+#  ORGANIZATION: Borhan, inc.
 #       CREATED: 01/10/14 08:46:43 EST
 #      REVISION:  ---
 #===============================================================================
@@ -22,8 +22,8 @@ if [ ! -r $SOURCES_RC ];then
 fi
 . $SOURCES_RC 
 cd $BASE_CHECKOUT_DIR/RPM/scripts 
-tar zcf $RPM_SOURCES_DIR/kaltura-postinst-$KALTURA_POSTINST_VERSION.tar.gz postinst/
-echo "Packaged into $RPM_SOURCES_DIR/kaltura-postinst-$KALTURA_POSTINST_VERSION.tar.gz"
+tar zcf $RPM_SOURCES_DIR/borhan-postinst-$BORHAN_POSTINST_VERSION.tar.gz postinst/
+echo "Packaged into $RPM_SOURCES_DIR/borhan-postinst-$BORHAN_POSTINST_VERSION.tar.gz"
 if [ -x "`which rpmbuild 2>/dev/null`" ];then
-	rpmbuild -ba $RPM_SPECS_DIR/kaltura-postinst.spec
+	rpmbuild -ba $RPM_SPECS_DIR/borhan-postinst.spec
 fi

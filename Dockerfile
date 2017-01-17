@@ -22,9 +22,9 @@ RUN service memcached start
 RUN service ntpd start
 
 
-# kaltura
-RUN rpm -ihv http://installrepo.kaltura.org/releases/kaltura-release.noarch.rpm
-RUN yum install -y kaltura-server
+# borhan
+RUN rpm -ihv http://installrepo.borhan.org/releases/borhan-release.noarch.rpm
+RUN yum install -y borhan-server
 
 ADD docker/install/* /root/install/
 RUN chmod +x /root/install/install.sh

@@ -1,6 +1,6 @@
-%define prefix /opt/kaltura
+%define prefix /opt/borhan
 Summary: Reference encoder and encoding library for MPEG2/4 AAC
-Name: kaltura-libfaac
+Name: borhan-libfaac
 Version: 1.28
 Release: 1
 License: LGPL
@@ -73,11 +73,11 @@ chmod +x ./configure
 %exclude %{prefix}/lib/libfaac.la
 
 %changelog
-* Tue Dec 9 2014 Jess Portnoy <jess.portnoy@kaltura.com> - 1.28-1
+* Tue Dec 9 2014 Jess Portnoy <jess.portnoy@borhan.com> - 1.28-1
 - Ver bounce.
 
-* Wed Feb 5 2014 Jess Portnoy <jess.portnoy@kaltura.com> - 1.26-2
-- Adopted for Kaltura, needed for kaltura-ffmpeg.
+* Wed Feb 5 2014 Jess Portnoy <jess.portnoy@borhan.com> - 1.26-2
+- Adopted for Borhan, needed for borhan-ffmpeg.
 
 * Mon Nov 10 2008 Dag Wieers <dag@wieers.com> - 1.26-1 - 7981/dag
 - Updated to release 1.26.

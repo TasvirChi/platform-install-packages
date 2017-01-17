@@ -1,15 +1,15 @@
 #!/bin/bash -e 
 #===============================================================================
-#          FILE: package_kaltura_wrapper.sh
-#         USAGE: ./package_kaltura_wrapper.sh 
+#          FILE: package_borhan_wrapper.sh
+#         USAGE: ./package_borhan_wrapper.sh 
 #   DESCRIPTION: 
 #       OPTIONS: ---
 # 	LICENSE: AGPLv3+
 #  REQUIREMENTS: ---
 #          BUGS: ---
 #         NOTES: ---
-#        AUTHOR: Jess Portnoy (), <jess.portnoy@kaltura.com>
-#  ORGANIZATION: Kaltura, inc.
+#        AUTHOR: Jess Portnoy (), <jess.portnoy@borhan.com>
+#  ORGANIZATION: Borhan, inc.
 #       CREATED: 01/10/14 08:46:43 EST
 #      REVISION:  ---
 #===============================================================================
@@ -26,12 +26,12 @@ if [ ! -x "`which svn 2>/dev/null`" ];then
 	exit 2
 fi
 
-kaltura_svn export --force --quiet $KDPWRAPPER_URI/$KDPWRAPPER_VERSION $SOURCE_PACKAGING_DIR/$KDPWRAPPER_RPM_NAME/$KDPWRAPPER_VERSION 
+borhan_svn export --force --quiet $BDPWRAPPER_URI/$BDPWRAPPER_VERSION $SOURCE_PACKAGING_DIR/$BDPWRAPPER_RPM_NAME/$BDPWRAPPER_VERSION 
 cd $SOURCE_PACKAGING_DIR
 # flash things DO NOT need exec perms.
-find $KDPWRAPPER_RPM_NAME -type f -exec chmod -x {} \;
-tar jcf $RPM_SOURCES_DIR/$KDPWRAPPER_RPM_NAME-$KDPWRAPPER_VERSION.tar.bz2 $KDPWRAPPER_RPM_NAME
-echo "Packaged into $RPM_SOURCES_DIR/$KDPWRAPPER_RPM_NAME-$KDPWRAPPER_VERSION.tar.bz2"
+find $BDPWRAPPER_RPM_NAME -type f -exec chmod -x {} \;
+tar jcf $RPM_SOURCES_DIR/$BDPWRAPPER_RPM_NAME-$BDPWRAPPER_VERSION.tar.bz2 $BDPWRAPPER_RPM_NAME
+echo "Packaged into $RPM_SOURCES_DIR/$BDPWRAPPER_RPM_NAME-$BDPWRAPPER_VERSION.tar.bz2"
 if [ -x "`which rpmbuild 2>/dev/null`" ];then
-	rpmbuild -ba $RPM_SPECS_DIR/$KDPWRAPPER_RPM_NAME.spec
+	rpmbuild -ba $RPM_SPECS_DIR/$BDPWRAPPER_RPM_NAME.spec
 fi

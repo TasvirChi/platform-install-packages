@@ -1,7 +1,7 @@
 #!/bin/bash - 
 #===============================================================================
-#          FILE: kaltura-db-update.sh
-#         USAGE: ./kaltura-db-update.sh 
+#          FILE: borhan-db-update.sh
+#         USAGE: ./borhan-db-update.sh 
 #   DESCRIPTION: 
 #       OPTIONS: ---
 # 	LICENSE: AGPLv3+
@@ -17,8 +17,8 @@
 
 RC=0
 
-if [ -r "/opt/kaltura/app/configurations/system.ini" -a -r /opt/kaltura/app/deployment/sql_updates ];then
-		. /opt/kaltura/app/configurations/system.ini
+if [ -r "/opt/borhan/app/configurations/system.ini" -a -r /opt/borhan/app/deployment/sql_updates ];then
+		. /opt/borhan/app/configurations/system.ini
 		for SQL in `cat $APP_DIR/deployment/sql_updates`;do
 		# if we have the .done file, then some updates already happened
 		# need to check if our current one is in the done list, if so, skip it.
@@ -30,7 +30,7 @@ if [ -r "/opt/kaltura/app/configurations/system.ini" -a -r /opt/kaltura/app/depl
 				if [ -z "$DB_PORT" ];then
 					DB1_PORT=3306
 				fi
-				OUT=`mysql kaltura -h $DB1_HOST -u $DB1_USER -P $DB1_PORT -p$DB1_PASS < $SQL  2>&1 |grep -v "Can't DROP\|already exists\|Duplicate column name"`
+				OUT=`mysql borhan -h $DB1_HOST -u $DB1_USER -P $DB1_PORT -p$DB1_PASS < $SQL  2>&1 |grep -v "Can't DROP\|already exists\|Duplicate column name"`
 				RC=$?
 		done
 		if [ $RC -eq 0 ];then

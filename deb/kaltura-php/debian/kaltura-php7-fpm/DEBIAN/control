@@ -1,11 +1,11 @@
-Package: kaltura-php7-fpm
-Source: kaltura-php7
+Package: borhan-php7-fpm
+Source: borhan-php7
 Version: 7.0.0-1
 Architecture: amd64
-Maintainer: Jess Portnoy <jess.portnoy@kaltura.com>
+Maintainer: Jess Portnoy <jess.portnoy@borhan.com>
 Installed-Size: 33
 Pre-Depends: dpkg (>= 1.16.1~)
-Depends: mime-support, kaltura-php7-common (= 7.0.0-1), libmagic1, ucf, tzdata
+Depends: mime-support, borhan-php7-common (= 7.0.0-1), libmagic1, ucf, tzdata
 Suggests: php-pear
 Section: php
 Priority: optional
@@ -13,7 +13,7 @@ Homepage: http://www.php.net/
 Description: server-side, HTML-embedded scripting language (FPM-CGI binary)
  This package provides the Fast Process Manager interpreter that runs
  as a daemon and receives Fast/CGI requests.  Note that MOST Apache users
- probably want the kaltura-libapache2-mod-php7 package.
+ probably want the borhan-libapache2-mod-php7 package.
  .
  .
  .

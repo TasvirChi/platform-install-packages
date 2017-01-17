@@ -1,17 +1,17 @@
-Package: kaltura-php7-mysqlnd
-Source: kaltura-php7
+Package: borhan-php7-mysqlnd
+Source: borhan-php7
 Version: 7.0.0-6
 Architecture: amd64
-Maintainer: Jess Portnoy <jess.portnoy@kaltura.com>
+Maintainer: Jess Portnoy <jess.portnoy@borhan.com>
 Installed-Size: 485
 Pre-Depends: dpkg (>= 1.16.1~)
-Depends: libc6 (>= 2.15), phpapi-20151012, kaltura-php7-common (= 7.0.0-6), ucf
-Conflicts: kaltura-php7-mysql, kaltura-php7-mysqli
-Replaces: kaltura-php7-mysql, kaltura-php7-mysqli
+Depends: libc6 (>= 2.15), phpapi-20151012, borhan-php7-common (= 7.0.0-6), ucf
+Conflicts: borhan-php7-mysql, borhan-php7-mysqli
+Replaces: borhan-php7-mysql, borhan-php7-mysqli
 Section: php
 Priority: extra
 Homepage: http://www.php.net/
-Description: MySQL module for kaltura-php7 (Native Driver)
+Description: MySQL module for borhan-php7 (Native Driver)
  This package provides modules for MySQL database connections directly from
  PHP scripts.  It includes the generic "mysql" module which can be used
  to connect to all versions of MySQL, an improved "mysqli" module for

@@ -1,9 +1,9 @@
-%define prefix /opt/kaltura/pentaho 
+%define prefix /opt/borhan/pentaho 
 
-%define kaltura_user	kaltura
-%define kaltura_group	kaltura
+%define borhan_user	borhan
+%define borhan_group	borhan
 
-Name:		kaltura-pentaho
+Name:		borhan-pentaho
 Version:	4.2.1
 Release:	2
 Summary:	Pentaho Open Source Suite Data Integration Community Edition (CE).
@@ -41,13 +41,13 @@ rm -rf %{buildroot}
 %files
 %defattr(-,root,root,-)
 %doc docs README_INFOBRIGHT.txt README_LINUX.txt 
-%defattr(-, %{kaltura_user}, %{kaltura_group} , 0755)
+%defattr(-, %{borhan_user}, %{borhan_group} , 0755)
 %{prefix}/pdi/*
 
 
 %changelog
-* Sun Jun 21 2015 Jess Portnoy <jess.portnoy@kaltura.com> - 4.2.1-2
+* Sun Jun 21 2015 Jess Portnoy <jess.portnoy@borhan.com> - 4.2.1-2
 - Use newer mysql-connector-java - needed for MySQL 5.6 integration.
 
-* Wed Jan 1 2014 Jess Portnoy <jess.portnoy@kaltura.com> - 4.2.1-1
+* Wed Jan 1 2014 Jess Portnoy <jess.portnoy@borhan.com> - 4.2.1-1
 - First package

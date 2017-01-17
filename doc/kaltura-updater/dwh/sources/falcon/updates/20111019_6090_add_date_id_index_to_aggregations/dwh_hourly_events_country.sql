@@ -1,4 +1,4 @@
-USE kalturadw;
+USE borhandw;
 
 DROP TABLE IF EXISTS `dwh_hourly_events_country_new`;
 CREATE TABLE `dwh_hourly_events_country_new` (
@@ -54,7 +54,7 @@ CREATE TABLE `dwh_hourly_events_country_new` (
 /*!50100 PARTITION BY RANGE (date_id)
 (PARTITION p_0 VALUES LESS THAN (1) ENGINE = InnoDB)*/;
 
-CALL kalturadw.apply_table_partitions_to_target_table('dwh_hourly_events_country');
+CALL borhandw.apply_table_partitions_to_target_table('dwh_hourly_events_country');
 
 INSERT INTO dwh_hourly_events_country_new
 SELECT * FROM dwh_hourly_events_country;

@@ -2,7 +2,7 @@
 %define snap_date 20140104
 
 Summary: Library for encoding and decoding H264/AVC video streams
-Name: kaltura-x264
+Name: borhan-x264
 Version: 0.140
 Release: 2.%{snap_date}
 License: GPL
@@ -14,7 +14,7 @@ BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
 BuildRequires: gettext
 BuildRequires: nasm
 BuildRequires: yasm
-#BuildRequires: kaltura-ffmpeg-devel
+#BuildRequires: borhan-ffmpeg-devel
 %{?_with_visualize:%{!?_without_modxorg:BuildRequires: libXt-devel}}
 %{?_with_visualize:%{?_without_modxorg:BuildRequires: XFree86-devel}}
 Provides: x264, libx264
@@ -57,7 +57,7 @@ sed -i 's|/usr/X11R6/lib |/usr/X11R6/%{prefix}/lib |g' configure
 %{__rm} -rf %{buildroot}
 %{__make} install DESTDIR="%{buildroot}"
 %{__mkdir_p} $RPM_BUILD_ROOT%{_sysconfdir}/ld.so.conf.d
-cat > $RPM_BUILD_ROOT%{_sysconfdir}/ld.so.conf.d/kaltura_x264.conf << EOF
+cat > $RPM_BUILD_ROOT%{_sysconfdir}/ld.so.conf.d/borhan_x264.conf << EOF
 %{prefix}/lib
 EOF
 
@@ -72,7 +72,7 @@ EOF
 %doc AUTHORS COPYING
 %{prefix}/bin/x264
 %{prefix}/lib/libx264.so.*
-%config %{_sysconfdir}/ld.so.conf.d/kaltura_x264.conf
+%config %{_sysconfdir}/ld.so.conf.d/borhan_x264.conf
 
 %files devel
 %defattr(-, root, root, 0755)
@@ -83,10 +83,10 @@ EOF
 %{prefix}/lib/libx264.so
 
 %changelog
-* Sun Jan 5 2014 Jess Portnoy <jess.portnoy@kaltura.com> 0.140-2.20140104 
-- Added %%{_sysconfdir}/ld.so.conf.d/kaltura_x264.conf
-* Sun Jan 5 2014 Jess Portnoy <jess.portnoy@kaltura.com> 0.140-1.20140104 
-- Adopted for Kaltura. Required for kaltura-ffmpeg. 
+* Sun Jan 5 2014 Jess Portnoy <jess.portnoy@borhan.com> 0.140-2.20140104 
+- Added %%{_sysconfdir}/ld.so.conf.d/borhan_x264.conf
+* Sun Jan 5 2014 Jess Portnoy <jess.portnoy@borhan.com> 0.140-1.20140104 
+- Adopted for Borhan. Required for borhan-ffmpeg. 
 
 * Mon Nov 15 2010 Dag Wieers <dag@wieers.com> - 0.0.0-0.4.20101111
 - Updated to git release 20101111 (soname .107).

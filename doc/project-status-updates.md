@@ -1,4 +1,4 @@
-**[Track milestones progress](https://github.com/kaltura/platform-install-packages/issues/milestones)**.
+**[Track milestones progress](https://github.com/borhan/platform-install-packages/issues/milestones)**.
 
 #### 2015-01-10:
 
@@ -6,36 +6,36 @@
 
 + Testing and stabilization of new versions of PHP and MariaDB (compliant with new CentOS and RHEL versions)
 + Release deb packages for Debian and Ubuntu support
-+ Packages for [Nginx server](https://github.com/kaltura/nginx-vod-module) (for VOD repackaging, and eCDN caching server)
-+ Packages for [Media Server](https://github.com/kaltura/media-server) (for Live Streaming)
++ Packages for [Nginx server](https://github.com/borhan/nginx-vod-module) (for VOD repackaging, and eCDN caching server)
++ Packages for [Media Server](https://github.com/borhan/media-server) (for Live Streaming)
 + Packages for Play Server (for stream stitching capabilities such Ad Stitching)
-+ Integration points and support for Kaltura on [OpenStack](http://www.openstack.org/) and [CloudFoundry](http://www.cloudfoundry.org) - discovery and integration hooks to virtualize resource management and launch cluster node scaling.
++ Integration points and support for Borhan on [OpenStack](http://www.openstack.org/) and [CloudFoundry](http://www.cloudfoundry.org) - discovery and integration hooks to virtualize resource management and launch cluster node scaling.
 + API Client Libraries testing using TravisCI post successful CI tests. 
 + Automatic distribution of API Client Libraries, (upon successful CI and after official package releases) to respective repositories, including: [RubyGems](http://rubygems.org), [Node npm](https://www.npmjs.org), [PHP composer](https://getcomposer.org), [pypi](https://pypi.python.org), etc.
 + Packages for the Live Analytics project. 
 
-Much more to come... please send ideas or suggestions to community@kaltura.org or post to the [community forums](http://forum.kaltura.org).
+Much more to come... please send ideas or suggestions to community@borhan.org or post to the [community forums](http://forum.borhan.org).
 
 #### 2014-11-01:
 
 Release announcements will be made through the forums from now on.
-Please visit the [New Release Updates forum category](http://forum.kaltura.org/category/new-release-updates) for all release notes.
+Please visit the [New Release Updates forum category](http://forum.borhan.org/category/new-release-updates) for all release notes.
 
 #### 2014-07-29:
 
-+ Stable version is now 9.18.0, 9.19 is unstable beta ([see CI reports](http://installrepo.kaltura.org/reports/ci/)). 
++ Stable version is now 9.18.0, 9.19 is unstable beta ([see CI reports](http://installrepo.borhan.org/reports/ci/)). 
 + Many bugs were crushed! Thanks and welcome to our newest contributors: [krarey](https://github.com/krarey), [kkraju4u](https://github.com/kkraju4u), [salaman](https://github.com/salaman), [ljutzkanov](https://github.com/ljutzkanov), [kcsunkara](https://github.com/kcsunkara), [shaktidhar](https://github.com/shaktidhar), [baldmonkeey](https://github.com/baldmonkeey), [paladox2015](https://github.com/paladox2015), [muli](https://github.com/muli), [developerworks](https://github.com/developerworks), [rajneeshksoni](https://github.com/rajneeshksoni), [danworldinc](https://github.com/danworldinc), and [basvandijk](https://github.com/basvandijk).
-+ Many tests added to the [CI system](https://github.com/kaltura/platform-continuous-integration). We are at 47% test coverage (out of the [planned test cases](https://github.com/kaltura/platform-continuous-integration/blob/master/README.md#the-test-suites)).
-+ Contributor License Agreements system was deployed for smoother tracking of management of CLA signups. [See AgentContribs](http://agentcontribs.kaltura.org/).
-+ Introducing: [Community contributions dashboard](http://agentcontribs.kaltura.org:8080/). 
-+ New forums system was deployed on Kaltura.org. Fighting SPAM! Folks who'd like to join discussions or get more detailed assistance with topics related to the project should join the forums at [forum.kaltura.org](http://forum.kaltura.org).
++ Many tests added to the [CI system](https://github.com/borhan/platform-continuous-integration). We are at 47% test coverage (out of the [planned test cases](https://github.com/borhan/platform-continuous-integration/blob/master/README.md#the-test-suites)).
++ Contributor License Agreements system was deployed for smoother tracking of management of CLA signups. [See AgentContribs](http://agentcontribs.borhan.org/).
++ Introducing: [Community contributions dashboard](http://agentcontribs.borhan.org:8080/). 
++ New forums system was deployed on Borhan.org. Fighting SPAM! Folks who'd like to join discussions or get more detailed assistance with topics related to the project should join the forums at [forum.borhan.org](http://forum.borhan.org).
 
 
 #### 2014-05-21:
 
 + Stable version is now 9.16.0
-+ Many bugs were crushed! ([#130](https://github.com/kaltura/platform-install-packages/pull/130), [#128](https://github.com/kaltura/platform-install-packages/pull/128), [#127](https://github.com/kaltura/platform-install-packages/pull/127), [#126](https://github.com/kaltura/platform-install-packages/pull/126), [#121](https://github.com/kaltura/platform-install-packages/pull/121), [#120](https://github.com/kaltura/platform-install-packages/pull/120), [#119](https://github.com/kaltura/platform-install-packages/pull/119), [#118](https://github.com/kaltura/platform-install-packages/pull/118), [#113](https://github.com/kaltura/platform-install-packages/pull/113), [#112](https://github.com/kaltura/platform-install-packages/pull/112), [#103](https://github.com/kaltura/platform-install-packages/pull/103)) - Many thanks to our newest contributors! [@dudyk](https://github.com/dudyk), [@vadimtar](https://github.com/vadimtar) and [@corematter](https://github.com/corematter)
-+ Merged patches to core ([#1234](https://github.com/kaltura/server/pull/1234), [#1215](https://github.com/kaltura/server/pull/1215), [#1214](https://github.com/kaltura/server/pull/1214), [#1213](https://github.com/kaltura/server/pull/1213), [#1212](https://github.com/kaltura/server/pull/1212), [#1210](https://github.com/kaltura/server/pull/1210), [#1209](https://github.com/kaltura/server/pull/1209), [#1207](https://github.com/kaltura/server/pull/1207), [#1152](https://github.com/kaltura/server/pull/1152)).
++ Many bugs were crushed! ([#130](https://github.com/borhan/platform-install-packages/pull/130), [#128](https://github.com/borhan/platform-install-packages/pull/128), [#127](https://github.com/borhan/platform-install-packages/pull/127), [#126](https://github.com/borhan/platform-install-packages/pull/126), [#121](https://github.com/borhan/platform-install-packages/pull/121), [#120](https://github.com/borhan/platform-install-packages/pull/120), [#119](https://github.com/borhan/platform-install-packages/pull/119), [#118](https://github.com/borhan/platform-install-packages/pull/118), [#113](https://github.com/borhan/platform-install-packages/pull/113), [#112](https://github.com/borhan/platform-install-packages/pull/112), [#103](https://github.com/borhan/platform-install-packages/pull/103)) - Many thanks to our newest contributors! [@dudyk](https://github.com/dudyk), [@vadimtar](https://github.com/vadimtar) and [@corematter](https://github.com/corematter)
++ Merged patches to core ([#1234](https://github.com/borhan/server/pull/1234), [#1215](https://github.com/borhan/server/pull/1215), [#1214](https://github.com/borhan/server/pull/1214), [#1213](https://github.com/borhan/server/pull/1213), [#1212](https://github.com/borhan/server/pull/1212), [#1210](https://github.com/borhan/server/pull/1210), [#1209](https://github.com/borhan/server/pull/1209), [#1207](https://github.com/borhan/server/pull/1207), [#1152](https://github.com/borhan/server/pull/1152)).
 + More tests were added to the CI system.
 + Also contributed a [generic apache-load-balancer chef recipe](http://community.opscode.com/cookbooks/apache_load_balancer).
 
@@ -46,12 +46,12 @@ Celebrating over 100 bugs crushed mark! :) Thanks to all active contributors! (D
 
 + Stable version is now 9.15.0.
 + Many more tests were added to the CI system.
-+ [Continuous Integration reports are now publicly accessible](http://installrepo.kaltura.org/reports/ci/). 
-+ Many bug patches were merged to core in uiConfs, monitors, batches, and client generators. (ref: [pull1](https://github.com/jessp01/server/compare/kaltura:master...master), [pull2](https://github.com/kaltura/server/commit/3cfacf04d48640d63cc6080592ffcc1270da82a3))
-+ Amazon Web Services documentations contributed by [@blackyboy](https://github.com/blackyboy): 1) [CloudFront HTTP/s](https://github.com/kaltura/platform-install-packages/blob/master/doc/setting-up-amazon-cloudfront-cdn-http-https.md), 2) [CloudFront RTMP](https://github.com/kaltura/platform-install-packages/blob/master/doc/setting-up-amazon-cloudfront-cdn-rtmp.md), and 3) [AWS S3 Remote Storage](https://github.com/kaltura/platform-install-packages/blob/master/doc/setup-amazon-S3-remote-storage.md).
-+ Chef Kaltura cookbook are now available for download from the [official Chef community site](http://community.opscode.com/cookbooks/kaltura). 
-+ Signed RPM packages: Signing RPMs adds an extra level of trustworthiness to the RPMs. A digital signature helps establish that the package indeed came from Kaltura, and not from someone masquerading as Kaltura or retrafficing via DNS spoofing, etc. (Read more about [RPM signing](http://docs.fedoraproject.org/en-US/Fedora_Draft_Documentation/0.1/html/RPM_Guide/ch11s04.html)). 
-+ Introducing: [Simple Tasks That Make A Difference!](https://github.com/kaltura/platform-install-packages/blob/master/doc/tasks.md) - small things you could patch to learn and at the same time contribute greatly to the platform!
++ [Continuous Integration reports are now publicly accessible](http://installrepo.borhan.org/reports/ci/). 
++ Many bug patches were merged to core in uiConfs, monitors, batches, and client generators. (ref: [pull1](https://github.com/jessp01/server/compare/borhan:master...master), [pull2](https://github.com/borhan/server/commit/3cfacf04d48640d63cc6080592ffcc1270da82a3))
++ Amazon Web Services documentations contributed by [@blackyboy](https://github.com/blackyboy): 1) [CloudFront HTTP/s](https://github.com/borhan/platform-install-packages/blob/master/doc/setting-up-amazon-cloudfront-cdn-http-https.md), 2) [CloudFront RTMP](https://github.com/borhan/platform-install-packages/blob/master/doc/setting-up-amazon-cloudfront-cdn-rtmp.md), and 3) [AWS S3 Remote Storage](https://github.com/borhan/platform-install-packages/blob/master/doc/setup-amazon-S3-remote-storage.md).
++ Chef Borhan cookbook are now available for download from the [official Chef community site](http://community.opscode.com/cookbooks/borhan). 
++ Signed RPM packages: Signing RPMs adds an extra level of trustworthiness to the RPMs. A digital signature helps establish that the package indeed came from Borhan, and not from someone masquerading as Borhan or retrafficing via DNS spoofing, etc. (Read more about [RPM signing](http://docs.fedoraproject.org/en-US/Fedora_Draft_Documentation/0.1/html/RPM_Guide/ch11s04.html)). 
++ Introducing: [Simple Tasks That Make A Difference!](https://github.com/borhan/platform-install-packages/blob/master/doc/tasks.md) - small things you could patch to learn and at the same time contribute greatly to the platform!
 
 
 #### 2014-04-14:
@@ -67,20 +67,20 @@ Celebrating over 100 bugs crushed mark! :) Thanks to all active contributors! (D
 + Stable version is now 9.12.0, Testing version is 9.13.0
 + Migration path between 9.11.0, 9.12.0 was tested by several users and found stable. 
 + 9.13.0 passed all CI tests.
-+ Added [script to configure NFS client side](https://github.com/kaltura/platform-install-packages/blob/master/RPM/scripts/postinst/kaltura-nfs-client-config.sh)
-+ Added new [FAQ section for commonly asked questions help](https://github.com/kaltura/platform-install-packages/blob/master/doc/kaltura-packages-faq.md)
-+ All CI tests were wrapped as local post-install sanity tests kit for users to run after installation verifying their install. [See sanity-test kit screenshot](https://raw.githubusercontent.com/kaltura/platform-install-packages/master/doc/post-inst-sanity-tests-output.png).
-+ Install scripts output is now presented in colors to make messages easier to read and understand [See install output screenshot](https://raw.githubusercontent.com/kaltura/platform-install-packages/master/doc/rpm_install_console_colors.png)
-+ Missing KMC documentation and bulk upload samples were added.
++ Added [script to configure NFS client side](https://github.com/borhan/platform-install-packages/blob/master/RPM/scripts/postinst/borhan-nfs-client-config.sh)
++ Added new [FAQ section for commonly asked questions help](https://github.com/borhan/platform-install-packages/blob/master/doc/borhan-packages-faq.md)
++ All CI tests were wrapped as local post-install sanity tests kit for users to run after installation verifying their install. [See sanity-test kit screenshot](https://raw.githubusercontent.com/borhan/platform-install-packages/master/doc/post-inst-sanity-tests-output.png).
++ Install scripts output is now presented in colors to make messages easier to read and understand [See install output screenshot](https://raw.githubusercontent.com/borhan/platform-install-packages/master/doc/rpm_install_console_colors.png)
++ Missing BMC documentation and bulk upload samples were added.
 + Widgets upgrade and cleanup completed - updated to use new github links rather than old SVN. And added CI test to check for existence of all widget swfs that are referenced by uiConfs.
 + Discovered missing old uiConf files - list is being checked against core to verify cleanup.
-+ [@blackyboy](https://github.com/blackyboy) contributed [Configuring Drop Folder, Amazon S3 Remote Storage, Amazon CloudFront CDN, and CloudFront RTMP](https://github.com/kaltura/platform-install-packages/issues/61#issuecomment-38462301), will be added document shortly, and inspired the idea for [Create Post-Inst Scripts for CDN Configurations](https://github.com/kaltura/platform-install-packages/issues/80).
-+ [@DBezemer](https://github.com/DBezemer) tested and updated [Deploying Kaltura Clusters guide](https://github.com/kaltura/platform-install-packages/blob/master/doc/rpm-cluster-deployment-instructions.md) to be even more "fool-proof".
-+ [Deploy Local Repository for Offline Install](https://github.com/kaltura/platform-install-packages/blob/master/doc/deploy-local-rpm-repo-offline-install.md) guide was added to support environments that are not connected to the internet. 
++ [@blackyboy](https://github.com/blackyboy) contributed [Configuring Drop Folder, Amazon S3 Remote Storage, Amazon CloudFront CDN, and CloudFront RTMP](https://github.com/borhan/platform-install-packages/issues/61#issuecomment-38462301), will be added document shortly, and inspired the idea for [Create Post-Inst Scripts for CDN Configurations](https://github.com/borhan/platform-install-packages/issues/80).
++ [@DBezemer](https://github.com/DBezemer) tested and updated [Deploying Borhan Clusters guide](https://github.com/borhan/platform-install-packages/blob/master/doc/rpm-cluster-deployment-instructions.md) to be even more "fool-proof".
++ [Deploy Local Repository for Offline Install](https://github.com/borhan/platform-install-packages/blob/master/doc/deploy-local-rpm-repo-offline-install.md) guide was added to support environments that are not connected to the internet. 
 
 **Continuous Integration Updates**
 
-+ Nightly sanity occurs each night on EC2, logs entries to SQLite and sends a CSV report by email. See [example CSV Report](https://github.com/kaltura/platform-install-packages/blob/master/doc/ci_example_csv_report.csv)
++ Nightly sanity occurs each night on EC2, logs entries to SQLite and sends a CSV report by email. See [example CSV Report](https://github.com/borhan/platform-install-packages/blob/master/doc/ci_example_csv_report.csv)
 + Erected a cluster to test on ESXi for testing, integration in progress
 + Currently working on integration using [The Foremen](http://www.theforeman.org/) to support wider range of deployment options.
 
@@ -91,22 +91,22 @@ Celebrating over 100 bugs crushed mark! :) Thanks to all active contributors! (D
 + Red5 package fully tested (both webcam and FMLE).
 + QA Analytics reporting events deployed, users can now opt-in to send repoting events for system stability reports and deployment issue assistance.
 + IX-9.11.0 was released and tested.
-+ Specifications and definition for the [Kaltura Platform Packages CI Project](https://github.com/kaltura/platform-continuous-integration) were created.
-+ Entered [Phase D - Public Beta, and Continuous Integration System](http://kaltura.github.io/platform-install-packages/#phase-d).
++ Specifications and definition for the [Borhan Platform Packages CI Project](https://github.com/borhan/platform-continuous-integration) were created.
++ Entered [Phase D - Public Beta, and Continuous Integration System](http://borhan.github.io/platform-install-packages/#phase-d).
    
 #### 2014-02-17:
 Cluster install passed successfully, Chef scripts created, many tests passed and bugs crushed.
 
-+ Red5 package was added to kaltura-server and KCW webcam tested.
++ Red5 package was added to borhan-server and BCW webcam tested.
 + monit package was fully tested.
-+ [Chef scripts were created](https://github.com/kaltura/platform-install-packages/tree/master/RPM/chef-repo) - now you can deploy a complete Kaltura cluster with the click of a button!
++ [Chef scripts were created](https://github.com/borhan/platform-install-packages/tree/master/RPM/chef-repo) - now you can deploy a complete Borhan cluster with the click of a button!
 + 18 packaging bugs crushed (thanks to [@DBezemer](https://github.com/DBezemer), [@mobcdi](https://github.com/mobcdi) and [@doubleshot](https://github.com/doubleshot))!
-+ [7 fix patches submitted to core](https://github.com/kaltura/server/pull/871) by [@jessp01](https://github.com/jessp01).
-+ [1 Admin Console view](https://github.com/kaltura/server/pull/872 ) contributed by  [@DBezemer](https://github.com/DBezemer).
++ [7 fix patches submitted to core](https://github.com/borhan/server/pull/871) by [@jessp01](https://github.com/jessp01).
++ [1 Admin Console view](https://github.com/borhan/server/pull/872 ) contributed by  [@DBezemer](https://github.com/DBezemer).
 + New documents published: 1) [cluster deployment document](http://bit.ly/kipp-cluster-yum), 2) [configuring platform monitors](http://bit.ly/kipp-monitoring).
 + Local Drop folders passed tests.
 + Upgrade to 9.10 will be skipped. As 9.11 planned for release next week, nightly will progress straight to 9.11.
-+ [Project announced on a blog post!](http://blog.kaltura.org/introducing-kipp-kaltura-install-made-simple)
++ [Project announced on a blog post!](http://blog.borhan.org/introducing-kipp-borhan-install-made-simple)
 
 #### 2014-02-03:
 Single server installed passes successfully, including sanity of the following features:   
@@ -121,7 +121,7 @@ Single server installed passes successfully, including sanity of the following f
 + API v3 tests for the PHP5 and Java client libs
 + Cluster install is in final stages of testing and expected to finish sanity today
 + Monitoring suite is under way and is also expected to be released for testing today
-+ Entered [Phase C.2 - Alpha Repositories & Testing](http://kaltura.github.io/platform-install-packages/#phase-c2)
++ Entered [Phase C.2 - Alpha Repositories & Testing](http://borhan.github.io/platform-install-packages/#phase-c2)
       
 #### 2014-01-27:
 We are thrilled to share that we've reached public alpha testing phase of the RPM packages.

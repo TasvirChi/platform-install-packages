@@ -1,15 +1,15 @@
 #!/bin/bash  
 #===============================================================================
-#          FILE: kaltura-base-config.sh
-#         USAGE: ./kaltura-base-config.sh 
+#          FILE: borhan-base-config.sh
+#         USAGE: ./borhan-base-config.sh 
 #   DESCRIPTION: 
 #       OPTIONS: ---
 # 	LICENSE: AGPLv3+
 #  REQUIREMENTS: ---
 #          BUGS: ---
 #         NOTES: ---
-#        AUTHOR: Jess Portnoy, <jess.portnoy@kaltura.com>
-#  ORGANIZATION: Kaltura, inc.
+#        AUTHOR: Jess Portnoy, <jess.portnoy@borhan.com>
+#  ORGANIZATION: Borhan, inc.
 #       CREATED: 01/06/14 11:27:00 EST
 #      REVISION:  ---
 #===============================================================================
@@ -20,7 +20,7 @@ verify_user_input()
         ANSFILE=$1
         . $ANSFILE
         RC=0
-        for VAL in TIME_ZONE KALTURA_FULL_VIRTUAL_HOST_NAME KALTURA_VIRTUAL_HOST_NAME DB1_HOST DB1_PORT DB1_NAME DB1_USER SERVICE_URL SPHINX_SERVER1 SPHINX_SERVER2 DWH_HOST DWH_PORT ADMIN_CONSOLE_ADMIN_MAIL ADMIN_CONSOLE_PASSWORD SUPER_USER SUPER_USER_PASSWD CDN_HOST KALTURA_VIRTUAL_HOST_PORT DB1_PASS DWH_PASS PROTOCOL USER_CONSENT VOD_PACKAGER_HOST VOD_PACKAGER_PORT IP_RANGE; do
+        for VAL in TIME_ZONE BORHAN_FULL_VIRTUAL_HOST_NAME BORHAN_VIRTUAL_HOST_NAME DB1_HOST DB1_PORT DB1_NAME DB1_USER SERVICE_URL SPHINX_SERVER1 SPHINX_SERVER2 DWH_HOST DWH_PORT ADMIN_CONSOLE_ADMIN_MAIL ADMIN_CONSOLE_PASSWORD SUPER_USER SUPER_USER_PASSWD CDN_HOST BORHAN_VIRTUAL_HOST_PORT DB1_PASS DWH_PASS PROTOCOL USER_CONSENT VOD_PACKAGER_HOST VOD_PACKAGER_PORT IP_RANGE; do
                 if [ -z "${!VAL}" ];then
                         VALS="$VALS\n$VAL"
                         RC=1
@@ -31,7 +31,7 @@ verify_user_input()
                 $VALS
                 "
                 echo -en "${BRIGHT_RED}$OUT${NORMAL}\n"
-                send_install_becon kaltura-base $ZONE "install_fail"  "$OUT"
+                send_install_becon borhan-base $ZONE "install_fail"  "$OUT"
                 exit $RC 
         fi
 }
@@ -39,8 +39,8 @@ verify_user_input()
 create_answer_file()
 {
         POST_INST_MAIL_TMPL=$1
-        ANSFILE=/tmp/kaltura_`date +%d_%m_%H_%M`.ans
-        for VAL in TIME_ZONE KALTURA_FULL_VIRTUAL_HOST_NAME KALTURA_VIRTUAL_HOST_NAME DB1_HOST DB1_PORT DB1_PASS DB1_NAME DB1_USER SERVICE_URL SPHINX_SERVER1 SPHINX_SERVER2 DWH_HOST DWH_PORT ADMIN_CONSOLE_ADMIN_MAIL ADMIN_CONSOLE_PASSWORD CDN_HOST KALTURA_VIRTUAL_HOST_PORT SUPER_USER SUPER_USER_PASSWD ENVIRONMENT_NAME DWH_PASS PROTOCOL PRIMARY_MEDIA_SERVER_HOST USER_CONSENT SEND_NEWSLETTER CONTACT_MAIL VOD_PACKAGER_HOST VOD_PACKAGER_PORT IP_RANGE WWW_HOST; do
+        ANSFILE=/tmp/borhan_`date +%d_%m_%H_%M`.ans
+        for VAL in TIME_ZONE BORHAN_FULL_VIRTUAL_HOST_NAME BORHAN_VIRTUAL_HOST_NAME DB1_HOST DB1_PORT DB1_PASS DB1_NAME DB1_USER SERVICE_URL SPHINX_SERVER1 SPHINX_SERVER2 DWH_HOST DWH_PORT ADMIN_CONSOLE_ADMIN_MAIL ADMIN_CONSOLE_PASSWORD CDN_HOST BORHAN_VIRTUAL_HOST_PORT SUPER_USER SUPER_USER_PASSWD ENVIRONMENT_NAME DWH_PASS PROTOCOL PRIMARY_MEDIA_SERVER_HOST USER_CONSENT SEND_NEWSLETTER CONTACT_MAIL VOD_PACKAGER_HOST VOD_PACKAGER_PORT IP_RANGE WWW_HOST; do
                 if [ -n "${!VAL}" ];then
                         echo "$VAL=\"${!VAL}\"" >> $ANSFILE 
                 fi
@@ -51,7 +51,7 @@ create_answer_file()
 	chmod 600 $ANSFILE
         echo -en "${CYAN}
 ========================================================================================================================
-Kaltura install answer file written to $ANSFILE  -  Please save it!
+Borhan install answer file written to $ANSFILE  -  Please save it!
 This answers file can be used to silently-install re-install this machine or deploy other hosts in your cluster.
 ========================================================================================================================
 ${NORMAL}
@@ -60,37 +60,37 @@ ${NORMAL}
 }
 escape_hashes()
 {
-        for VAL in TIME_ZONE KALTURA_FULL_VIRTUAL_HOST_NAME KALTURA_VIRTUAL_HOST_NAME DB1_HOST DB1_PORT DB1_NAME DB1_USER SERVICE_URL SPHINX_SERVER1 SPHINX_SERVER2 DWH_HOST DWH_PORT ADMIN_CONSOLE_ADMIN_MAIL ADMIN_CONSOLE_PASSWORD SUPER_USER CDN_HOST KALTURA_VIRTUAL_HOST_PORT DB1_PASS DWH_PASS PROTOCOL PRIMARY_MEDIA_SERVER_HOST USER_CONSENT VOD_PACKAGER_HOST VOD_PACKAGER_PORT IP_RANGE; do
+        for VAL in TIME_ZONE BORHAN_FULL_VIRTUAL_HOST_NAME BORHAN_VIRTUAL_HOST_NAME DB1_HOST DB1_PORT DB1_NAME DB1_USER SERVICE_URL SPHINX_SERVER1 SPHINX_SERVER2 DWH_HOST DWH_PORT ADMIN_CONSOLE_ADMIN_MAIL ADMIN_CONSOLE_PASSWORD SUPER_USER CDN_HOST BORHAN_VIRTUAL_HOST_PORT DB1_PASS DWH_PASS PROTOCOL PRIMARY_MEDIA_SERVER_HOST USER_CONSENT VOD_PACKAGER_HOST VOD_PACKAGER_PORT IP_RANGE; do
 		export ${VAL}=`echo ${!VAL}|sed 's/#/\\\\#/g'`
 	done
 }
-KALTURA_FUNCTIONS_RC=`dirname $0`/kaltura-functions.rc
-if [ ! -r "$KALTURA_FUNCTIONS_RC" ];then
-        OUT="${BRIGHT_RED}ERROR:could not find $KALTURA_FUNCTIONS_RC so, exiting..${NORMAL}"
+BORHAN_FUNCTIONS_RC=`dirname $0`/borhan-functions.rc
+if [ ! -r "$BORHAN_FUNCTIONS_RC" ];then
+        OUT="${BRIGHT_RED}ERROR:could not find $BORHAN_FUNCTIONS_RC so, exiting..${NORMAL}"
         echo -en $OUT
         exit 3
 fi
-. $KALTURA_FUNCTIONS_RC
-if ! rpm -q kaltura-base;then
-        echo -e "${BRIGHT_RED}Exiting as kaltura-base is not installed.
+. $BORHAN_FUNCTIONS_RC
+if ! rpm -q borhan-base;then
+        echo -e "${BRIGHT_RED}Exiting as borhan-base is not installed.
 This MAY be because the installation of it was skipped do to SELinux being in 'Enforcing' mode.
-Please review: https://github.com/kaltura/platform-install-packages/blob/master/doc/install-kaltura-redhat-based.md#disable-selinux---required-currently-kaltura-cant-run-properly-with-selinux
+Please review: https://github.com/borhan/platform-install-packages/blob/master/doc/install-borhan-redhat-based.md#disable-selinux---required-currently-borhan-cant-run-properly-with-selinux
 And re-run:
-# yum install kaltura-server
+# yum install borhan-server
 
 ${NORMAL}"
         exit 2 
 fi
 trap 'my_trap_handler "${LINENO}" $?' ERR
 send_install_becon `basename $0` $ZONE install_start 0
-BASE_DIR=/opt/kaltura
+BASE_DIR=/opt/borhan
 LOCALHOST=127.0.0.1
-DISPLAY_NAME=`rpm -q kaltura-base --queryformat %{version}`
+DISPLAY_NAME=`rpm -q borhan-base --queryformat %{version}`
 KALT_CONF_DIR=$BASE_DIR/app/configurations/
-BEGINNERS_TUTORIAL_URL=http://bit.ly/KalturaUploadMenu
-QUICK_START_GUIDE_URL=http://bit.ly/KalturaKmcManual
-FORUMS_URLS=http://bit.ly/KalturaForums
-echo -e "${CYAN}Welcome to Kaltura Server $DISPLAY_NAME post install setup.${NORMAL}"
+BEGINNERS_TUTORIAL_URL=http://bit.ly/BorhanUploadMenu
+QUICK_START_GUIDE_URL=http://bit.ly/BorhanBmcManual
+FORUMS_URLS=http://bit.ly/BorhanForums
+echo -e "${CYAN}Welcome to Borhan Server $DISPLAY_NAME post install setup.${NORMAL}"
 
 if [ -n "$1" -a -r "$1" ];then
         ANSFILE=$1
@@ -105,7 +105,7 @@ else
         fi
         . $CONSENT_FILE
 	get_newsletter_consent
-       # echo "Welcome to Kaltura Server $DISPLAY_NAME post install setup.
+       # echo "Welcome to Borhan Server $DISPLAY_NAME post install setup.
 echo -e "\n${CYAN}In order to finalize the system configuration, please input the following:
 
 
@@ -118,23 +118,23 @@ CDN hostname [${YELLOW}`hostname`${CYAN}]:${NORMAL}"
         fi
 
         echo -e "${CYAN}Apache virtual hostname [${YELLOW}`hostname`${CYAN}]
-(Must be accessible from both inside the machine and from any clients / browsers that will use Kaltura):
+(Must be accessible from both inside the machine and from any clients / browsers that will use Borhan):
 ${NORMAL} "
-        read -e KALTURA_VIRTUAL_HOST_NAME
-        if [ -z "$KALTURA_VIRTUAL_HOST_NAME" ];then
-                KALTURA_VIRTUAL_HOST_NAME=`hostname`
-                #echo $KALTURA_VIRTUAL_HOST_NAME
+        read -e BORHAN_VIRTUAL_HOST_NAME
+        if [ -z "$BORHAN_VIRTUAL_HOST_NAME" ];then
+                BORHAN_VIRTUAL_HOST_NAME=`hostname`
+                #echo $BORHAN_VIRTUAL_HOST_NAME
         fi
-	WWW_HOST=$KALTURA_VIRTUAL_HOST_NAME
+	WWW_HOST=$BORHAN_VIRTUAL_HOST_NAME
         echo -en "${CYAN}Vhost port to listen on [${YELLOW}80${CYAN}]:${NORMAL} "
-        read -e KALTURA_VIRTUAL_HOST_PORT
-        if [ -z "$KALTURA_VIRTUAL_HOST_PORT" ];then
-                KALTURA_VIRTUAL_HOST_PORT=80
+        read -e BORHAN_VIRTUAL_HOST_PORT
+        if [ -z "$BORHAN_VIRTUAL_HOST_PORT" ];then
+                BORHAN_VIRTUAL_HOST_PORT=80
         fi
-	if [ "$KALTURA_VIRTUAL_HOST_PORT" -eq 80 -o "$KALTURA_VIRTUAL_HOST_PORT" -eq 443 ];then
-		KALTURA_FULL_VIRTUAL_HOST_NAME=$KALTURA_VIRTUAL_HOST_NAME
+	if [ "$BORHAN_VIRTUAL_HOST_PORT" -eq 80 -o "$BORHAN_VIRTUAL_HOST_PORT" -eq 443 ];then
+		BORHAN_FULL_VIRTUAL_HOST_NAME=$BORHAN_VIRTUAL_HOST_NAME
 	else
-        	KALTURA_FULL_VIRTUAL_HOST_NAME="$KALTURA_VIRTUAL_HOST_NAME:$KALTURA_VIRTUAL_HOST_PORT"
+        	BORHAN_FULL_VIRTUAL_HOST_NAME="$BORHAN_VIRTUAL_HOST_NAME:$BORHAN_VIRTUAL_HOST_PORT"
 	fi
         if [ -z "$DB1_HOST" ];then
                 echo -en "${CYAN}DB hostname [${YELLOW}$LOCALHOST${CYAN}]:${NORMAL} "
@@ -145,7 +145,7 @@ ${NORMAL} "
         fi
 
 
-        echo -en "${CYAN}range of ip addresses belonging to internal kaltura servers [${YELLOW}0.0.0.0-255.255.255.255${CYAN}]:${NORMAL} 
+        echo -en "${CYAN}range of ip addresses belonging to internal borhan servers [${YELLOW}0.0.0.0-255.255.255.255${CYAN}]:${NORMAL} 
 The range is used when checking service actions permissions and allowing to access certain services without KS from the internal servers.
 The default is only good for testing, on a production ENV you should adjust according to your network.
 "
@@ -215,17 +215,17 @@ The default is only good for testing, on a production ENV you should adjust acco
         fi
 
 	while [ -z "$SERVICE_URL" -o -z "$PROTOCOL" ];do
-                if [ "$KALTURA_VIRTUAL_HOST_PORT" -eq 443 ];then
+                if [ "$BORHAN_VIRTUAL_HOST_PORT" -eq 443 ];then
                         PROTOCOL="https"
                 else
                         PROTOCOL="http"
                 fi
-                echo -e "${CYAN}Your Kaltura Service URL [${YELLOW}$PROTOCOL://$KALTURA_FULL_VIRTUAL_HOST_NAME${CYAN}]
-(Base URL where the Kaltura API and Apps will be accessed from - this would be your Load Balancer URL on a cluster or same as your virtual host in an all-in-one Kaltura server - Must be accessible from both inside the machine and from any clients / browsers that will use Kaltura):
+                echo -e "${CYAN}Your Borhan Service URL [${YELLOW}$PROTOCOL://$BORHAN_FULL_VIRTUAL_HOST_NAME${CYAN}]
+(Base URL where the Borhan API and Apps will be accessed from - this would be your Load Balancer URL on a cluster or same as your virtual host in an all-in-one Borhan server - Must be accessible from both inside the machine and from any clients / browsers that will use Borhan):
 ${NORMAL} "
                 read -e SERVICE_URL
                 if [ -z "$SERVICE_URL" ];then
-                        SERVICE_URL=$PROTOCOL://$KALTURA_FULL_VIRTUAL_HOST_NAME
+                        SERVICE_URL=$PROTOCOL://$BORHAN_FULL_VIRTUAL_HOST_NAME
                 fi
         done
         if [ -z "$LIVE_ANALYTICS_WS" ];then
@@ -243,7 +243,7 @@ ${NORMAL} "
                 VOD_PACKAGER_PORT=88
         fi
         while [ -z "$ADMIN_CONSOLE_ADMIN_MAIL" ];do
-                echo -en "${CYAN}Kaltura Admin user (email address):${NORMAL} "
+                echo -en "${CYAN}Borhan Admin user (email address):${NORMAL} "
                 read -e ADMIN_CONSOLE_ADMIN_MAIL
         done
         while [ -z "$ADMIN_CONSOLE_PASSWORD" ];do
@@ -290,18 +290,18 @@ ${NORMAL} "
 
 
         if [ -z "$ENVIRONMENT_NAME" ];then
-                echo -en "${CYAN}Your Kaltura install name (this name will show as the From field in emails sent by the system) [${YELLOW}Kaltura Video Platform${CYAN}]:${NORMAL}"
+                echo -en "${CYAN}Your Borhan install name (this name will show as the From field in emails sent by the system) [${YELLOW}Borhan Video Platform${CYAN}]:${NORMAL}"
                 read ENVIRONMENT_NAME
                 if [ -z "$ENVIRONMENT_NAME" ];then
-                        ENVIRONMENT_NAME="Kaltura Video Platform"
+                        ENVIRONMENT_NAME="Borhan Video Platform"
                 fi
         fi
 
         if [ -z "$CONTACT_URL" ];then
-                echo -en "${CYAN}Your website Contact Us URL [${YELLOW}http://corp.kaltura.com/company/contact-us${CYAN}]:${NORMAL} "
+                echo -en "${CYAN}Your website Contact Us URL [${YELLOW}http://corp.borhan.com/company/contact-us${CYAN}]:${NORMAL} "
                 read CONTACT_URL
                 if [ -z "$CONTACT_URL" ];then
-                        CONTACT_URL="http://corp.kaltura.com/company/contact-us"
+                        CONTACT_URL="http://corp.borhan.com/company/contact-us"
                 fi
         fi
         if [ -z "$CONTACT_PHONE_NUMBER" ];then
@@ -322,8 +322,8 @@ MYMAJVER=`echo $MYVER| awk -F "." '{print $1}'`
 MYMINORVER=`echo $MYVER| awk -F "." '{print $2}'`
 
 if [ "$MYMAJVER" -ne 5 ];then
-	echo -e "${BRIGHT_RED}Your version of MySQL is not compatible with Kaltura at the moment. 
-Please install and configure MySQL 5.1 according to the instructions on the Kaltura install manual before proceeding with the Kaltura installation.${NORMAL}"
+	echo -e "${BRIGHT_RED}Your version of MySQL is not compatible with Borhan at the moment. 
+Please install and configure MySQL 5.1 according to the instructions on the Borhan install manual before proceeding with the Borhan installation.${NORMAL}"
 	exit 4 
 else
 	echo -e "${CYAN}Ver $MYVER found compatible${NORMAL}"
@@ -340,20 +340,20 @@ fi
 
 # need to check if we even have PHP as Sphinx and DWH can be installed without thank heavens.
 # reported by David Bezemer:
- for INI in /etc/php.ini /etc/php.d/*kaltura*ini;do
+ for INI in /etc/php.ini /etc/php.d/*borhan*ini;do
         if [ -r "$INI" ];then
                 sed -i "s#\(date.timezone\)\s*=.*#\1='$TIME_ZONE'#g" $INI
         fi
 done
 if [ -z "$DB1_PASS" ];then
         DB1_PASS=`< /dev/urandom tr -dc A-Za-z0-9 | head -c15`
-        echo "update mysql.user set password=PASSWORD('$DB1_PASS') WHERE user='kaltura';flush PRIVILEGES" | mysql -h$DB1_HOST -P$DB1_PORT -u$SUPER_USER -p$SUPER_USER_PASSWD mysql
+        echo "update mysql.user set password=PASSWORD('$DB1_PASS') WHERE user='borhan';flush PRIVILEGES" | mysql -h$DB1_HOST -P$DB1_PORT -u$SUPER_USER -p$SUPER_USER_PASSWD mysql
 	if [ -z "$DWH_PASS" ];then
 		DWH_PASS=$DB1_PASS
 	fi
 fi
-DB1_NAME=kaltura
-DB1_USER=kaltura
+DB1_NAME=borhan
+DB1_USER=borhan
 
 # no added value in putting this on a separate server..
 SPHINX_DB_HOST=$DB1_HOST
@@ -361,8 +361,8 @@ SPHINX_DB_PORT=$DB1_PORT
 
 CONF_FILES=`find $KALT_CONF_DIR  -type f -name "*template*"`
 CONF_FILES="$CONF_FILES $BASE_DIR/app/batch/batches/Mailer/emails_en.template.ini $BASE_DIR/app/tests/monitoring/config.template.ini $BASE_DIR/bin/sanity_config.template.ini"
-if rpm -q kaltura-html5-studio > /dev/null;then
-        CONF_FILES="$CONF_FILES $BASE_DIR/apps/studio/`rpm -qa kaltura-html5-studio --queryformat %{version}`/studio.template.ini"
+if rpm -q borhan-html5-studio > /dev/null;then
+        CONF_FILES="$CONF_FILES $BASE_DIR/apps/studio/`rpm -qa borhan-html5-studio --queryformat %{version}`/studio.template.ini"
 fi 
 CONF_FILES="$CONF_FILES `find $BASE_DIR/app/plugins/monitor/nagios/config -type f -name "*template*"`"
  
@@ -370,7 +370,7 @@ if [ -d "$BASE_DIR/dwh" ];then
         CONF_FILES="$CONF_FILES `find $BASE_DIR/dwh  -type f -name "*template*"`"
 fi
 
-#HTML5_VER="`rpm -qa kaltura-html5lib --queryformat %{version}`"
+#HTML5_VER="`rpm -qa borhan-html5lib --queryformat %{version}`"
 create_answer_file $POST_INST_MAIL_TMPL
 APP_REMOTE_ADDR_HEADER_SALT=`echo $SERVICE_URL|base64 -w0`
 escape_hashes
@@ -383,7 +383,7 @@ for TMPL_CONF_FILE in $CONF_FILES;do
         if `echo $TMPL_CONF_FILE|grep -q template`;then
                 cp  $TMPL_CONF_FILE $CONF_FILE
         fi
-        sed  -e "s#@ENVIRONMENT_PROTOCOL@#$PROTOCOL#g" -e "s#@PROTOCOL@#$PROTOCOL#g" -e "s#@CDN_HOST@#$CDN_HOST#g" -e "s#@DB[1-9]_HOST@#$DB1_HOST#g" -e "s#@DB[1-9]_NAME@#$DB1_NAME#g" -e "s#@DB[1-9]_USER@#$DB1_USER#g" -e "s#@DB[1-9]_PASS@#$DB1_PASS#g" -e "s#@DB[1-9]_PORT@#$DB1_PORT#g" -e "s#@TIME_ZONE@#$TIME_ZONE#g" -e "s#@KALTURA_FULL_VIRTUAL_HOST_NAME@#$KALTURA_FULL_VIRTUAL_HOST_NAME#g" -e "s#@KALTURA_VIRTUAL_HOST_NAME@#$KALTURA_VIRTUAL_HOST_NAME#g" -e "s#@SERVICE_URL@#$SERVICE_URL#g" -e "s#@WWW_HOST@#$KALTURA_FULL_VIRTUAL_HOST_NAME#g" -e "s#@SPHINX_DB_NAME@#kaltura_sphinx_log#g" -e "s#@SPHINX_DB_HOST@#$DB1_HOST#g" -e "s#@SPHINX_DB_PORT@#$DB1_PORT#g" -e "s#@DWH_HOST@#$DWH_HOST#g" -e "s#@DWH_PORT@#$DWH_PORT#g" -e "s#@SPHINX_SERVER1@#$SPHINX_SERVER1#g" -e "s#@SPHINX_PORT@#9312#g" -e "s#@SPHINX_SERVER@#$SPHINX_SERVER1#g" -e "s#@SPHINX_SERVER2@#$SPHINX_SERVER2#g" -e "s#@DWH_DATABASE_NAME@#kalturadw#g" -e "s#@DWH_USER@#etl#g" -e "s#@DWH_PASS@#$DWH_PASS#g" -e "s#@ADMIN_CONSOLE_ADMIN_MAIL@#$ADMIN_CONSOLE_ADMIN_MAIL#g" -e "s#@WEB_DIR@#$BASE_DIR/web#g" -e "s#@LOG_DIR@#$BASE_DIR/log#g" -e "s#$BASE_DIR/app#$BASE_DIR/app#g" -e "s#@PHP_BIN@#/usr/bin/php#g" -e "s#@OS_KALTURA_USER@#kaltura#g" -e "s#@BASE_DIR@#$BASE_DIR#" -e "s#@APP_DIR@#$BASE_DIR/app#g" -e "s#@DWH_DIR@#$BASE_DIR/dwh#g" -e "s#@KETTLE_SH@#/opt/kaltura/pentaho/pdi/kitchen.sh#g" -e "s#@EVENTS_LOGS_DIR@#$BASE_DIR/web/logs#g" -e "s#@TMP_DIR@#$BASE_DIR/tmp#g" -e "s#@APACHE_SERVICE@#httpd#g" -e "s#@KALTURA_VIRTUAL_HOST_PORT@#$KALTURA_VIRTUAL_HOST_PORT#g" -e "s#@BIN_DIR@#$BASE_DIR/bin#g" -e "s#@KALTURA_VERSION@#$DISPLAY_NAME#g" -e "s#@SPHINX_SERVER@#$SPHINX_SERVER1#g" -e "s#@INSTALLED_HOSTNAME@#`hostname`#g" -e "s#@IMAGE_MAGICK_BIN_DIR@#/usr/bin#g" -e "s#@CURL_BIN_DIR@#/usr/bin#g" -e "s@^\(bin_path_mediainfo\).*@\1=/opt/kaltura/bin/mediainfo@g" -e "s#@CONTACT_URL@#$CONTACT_URL#g" -e "s#@ENVIRONMENT_NAME@#\"$ENVIRONMENT_NAME\"#g" -e "s#@BEGINNERS_TUTORIAL_URL@#$BEGINNERS_TUTORIAL_URL#g" -e "s#@BEGINNERS_TUTORIAL_URL@#$BEGINNERS_TUTORIAL_URL#g" -e "s#@QUICK_START_GUIDE_URL@#$QUICK_START_GUIDE_URL#g" -e "s#@FORUMS_URLS@#$FORUMS_URLS#g" -e "s#@CONTACT_PHONE_NUMBER@#\"$CONTACT_PHONE_NUMBER\"#g" -e "s#@UNSUBSCRIBE_EMAIL_URL@#$SERVICE_URL/index.php/extwidget/blockMail?e=#g" -e "s#@UICONF_TAB_ACCESS@#SYSTEM_ADMIN_BATCH_CONTROL#g"  -e "s#@EVENTS_FETCH_METHOD@#local#g" -e "s#@MONIT_PASSWD@#$DB1_PASS#g" -e "s#@VOD_PACKAGER_HOST@#$VOD_PACKAGER_HOST#g" -e "s#@VOD_PACKAGER_PORT@#$VOD_PACKAGER_PORT#g" -e "s#@IP_RANGE@#$IP_RANGE#g" -e "s#@DB2_PORT@#$DWH_PORT#g" -e "s#@DB2_HOST@#$DWH_HOST#g" -e "s#@APP_REMOTE_ADDR_HEADER_SALT@#\"$APP_REMOTE_ADDR_HEADER_SALT\"#g" -e "s#@PRIMARY_MEDIA_SERVER_HOST@#$PRIMARY_MEDIA_SERVER_HOST#g" -e "s#@SECONDARY_MEDIA_SERVER_HOST@#$SECONDARY_MEDIA_SERVER_HOST#g" -e "s#@LIVE_ANALYTICS_HOST@#$LIVE_ANALYTICS_HOST#g" -e "s#@LIVE_ANALYTICS_WS@#$LIVE_ANALYTICS_WS#g" -i $CONF_FILE
+        sed  -e "s#@ENVIRONMENT_PROTOCOL@#$PROTOCOL#g" -e "s#@PROTOCOL@#$PROTOCOL#g" -e "s#@CDN_HOST@#$CDN_HOST#g" -e "s#@DB[1-9]_HOST@#$DB1_HOST#g" -e "s#@DB[1-9]_NAME@#$DB1_NAME#g" -e "s#@DB[1-9]_USER@#$DB1_USER#g" -e "s#@DB[1-9]_PASS@#$DB1_PASS#g" -e "s#@DB[1-9]_PORT@#$DB1_PORT#g" -e "s#@TIME_ZONE@#$TIME_ZONE#g" -e "s#@BORHAN_FULL_VIRTUAL_HOST_NAME@#$BORHAN_FULL_VIRTUAL_HOST_NAME#g" -e "s#@BORHAN_VIRTUAL_HOST_NAME@#$BORHAN_VIRTUAL_HOST_NAME#g" -e "s#@SERVICE_URL@#$SERVICE_URL#g" -e "s#@WWW_HOST@#$BORHAN_FULL_VIRTUAL_HOST_NAME#g" -e "s#@SPHINX_DB_NAME@#borhan_sphinx_log#g" -e "s#@SPHINX_DB_HOST@#$DB1_HOST#g" -e "s#@SPHINX_DB_PORT@#$DB1_PORT#g" -e "s#@DWH_HOST@#$DWH_HOST#g" -e "s#@DWH_PORT@#$DWH_PORT#g" -e "s#@SPHINX_SERVER1@#$SPHINX_SERVER1#g" -e "s#@SPHINX_PORT@#9312#g" -e "s#@SPHINX_SERVER@#$SPHINX_SERVER1#g" -e "s#@SPHINX_SERVER2@#$SPHINX_SERVER2#g" -e "s#@DWH_DATABASE_NAME@#borhandw#g" -e "s#@DWH_USER@#etl#g" -e "s#@DWH_PASS@#$DWH_PASS#g" -e "s#@ADMIN_CONSOLE_ADMIN_MAIL@#$ADMIN_CONSOLE_ADMIN_MAIL#g" -e "s#@WEB_DIR@#$BASE_DIR/web#g" -e "s#@LOG_DIR@#$BASE_DIR/log#g" -e "s#$BASE_DIR/app#$BASE_DIR/app#g" -e "s#@PHP_BIN@#/usr/bin/php#g" -e "s#@OS_BORHAN_USER@#borhan#g" -e "s#@BASE_DIR@#$BASE_DIR#" -e "s#@APP_DIR@#$BASE_DIR/app#g" -e "s#@DWH_DIR@#$BASE_DIR/dwh#g" -e "s#@KETTLE_SH@#/opt/borhan/pentaho/pdi/kitchen.sh#g" -e "s#@EVENTS_LOGS_DIR@#$BASE_DIR/web/logs#g" -e "s#@TMP_DIR@#$BASE_DIR/tmp#g" -e "s#@APACHE_SERVICE@#httpd#g" -e "s#@BORHAN_VIRTUAL_HOST_PORT@#$BORHAN_VIRTUAL_HOST_PORT#g" -e "s#@BIN_DIR@#$BASE_DIR/bin#g" -e "s#@BORHAN_VERSION@#$DISPLAY_NAME#g" -e "s#@SPHINX_SERVER@#$SPHINX_SERVER1#g" -e "s#@INSTALLED_HOSTNAME@#`hostname`#g" -e "s#@IMAGE_MAGICK_BIN_DIR@#/usr/bin#g" -e "s#@CURL_BIN_DIR@#/usr/bin#g" -e "s@^\(bin_path_mediainfo\).*@\1=/opt/borhan/bin/mediainfo@g" -e "s#@CONTACT_URL@#$CONTACT_URL#g" -e "s#@ENVIRONMENT_NAME@#\"$ENVIRONMENT_NAME\"#g" -e "s#@BEGINNERS_TUTORIAL_URL@#$BEGINNERS_TUTORIAL_URL#g" -e "s#@BEGINNERS_TUTORIAL_URL@#$BEGINNERS_TUTORIAL_URL#g" -e "s#@QUICK_START_GUIDE_URL@#$QUICK_START_GUIDE_URL#g" -e "s#@FORUMS_URLS@#$FORUMS_URLS#g" -e "s#@CONTACT_PHONE_NUMBER@#\"$CONTACT_PHONE_NUMBER\"#g" -e "s#@UNSUBSCRIBE_EMAIL_URL@#$SERVICE_URL/index.php/extwidget/blockMail?e=#g" -e "s#@UICONF_TAB_ACCESS@#SYSTEM_ADMIN_BATCH_CONTROL#g"  -e "s#@EVENTS_FETCH_METHOD@#local#g" -e "s#@MONIT_PASSWD@#$DB1_PASS#g" -e "s#@VOD_PACKAGER_HOST@#$VOD_PACKAGER_HOST#g" -e "s#@VOD_PACKAGER_PORT@#$VOD_PACKAGER_PORT#g" -e "s#@IP_RANGE@#$IP_RANGE#g" -e "s#@DB2_PORT@#$DWH_PORT#g" -e "s#@DB2_HOST@#$DWH_HOST#g" -e "s#@APP_REMOTE_ADDR_HEADER_SALT@#\"$APP_REMOTE_ADDR_HEADER_SALT\"#g" -e "s#@PRIMARY_MEDIA_SERVER_HOST@#$PRIMARY_MEDIA_SERVER_HOST#g" -e "s#@SECONDARY_MEDIA_SERVER_HOST@#$SECONDARY_MEDIA_SERVER_HOST#g" -e "s#@LIVE_ANALYTICS_HOST@#$LIVE_ANALYTICS_HOST#g" -e "s#@LIVE_ANALYTICS_WS@#$LIVE_ANALYTICS_WS#g" -i $CONF_FILE
 done
 
 sed -i "s#@MONIT_PASSWD@#$DB1_PASS#" -i $BASE_DIR/app/admin_console/views/scripts/index/monit.phtml
@@ -393,10 +393,10 @@ SPHINX_HOST=$SPHINX_SERVER1
 DB1_PORT=$DB1_PORT
 SUPER_USER=$SUPER_USER
 SUPER_USER_PASSWD=\"$SUPER_USER_PASSWD\"
-KALTURA_VIRTUAL_HOST_NAME=$KALTURA_VIRTUAL_HOST_NAME
+BORHAN_VIRTUAL_HOST_NAME=$BORHAN_VIRTUAL_HOST_NAME
 PRIMARY_MEDIA_SERVER_HOST=$PRIMARY_MEDIA_SERVER_HOST">> $BASE_DIR/app/configurations/system.ini
 # these two have passwds in them.
-chown kaltura.apache $BASE_DIR/app/configurations/system.ini $BASE_DIR/app/configurations/db.ini
+chown borhan.apache $BASE_DIR/app/configurations/system.ini $BASE_DIR/app/configurations/db.ini
 chmod 640 $BASE_DIR/app/configurations/system.ini $BASE_DIR/app/configurations/db.ini
 chown root.root $BASE_DIR/app/configurations/monit/monit.conf
 chmod 600 $BASE_DIR/app/configurations/monit/monit.conf
@@ -474,7 +474,7 @@ PLAY_PARTNER_SECRET=`echo $HASHED_PLAY_PARTNER_SECRET=|awk -F " " '{print $1}'`
 for TMPL in `find $BASE_DIR/app/deployment/base/scripts/init_content/ -name "*template*"`;do
         DEST_FILE=`echo $TMPL | sed 's@\(.*\)\.template\(.*\)@\1\2@'`
         cp  $TMPL $DEST_FILE
-        sed -e "s#@WEB_DIR@#$BASE_DIR/web#g" -e "s#@TEMPLATE_PARTNER_ADMIN_SECRET@#$ADMIN_SECRET#g" -e "s#@ADMIN_CONSOLE_PARTNER_ADMIN_SECRET@#$ADMIN_SECRET#g" -e "s#@MONITOR_PARTNER_ADMIN_SECRET@#$MONITOR_PARTNER_ADMIN_SECRET#g" -e "s#@SERVICE_URL@#$SERVICE_URL#g" -e "s#@ADMIN_CONSOLE_ADMIN_MAIL@#$ADMIN_CONSOLE_ADMIN_MAIL#g" -e "s#@MONITOR_PARTNER_SECRET@#$MONITOR_PARTNER_SECRET#g" -e "s#@PARTNER_ZERO_ADMIN_SECRET@#$PARTNER_ZERO_ADMIN_SECRET#g" -e "s#@BATCH_PARTNER_ADMIN_SECRET@#$BATCH_PARTNER_ADMIN_SECRET#g" -e "s#@MEDIA_PARTNER_ADMIN_SECRET@#$MEDIA_PARTNER_ADMIN_SECRET#g" -e "s#@TEMPLATE_PARTNER_ADMIN_SECRET@#$TEMPLATE_PARTNER_ADMIN_SECRET#g" -e "s#@HOSTED_PAGES_PARTNER_ADMIN_SECRET@#$HOSTED_PAGES_PARTNER_ADMIN_SECRET#g" -e "s#@STORAGE_BASE_DIR@#$BASE_DIR/web#g" -e "s#@DELIVERY_HTTP_BASE_URL@#https://dontknow.com#g" -e "s#@DELIVERY_RTMP_BASE_URL@#rtmp://reallydontknow.com#g" -e "s#@DELIVERY_ISS_BASE_URL@#https://honesttogodihavenoidea.com#g" -e "s/@ADMIN_CONSOLE_PASSWORD@/$ADMIN_CONSOLE_PASSWORD/g"  -e "s#@WWW_HOST@#$KALTURA_FULL_VIRTUAL_HOST_NAME#g" -e "s/@PLAY_PARTNER_ADMIN_SECRET@/$PLAY_PARTNER_ADMIN_SECRET/g"   -e "s#@TEMPLATE_PARTNER_ADMIN_PASSWORD@#$TEMPLATE_PARTNER_ADMIN_PASSWORD#g" -e "s#@PARTNER_ZERO_SECRET@#$PARTNER_ZERO_SECRET#g" -e "s#@BATCH_PARTNER_SECRET@#$BATCH_PARTNER_SECRET#g" -e "s#@ADMIN_CONSOLE_PARTNER_SECRET@#$ADMIN_CONSOLE_PARTNER_SECRET#g" -e "s#@HOSTED_PAGES_PARTNER_SECRET@#$HOSTED_PAGES_PARTNER_SECRER#g" -e "s#@MEDIA_PARTNER_SECRET@#$MEDIA_PARTNER_SECRET#g" -e "s#@PLAY_PARTNER_SECRET@#$PLAY_PARTNER_SECRET#g" -e "s#@TEMPLATE_PARTNER_SECRET@#$TEMPLATE_PARTNER_SECRET#g" -e "s#@IP_RANGE@#$IP_RANGE#g" -e "s#@PRIMARY_MEDIA_SERVER_HOST@#$PRIMARY_MEDIA_SERVER_HOST#g" -e "s#@SECONDARY_MEDIA_SERVER_HOST@#$SECONDARY_MEDIA_SERVER_HOST#g" -e "s#@LIVE_ANALYTICS_HOST@#$LIVE_ANALYTICS_HOST#g" -e "s#@LIVE_ANALYTICS_WS@#$LIVE_ANALYTICS_WS#g"  -i $DEST_FILE
+        sed -e "s#@WEB_DIR@#$BASE_DIR/web#g" -e "s#@TEMPLATE_PARTNER_ADMIN_SECRET@#$ADMIN_SECRET#g" -e "s#@ADMIN_CONSOLE_PARTNER_ADMIN_SECRET@#$ADMIN_SECRET#g" -e "s#@MONITOR_PARTNER_ADMIN_SECRET@#$MONITOR_PARTNER_ADMIN_SECRET#g" -e "s#@SERVICE_URL@#$SERVICE_URL#g" -e "s#@ADMIN_CONSOLE_ADMIN_MAIL@#$ADMIN_CONSOLE_ADMIN_MAIL#g" -e "s#@MONITOR_PARTNER_SECRET@#$MONITOR_PARTNER_SECRET#g" -e "s#@PARTNER_ZERO_ADMIN_SECRET@#$PARTNER_ZERO_ADMIN_SECRET#g" -e "s#@BATCH_PARTNER_ADMIN_SECRET@#$BATCH_PARTNER_ADMIN_SECRET#g" -e "s#@MEDIA_PARTNER_ADMIN_SECRET@#$MEDIA_PARTNER_ADMIN_SECRET#g" -e "s#@TEMPLATE_PARTNER_ADMIN_SECRET@#$TEMPLATE_PARTNER_ADMIN_SECRET#g" -e "s#@HOSTED_PAGES_PARTNER_ADMIN_SECRET@#$HOSTED_PAGES_PARTNER_ADMIN_SECRET#g" -e "s#@STORAGE_BASE_DIR@#$BASE_DIR/web#g" -e "s#@DELIVERY_HTTP_BASE_URL@#https://dontknow.com#g" -e "s#@DELIVERY_RTMP_BASE_URL@#rtmp://reallydontknow.com#g" -e "s#@DELIVERY_ISS_BASE_URL@#https://honesttogodihavenoidea.com#g" -e "s/@ADMIN_CONSOLE_PASSWORD@/$ADMIN_CONSOLE_PASSWORD/g"  -e "s#@WWW_HOST@#$BORHAN_FULL_VIRTUAL_HOST_NAME#g" -e "s/@PLAY_PARTNER_ADMIN_SECRET@/$PLAY_PARTNER_ADMIN_SECRET/g"   -e "s#@TEMPLATE_PARTNER_ADMIN_PASSWORD@#$TEMPLATE_PARTNER_ADMIN_PASSWORD#g" -e "s#@PARTNER_ZERO_SECRET@#$PARTNER_ZERO_SECRET#g" -e "s#@BATCH_PARTNER_SECRET@#$BATCH_PARTNER_SECRET#g" -e "s#@ADMIN_CONSOLE_PARTNER_SECRET@#$ADMIN_CONSOLE_PARTNER_SECRET#g" -e "s#@HOSTED_PAGES_PARTNER_SECRET@#$HOSTED_PAGES_PARTNER_SECRER#g" -e "s#@MEDIA_PARTNER_SECRET@#$MEDIA_PARTNER_SECRET#g" -e "s#@PLAY_PARTNER_SECRET@#$PLAY_PARTNER_SECRET#g" -e "s#@TEMPLATE_PARTNER_SECRET@#$TEMPLATE_PARTNER_SECRET#g" -e "s#@IP_RANGE@#$IP_RANGE#g" -e "s#@PRIMARY_MEDIA_SERVER_HOST@#$PRIMARY_MEDIA_SERVER_HOST#g" -e "s#@SECONDARY_MEDIA_SERVER_HOST@#$SECONDARY_MEDIA_SERVER_HOST#g" -e "s#@LIVE_ANALYTICS_HOST@#$LIVE_ANALYTICS_HOST#g" -e "s#@LIVE_ANALYTICS_WS@#$LIVE_ANALYTICS_WS#g"  -i $DEST_FILE
 done
 
 
@@ -485,7 +485,7 @@ for TMPL in $CONFS;do
         if `echo $TMPL|grep -q template`;then
                 cp $TMPL $DEST_FILE
         fi
-        sed -e "s#@ENVIRONMENT_PROTOCOL@#$PROTOCOL#g" -e "s#@WEB_DIR@#$BASE_DIR/web#g" -e "s#@TEMPLATE_PARTNER_ADMIN_SECRET@#$ADMIN_SECRET#g" -e "s#@ADMIN_CONSOLE_PARTNER_ADMIN_SECRET@#$ADMIN_SECRET#g" -e "s#@MONITOR_PARTNER_ADMIN_SECRET@#$MONITOR_PARTNER_ADMIN_SECRET#g" -e "s#@SERVICE_URL@#$SERVICE_URL#g" -e "s#@ADMIN_CONSOLE_ADMIN_MAIL@#$ADMIN_CONSOLE_ADMIN_MAIL#g" -e "s#@MONITOR_PARTNER_SECRET@#$MONITOR_PARTNER_SECRET#g" -e "s#@PARTNER_ZERO_ADMIN_SECRET@#$PARTNER_ZERO_ADMIN_SECRET#g" -e "s#@BATCH_PARTNER_ADMIN_SECRET@#$BATCH_PARTNER_ADMIN_SECRET#g" -e "s#@MEDIA_PARTNER_ADMIN_SECRET@#$MEDIA_PARTNER_ADMIN_SECRET#g" -e "s#@TEMPLATE_PARTNER_ADMIN_SECRET@#$TEMPLATE_PARTNER_ADMIN_SECRET#g" -e "s#@KALTURA_VERSION@#$DISPLAY_NAME#g" -e "s#@HOSTED_PAGES_PARTNER_ADMIN_SECRET@#$HOSTED_PAGES_PARTNER_ADMIN_SECRET#g" -e "s#@STORAGE_BASE_DIR@#$BASE_DIR/web#g" -e "s#@DELIVERY_HTTP_BASE_URL@#https://dontknow.com#g" -e "s#@DELIVERY_RTMP_BASE_URL@#rtmp://reallydontknow.com#g" -e "s#@DELIVERY_ISS_BASE_URL@#https://honesttogodihavenoidea.com#g"  -e "s/@ADMIN_CONSOLE_PASSWORD@/$ADMIN_CONSOLE_PASSWORD/g"  -e "s/@PLAY_PARTNER_ADMIN_SECRET@/$PLAY_PARTNER_ADMIN_SECRET/g" -e "s#@WWW_HOST@#$KALTURA_FULL_VIRTUAL_HOST_NAME#g" -e "s#@TEMPLATE_PARTNER_ADMIN_PASSWORD@#$TEMPLATE_PARTNER_ADMIN_PASSWORD#g" -e "s#@HOSTED_PAGES_PARTNER_SECRET@#$HOSTED_PAGES_PARTNER_SECRER#g" -e "s#@MEDIA_PARTNER_SECRET@#$MEDIA_PARTNER_SECRET#g" -e "s#@PLAY_PARTNER_SECRET@#$PLAY_PARTNER_SECRET#g" -e "s#@TEMPLATE_PARTNER_SECRET@#$TEMPLATE_PARTNER_SECRET#g" -e "s#@PARTNER_ZERO_SECRET@#$PARTNER_ZERO_SECRET#g" -e "s#@BATCH_PARTNER_SECRET@#$BATCH_PARTNER_SECRET#g" -e "s#@ADMIN_CONSOLE_PARTNER_SECRET@#$ADMIN_CONSOLE_PARTNER_SECRET#g" -e "s#@VOD_PACKAGER_HOST@#$VOD_PACKAGER_HOST#g" -e "s#@VOD_PACKAGER_PORT@#$VOD_PACKAGER_PORT#g" -e "s#@IP_RANGE@#$IP_RANGE#g"  -e "s#@PRIMARY_MEDIA_SERVER_HOST@#$PRIMARY_MEDIA_SERVER_HOST#g" -e "s#@SECONDARY_MEDIA_SERVER_HOST@#$SECONDARY_MEDIA_SERVER_HOST#g" -e "s#@LIVE_ANALYTICS_HOST@#$LIVE_ANALYTICS_HOST#g" -e "s#@LIVE_ANALYTICS_WS@#$LIVE_ANALYTICS_WS#g"  -i $DEST_FILE 
+        sed -e "s#@ENVIRONMENT_PROTOCOL@#$PROTOCOL#g" -e "s#@WEB_DIR@#$BASE_DIR/web#g" -e "s#@TEMPLATE_PARTNER_ADMIN_SECRET@#$ADMIN_SECRET#g" -e "s#@ADMIN_CONSOLE_PARTNER_ADMIN_SECRET@#$ADMIN_SECRET#g" -e "s#@MONITOR_PARTNER_ADMIN_SECRET@#$MONITOR_PARTNER_ADMIN_SECRET#g" -e "s#@SERVICE_URL@#$SERVICE_URL#g" -e "s#@ADMIN_CONSOLE_ADMIN_MAIL@#$ADMIN_CONSOLE_ADMIN_MAIL#g" -e "s#@MONITOR_PARTNER_SECRET@#$MONITOR_PARTNER_SECRET#g" -e "s#@PARTNER_ZERO_ADMIN_SECRET@#$PARTNER_ZERO_ADMIN_SECRET#g" -e "s#@BATCH_PARTNER_ADMIN_SECRET@#$BATCH_PARTNER_ADMIN_SECRET#g" -e "s#@MEDIA_PARTNER_ADMIN_SECRET@#$MEDIA_PARTNER_ADMIN_SECRET#g" -e "s#@TEMPLATE_PARTNER_ADMIN_SECRET@#$TEMPLATE_PARTNER_ADMIN_SECRET#g" -e "s#@BORHAN_VERSION@#$DISPLAY_NAME#g" -e "s#@HOSTED_PAGES_PARTNER_ADMIN_SECRET@#$HOSTED_PAGES_PARTNER_ADMIN_SECRET#g" -e "s#@STORAGE_BASE_DIR@#$BASE_DIR/web#g" -e "s#@DELIVERY_HTTP_BASE_URL@#https://dontknow.com#g" -e "s#@DELIVERY_RTMP_BASE_URL@#rtmp://reallydontknow.com#g" -e "s#@DELIVERY_ISS_BASE_URL@#https://honesttogodihavenoidea.com#g"  -e "s/@ADMIN_CONSOLE_PASSWORD@/$ADMIN_CONSOLE_PASSWORD/g"  -e "s/@PLAY_PARTNER_ADMIN_SECRET@/$PLAY_PARTNER_ADMIN_SECRET/g" -e "s#@WWW_HOST@#$BORHAN_FULL_VIRTUAL_HOST_NAME#g" -e "s#@TEMPLATE_PARTNER_ADMIN_PASSWORD@#$TEMPLATE_PARTNER_ADMIN_PASSWORD#g" -e "s#@HOSTED_PAGES_PARTNER_SECRET@#$HOSTED_PAGES_PARTNER_SECRER#g" -e "s#@MEDIA_PARTNER_SECRET@#$MEDIA_PARTNER_SECRET#g" -e "s#@PLAY_PARTNER_SECRET@#$PLAY_PARTNER_SECRET#g" -e "s#@TEMPLATE_PARTNER_SECRET@#$TEMPLATE_PARTNER_SECRET#g" -e "s#@PARTNER_ZERO_SECRET@#$PARTNER_ZERO_SECRET#g" -e "s#@BATCH_PARTNER_SECRET@#$BATCH_PARTNER_SECRET#g" -e "s#@ADMIN_CONSOLE_PARTNER_SECRET@#$ADMIN_CONSOLE_PARTNER_SECRET#g" -e "s#@VOD_PACKAGER_HOST@#$VOD_PACKAGER_HOST#g" -e "s#@VOD_PACKAGER_PORT@#$VOD_PACKAGER_PORT#g" -e "s#@IP_RANGE@#$IP_RANGE#g"  -e "s#@PRIMARY_MEDIA_SERVER_HOST@#$PRIMARY_MEDIA_SERVER_HOST#g" -e "s#@SECONDARY_MEDIA_SERVER_HOST@#$SECONDARY_MEDIA_SERVER_HOST#g" -e "s#@LIVE_ANALYTICS_HOST@#$LIVE_ANALYTICS_HOST#g" -e "s#@LIVE_ANALYTICS_WS@#$LIVE_ANALYTICS_WS#g"  -i $DEST_FILE 
 done
 
 if [ ! -r "$BASE_DIR/app/base-config-generator.lock" ];then
@@ -500,24 +500,24 @@ fi
 set +e
 
 
-ln -sf $BASE_DIR/app/configurations/logrotate/kaltura_base /etc/logrotate.d/
-ln -sf $BASE_DIR/app/configurations/logrotate/kaltura_api /etc/logrotate.d/
+ln -sf $BASE_DIR/app/configurations/logrotate/borhan_base /etc/logrotate.d/
+ln -sf $BASE_DIR/app/configurations/logrotate/borhan_api /etc/logrotate.d/
 touch  "$BASE_DIR/app/base-config.lock"
 
 find $BASE_DIR/app/cache/ $BASE_DIR/log -type d -exec chmod 775 {} \; 
 find $BASE_DIR/app/cache/ $BASE_DIR/log -type f -exec chmod 664 {} \; 
-chown -R kaltura.apache $BASE_DIR/app/cache/ $BASE_DIR/log
+chown -R borhan.apache $BASE_DIR/app/cache/ $BASE_DIR/log
 chmod 775 $BASE_DIR/web/content
 if [ -d /usr/lib/red5/webapps/oflaDemo ];then
         ln -sf $BASE_DIR/web/content/webcam /usr/lib/red5/webapps/oflaDemo/streams
 fi
-KMC_PATH=`ls -ld $BASE_DIR/web/flash/kmc/v* 2>/dev/null|awk -F " " '{print $NF}' |tail -1`
-KMC_LOGIN_PATH=`ls -ld $BASE_DIR/web/flash/kmc/login/v* 2>/dev/null|awk -F " " '{print $NF}' |tail -1`
-if [ -d "$KMC_PATH" -a -d "$KMC_LOGIN_PATH" ];then
-        KMC_VERSION=`basename $KMC_PATH`
-        KMC_LOGIN_VERSION=`basename $KMC_LOGIN_PATH`
-        sed -i "s#\(@KMC_VERSION@\)#$KMC_VERSION#g" $BASE_DIR/bin/sanity_config.ini
-        sed -i "s#\(@KMC_LOGIN_VERSION@\)#$KMC_LOGIN_VERSION#g" $BASE_DIR/bin/sanity_config.ini
+BMC_PATH=`ls -ld $BASE_DIR/web/flash/bmc/v* 2>/dev/null|awk -F " " '{print $NF}' |tail -1`
+BMC_LOGIN_PATH=`ls -ld $BASE_DIR/web/flash/bmc/login/v* 2>/dev/null|awk -F " " '{print $NF}' |tail -1`
+if [ -d "$BMC_PATH" -a -d "$BMC_LOGIN_PATH" ];then
+        BMC_VERSION=`basename $BMC_PATH`
+        BMC_LOGIN_VERSION=`basename $BMC_LOGIN_PATH`
+        sed -i "s#\(@BMC_VERSION@\)#$BMC_VERSION#g" $BASE_DIR/bin/sanity_config.ini
+        sed -i "s#\(@BMC_LOGIN_VERSION@\)#$BMC_LOGIN_VERSION#g" $BASE_DIR/bin/sanity_config.ini
 fi
 
 

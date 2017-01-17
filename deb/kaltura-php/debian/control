@@ -1,7 +1,7 @@
-Source: kaltura-php7
+Source: borhan-php7
 Section: php
 Priority: optional
-Maintainer: Jess Portnoy <jess.portnoy@kaltura.com>
+Maintainer: Jess Portnoy <jess.portnoy@borhan.com>
 Build-Depends: apache2-dev (>= 2.4),
 	       dh-apache2,
 	       libsystemd-daemon-dev [linux-any],
@@ -62,9 +62,9 @@ Vcs-Git: git://git.debian.org/pkg-php/php.git
 Vcs-Browser: http://git.debian.org/?p=pkg-php/php.git
 Homepage: http://www.php.net/
 
-Package: kaltura-php7
+Package: borhan-php7
 Architecture: all
-Depends: ${misc:Depends}, kaltura-libapache2-mod-php7 (>= ${source:Version}), kaltura-php7-common (>= ${source:Version}),kaltura-php7-cli (>= ${source:Version}), kaltura-php7-mysql, kaltura-php7-xsl, kaltura-php7-curl, kaltura-php7-gmp,kaltura-php7-gd, kaltura-php7-mcrypt, kaltura-php7-apcu, kaltura-php7-memcache, kaltura-php7-ssh2
+Depends: ${misc:Depends}, borhan-libapache2-mod-php7 (>= ${source:Version}), borhan-php7-common (>= ${source:Version}),borhan-php7-cli (>= ${source:Version}), borhan-php7-mysql, borhan-php7-xsl, borhan-php7-curl, borhan-php7-gmp,borhan-php7-gd, borhan-php7-mcrypt, borhan-php7-apcu, borhan-php7-memcache, borhan-php7-ssh2
 Description: server-side, HTML-embedded scripting language (metapackage)
  This package is a metapackage that, when installed, guarantees that you
  have at least one of the four server-side versions of the PHP7 interpreter
@@ -75,7 +75,7 @@ Description: server-side, HTML-embedded scripting language (metapackage)
  open source general-purpose scripting language that is especially suited
  for web development and can be embedded into HTML.
 
-Package: kaltura-php7-common
+Package: borhan-php7-common
 Architecture: any
 Depends: ${misc:Depends},
 	 ${shlibs:Depends},
@@ -84,20 +84,20 @@ Depends: ${misc:Depends},
 	 lsof [!kfreebsd-any !hurd-any],
 	 ucf
 Provides: php7-mhash, ${php:Provides}
-Description: Common files for packages built from the kaltura-php7 source
+Description: Common files for packages built from the borhan-php7 source
  This package contains the documentation and example files relevant to all
- the other packages built from the kaltura-php7 source.
+ the other packages built from the borhan-php7 source.
  .
  PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
  open source general-purpose scripting language that is especially suited
  for web development and can be embedded into HTML.
 
-Package: kaltura-libapache2-mod-php7
+Package: borhan-libapache2-mod-php7
 Section: httpd
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}, mime-support, ${apache2:Depends}, kaltura-php7-common (= ${binary:Version}), libmagic1, ucf, tzdata, apache2-mpm-prefork (>= 2.4) | apache2-mpm-itk (>= 2.4)
+Depends: ${shlibs:Depends}, ${misc:Depends}, mime-support, ${apache2:Depends}, borhan-php7-common (= ${binary:Version}), libmagic1, ucf, tzdata, apache2-mpm-prefork (>= 2.4) | apache2-mpm-itk (>= 2.4)
 Provides: ${php:Provides}
-Recommends: kaltura-php7-cli
+Recommends: borhan-php7-cli
 Suggests: php-pear
 Description: server-side, HTML-embedded scripting language (Apache 2 module)
  This package provides the PHP7 module for the Apache 2 webserver (as
@@ -110,21 +110,21 @@ Description: server-side, HTML-embedded scripting language (Apache 2 module)
  open source general-purpose scripting language that is especially suited
  for web development and can be embedded into HTML.
 
-#Package: kaltura-libapache2-mod-php7filter
+#Package: borhan-libapache2-mod-php7filter
 #Section: httpd
 #Priority: extra
 #Architecture: any
-#Depends: ${shlibs:Depends}, ${misc:Depends}, mime-support, ${apache2:Depends}, kaltura-php7-common (= ${binary:Version}), libmagic1, ucf, tzdata
-#Conflicts: kaltura-libapache2-mod-php7
+#Depends: ${shlibs:Depends}, ${misc:Depends}, mime-support, ${apache2:Depends}, borhan-php7-common (= ${binary:Version}), libmagic1, ucf, tzdata
+#Conflicts: borhan-libapache2-mod-php7
 #Provides: ${php:Provides}
-#Suggests: kaltura-php-pear
+#Suggests: borhan-php-pear
 #Description: server-side, HTML-embedded scripting language (apache 2 filter module)
 # This package provides the PHP7 Filter module for the Apache 2 webserver (as 
 # found in the apache2-mpm-prefork package).  Please note that this package
 # ONLY works with Apache's prefork MPM, as it is not compiled thread-safe.
 # .
 # Unless you specifically need filter-module support, you most likely
-# should instead install kaltura-libapache2-mod-php7.
+# should instead install borhan-libapache2-mod-php7.
 # .
 # ${php:Extensions}
 # .
@@ -132,16 +132,16 @@ Description: server-side, HTML-embedded scripting language (Apache 2 module)
 # open source general-purpose scripting language that is especially suited
 # for web development and can be embedded into HTML.
 
-#Package: kaltura-php7-cgi
+#Package: borhan-php7-cgi
 #Architecture: any
-#Depends: ${shlibs:Depends}, ${misc:Depends}, mime-support, kaltura-php7-common (= ${binary:Version}), libmagic1, ucf, tzdata
+#Depends: ${shlibs:Depends}, ${misc:Depends}, mime-support, borhan-php7-common (= ${binary:Version}), libmagic1, ucf, tzdata
 #Provides: ${php:Provides}
 #Suggests: php-pear
 #Description: server-side, HTML-embedded scripting language (CGI binary)
 # This package provides the /usr/lib/cgi-bin/php7 CGI interpreter built
 # for use in Apache 2 with mod_actions, or any other CGI httpd that
 # supports a similar mechanism.  Note that MOST Apache users probably
-# want the kaltura-libapache2-mod-php7 package.
+# want the borhan-libapache2-mod-php7 package.
 # .
 # ${php:Extensions}
 # .
@@ -149,12 +149,12 @@ Description: server-side, HTML-embedded scripting language (Apache 2 module)
 # open source general-purpose scripting language that is especially suited
 # for web development and can be embedded into HTML.
 #
-Package: kaltura-php7-cli
+Package: borhan-php7-cli
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}, mime-support, kaltura-php7-common (= ${binary:Version}), libmagic1, ucf, tzdata
+Depends: ${shlibs:Depends}, ${misc:Depends}, mime-support, borhan-php7-common (= ${binary:Version}), libmagic1, ucf, tzdata
 Provides: ${php:Provides}
 Suggests: php-pear
-Description: command-line interpreter for the kaltura-php7 scripting language
+Description: command-line interpreter for the borhan-php7 scripting language
  This package provides the /usr/bin/php7 command interpreter, useful for
  testing PHP scripts from a shell or performing general shell scripting tasks.
  .
@@ -164,16 +164,16 @@ Description: command-line interpreter for the kaltura-php7 scripting language
  open source general-purpose scripting language that is especially suited
  for web development and can be embedded into HTML.
 
-#Package: kaltura-php7-fpm
+#Package: borhan-php7-fpm
 #Architecture: any
-#Depends: ${shlibs:Depends}, ${misc:Depends}, mime-support, kaltura-php7-common (= ${binary:Version}), libmagic1, ucf, tzdata
+#Depends: ${shlibs:Depends}, ${misc:Depends}, mime-support, borhan-php7-common (= ${binary:Version}), libmagic1, ucf, tzdata
 #Provides: ${php:Provides}
 #Suggests: php-pear
 #Pre-Depends: dpkg (>= 1.16.1~)
 #Description: server-side, HTML-embedded scripting language (FPM-CGI binary)
 # This package provides the Fast Process Manager interpreter that runs
 # as a daemon and receives Fast/CGI requests.  Note that MOST Apache users
-# probably want the kaltura-libapache2-mod-php7 package.
+# probably want the borhan-libapache2-mod-php7 package.
 ## .
 # ${php:Extensions}
 # .
@@ -181,9 +181,9 @@ Description: command-line interpreter for the kaltura-php7 scripting language
 # open source general-purpose scripting language that is especially suited
 # for web development and can be embedded into HTML.
 
-#Package: kaltura-libphp7-embed
+#Package: borhan-libphp7-embed
 #Architecture: any
-#Depends: ${shlibs:Depends}, ${misc:Depends}, mime-support, kaltura-php7-common (= ${binary:Version}), libmagic1, ucf, tzdata
+#Depends: ${shlibs:Depends}, ${misc:Depends}, mime-support, borhan-php7-common (= ${binary:Version}), libmagic1, ucf, tzdata
 #Provides: ${php:Provides}
 #Suggests: php-pear
 #Description: HTML-embedded scripting language (Embedded SAPI library)
@@ -196,8 +196,8 @@ Description: command-line interpreter for the kaltura-php7 scripting language
 # open source general-purpose scripting language that is especially suited
 # for web development and can be embedded into HTML.
 
-Package: kaltura-php7-dev
-Depends: ${misc:Depends}, autoconf (>= 2.63), automake (>= 1.11), libssl-dev, libtool (>= 2.2), shtool, kaltura-php7-common (>= ${binary:Version})
+Package: borhan-php7-dev
+Depends: ${misc:Depends}, autoconf (>= 2.63), automake (>= 1.11), libssl-dev, libtool (>= 2.2), shtool, borhan-php7-common (>= ${binary:Version})
 Conflicts: ${libtool:Conflicts}
 Architecture: any
 Description: Files for PHP7 module development
@@ -208,8 +208,8 @@ Description: Files for PHP7 module development
  open source general-purpose scripting language that is especially suited
  for web development and can be embedded into HTML.
 
-Package: kaltura-php7-dbg
-Depends: ${misc:Depends}, kaltura-php7-common (= ${binary:Version}), kaltura-libapache2-mod-php7 (= ${binary:Version}) | kaltura-libapache2-mod-php7filter (= ${binary:Version}) | kaltura-php7-cgi (= ${binary:Version}) | kaltura-php7-cli (= ${binary:Version}) | kaltura-php7-fpm (= ${binary:Version}) | kaltura-php7-curl (= ${binary:Version}) | kaltura-php7-gd (= ${binary:Version}) | kaltura-php7-gmp (= ${binary:Version}) | kaltura-php7-imap (= ${binary:Version}) | kaltura-php7-intl (= ${binary:Version}) | kaltura-php7-ldap (= ${binary:Version}) | kaltura-php7-mcrypt (= ${binary:Version}) | kaltura-php7-mysql (= ${binary:Version}) | kaltura-php7-odbc (= ${binary:Version}) | kaltura-php7-pgsql (= ${binary:Version}) | kaltura-php7-pspell (= ${binary:Version}) | kaltura-php7-recode (= ${binary:Version}) | kaltura-php7-snmp (= ${binary:Version}) | kaltura-php7-sqlite (= ${binary:Version})  | kaltura-php7-tidy (= ${binary:Version}) | kaltura-php7-xmlrpc (= ${binary:Version}) | kaltura-php7-xsl (= ${binary:Version})
+Package: borhan-php7-dbg
+Depends: ${misc:Depends}, borhan-php7-common (= ${binary:Version}), borhan-libapache2-mod-php7 (= ${binary:Version}) | borhan-libapache2-mod-php7filter (= ${binary:Version}) | borhan-php7-cgi (= ${binary:Version}) | borhan-php7-cli (= ${binary:Version}) | borhan-php7-fpm (= ${binary:Version}) | borhan-php7-curl (= ${binary:Version}) | borhan-php7-gd (= ${binary:Version}) | borhan-php7-gmp (= ${binary:Version}) | borhan-php7-imap (= ${binary:Version}) | borhan-php7-intl (= ${binary:Version}) | borhan-php7-ldap (= ${binary:Version}) | borhan-php7-mcrypt (= ${binary:Version}) | borhan-php7-mysql (= ${binary:Version}) | borhan-php7-odbc (= ${binary:Version}) | borhan-php7-pgsql (= ${binary:Version}) | borhan-php7-pspell (= ${binary:Version}) | borhan-php7-recode (= ${binary:Version}) | borhan-php7-snmp (= ${binary:Version}) | borhan-php7-sqlite (= ${binary:Version})  | borhan-php7-tidy (= ${binary:Version}) | borhan-php7-xmlrpc (= ${binary:Version}) | borhan-php7-xsl (= ${binary:Version})
 Recommends: gdb
 Section: debug
 Priority: extra
@@ -222,12 +222,12 @@ Description: Debug symbols for PHP7
  open source general-purpose scripting language that is especially suited
  for web development and can be embedded into HTML.
 
-Package: kaltura-php-pear
+Package: borhan-php-pear
 Architecture: all
-Depends: ${misc:Depends}, kaltura-php7-common (>= ${source:Version}), kaltura-php7-cli
+Depends: ${misc:Depends}, borhan-php7-common (>= ${source:Version}), borhan-php7-cli
 Recommends: gnupg
 Conflicts: php-xml-util
-Suggests: kaltura-php7-dev
+Suggests: borhan-php7-dev
 Provides: php-xml-util
 Description: PEAR - PHP Extension and Application Repository
  This package contains the base PEAR classes for PHP, as well as the PEAR
@@ -240,22 +240,22 @@ Description: PEAR - PHP Extension and Application Repository
  open source general-purpose scripting language that is especially suited
  for web development and can be embedded into HTML.
 
-Package: kaltura-php7-curl
+Package: borhan-php7-curl
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}, ${php:Depends}, kaltura-php7-common (= ${binary:Version}), ucf
+Depends: ${shlibs:Depends}, ${misc:Depends}, ${php:Depends}, borhan-php7-common (= ${binary:Version}), ucf
 Pre-Depends: dpkg (>= 1.16.1~)
-Description: CURL module for kaltura-php7
+Description: CURL module for borhan-php7
  CURL is a library for getting files from  FTP, GOPHER, HTTP server.
  .
  PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
  open source general-purpose scripting language that is especially suited
  for web development and can be embedded into HTML.
 
-Package: kaltura-php7-gd
+Package: borhan-php7-gd
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}, ${php:Depends}, kaltura-php7-common (= ${binary:Version}), ucf
+Depends: ${shlibs:Depends}, ${misc:Depends}, ${php:Depends}, borhan-php7-common (= ${binary:Version}), ucf
 Pre-Depends: dpkg (>= 1.16.1~)
-Description: GD module for kaltura-php7
+Description: GD module for borhan-php7
  This package provides a module for handling graphics directly from PHP
  scripts. It supports the PNG, JPEG, XPM formats as well as Freetype/ttf fonts.
  .
@@ -263,11 +263,11 @@ Description: GD module for kaltura-php7
  open source general-purpose scripting language that is especially suited
  for web development and can be embedded into HTML.
 
-Package: kaltura-php7-gmp
+Package: borhan-php7-gmp
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}, ${php:Depends}, kaltura-php7-common (= ${binary:Version}), ucf
+Depends: ${shlibs:Depends}, ${misc:Depends}, ${php:Depends}, borhan-php7-common (= ${binary:Version}), ucf
 Pre-Depends: dpkg (>= 1.16.1~)
-Description: GMP module for kaltura-php7
+Description: GMP module for borhan-php7
  This package provides a module for arbitrary precision arithmetic via the 
  GNU Multiple Precision (GMP) Arithmetic Library.
  .
@@ -275,46 +275,46 @@ Description: GMP module for kaltura-php7
  open source general-purpose scripting language that is especially suited
  for web development and can be embedded into HTML.
 
-Package: kaltura-php7-intl
+Package: borhan-php7-intl
 Architecture: any
-Depends: ${shlibs:Depends}, ${php:Depends}, ${misc:Depends}, kaltura-php7-common (= ${binary:Version}), ucf
-Provides: kaltura-php7-idn
+Depends: ${shlibs:Depends}, ${php:Depends}, ${misc:Depends}, borhan-php7-common (= ${binary:Version}), ucf
+Provides: borhan-php7-idn
 Pre-Depends: dpkg (>= 1.16.1~)
-Description: internationalisation module for kaltura-php7
+Description: internationalisation module for borhan-php7
  This package provides a module to ease internationalisation of PHP scripts.
  .
  PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
  open source general-purpose scripting language that is especially suited
  for web development and can be embedded into HTML.
 
-Package: kaltura-php7-ldap
+Package: borhan-php7-ldap
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}, ${php:Depends}, kaltura-php7-common (= ${binary:Version}), ucf
+Depends: ${shlibs:Depends}, ${misc:Depends}, ${php:Depends}, borhan-php7-common (= ${binary:Version}), ucf
 Pre-Depends: dpkg (>= 1.16.1~)
-Description: LDAP module for kaltura-php7
+Description: LDAP module for borhan-php7
  This package provides a module for LDAP functions in PHP scripts.
  .
  PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
  open source general-purpose scripting language that is especially suited
  for web development and can be embedded into HTML.
 
-Package: kaltura-php7-mcrypt
+Package: borhan-php7-mcrypt
 Architecture: any
-Depends: ${shlibs:Depends}, ${php:Depends}, ${misc:Depends}, kaltura-php7-common (= ${binary:Version}), ucf
+Depends: ${shlibs:Depends}, ${php:Depends}, ${misc:Depends}, borhan-php7-common (= ${binary:Version}), ucf
 Pre-Depends: dpkg (>= 1.16.1~)
-Description: MCrypt module for kaltura-php7
+Description: MCrypt module for borhan-php7
  This package provides a module for MCrypt functions in PHP scripts.
  .
  PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
  open source general-purpose scripting language that is especially suited
  for web development and can be embedded into HTML.
 
-Package: kaltura-php7-mysql
+Package: borhan-php7-mysql
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}, ${php:Depends}, kaltura-php7-common (= ${binary:Version}), ucf
-Replaces: kaltura-php7-mysqli, kaltura-php7-mysqlnd
+Depends: ${shlibs:Depends}, ${misc:Depends}, ${php:Depends}, borhan-php7-common (= ${binary:Version}), ucf
+Replaces: borhan-php7-mysqli, borhan-php7-mysqlnd
 Pre-Depends: dpkg (>= 1.16.1~)
-Description: MySQL module for kaltura-php7
+Description: MySQL module for borhan-php7
  This package provides modules for MySQL database connections directly from
  PHP scripts.  It includes the generic "mysql" module which can be used
  to connect to all versions of MySQL, an improved "mysqli" module for
@@ -325,14 +325,14 @@ Description: MySQL module for kaltura-php7
  open source general-purpose scripting language that is especially suited
  for web development and can be embedded into HTML.
 
-Package: kaltura-php7-mysqlnd
+Package: borhan-php7-mysqlnd
 Architecture: any
 Priority: extra
-Depends: ${shlibs:Depends}, ${misc:Depends}, ${php:Depends}, kaltura-php7-common (= ${binary:Version}), ucf
-Conflicts: kaltura-php7-mysqli, kaltura-php7-mysql
-Replaces: kaltura-php7-mysqli, kaltura-php7-mysql
+Depends: ${shlibs:Depends}, ${misc:Depends}, ${php:Depends}, borhan-php7-common (= ${binary:Version}), ucf
+Conflicts: borhan-php7-mysqli, borhan-php7-mysql
+Replaces: borhan-php7-mysqli, borhan-php7-mysql
 Pre-Depends: dpkg (>= 1.16.1~)
-Description: MySQL module for kaltura-php7 (Native Driver)
+Description: MySQL module for borhan-php7 (Native Driver)
  This package provides modules for MySQL database connections directly from
  PHP scripts.  It includes the generic "mysql" module which can be used
  to connect to all versions of MySQL, an improved "mysqli" module for
@@ -345,11 +345,11 @@ Description: MySQL module for kaltura-php7 (Native Driver)
  open source general-purpose scripting language that is especially suited
  for web development and can be embedded into HTML.
 
-Package: kaltura-php7-odbc
+Package: borhan-php7-odbc
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}, ${php:Depends}, kaltura-php7-common (= ${binary:Version}), ucf
+Depends: ${shlibs:Depends}, ${misc:Depends}, ${php:Depends}, borhan-php7-common (= ${binary:Version}), ucf
 Pre-Depends: dpkg (>= 1.16.1~)
-Description: ODBC module for kaltura-php7
+Description: ODBC module for borhan-php7
  This package provides a module for database access through ODBC drivers.
  It uses the unixODBC library as an ODBC provider.  It also contains the
  pdo_odbc module, for use with the PHP Data Object extension.
@@ -358,22 +358,22 @@ Description: ODBC module for kaltura-php7
  open source general-purpose scripting language that is especially suited
  for web development and can be embedded into HTML.
 
-Package: kaltura-php7-opcache
+Package: borhan-php7-opcache
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}, ${php:Depends}, kaltura-php7-common (= ${binary:Version}), ucf
+Depends: ${shlibs:Depends}, ${misc:Depends}, ${php:Depends}, borhan-php7-common (= ${binary:Version}), ucf
 Pre-Depends: dpkg (>= 1.16.1~)
-Description: Opcache module for kaltura-php7
+Description: Opcache module for borhan-php7
  This package provides the PHP Opcache extension.
  .
  PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
  open source general-purpose scripting language that is especially suited
  for web development and can be embedded into HTML.
 
-Package: kaltura-php7-pgsql
+Package: borhan-php7-pgsql
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}, ${php:Depends}, kaltura-php7-common (= ${binary:Version}), ucf
+Depends: ${shlibs:Depends}, ${misc:Depends}, ${php:Depends}, borhan-php7-common (= ${binary:Version}), ucf
 Pre-Depends: dpkg (>= 1.16.1~)
-Description: PostgreSQL module for kaltura-php7
+Description: PostgreSQL module for borhan-php7
  This package provides a module for PostgreSQL database connections
  directly from PHP scripts.  It also includes the pdo_pgsql module for
  use with the PHP Data Object extension.
@@ -382,45 +382,45 @@ Description: PostgreSQL module for kaltura-php7
  open source general-purpose scripting language that is especially suited
  for web development and can be embedded into HTML.
 
-Package: kaltura-php7-pspell
+Package: borhan-php7-pspell
 Architecture: any
-Depends: ${shlibs:Depends}, ${php:Depends}, ${misc:Depends}, kaltura-php7-common (= ${binary:Version}), ucf
+Depends: ${shlibs:Depends}, ${php:Depends}, ${misc:Depends}, borhan-php7-common (= ${binary:Version}), ucf
 Pre-Depends: dpkg (>= 1.16.1~)
-Description: pspell module for kaltura-php7
+Description: pspell module for borhan-php7
  This package provides a module for pspell functions in PHP scripts.
  .
  PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
  open source general-purpose scripting language that is especially suited
  for web development and can be embedded into HTML.
 
-Package: kaltura-php7-recode
+Package: borhan-php7-recode
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}, ${php:Depends}, kaltura-php7-common (= ${binary:Version}), ucf
+Depends: ${shlibs:Depends}, ${misc:Depends}, ${php:Depends}, borhan-php7-common (= ${binary:Version}), ucf
 Pre-Depends: dpkg (>= 1.16.1~)
-Description: recode module for kaltura-php7
+Description: recode module for borhan-php7
  This package provides a module for recode - character set recoding.
  .
  PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
  open source general-purpose scripting language that is especially suited
  for web development and can be embedded into HTML.
 
-Package: kaltura-php7-snmp
+Package: borhan-php7-snmp
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}, ${php:Depends}, kaltura-php7-common (= ${binary:Version}), ucf
+Depends: ${shlibs:Depends}, ${misc:Depends}, ${php:Depends}, borhan-php7-common (= ${binary:Version}), ucf
 Pre-Depends: dpkg (>= 1.16.1~)
-Description: SNMP module for kaltura-php7
+Description: SNMP module for borhan-php7
  This package provides a module for SNMP functions in PHP scripts.
  .
  PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
  open source general-purpose scripting language that is especially suited
  for web development and can be embedded into HTML.
 
-Package: kaltura-php7-sqlite
+Package: borhan-php7-sqlite
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}, ${php:Depends}, kaltura-php7-common (= ${binary:Version}), ucf
+Depends: ${shlibs:Depends}, ${misc:Depends}, ${php:Depends}, borhan-php7-common (= ${binary:Version}), ucf
 Breaks: roundcube-sqlite (<< 0.7.1-2)
 Pre-Depends: dpkg (>= 1.16.1~)
-Description: SQLite module for kaltura-php7
+Description: SQLite module for borhan-php7
  This package provides a module allowing you to use the SQLite self-contained
  database engine from within your PHP scripts, eliminating the need for a full
  SQL server installation like MySQL or PostgreSQL.  It also includes the
@@ -430,11 +430,11 @@ Description: SQLite module for kaltura-php7
  open source general-purpose scripting language that is especially suited
  for web development and can be embedded into HTML.
 
-Package: kaltura-php7-tidy
+Package: borhan-php7-tidy
 Architecture: any
-Depends: ${shlibs:Depends}, ${php:Depends}, ${misc:Depends}, kaltura-php7-common (= ${binary:Version}), ucf
+Depends: ${shlibs:Depends}, ${php:Depends}, ${misc:Depends}, borhan-php7-common (= ${binary:Version}), ucf
 Pre-Depends: dpkg (>= 1.16.1~)
-Description: tidy module for kaltura-php7
+Description: tidy module for borhan-php7
  This package provides a module for tidy functions in PHP scripts.
  .
  Tidy is an extension based on Libtidy (http://tidy.sf.net/) and allows
@@ -446,22 +446,22 @@ Description: tidy module for kaltura-php7
  open source general-purpose scripting language that is especially suited
  for web development and can be embedded into HTML.
 
-Package: kaltura-php7-xmlrpc
+Package: borhan-php7-xmlrpc
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}, ${php:Depends}, kaltura-php7-common (= ${binary:Version}), ucf
+Depends: ${shlibs:Depends}, ${misc:Depends}, ${php:Depends}, borhan-php7-common (= ${binary:Version}), ucf
 Pre-Depends: dpkg (>= 1.16.1~)
-Description: XML-RPC module for kaltura-php7
+Description: XML-RPC module for borhan-php7
  This package provides a module for XML-RPC functions in PHP scripts.
  .
  PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used
  open source general-purpose scripting language that is especially suited
  for web development and can be embedded into HTML.
 
-Package: kaltura-php7-xsl
+Package: borhan-php7-xsl
 Architecture: any
-Depends: ${shlibs:Depends}, ${misc:Depends}, ${php:Depends}, kaltura-php7-common (= ${binary:Version}), ucf
+Depends: ${shlibs:Depends}, ${misc:Depends}, ${php:Depends}, borhan-php7-common (= ${binary:Version}), ucf
 Pre-Depends: dpkg (>= 1.16.1~)
-Description: XSL module for kaltura-php7
+Description: XSL module for borhan-php7
  This package provides a module for XSL using the libxslt XSL parser.
  .
  PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used

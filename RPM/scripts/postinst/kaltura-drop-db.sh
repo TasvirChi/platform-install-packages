@@ -1,27 +1,27 @@
 #!/bin/bash -e 
 #===============================================================================
-#          FILE: kaltura-drop-db.sh
-#         USAGE: ./kaltura-drop-db.sh 
+#          FILE: borhan-drop-db.sh
+#         USAGE: ./borhan-drop-db.sh 
 #   DESCRIPTION: 
 #       OPTIONS: ---
 # 	LICENSE: AGPLv3+
 #  REQUIREMENTS: ---
 #          BUGS: ---
 #         NOTES: ---
-#        AUTHOR: Jess Portnoy (), <jess.portnoy@kaltura.com>
-#  ORGANIZATION: Kaltura, inc.
+#        AUTHOR: Jess Portnoy (), <jess.portnoy@borhan.com>
+#  ORGANIZATION: Borhan, inc.
 #       CREATED: 01/24/14 12:50:13 EST
 #      REVISION:  ---
 #===============================================================================
 
 #set -o nounset                              # Treat unset variables as an error
-if [ ! -r /opt/kaltura/bin/db_actions.rc ];then
-	echo "I can't drop without /opt/kaltura/bin/db_actions.rc"
+if [ ! -r /opt/borhan/bin/db_actions.rc ];then
+	echo "I can't drop without /opt/borhan/bin/db_actions.rc"
 	exit 1
 fi
-. /opt/kaltura/bin/db_actions.rc
-. /opt/kaltura/bin/colors.sh
-RC_FILE=/etc/kaltura.d/system.ini
+. /opt/borhan/bin/db_actions.rc
+. /opt/borhan/bin/colors.sh
+RC_FILE=/etc/borhan.d/system.ini
 if [ ! -r "$RC_FILE" ];then
 	echo "Could not find $RC_FILE so, exiting.."
 	exit 1 
@@ -40,7 +40,7 @@ else
 	echo -en "${BRIGHT_RED}
 NOTE: this is not reversible. 
 It is recommended you also back up the current data using mysqldump before continuing.
-You can use /opt/kaltura/bin/kaltura-export-db.sh to export the data.
+You can use /opt/borhan/bin/borhan-export-db.sh to export the data.
 
 Are you absolutely certain you want this? [n/Y]
 ${NORMAL}
@@ -59,4 +59,4 @@ for i in $DBS;do
 	echo -en "${CYAN}Removing $i..${NORMAL}" 
 	echo "drop database $i" | mysql -u$SUPER_USER -h$DB1_HOST -p$DBPASSWD -P$DB1_PORT ;
 done
-echo -e "\n${GREEN} Successfully dropped kaltura databases and users${NORMAL}"
+echo -e "\n${GREEN} Successfully dropped borhan databases and users${NORMAL}"

@@ -1,15 +1,15 @@
 #!/bin/bash - 
 #===============================================================================
-#          FILE: kaltura-nginx-config.sh
-#         USAGE: ./kaltura-nginx-config.sh 
+#          FILE: borhan-nginx-config.sh
+#         USAGE: ./borhan-nginx-config.sh 
 #   DESCRIPTION: configure server as an Nginx  node.
 #       OPTIONS: ---
 # 	LICENSE: AGPLv3+
 #  REQUIREMENTS: ---
 #          BUGS: ---
 #         NOTES: ---
-#        AUTHOR: Jess Portnoy <jess.portnoy@kaltura.com>
-#  ORGANIZATION: Kaltura, inc.
+#        AUTHOR: Jess Portnoy <jess.portnoy@borhan.com>
+#  ORGANIZATION: Borhan, inc.
 #       CREATED: 01/02/14 09:23:34 EST
 #      REVISION:  ---
 #===============================================================================
@@ -31,21 +31,21 @@ verify_user_input()
                 $VALS
                 "
                 echo -en "${BRIGHT_RED}$OUT${NORMAL}\n"
-                send_install_becon kaltura-nginx $ZONE "install_fail"  "$OUT"
+                send_install_becon borhan-nginx $ZONE "install_fail"  "$OUT"
                 exit $RC 
         fi
 }
 
 
-KALTURA_FUNCTIONS_RC=`dirname $0`/kaltura-functions.rc
-if [ ! -r "$KALTURA_FUNCTIONS_RC" ];then
-	OUT="ERROR: Could not find $KALTURA_FUNCTIONS_RC so, exiting.."
+BORHAN_FUNCTIONS_RC=`dirname $0`/borhan-functions.rc
+if [ ! -r "$BORHAN_FUNCTIONS_RC" ];then
+	OUT="ERROR: Could not find $BORHAN_FUNCTIONS_RC so, exiting.."
 	echo -e $OUT
 	exit 3
 fi
-. $KALTURA_FUNCTIONS_RC
-if ! rpm -q kaltura-nginx;then
-	echo -e "${BRIGHT_BLUE}Skipping as kaltura-nginx is not installed.${NORMAL}"
+. $BORHAN_FUNCTIONS_RC
+if ! rpm -q borhan-nginx;then
+	echo -e "${BRIGHT_BLUE}Skipping as borhan-nginx is not installed.${NORMAL}"
 	exit 0 
 fi
 
@@ -58,7 +58,7 @@ if [ -n "$1" -a -r "$1" ];then
         fi
         export ANSFILE
 else
-	echo -e "${CYAN}Kaltura API host [${YELLOW}`hostname`${CYAN}]:${NORMAL} "
+	echo -e "${CYAN}Borhan API host [${YELLOW}`hostname`${CYAN}]:${NORMAL} "
 	read -e WWW_HOST
 	if [ -z "$WWW_HOST" ];then
 		WWW_HOST=`hostname`
@@ -101,7 +101,7 @@ if [ -f /etc/nginx/nginx.conf ];then
 	mv /etc/nginx/nginx.conf /etc/nginx/nginx.conf.old
 fi
 sed -e 's#@STATIC_FILES_PATH@#/etc/nginx/static#g' -e "s#@VOD_PACKAGER_HOST@#$VOD_PACKAGER_HOST#g" -e "s#@VOD_PACKAGER_PORT@#$VOD_PACKAGER_PORT#g" -e "s#@RTMP_PORT@#$RTMP_PORT#g" -e "s#@LOG_DIR@#$LOG_DIR#" -e "s#@WWW_HOST@#$WWW_HOST#g" /etc/nginx/conf.d/nginx.conf.template > /etc/nginx/nginx.conf
-sed -e 's#@STATIC_FILES_PATH@#/etc/nginx/static#g' /etc/nginx/conf.d/kaltura.conf.template > /etc/nginx/conf.d/kaltura.conf
+sed -e 's#@STATIC_FILES_PATH@#/etc/nginx/static#g' /etc/nginx/conf.d/borhan.conf.template > /etc/nginx/conf.d/borhan.conf
 sed -i "s#@LOG_DIR@#$LOG_DIR#" /etc/logrotate.d/nginx
 
 if [ "$IS_NGINX_SSL" = 'Y' -o "$IS_NGINX_SSL" = 'y' ];then
@@ -109,10 +109,10 @@ if [ "$IS_NGINX_SSL" = 'Y' -o "$IS_NGINX_SSL" = 'y' ];then
 else
 	touch /etc/nginx/conf.d/ssl.conf
 fi
-chkconfig kaltura-nginx on
-if service kaltura-nginx status >/dev/null 2>&1;then
-	service kaltura-nginx reload
+chkconfig borhan-nginx on
+if service borhan-nginx status >/dev/null 2>&1;then
+	service borhan-nginx reload
 else
-	service kaltura-nginx start
+	service borhan-nginx start
 fi
 

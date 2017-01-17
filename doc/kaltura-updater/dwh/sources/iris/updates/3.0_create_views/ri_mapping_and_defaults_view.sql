@@ -1,6 +1,6 @@
 DELIMITER $$
 
-USE `kalturadw`$$
+USE `borhandw`$$
 
 DROP VIEW IF EXISTS `ri_mapping_and_defaults`$$
 

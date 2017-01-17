@@ -6,14 +6,14 @@ case "$1" in
   install|upgrade)
     if [ -n "$2" ] && dpkg --compare-versions "$2" lt 5.1.0-1
     then
-      ucf --purge /opt/kaltura/app/configurations/php/conf.d/apcu.ini
+      ucf --purge /opt/borhan/app/configurations/php/conf.d/apcu.ini
     fi
-    if test -e /opt/kaltura/app/configurations/php/conf.d/apcu.ini
+    if test -e /opt/borhan/app/configurations/php/conf.d/apcu.ini
     then
-      sed s/^\;extension/extension/ -i /opt/kaltura/app/configurations/php/conf.d/apcu.ini
-      dpkg-maintscript-helper mv_conffile /opt/kaltura/app/configurations/php/conf.d/apcu.ini \
-          /opt/kaltura/app/configurations/php/mods-available/apcu.ini 5.1.0-1 -- "$@"
-      rm -f /opt/kaltura/app/configurations/php/conf.d/apcu.ini
+      sed s/^\;extension/extension/ -i /opt/borhan/app/configurations/php/conf.d/apcu.ini
+      dpkg-maintscript-helper mv_conffile /opt/borhan/app/configurations/php/conf.d/apcu.ini \
+          /opt/borhan/app/configurations/php/mods-available/apcu.ini 5.1.0-1 -- "$@"
+      rm -f /opt/borhan/app/configurations/php/conf.d/apcu.ini
     fi
     ;;
   abort-upgrade)

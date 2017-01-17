@@ -1,21 +1,21 @@
 %define my_cnf "%{_sysconfdir}/my.cnf"
 
-Name:		kaltura-mysql-config
+Name:		borhan-mysql-config
 Version:	1.0.0
 Release:	1
-Summary:	A wrapper that depends on the mysql-server package and makes Kaltura specific MySQL configurations.
+Summary:	A wrapper that depends on the mysql-server package and makes Borhan specific MySQL configurations.
 
 Group: Server/Platform 
 License:	AGPLv3+
-URL:		http://www.kaltura.org	
+URL:		http://www.borhan.org	
 BuildRoot:	%(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
 BuildArch: noarch
 Requires: mysql-server >= 5.1
 Requires: chkconfig
 
 %description
-A wrapper that depends on the mysql-server package and makes Kaltura specific MySQL daemon configurations.
-Sets MySQL daemon directives required for the Kaltura platform.
+A wrapper that depends on the mysql-server package and makes Borhan specific MySQL daemon configurations.
+Sets MySQL daemon directives required for the Borhan platform.
 
 %post
 # back it up as something that can be understood:
@@ -37,5 +37,5 @@ chkconfig mysqld on
 rm -rf %{buildroot}
 
 %changelog
-* Thu Jan 2 2014 Jess Portnoy <jess.portnoy@kaltura.com> - 1.0.0-1
+* Thu Jan 2 2014 Jess Portnoy <jess.portnoy@borhan.com> - 1.0.0-1
 - First package

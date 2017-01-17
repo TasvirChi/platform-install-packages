@@ -1,1 +1,1 @@
-DROP PROCEDURE IF EXISTS kalturadw.post_aggregation_devices;
+DROP PROCEDURE IF EXISTS borhandw.post_aggregation_devices;

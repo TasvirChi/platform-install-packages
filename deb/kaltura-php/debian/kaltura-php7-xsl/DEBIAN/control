@@ -1,15 +1,15 @@
-Package: kaltura-php7-xsl
-Source: kaltura-php7
+Package: borhan-php7-xsl
+Source: borhan-php7
 Version: 7.0.0-6
 Architecture: amd64
-Maintainer: Jess Portnoy <jess.portnoy@kaltura.com>
+Maintainer: Jess Portnoy <jess.portnoy@borhan.com>
 Installed-Size: 97
 Pre-Depends: dpkg (>= 1.16.1~)
-Depends: libc6 (>= 2.14), libxml2 (>= 2.7.4), libxslt1.1 (>= 1.1.25), phpapi-20151012, kaltura-php7-common (= 7.0.0-6), ucf
+Depends: libc6 (>= 2.14), libxml2 (>= 2.7.4), libxslt1.1 (>= 1.1.25), phpapi-20151012, borhan-php7-common (= 7.0.0-6), ucf
 Section: php
 Priority: optional
 Homepage: http://www.php.net/
-Description: XSL module for kaltura-php7
+Description: XSL module for borhan-php7
  This package provides a module for XSL using the libxslt XSL parser.
  .
  PHP (recursive acronym for PHP: Hypertext Preprocessor) is a widely-used

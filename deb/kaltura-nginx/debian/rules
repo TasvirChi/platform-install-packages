@@ -4,23 +4,23 @@
 DEB_VERSION := $(shell dpkg-parsechangelog | egrep '^Version:' | cut -f 2 -d ' ')
 RC_FILE :=../../build/sources.rc
 NGINX_VERSION ?= $(shell egrep '^NGINX_VERSION=' $(RC_FILE) | cut -d = -f 2| sed 's@"@@g')
-KALTURA_NGINX_VOD_VERSION ?= $(shell egrep '^KALTURA_NGINX_VOD_VERSION=' $(RC_FILE) | cut -d = -f 2| sed 's@"@@g')
-KALTURA_NGINX_AKAMAI_TOKEN_VALIDATE_VERSION ?= $(shell egrep '^KALTURA_NGINX_AKAMAI_TOKEN_VALIDATE_VERSION=' $(RC_FILE) | cut -d = -f 2| sed 's@"@@g')
-KALTURA_NGINX_SECURE_TOKEN_VERSION ?= $(shell egrep '^KALTURA_NGINX_SECURE_TOKEN_VERSION=' $(RC_FILE) | cut -d = -f 2| sed 's@"@@g')
+BORHAN_NGINX_VOD_VERSION ?= $(shell egrep '^BORHAN_NGINX_VOD_VERSION=' $(RC_FILE) | cut -d = -f 2| sed 's@"@@g')
+BORHAN_NGINX_AKAMAI_TOKEN_VALIDATE_VERSION ?= $(shell egrep '^BORHAN_NGINX_AKAMAI_TOKEN_VALIDATE_VERSION=' $(RC_FILE) | cut -d = -f 2| sed 's@"@@g')
+BORHAN_NGINX_SECURE_TOKEN_VERSION ?= $(shell egrep '^BORHAN_NGINX_SECURE_TOKEN_VERSION=' $(RC_FILE) | cut -d = -f 2| sed 's@"@@g')
 NGINX_RTMP_VERSION ?= $(shell egrep '^NGINX_RTMP_VERSION=' $(RC_FILE) | cut -d = -f 2| sed 's@"@@g')
 SOURCE_PACKAGING_DIR ?= $(shell egrep '^RPM_SOURCES_DIR=' $(RC_FILE) | cut -d = -f 2| sed 's@"@@g')
 FFMPEG_VERSION ?= $(shell egrep '^FFMPEG_VERSION=' $(RC_FILE) | cut -d = -f 2| sed 's@"@@g')
 include ../includes/build-revision.mk
 tree := nginx-$(NGINX_VERSION)
-archive := $(SOURCE_PACKAGING_DIR)/kaltura-$(tree).tar.gz
-vod_module_archive := $(SOURCE_PACKAGING_DIR)/nginx-vod-module-$(KALTURA_NGINX_VOD_VERSION).zip
-secure_token_module_archive := $(SOURCE_PACKAGING_DIR)/nginx-secure-token-module-$(KALTURA_NGINX_SECURE_TOKEN_VERSION).zip
-akamai_token_validate_module_archive := $(SOURCE_PACKAGING_DIR)/nginx-akamai-token-validate-module-$(KALTURA_NGINX_AKAMAI_TOKEN_VALIDATE_VERSION).zip
+archive := $(SOURCE_PACKAGING_DIR)/borhan-$(tree).tar.gz
+vod_module_archive := $(SOURCE_PACKAGING_DIR)/nginx-vod-module-$(BORHAN_NGINX_VOD_VERSION).zip
+secure_token_module_archive := $(SOURCE_PACKAGING_DIR)/nginx-secure-token-module-$(BORHAN_NGINX_SECURE_TOKEN_VERSION).zip
+akamai_token_validate_module_archive := $(SOURCE_PACKAGING_DIR)/nginx-akamai-token-validate-module-$(BORHAN_NGINX_AKAMAI_TOKEN_VALIDATE_VERSION).zip
 rtmp_module_archive := $(SOURCE_PACKAGING_DIR)/nginx-module-rtmp-$(NGINX_RTMP_VERSION).zip
 
-BASE_PREFIX=opt/kaltura/nginx
-NGINX_USER=kaltura
-NGINX_GROUP=kaltura
+BASE_PREFIX=opt/borhan/nginx
+NGINX_USER=borhan
+NGINX_GROUP=borhan
 # These are used for cross-compiling and for saving the configure script
 # from having to guess our platform (since we know it already)
 DEB_HOST_GNU_TYPE   ?= $(shell dpkg-architecture -qDEB_HOST_GNU_TYPE)
@@ -28,18 +28,18 @@ DEB_BUILD_GNU_TYPE  ?= $(shell dpkg-architecture -qDEB_BUILD_GNU_TYPE)
 
 CFLAGS = `dpkg-buildflags --get CFLAGS`
 CFLAGS += -Wall
-LDFLAGS = `dpkg-buildflags --get LDFLAGS -L/opt/kaltura/ffmpeg-$(FFMPEG_VERSION)/lib`
+LDFLAGS = `dpkg-buildflags --get LDFLAGS -L/opt/borhan/ffmpeg-$(FFMPEG_VERSION)/lib`
 CPPFLAGS = `dpkg-buildflags --get CPPFLAGS`
    
 ifeq (,$(findstring nostrip,$(DEB_BUILD_OPTIONS)))
 	INSTALL_PROGRAM += -s
 endif
-#LD_LIBRARY_PATH=/opt/kaltura/ffmpeg-$(FFMPEG_VERSION)/lib 
-#LIBRARY_PATH=/opt/kaltura/ffmpeg-$(FFMPEG_VERSION)/lib 
-#C_INCLUDE_PATH=/opt/kaltura/ffmpeg-$(FFMPEG_VERSION)/include
+#LD_LIBRARY_PATH=/opt/borhan/ffmpeg-$(FFMPEG_VERSION)/lib 
+#LIBRARY_PATH=/opt/borhan/ffmpeg-$(FFMPEG_VERSION)/lib 
+#C_INCLUDE_PATH=/opt/borhan/ffmpeg-$(FFMPEG_VERSION)/include
 #export LD_LIBRARY_PATH LIBRARY_PATH C_INCLUDE_PATH
 $(archive):
-	~/sources/platform-install-packages/build/package_kaltura_nginx.sh
+	~/sources/platform-install-packages/build/package_borhan_nginx.sh
 
 $(tree): $(archive)
 	tar zxf $(archive) 
@@ -57,10 +57,10 @@ config.status: $(tree)
 	unzip -o $(akamai_token_validate_module_archive) -d $(tree)
 	unzip -o $(rtmp_module_archive) -d $(tree)
 	dh_testdir
-	cd $(tree) && CFLAGS="$(CFLAGS)" CPPFLAGS="$(CPPFLAGS)" LDFLAGS="$(LDFLAGS)" LD_LIBRARY_PATH=/opt/kaltura/ffmpeg-$(FFMPEG_VERSION)/lib LIBRARY_PATH=/opt/kaltura/ffmpeg-$(FFMPEG_VERSION)/lib C_INCLUDE_PATH=/opt/kaltura/ffmpeg-$(FFMPEG_VERSION)/include ./configure \
+	cd $(tree) && CFLAGS="$(CFLAGS)" CPPFLAGS="$(CPPFLAGS)" LDFLAGS="$(LDFLAGS)" LD_LIBRARY_PATH=/opt/borhan/ffmpeg-$(FFMPEG_VERSION)/lib LIBRARY_PATH=/opt/borhan/ffmpeg-$(FFMPEG_VERSION)/lib C_INCLUDE_PATH=/opt/borhan/ffmpeg-$(FFMPEG_VERSION)/include ./configure \
         --prefix=/$(BASE_PREFIX) \
-        --error-log-path=/opt/kaltura/log/nginx/error.log \
-        --http-log-path=/opt/kaltura/log/nginx/access.log \
+        --error-log-path=/opt/borhan/log/nginx/error.log \
+        --http-log-path=/opt/borhan/log/nginx/access.log \
         --user=$(NGINX_USER) \
         --group=$(NGINX_GROUP) \
         --with-http_ssl_module \
@@ -81,9 +81,9 @@ config.status: $(tree)
         --with-file-aio \
         --with-ipv6 \
         --with-debug \
-	--add-module=./nginx-vod-module-$(KALTURA_NGINX_VOD_VERSION) \
-	--add-module=./nginx-secure-token-module-$(KALTURA_NGINX_SECURE_TOKEN_VERSION) \
-	--add-module=./nginx-akamai-token-validate-module-$(KALTURA_NGINX_AKAMAI_TOKEN_VALIDATE_VERSION) \
+	--add-module=./nginx-vod-module-$(BORHAN_NGINX_VOD_VERSION) \
+	--add-module=./nginx-secure-token-module-$(BORHAN_NGINX_SECURE_TOKEN_VERSION) \
+	--add-module=./nginx-akamai-token-validate-module-$(BORHAN_NGINX_AKAMAI_TOKEN_VALIDATE_VERSION) \
 	--add-module=./nginx-rtmp-module-1.1.10 \
         $*
 
@@ -93,7 +93,7 @@ build-stamp:  config.status
 	#dh_quilt_patch
 	dh_testdir
 
-	cd $(tree) && LD_LIBRARY_PATH=/opt/kaltura/ffmpeg-$(FFMPEG_VERSION)/lib LIBRARY_PATH=/opt/kaltura/ffmpeg-$(FFMPEG_VERSION)/lib C_INCLUDE_PATH=/opt/kaltura/ffmpeg-$(FFMPEG_VERSION)/include  $(MAKE)
+	cd $(tree) && LD_LIBRARY_PATH=/opt/borhan/ffmpeg-$(FFMPEG_VERSION)/lib LIBRARY_PATH=/opt/borhan/ffmpeg-$(FFMPEG_VERSION)/lib C_INCLUDE_PATH=/opt/borhan/ffmpeg-$(FFMPEG_VERSION)/include  $(MAKE)
 
 	touch build-stamp
 
@@ -101,7 +101,7 @@ clean:
 	dh_testdir
 	dh_testroot
 	rm -f build-stamp config.log
-	rm -rf opt/ kaltura-nginx-$(NGINX_VERSION)/
+	rm -rf opt/ borhan-nginx-$(NGINX_VERSION)/
 	dh_quilt_unpatch
 	dh_clean 
 
@@ -110,7 +110,7 @@ install: build
 	dh_testroot
 	dh_clean -k 
 	dh_installdirs
-	cd $(tree) && LD_LIBRARY_PATH=/opt/kaltura/ffmpeg-$(FFMPEG_VERSION)/lib LIBRARY_PATH=/opt/kaltura/ffmpeg-$(FFMPEG_VERSION)/lib C_INCLUDE_PATH=/opt/kaltura/ffmpeg-$(FFMPEG_VERSION)/include $(MAKE) -C . install DESTDIR=$(CURDIR)/debian/$(tree)/
+	cd $(tree) && LD_LIBRARY_PATH=/opt/borhan/ffmpeg-$(FFMPEG_VERSION)/lib LIBRARY_PATH=/opt/borhan/ffmpeg-$(FFMPEG_VERSION)/lib C_INCLUDE_PATH=/opt/borhan/ffmpeg-$(FFMPEG_VERSION)/include $(MAKE) -C . install DESTDIR=$(CURDIR)/debian/$(tree)/
 
 
 # Build architecture-independent files here.
@@ -119,7 +119,7 @@ binary-indep:;
 
 # Build architecture-dependent files here.
 binary-arch: build install
-	mkdir -p $(BASE_PREFIX) opt/kaltura/log/nginx $(BASE_PREFIX)/static
+	mkdir -p $(BASE_PREFIX) opt/borhan/log/nginx $(BASE_PREFIX)/static
 	dh_testdir
 	dh_testroot
 	#dh_installchangelogs $(BASE_PREFIX)/CHANGES
@@ -127,7 +127,7 @@ binary-arch: build install
 	cp debian/logrotate $(BASE_PREFIX)/conf/
 	cp debian/*.template $(BASE_PREFIX)/conf/
 	dh_install $(BASE_PREFIX) 
-	dh_install opt/kaltura/log/nginx
+	dh_install opt/borhan/log/nginx
 	dh_installdebconf	
 	dh_installinit
 	dh_installman

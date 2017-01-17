@@ -1,22 +1,22 @@
 # Recipe contributed by Dudy Kohen <admin@panda-os.com>
-# Creates needed users [kaltura and apache] on the NFS server.
+# Creates needed users [borhan and apache] on the NFS server.
 #
-group "kaltura" do
+group "borhan" do
   gid 7373
 end
 
-user "kaltura" do
+user "borhan" do
   uid 7373
-  home "#{node[:kaltura][:BASE_DIR]}"
+  home "#{node[:borhan][:BASE_DIR]}"
   supports :manage_home => false
   shell "/bin/bash"
-  gid "kaltura"
-  comment "Kaltura Server"
+  gid "borhan"
+  comment "Borhan Server"
 end
 
 group "apache" do
   gid 48
-  members "kaltura"
+  members "borhan"
 end
 
 user "apache" do
@@ -29,21 +29,21 @@ user "apache" do
   comment "Apache"
 end
 
-directory "#{node[:kaltura][:BASE_DIR]}" do
-  owner "kaltura"
+directory "#{node[:borhan][:BASE_DIR]}" do
+  owner "borhan"
   group "apache"
   mode 0775
   action :create
 end
 
-directory "#{node[:kaltura][:BASE_DIR]}/web" do
-  owner "kaltura"
+directory "#{node[:borhan][:BASE_DIR]}/web" do
+  owner "borhan"
   group "apache"
   mode 0775
   action :create
 end
 
-nfs_export "#{node[:kaltura][:BASE_DIR]}/web" do
+nfs_export "#{node[:borhan][:BASE_DIR]}/web" do
   network '*'
   writeable true 
   sync true

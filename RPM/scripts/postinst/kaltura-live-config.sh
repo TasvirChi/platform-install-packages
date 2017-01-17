@@ -1,15 +1,15 @@
 #!/bin/bash -e 
 #===============================================================================
-#          FILE: kaltura-live-config.sh
-#         USAGE: ./kaltura-live-config.sh 
+#          FILE: borhan-live-config.sh
+#         USAGE: ./borhan-live-config.sh 
 #   DESCRIPTION: configure server as a batch node.
 #       OPTIONS: ---
 #       LICENSE: AGPLv3+
 #  REQUIREMENTS: ---
 #          BUGS: ---
 #         NOTES: ---
-#        AUTHOR: Jess Portnoy <jess.portnoy@kaltura.com>
-#  ORGANIZATION: Kaltura, inc.
+#        AUTHOR: Jess Portnoy <jess.portnoy@borhan.com>
+#  ORGANIZATION: Borhan, inc.
 #       CREATED: 29/11/16 09:23:34 EST
 #      REVISION:  ---
 #===============================================================================
@@ -31,23 +31,23 @@ verify_user_input()
                 $VALS
                 "
                 echo -en "${BRIGHT_RED}$OUT${NORMAL}\n"
-                send_install_becon kaltura-nginx $ZONE "install_fail"  "$OUT"
+                send_install_becon borhan-nginx $ZONE "install_fail"  "$OUT"
                 exit $RC 
         fi
 }
-KALTURA_FUNCTIONS_RC=`dirname $0`/kaltura-functions.rc
-if [ ! -r "$KALTURA_FUNCTIONS_RC" ];then
-        OUT="ERROR: Could not find $KALTURA_FUNCTIONS_RC so, exiting.."
+BORHAN_FUNCTIONS_RC=`dirname $0`/borhan-functions.rc
+if [ ! -r "$BORHAN_FUNCTIONS_RC" ];then
+        OUT="ERROR: Could not find $BORHAN_FUNCTIONS_RC so, exiting.."
         echo -e $OUT
         exit 3
 fi
-. $KALTURA_FUNCTIONS_RC
-if ! rpm -q kaltura-live;then
-        echo -e "${BRIGHT_BLUE}Skipping as kaltura-live is not installed.${NORMAL}"
+. $BORHAN_FUNCTIONS_RC
+if ! rpm -q borhan-live;then
+        echo -e "${BRIGHT_BLUE}Skipping as borhan-live is not installed.${NORMAL}"
         exit 0 
 fi
 
-echo -e "${CYAN}Welcome to Kaltura Live post install setup.${NORMAL}"
+echo -e "${CYAN}Welcome to Borhan Live post install setup.${NORMAL}"
 trap 'my_trap_handler "${LINENO}" $?' ERR
 send_install_becon `basename $0` $ZONE install_start 0 
 RELEASE=`lsb_release -r -s|awk -F . '{print $1}'`
@@ -69,12 +69,12 @@ else
         echo -e "${CYAN}Wowza admin password:${NORMAL} "
         read -s WOWZA_PASSWD
 fi
-if [ ! -r /opt/kaltura/app/base-config.lock ];then
-        `dirname $0`/kaltura-base-config.sh "$ANSFILE"
+if [ ! -r /opt/borhan/app/base-config.lock ];then
+        `dirname $0`/borhan-base-config.sh "$ANSFILE"
 else
         echo -e "${BRIGHT_BLUE}base-config completed successfully, if you ever want to re-configure your system (e.g. change DB hostname) run the following script:
-# rm /opt/kaltura/app/base-config.lock
-# $BASE_DIR/bin/kaltura-base-config.sh
+# rm /opt/borhan/app/base-config.lock
+# $BASE_DIR/bin/borhan-base-config.sh
 ${NORMAL}
 "
 fi
@@ -87,7 +87,7 @@ echo -e "${BRIGHT_BLUE}Deploying Wowza, this may take a while...${NORMAL}"
 # this is incredibly moronic --prefix is a mandatory arg but no matter what you'll pass the prefix is always /usr/local
 /tmp/WowzaStreamingEngine-4.3.0-linux-x64-installer.run  --mode unattended --licensekey $WOWZA_LIC_KEY --silentInstallKey $WOWZA_SILENT_KEY --username kadmin --password $WOWZA_PASSWD --prefix /usr/local/
 
-BASE_DIR=/opt/kaltura
+BASE_DIR=/opt/borhan
 WOWZA_PREFIX=/usr/local/WowzaStreamingEngine
 ln -sf $BASE_DIR/app/configurations/monit/monit.avail/wowza.rc $BASE_DIR/app/configurations/monit/monit.d/enabled.wowza.rc
 
@@ -101,7 +101,7 @@ sed 's@${com.wowza.wms.TuningHeapSizeDevelopment}@${com.wowza.wms.TuningHeapSize
 ant -Dbasedir=$WOWZA_PREFIX -f $WOWZA_PREFIX/build.xml
 php $BASE_DIR/bin/register_media_server.php
 service WowzaStreamingEngine restart
-service kaltura-monit stop >> /dev/null 2>&1
-service kaltura-monit start
+service borhan-monit stop >> /dev/null 2>&1
+service borhan-monit start
 
 send_install_becon `basename $0` $ZONE install_success 0

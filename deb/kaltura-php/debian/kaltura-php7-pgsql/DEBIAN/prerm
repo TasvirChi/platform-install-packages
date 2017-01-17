@@ -6,7 +6,7 @@ set -e
 
 if [ "$1" = "remove" ]; then
     for dsoname in pgsql pdo_pgsql ; do
-	/opt/kaltura/bin/php7dismod ${dsoname}
+	/opt/borhan/bin/php7dismod ${dsoname}
     done
 fi
 

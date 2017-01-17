@@ -1,11 +1,11 @@
 #!/usr/bin/make -f
-COMP_NAME ?= kaltura-dwh
+COMP_NAME ?= borhan-dwh
 
 DEB_VERSION := $(shell dpkg-parsechangelog | egrep '^Version:' | cut -f 2 -d ' ')
 RC_FILE :=../../build/sources.rc
-KALTURA_SERVER_VERSION ?= $(shell egrep '^KALTURA_SERVER_VERSION=' $(RC_FILE) | cut -d = -f 2| sed 's@"@@g')
+BORHAN_SERVER_VERSION ?= $(shell egrep '^BORHAN_SERVER_VERSION=' $(RC_FILE) | cut -d = -f 2| sed 's@"@@g')
 RPM_SOURCES_DIR ?= $(shell egrep '^RPM_SOURCES_DIR=' $(RC_FILE) | cut -d = -f 2| sed 's@"@@g')
-KALTURA_PREFIX ?= $(shell egrep '^KALTURA_PREFIX=' $(RC_FILE) | cut -d = -f 2| sed 's@"@@g')
+BORHAN_PREFIX ?= $(shell egrep '^BORHAN_PREFIX=' $(RC_FILE) | cut -d = -f 2| sed 's@"@@g')
 DWH_VERSION ?= $(shell egrep '^DWH_VERSION=' $(RC_FILE) | cut -d = -f 2| sed 's@"@@g')
 include ../includes/build-revision.mk
 archive := $(RPM_SOURCES_DIR)/$(COMP_NAME)-$(DWH_VERSION).zip 
@@ -17,7 +17,7 @@ clean:
 	rm -rf debian/tmp
 
 $(archive):
-	~/sources/platform-install-packages/build/package_kaltura_dwh.sh	
+	~/sources/platform-install-packages/build/package_borhan_dwh.sh	
 
 $(tree): $(archive)
 	unzip -qq -o $(archive)
@@ -28,13 +28,13 @@ install: build
 
 binary-indep: install
 	dh_installdirs
-	rm -rf $(KALTURA_PREFIX)
-	mkdir -p $(KALTURA_PREFIX)/dwh 
-	mkdir -p $(KALTURA_PREFIX)/web/logs
-	mv $(tree)/.kettle $(KALTURA_PREFIX)/dwh/
-	mv $(tree)/* $(KALTURA_PREFIX)/dwh/
-	chmod +x $(KALTURA_PREFIX)/dwh/etlsource/execute/*sh
-	dh_install $(KALTURA_PREFIX)
+	rm -rf $(BORHAN_PREFIX)
+	mkdir -p $(BORHAN_PREFIX)/dwh 
+	mkdir -p $(BORHAN_PREFIX)/web/logs
+	mv $(tree)/.kettle $(BORHAN_PREFIX)/dwh/
+	mv $(tree)/* $(BORHAN_PREFIX)/dwh/
+	chmod +x $(BORHAN_PREFIX)/dwh/etlsource/execute/*sh
+	dh_install $(BORHAN_PREFIX)
 	dh_gencontrol -u-v$(DEB_VERSION) 
 	dh_installdebconf
 	dh_installdeb

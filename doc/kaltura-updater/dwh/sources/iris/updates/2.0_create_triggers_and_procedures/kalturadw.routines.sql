@@ -1,7 +1,7 @@
-USE `kalturadw`;
+USE `borhandw`;
 -- MySQL dump 10.13  Distrib 5.1.73, for redhat-linux-gnu (x86_64)
 --
--- Host: localhost    Database: kalturadw
+-- Host: localhost    Database: borhandw
 -- ------------------------------------------------------
 -- Server version	5.1.73
 /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
@@ -19,8 +19,8 @@ USE `kalturadw`;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `kalturadw`.`dwh_dim_api_actions_setcreationtime_oninsert` BEFORE INSERT
-    ON `kalturadw`.`dwh_dim_api_actions`
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `borhandw`.`dwh_dim_api_actions_setcreationtime_oninsert` BEFORE INSERT
+    ON `borhandw`.`dwh_dim_api_actions`
     FOR EACH ROW 
 	SET new.dwh_creation_date = NOW() */;;
 DELIMITER ;
@@ -37,8 +37,8 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `kalturadw`.`dwh_dim_applications_setcreationtime_oninsert` BEFORE INSERT
-    ON `kalturadw`.`dwh_dim_applications`
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `borhandw`.`dwh_dim_applications_setcreationtime_oninsert` BEFORE INSERT
+    ON `borhandw`.`dwh_dim_applications`
     FOR EACH ROW 
 	SET new.dwh_creation_date = NOW() */;;
 DELIMITER ;
@@ -55,8 +55,8 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `kalturadw`.`dwh_dim_categories_oninsert` BEFORE INSERT
-    ON `kalturadw`.`dwh_dim_categories`
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `borhandw`.`dwh_dim_categories_oninsert` BEFORE INSERT
+    ON `borhandw`.`dwh_dim_categories`
     FOR EACH ROW 
 	SET new.dwh_creation_date = NOW() */;;
 DELIMITER ;
@@ -73,8 +73,8 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `kalturadw`.`dwh_dim_category_setcreationtime_oninsert` BEFORE INSERT
-    ON `kalturadw`.`dwh_dim_category`
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `borhandw`.`dwh_dim_category_setcreationtime_oninsert` BEFORE INSERT
+    ON `borhandw`.`dwh_dim_category`
     FOR EACH ROW 
 	SET new.dwh_creation_date = NOW() */;;
 DELIMITER ;
@@ -91,8 +91,8 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `kalturadw`.`dwh_dim_category_entry_setcreationtime_oninsert` BEFORE INSERT
-    ON `kalturadw`.`dwh_dim_category_entry`
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `borhandw`.`dwh_dim_category_entry_setcreationtime_oninsert` BEFORE INSERT
+    ON `borhandw`.`dwh_dim_category_entry`
     FOR EACH ROW 
 	SET new.dwh_creation_date = NOW() */;;
 DELIMITER ;
@@ -109,8 +109,8 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `kalturadw`.`dwh_dim_category_entry_status_setcreationtime_oninsert` BEFORE INSERT
-    ON `kalturadw`.`dwh_dim_category_entry_status`
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `borhandw`.`dwh_dim_category_entry_status_setcreationtime_oninsert` BEFORE INSERT
+    ON `borhandw`.`dwh_dim_category_entry_status`
     FOR EACH ROW 
 	SET new.dwh_creation_date = NOW() */;;
 DELIMITER ;
@@ -127,8 +127,8 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `kalturadw`.`dwh_dim_category_status_setcreationtime_oninsert` BEFORE INSERT
-    ON `kalturadw`.`dwh_dim_category_status`
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `borhandw`.`dwh_dim_category_status_setcreationtime_oninsert` BEFORE INSERT
+    ON `borhandw`.`dwh_dim_category_status`
     FOR EACH ROW 
 	SET new.dwh_creation_date = NOW() */;;
 DELIMITER ;
@@ -145,8 +145,8 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `kalturadw`.`dwh_dim_client_tags_setcreationtime_oninsert` BEFORE INSERT
-    ON `kalturadw`.`dwh_dim_client_tags`
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `borhandw`.`dwh_dim_client_tags_setcreationtime_oninsert` BEFORE INSERT
+    ON `borhandw`.`dwh_dim_client_tags`
     FOR EACH ROW 
 	SET new.dwh_creation_date = NOW() */;;
 DELIMITER ;
@@ -163,8 +163,8 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `kalturadw`.`dwh_dim_control_setcreationtime_oninsert` BEFORE INSERT
-    ON `kalturadw`.`dwh_dim_control`
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `borhandw`.`dwh_dim_control_setcreationtime_oninsert` BEFORE INSERT
+    ON `borhandw`.`dwh_dim_control`
     FOR EACH ROW 
 	SET new.dwh_creation_date = NOW() */;;
 DELIMITER ;
@@ -181,8 +181,8 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `kalturadw`.`dwh_dim_domain_setcreationtime_oninsert` BEFORE INSERT
-    ON `kalturadw`.`dwh_dim_domain`
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `borhandw`.`dwh_dim_domain_setcreationtime_oninsert` BEFORE INSERT
+    ON `borhandw`.`dwh_dim_domain`
     FOR EACH ROW 
 	SET new.dwh_creation_date = NOW() */;;
 DELIMITER ;
@@ -199,8 +199,8 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `kalturadw`.`dwh_dim_editor_type_setcreationtime_oninsert` BEFORE INSERT
-    ON `kalturadw`.`dwh_dim_editor_type`
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `borhandw`.`dwh_dim_editor_type_setcreationtime_oninsert` BEFORE INSERT
+    ON `borhandw`.`dwh_dim_editor_type`
     FOR EACH ROW 
 	SET new.dwh_creation_date = NOW() */;;
 DELIMITER ;
@@ -233,8 +233,8 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `kalturadw`.`dwh_dim_entry_media_source_setcreationtime_oninsert` BEFORE INSERT
-    ON `kalturadw`.`dwh_dim_entry_media_source`
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `borhandw`.`dwh_dim_entry_media_source_setcreationtime_oninsert` BEFORE INSERT
+    ON `borhandw`.`dwh_dim_entry_media_source`
     FOR EACH ROW 
 	SET new.dwh_creation_date = NOW() */;;
 DELIMITER ;
@@ -251,8 +251,8 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `kalturadw`.`dwh_dim_entry_media_type_setcreationtime_oninsert` BEFORE INSERT
-    ON `kalturadw`.`dwh_dim_entry_media_type`
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `borhandw`.`dwh_dim_entry_media_type_setcreationtime_oninsert` BEFORE INSERT
+    ON `borhandw`.`dwh_dim_entry_media_type`
     FOR EACH ROW 
 	SET new.dwh_creation_date = NOW() */;;
 DELIMITER ;
@@ -269,8 +269,8 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `kalturadw`.`dwh_dim_entry_status_setcreationtime_oninsert` BEFORE INSERT
-    ON `kalturadw`.`dwh_dim_entry_status`
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `borhandw`.`dwh_dim_entry_status_setcreationtime_oninsert` BEFORE INSERT
+    ON `borhandw`.`dwh_dim_entry_status`
     FOR EACH ROW 
 	SET new.dwh_creation_date = NOW() */;;
 DELIMITER ;
@@ -287,8 +287,8 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `kalturadw`.`dwh_dim_entry_type_setcreationtime_oninsert` BEFORE INSERT
-    ON `kalturadw`.`dwh_dim_entry_type`
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `borhandw`.`dwh_dim_entry_type_setcreationtime_oninsert` BEFORE INSERT
+    ON `borhandw`.`dwh_dim_entry_type`
     FOR EACH ROW 
 	SET new.dwh_creation_date = NOW() */;;
 DELIMITER ;
@@ -305,8 +305,8 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `kalturadw`.`dwh_dim_entry_type_display_oninsert` BEFORE INSERT
-    ON `kalturadw`.`dwh_dim_entry_type_display`
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `borhandw`.`dwh_dim_entry_type_display_oninsert` BEFORE INSERT
+    ON `borhandw`.`dwh_dim_entry_type_display`
     FOR EACH ROW 
 	SET new.dwh_creation_date = NOW() */;;
 DELIMITER ;
@@ -323,8 +323,8 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `kalturadw`.`dwh_dim_error_code_setcreationtime_oninsert` BEFORE INSERT
-    ON `kalturadw`.`dwh_dim_error_codes`
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `borhandw`.`dwh_dim_error_code_setcreationtime_oninsert` BEFORE INSERT
+    ON `borhandw`.`dwh_dim_error_codes`
     FOR EACH ROW 
 	SET new.dwh_creation_date = NOW() */;;
 DELIMITER ;
@@ -341,8 +341,8 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `kalturadw`.`dwh_dim_event_type_setcreationtime_oninsert` BEFORE INSERT
-    ON `kalturadw`.`dwh_dim_event_type`
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `borhandw`.`dwh_dim_event_type_setcreationtime_oninsert` BEFORE INSERT
+    ON `borhandw`.`dwh_dim_event_type`
     FOR EACH ROW 
 	SET new.dwh_creation_date = NOW() */;;
 DELIMITER ;
@@ -359,8 +359,8 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `kalturadw`.`dwh_dim_gender_setcreationtime_oninsert` BEFORE INSERT
-    ON `kalturadw`.`dwh_dim_gender`
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `borhandw`.`dwh_dim_gender_setcreationtime_oninsert` BEFORE INSERT
+    ON `borhandw`.`dwh_dim_gender`
     FOR EACH ROW 
 	SET new.dwh_creation_date = NOW() */;;
 DELIMITER ;
@@ -377,8 +377,8 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `kalturadw`.`dwh_dim_hosts_setcreationtime_oninsert` BEFORE INSERT
-    ON `kalturadw`.`dwh_dim_hosts`
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `borhandw`.`dwh_dim_hosts_setcreationtime_oninsert` BEFORE INSERT
+    ON `borhandw`.`dwh_dim_hosts`
     FOR EACH ROW 
 	SET new.dwh_creation_date = NOW() */;;
 DELIMITER ;
@@ -395,8 +395,8 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `kalturadw`.`dwh_dim_kusers_setcreationtime_oninsert` BEFORE INSERT
-    ON `kalturadw`.`dwh_dim_kusers`
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `borhandw`.`dwh_dim_kusers_setcreationtime_oninsert` BEFORE INSERT
+    ON `borhandw`.`dwh_dim_kusers`
     FOR EACH ROW 
 	SET new.dwh_creation_date = NOW() */;;
 DELIMITER ;
@@ -413,8 +413,8 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `kalturadw`.`dwh_dim_locations_setcreationtime_oninsert` BEFORE INSERT
-    ON `kalturadw`.`dwh_dim_locations`
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `borhandw`.`dwh_dim_locations_setcreationtime_oninsert` BEFORE INSERT
+    ON `borhandw`.`dwh_dim_locations`
     FOR EACH ROW 
 	SET new.dwh_creation_date = NOW() */;;
 DELIMITER ;
@@ -431,8 +431,8 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `kalturadw`.`dwh_dim_moderation_status_setcreationtime_oninsert` BEFORE INSERT
-    ON `kalturadw`.`dwh_dim_moderation_status`
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `borhandw`.`dwh_dim_moderation_status_setcreationtime_oninsert` BEFORE INSERT
+    ON `borhandw`.`dwh_dim_moderation_status`
     FOR EACH ROW 
 	SET new.dwh_creation_date = NOW() */;;
 DELIMITER ;
@@ -449,8 +449,8 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `kalturadw`.`dwh_dim_partner_class_of_service_setcreationtime_oninsert` BEFORE INSERT
-    ON `kalturadw`.`dwh_dim_partner_class_of_service`
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `borhandw`.`dwh_dim_partner_class_of_service_setcreationtime_oninsert` BEFORE INSERT
+    ON `borhandw`.`dwh_dim_partner_class_of_service`
     FOR EACH ROW
         SET new.dwh_creation_date = NOW() */;;
 DELIMITER ;
@@ -467,8 +467,8 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `kalturadw`.`dwh_dim_partner_group_type_setcreationtime_oninsert` BEFORE INSERT
-    ON `kalturadw`.`dwh_dim_partner_group_type`
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `borhandw`.`dwh_dim_partner_group_type_setcreationtime_oninsert` BEFORE INSERT
+    ON `borhandw`.`dwh_dim_partner_group_type`
     FOR EACH ROW 
 	SET new.dwh_creation_date = NOW() */;;
 DELIMITER ;
@@ -485,8 +485,8 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `kalturadw`.`dwh_dim_partner_status_setcreationtime_oninsert` BEFORE INSERT
-    ON `kalturadw`.`dwh_dim_partner_status`
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `borhandw`.`dwh_dim_partner_status_setcreationtime_oninsert` BEFORE INSERT
+    ON `borhandw`.`dwh_dim_partner_status`
     FOR EACH ROW 
 	SET new.dwh_creation_date = NOW() */;;
 DELIMITER ;
@@ -503,8 +503,8 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `kalturadw`.`dwh_dim_partner_type_setcreationtime_oninsert` BEFORE INSERT
-    ON `kalturadw`.`dwh_dim_partner_type`
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `borhandw`.`dwh_dim_partner_type_setcreationtime_oninsert` BEFORE INSERT
+    ON `borhandw`.`dwh_dim_partner_type`
     FOR EACH ROW 
 	SET new.dwh_creation_date = NOW() */;;
 DELIMITER ;
@@ -521,8 +521,8 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `kalturadw`.`dwh_dim_partner_vertical_setcreationtime_oninsert` BEFORE INSERT
-    ON `kalturadw`.`dwh_dim_partner_vertical`
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `borhandw`.`dwh_dim_partner_vertical_setcreationtime_oninsert` BEFORE INSERT
+    ON `borhandw`.`dwh_dim_partner_vertical`
     FOR EACH ROW 
 	SET new.dwh_creation_date = NOW() */;;
 DELIMITER ;
@@ -539,8 +539,8 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `kalturadw`.`dwh_dim_partners_setcreationtime_oninsert` BEFORE INSERT
-    ON `kalturadw`.`dwh_dim_partners`
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `borhandw`.`dwh_dim_partners_setcreationtime_oninsert` BEFORE INSERT
+    ON `borhandw`.`dwh_dim_partners`
     FOR EACH ROW 
 	SET new.dwh_creation_date = NOW() */;;
 DELIMITER ;
@@ -557,8 +557,8 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `kalturadw`.`dwh_dim_partners_billing_setcreationtime_oninsert` BEFORE INSERT
-    ON `kalturadw`.`dwh_dim_partners_billing`
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `borhandw`.`dwh_dim_partners_billing_setcreationtime_oninsert` BEFORE INSERT
+    ON `borhandw`.`dwh_dim_partners_billing`
     FOR EACH ROW 
 	SET new.dwh_creation_date = NOW() */;;
 DELIMITER ;
@@ -575,8 +575,8 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `kalturadw`.`dwh_dim_permissions_setcreationtime_oninsert` BEFORE INSERT
-    ON `kalturadw`.`dwh_dim_permissions`
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `borhandw`.`dwh_dim_permissions_setcreationtime_oninsert` BEFORE INSERT
+    ON `borhandw`.`dwh_dim_permissions`
     FOR EACH ROW 
         SET new.dwh_creation_date = NOW() */;;
 DELIMITER ;
@@ -593,8 +593,8 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `kalturadw`.`dwh_dim_pusers_setcreationtime_oninsert` BEFORE INSERT
-    ON `kalturadw`.`dwh_dim_pusers`
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `borhandw`.`dwh_dim_pusers_setcreationtime_oninsert` BEFORE INSERT
+    ON `borhandw`.`dwh_dim_pusers`
     FOR EACH ROW 
 	SET new.dwh_creation_date = NOW() */;;
 DELIMITER ;
@@ -611,8 +611,8 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `kalturadw`.`dwh_dim_tags_oninsert` BEFORE INSERT
-    ON `kalturadw`.`dwh_dim_tags`
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `borhandw`.`dwh_dim_tags_oninsert` BEFORE INSERT
+    ON `borhandw`.`dwh_dim_tags`
     FOR EACH ROW 
 	SET new.dwh_creation_date = NOW() */;;
 DELIMITER ;
@@ -629,8 +629,8 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `kalturadw`.`dwh_dim_ui_conf_setcreationtime_oninsert` BEFORE INSERT
-    ON `kalturadw`.`dwh_dim_ui_conf`
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `borhandw`.`dwh_dim_ui_conf_setcreationtime_oninsert` BEFORE INSERT
+    ON `borhandw`.`dwh_dim_ui_conf`
     FOR EACH ROW 
 	SET new.dwh_creation_date = NOW() */;;
 DELIMITER ;
@@ -647,8 +647,8 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `kalturadw`.`dwh_dim_ui_conf_status_setcreationtime_oninsert` BEFORE INSERT
-    ON `kalturadw`.`dwh_dim_ui_conf_status`
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `borhandw`.`dwh_dim_ui_conf_status_setcreationtime_oninsert` BEFORE INSERT
+    ON `borhandw`.`dwh_dim_ui_conf_status`
     FOR EACH ROW 
 	SET new.dwh_creation_date = NOW() */;;
 DELIMITER ;
@@ -665,8 +665,8 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `kalturadw`.`dwh_dim_ui_conf_type_setcreationtime_oninsert` BEFORE INSERT
-    ON `kalturadw`.`dwh_dim_ui_conf_type`
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `borhandw`.`dwh_dim_ui_conf_type_setcreationtime_oninsert` BEFORE INSERT
+    ON `borhandw`.`dwh_dim_ui_conf_type`
     FOR EACH ROW 
 	SET new.dwh_creation_date = NOW() */;;
 DELIMITER ;
@@ -683,8 +683,8 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `kalturadw`.`dwh_dim_user_status_setcreationtime_oninsert` BEFORE INSERT
-    ON `kalturadw`.`dwh_dim_user_status`
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `borhandw`.`dwh_dim_user_status_setcreationtime_oninsert` BEFORE INSERT
+    ON `borhandw`.`dwh_dim_user_status`
     FOR EACH ROW 
 	SET new.dwh_creation_date = NOW() */;;
 DELIMITER ;
@@ -701,8 +701,8 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `kalturadw`.`dwh_dim_widget_setcreationtime_oninsert` BEFORE INSERT
-    ON `kalturadw`.`dwh_dim_widget`
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `borhandw`.`dwh_dim_widget_setcreationtime_oninsert` BEFORE INSERT
+    ON `borhandw`.`dwh_dim_widget`
     FOR EACH ROW 
 	SET new.dwh_creation_date = NOW() */;;
 DELIMITER ;
@@ -719,8 +719,8 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 trigger `kalturadw`.`dwh_dim_widget_security_policy_setcreationtime_oninsert` before insert
-    on `kalturadw`.`dwh_dim_widget_security_policy`
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 trigger `borhandw`.`dwh_dim_widget_security_policy_setcreationtime_oninsert` before insert
+    on `borhandw`.`dwh_dim_widget_security_policy`
     for each row 
 	set new.dwh_creation_date = now() */;;
 DELIMITER ;
@@ -737,8 +737,8 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `kalturadw`.`dwh_dim_widget_security_type_setcreationtime_oninsert` BEFORE INSERT
-    ON `kalturadw`.`dwh_dim_widget_security_type`
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `borhandw`.`dwh_dim_widget_security_type_setcreationtime_oninsert` BEFORE INSERT
+    ON `borhandw`.`dwh_dim_widget_security_type`
     FOR EACH ROW 
 	set new.dwh_creation_date = now() */;;
 DELIMITER ;
@@ -748,7 +748,7 @@ DELIMITER ;
 /*!50003 SET collation_connection  = @saved_col_connection */ ;
 
 --
--- Dumping routines for database 'kalturadw'
+-- Dumping routines for database 'borhandw'
 --
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -759,20 +759,20 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50020 DEFINER=`etl`@`localhost`*/ /*!50003 FUNCTION `kalturadw`.`calc_median_ff_convert_job_wait_time`(p_date_id INT(11)) RETURNS int(11)
+/*!50003 CREATE*/ /*!50020 DEFINER=`etl`@`localhost`*/ /*!50003 FUNCTION `borhandw`.`calc_median_ff_convert_job_wait_time`(p_date_id INT(11)) RETURNS int(11)
     DETERMINISTIC
 BEGIN
 	DECLARE v_median INT(11);
 	SET v_median = 0;
 	SELECT t1.wait_time AS median_val INTO v_median FROM (
 	SELECT @rownum:=@rownum+1 AS `row_number`, IF(d.wait_time>0, d.wait_time, 0) wait_time
-	FROM kalturadw.dwh_fact_convert_job d,  (SELECT @rownum:=0) r
+	FROM borhandw.dwh_fact_convert_job d,  (SELECT @rownum:=0) r
 	WHERE created_date_id = p_date_id AND is_ff = 1 
 	ORDER BY d.wait_time
 	) AS t1, 
 	(
 	SELECT COUNT(*) AS total_rows
-	FROM kalturadw.dwh_fact_convert_job d
+	FROM borhandw.dwh_fact_convert_job d
 	WHERE created_date_id = p_date_id AND is_ff = 1 
 	) AS t2
 	WHERE 1
@@ -794,7 +794,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 FUNCTION `kalturadw`.`calc_month_id`(date_id INT(11)) RETURNS int(11)
+/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 FUNCTION `borhandw`.`calc_month_id`(date_id INT(11)) RETURNS int(11)
     DETERMINISTIC
 BEGIN
 	RETURN FLOOR(date_id/100);
@@ -813,7 +813,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 FUNCTION `kalturadw`.`calc_partner_monthly_storage`(p_month_id INT ,p_partner_id INT) RETURNS decimal(19,4)
+/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 FUNCTION `borhandw`.`calc_partner_monthly_storage`(p_month_id INT ,p_partner_id INT) RETURNS decimal(19,4)
     DETERMINISTIC
 BEGIN
         DECLARE avg_cont_aggr_storage DECIMAL(19,4);
@@ -836,7 +836,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 FUNCTION `kalturadw`.`calc_partner_storage_data_time_range`(p_start_date_id INT, p_end_date_id INT ,p_partner_id INT ) RETURNS decimal(19,4)
+/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 FUNCTION `borhandw`.`calc_partner_storage_data_time_range`(p_start_date_id INT, p_end_date_id INT ,p_partner_id INT ) RETURNS decimal(19,4)
     DETERMINISTIC
 BEGIN	
 	DECLARE total_billable_storage_mb DECIMAL (19,4);
@@ -867,7 +867,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 FUNCTION `kalturadw`.`calc_time_shift`(date_id INT, hour_id INT, time_shift INT) RETURNS int(11)
+/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 FUNCTION `borhandw`.`calc_time_shift`(date_id INT, hour_id INT, time_shift INT) RETURNS int(11)
     NO SQL
 BEGIN
 	RETURN DATE_FORMAT((date_id + INTERVAL hour_id HOUR + INTERVAL time_shift HOUR), '%Y%m%d')*1;
@@ -886,7 +886,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 FUNCTION `kalturadw`.`get_overage_charge`(max_amount DECIMAL(19,4), actual_amount DECIMAL(19,4), charge_units INT(11), charge_usd_per_unit DECIMAL(19,4)) RETURNS decimal(19,4)
+/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 FUNCTION `borhandw`.`get_overage_charge`(max_amount DECIMAL(19,4), actual_amount DECIMAL(19,4), charge_units INT(11), charge_usd_per_unit DECIMAL(19,4)) RETURNS decimal(19,4)
     NO SQL
 BEGIN
 	RETURN GREATEST(0,IFNULL(CEILING((actual_amount - max_amount)/charge_units)*charge_usd_per_unit,0));
@@ -905,14 +905,14 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 FUNCTION `kalturadw`.`resolve_aggr_name`(p_aggr_name VARCHAR(100),p_field_name VARCHAR(100)) RETURNS varchar(100) CHARSET latin1
+/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 FUNCTION `borhandw`.`resolve_aggr_name`(p_aggr_name VARCHAR(100),p_field_name VARCHAR(100)) RETURNS varchar(100) CHARSET latin1
     DETERMINISTIC
 BEGIN
 	DECLARE v_aggr_table VARCHAR(100);
 	DECLARE v_aggr_id_field VARCHAR(100);
 	SELECT aggr_table, aggr_id_field
 	INTO  v_aggr_table, v_aggr_id_field
-	FROM kalturadw_ds.aggr_name_resolver
+	FROM borhandw_ds.aggr_name_resolver
 	WHERE aggr_name = p_aggr_name;
 	
 	IF p_field_name = 'aggr_table' THEN RETURN v_aggr_table;
@@ -934,7 +934,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `kalturadw`.`add_daily_partition_for_table`(table_name VARCHAR(40))
+/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `borhandw`.`add_daily_partition_for_table`(table_name VARCHAR(40))
 BEGIN
 	DECLARE p_name,p_value VARCHAR(100);
 	DECLARE p_date,_current_date DATETIME;
@@ -951,7 +951,7 @@ BEGIN
 		FROM `information_schema`.`partitions` 
 		WHERE `partitions`.`TABLE_NAME` = table_name;
 		IF (_current_date > p_date - INTERVAL 7 DAY AND p_name IS NOT NULL) THEN
-			SET @s = CONCAT('alter table kalturadw.' , table_name , ' ADD PARTITION (partition p_' ,p_name ,' values less than (', p_value ,'))');
+			SET @s = CONCAT('alter table borhandw.' , table_name , ' ADD PARTITION (partition p_' ,p_name ,' values less than (', p_value ,'))');
 			PREPARE stmt FROM  @s;
 			EXECUTE stmt;
 			DEALLOCATE PREPARE stmt;
@@ -974,11 +974,11 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `kalturadw`.`add_live_plays_views`(p_date_id INT, p_hour_id INT)
+/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `borhandw`.`add_live_plays_views`(p_date_id INT, p_hour_id INT)
 BEGIN
     INSERT INTO dwh_entry_plays_views(entry_id, plays, views)
     SELECT aggr.entry_id, IFNULL(count_plays, 0) plays, IFNULL(count_loads, 0) views
-    FROM kalturadw.dwh_hourly_events_live_entry aggr
+    FROM borhandw.dwh_hourly_events_live_entry aggr
     WHERE date_id = p_date_id AND hour_id = p_hour_id
     ON DUPLICATE KEY UPDATE
         plays = plays + VALUES(plays) ,
@@ -999,7 +999,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `kalturadw`.`add_monthly_partition_for_table`(table_name VARCHAR(40))
+/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `borhandw`.`add_monthly_partition_for_table`(table_name VARCHAR(40))
 BEGIN
 	DECLARE p_name,p_value VARCHAR(100);
 	DECLARE p_date,_current_date DATETIME;
@@ -1016,7 +1016,7 @@ BEGIN
 		FROM `information_schema`.`partitions` 
 		WHERE `partitions`.`TABLE_NAME` = table_name;
 		IF (_current_date > p_date - INTERVAL 1 MONTH AND p_name IS NOT NULL) THEN
-			SET @s = CONCAT('alter table kalturadw.' , table_name , ' ADD PARTITION (partition p_' ,p_name ,' values less than (', p_value ,'))');
+			SET @s = CONCAT('alter table borhandw.' , table_name , ' ADD PARTITION (partition p_' ,p_name ,' values less than (', p_value ,'))');
 			PREPARE stmt FROM  @s;
 			EXECUTE stmt;
 			DEALLOCATE PREPARE stmt;
@@ -1039,7 +1039,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `kalturadw`.`add_partitions`()
+/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `borhandw`.`add_partitions`()
 BEGIN
 	CALL add_daily_partition_for_table('dwh_fact_events');
         CALL add_daily_partition_for_table('dwh_fact_fms_session_events');
@@ -1067,9 +1067,9 @@ BEGIN
 		CALL add_monthly_partition_for_table('dwh_hourly_events_context_app_devices');
 		CALL add_monthly_partition_for_table('dwh_daily_ingestion');
 		CALL add_monthly_partition_for_table('dwh_daily_partner_ingestion');
-		CALL kalturadw.add_monthly_partition_for_table('dwh_hourly_plays_partner');
-		CALL kalturadw.add_monthly_partition_for_table('dwh_hourly_plays_entry');
-		CALL kalturadw.add_monthly_partition_for_table('dwh_hourly_events_live_entry');
+		CALL borhandw.add_monthly_partition_for_table('dwh_hourly_plays_partner');
+		CALL borhandw.add_monthly_partition_for_table('dwh_hourly_plays_entry');
+		CALL borhandw.add_monthly_partition_for_table('dwh_hourly_events_live_entry');
 END */;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
@@ -1085,11 +1085,11 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `kalturadw`.`add_plays_views`(p_date_id INT, p_hour_id INT)
+/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `borhandw`.`add_plays_views`(p_date_id INT, p_hour_id INT)
 BEGIN
     INSERT INTO dwh_entry_plays_views(entry_id, plays, views)
     SELECT aggr.entry_id, IFNULL(count_plays, 0) plays, IFNULL(count_loads, 0) views
-    FROM kalturadw.dwh_hourly_events_entry aggr
+    FROM borhandw.dwh_hourly_events_entry aggr
     WHERE date_id = p_date_id AND hour_id = p_hour_id 
     ON DUPLICATE KEY UPDATE 
         plays = plays + VALUES(plays) ,
@@ -1110,7 +1110,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `kalturadw`.`all_tables_to_new`()
+/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `borhandw`.`all_tables_to_new`()
 BEGIN
 	DECLARE done INT DEFAULT 0;
 	DECLARE v_greater_than_or_equal_date_id INT;
@@ -1119,7 +1119,7 @@ BEGIN
 	DECLARE c_partitions 
 	CURSOR FOR 
 	SELECT greater_than_or_equal_date_id, less_than_date_id, table_name
-	FROM kalturadw_ds.tables_to_new
+	FROM borhandw_ds.tables_to_new
 	ORDER BY less_than_date_id;
 	DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = 1;
 	
@@ -1153,13 +1153,13 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `kalturadw`.`apply_table_partitions_to_target_table`(p_table_name VARCHAR(255))
+/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `borhandw`.`apply_table_partitions_to_target_table`(p_table_name VARCHAR(255))
 BEGIN
         DECLARE done INT DEFAULT 0;
         DECLARE v_partition_statement VARCHAR(255);
         DECLARE c_partitions
         CURSOR FOR
-        SELECT CONCAT('ALTER TABLE kalturadw.',p_table_name,'_new ADD PARTITION (PARTITION ', partition_name,' VALUES LESS THAN(', partition_description, '));') cmd
+        SELECT CONCAT('ALTER TABLE borhandw.',p_table_name,'_new ADD PARTITION (PARTITION ', partition_name,' VALUES LESS THAN(', partition_description, '));') cmd
         FROM information_schema.PARTITIONS existing, (SELECT MAX(partition_description) latest FROM information_schema.PARTITIONS WHERE table_name =CONCAT(p_table_name,'_new')) new_table
         WHERE existing.partition_description > new_table.latest AND table_name = p_table_name
         ORDER BY partition_description;
@@ -1196,7 +1196,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `kalturadw`.`calc_aggr_day`(p_date_val DATE,p_hour_id INT(11), p_aggr_name VARCHAR(100))
+/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `borhandw`.`calc_aggr_day`(p_date_val DATE,p_hour_id INT(11), p_aggr_name VARCHAR(100))
 BEGIN
         DECLARE v_aggr_table VARCHAR(100);
         DECLARE v_aggr_id_field VARCHAR(100);
@@ -1210,14 +1210,14 @@ BEGIN
 
         SELECT DATE(NOW() - INTERVAL archive_delete_days_back DAY), DATE(archive_last_partition)
         INTO v_ignore, v_from_archive
-        FROM kalturadw_ds.retention_policy
+        FROM borhandw_ds.retention_policy
         WHERE table_name = 'dwh_fact_events';
 
         IF (p_date_val >= v_ignore) THEN
 
                         SELECT aggr_table, aggr_id_field
                         INTO  v_aggr_table, v_aggr_id_field
-                        FROM kalturadw_ds.aggr_name_resolver
+                        FROM borhandw_ds.aggr_name_resolver
                         WHERE aggr_name = p_aggr_name;
 
                         SET extra = CONCAT('pre_aggregation_',p_aggr_name);
@@ -1255,12 +1255,12 @@ BEGIN
                                                         IF(dim_id_field <> '',  CONCAT(', e.', REPLACE(dim_id_field,',',', e.')), '')
                                                   )
                         INTO  v_aggr_table, v_aggr_id_field
-                        FROM kalturadw_ds.aggr_name_resolver
+                        FROM borhandw_ds.aggr_name_resolver
                         WHERE aggr_name = p_aggr_name;
 
                         SELECT IF(join_table <> '' , CONCAT(',', join_table), ''), IF(join_table <> '', CONCAT(' AND ev.' ,join_id_field,'=',join_table,'.',join_id_field), '')
                         INTO v_join_table, v_join_condition
-                        FROM kalturadw_ds.aggr_name_resolver
+                        FROM borhandw_ds.aggr_name_resolver
                         WHERE aggr_name = p_aggr_name;
 
 
@@ -1460,7 +1460,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `kalturadw`.`calc_aggr_day_api_calls`(p_date_val DATE, p_hour_id INT)
+/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `borhandw`.`calc_aggr_day_api_calls`(p_date_val DATE, p_hour_id INT)
 BEGIN
         DECLARE v_ignore DATE;
         DECLARE v_from_archive DATE;
@@ -1470,7 +1470,7 @@ BEGIN
  
         SELECT aggr_table, IF(IFNULL(aggr_id_field,'')='','', CONCAT(', ', aggr_id_field)) aggr_id_field
         INTO  v_aggr_table, v_aggr_id_field_str
-        FROM kalturadw_ds.aggr_name_resolver
+        FROM borhandw_ds.aggr_name_resolver
         WHERE aggr_name = 'api_calls';
  
  
@@ -1478,25 +1478,25 @@ BEGIN
  
         SELECT MAX(DATE(NOW() - INTERVAL archive_delete_days_back DAY))
         INTO v_ignore
-        FROM kalturadw_ds.retention_policy
+        FROM borhandw_ds.retention_policy
         WHERE table_name IN ('dwh_fact_api_calls');
  
         IF (p_date_val >= v_ignore) THEN
-                SET @s = CONCAT('DELETE FROM kalturadw.',v_aggr_table, ' WHERE date_id = DATE(\'',p_date_val,'\')*1 and hour_id = ', p_hour_id);
+                SET @s = CONCAT('DELETE FROM borhandw.',v_aggr_table, ' WHERE date_id = DATE(\'',p_date_val,'\')*1 and hour_id = ', p_hour_id);
 		
                 PREPARE stmt FROM  @s;
                 EXECUTE stmt;
                 DEALLOCATE PREPARE stmt;
                 SELECT DATE(archive_last_partition)
                 INTO v_from_archive
-                FROM kalturadw_ds.retention_policy
+                FROM borhandw_ds.retention_policy
                 WHERE table_name = 'dwh_fact_api_calls';
                 IF (p_date_val >= v_from_archive) THEN
                         SET v_table_name = 'dwh_fact_api_calls';
                 ELSE
                         SET v_table_name = 'dwh_fact_api_calls_archive';
                 END IF;
-                SET @s = CONCAT('INSERT INTO kalturadw.', v_aggr_table, ' (partner_id, date_id, hour_id ', v_aggr_id_field_str,', count_calls,count_is_admin,count_is_in_multi_request,count_success,sum_duration_msecs)'
+                SET @s = CONCAT('INSERT INTO borhandw.', v_aggr_table, ' (partner_id, date_id, hour_id ', v_aggr_id_field_str,', count_calls,count_is_admin,count_is_in_multi_request,count_success,sum_duration_msecs)'
 				'SELECT partner_id, api_call_date_id, api_call_hour_id hour_id', v_aggr_id_field_str,', count(*), sum(is_admin), sum(is_in_multi_request), sum(success), sum(duration_msecs)
 				FROM ', v_table_name, '    WHERE api_call_date_id=date(\'',p_date_val,'\')*1 AND api_call_hour_id = ',p_hour_id,'
 				GROUP BY partner_id', v_aggr_id_field_str);
@@ -1521,7 +1521,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `kalturadw`.`calc_aggr_day_bandwidth`(p_date_val DATE, p_aggr_name VARCHAR(100))
+/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `borhandw`.`calc_aggr_day_bandwidth`(p_date_val DATE, p_aggr_name VARCHAR(100))
 BEGIN
 	DECLARE v_ignore DATE;
 	DECLARE v_from_archive DATE;
@@ -1532,17 +1532,17 @@ BEGIN
 	UPDATE aggr_managment SET start_time = NOW() WHERE aggr_name = p_aggr_name AND date_id = DATE(p_date_val)*1;
 	SELECT MAX(DATE(NOW() - INTERVAL archive_delete_days_back DAY))
 	INTO v_ignore
-	FROM kalturadw_ds.retention_policy
+	FROM borhandw_ds.retention_policy
 	WHERE table_name IN('dwh_fact_bandwidth_usage', 'dwh_fact_fms_sessions');
 	
 	IF (p_date_val >= v_ignore) THEN 
 		
 		SELECT aggr_table, IF(IFNULL(aggr_id_field,'')='','', CONCAT(', ', aggr_id_field)) aggr_id_field
 		INTO  v_aggr_table, v_aggr_id_field_str
-		FROM kalturadw_ds.aggr_name_resolver
+		FROM borhandw_ds.aggr_name_resolver
 		WHERE aggr_name = p_aggr_name;
 		
-		SET @s = CONCAT('UPDATE kalturadw.',v_aggr_table, ' SET count_bandwidth_kb = NULL WHERE date_id = DATE(\'',p_date_val,'\')*1');
+		SET @s = CONCAT('UPDATE borhandw.',v_aggr_table, ' SET count_bandwidth_kb = NULL WHERE date_id = DATE(\'',p_date_val,'\')*1');
 		PREPARE stmt FROM  @s;
                 EXECUTE stmt;
                 DEALLOCATE PREPARE stmt;
@@ -1550,7 +1550,7 @@ BEGIN
 		
 		SELECT DATE(archive_last_partition)
 		INTO v_from_archive
-		FROM kalturadw_ds.retention_policy
+		FROM borhandw_ds.retention_policy
 		WHERE table_name = 'dwh_fact_bandwidth_usage';
 	
                 IF (p_date_val >= v_from_archive) THEN 
@@ -1559,7 +1559,7 @@ BEGIN
                         SET v_table_name = 'dwh_fact_bandwidth_usage_archive';
                 END IF;
                 
-		SET @s = CONCAT('INSERT INTO kalturadw.', v_aggr_table, ' (partner_id, date_id, hour_id ', v_aggr_id_field_str,', count_bandwidth_kb)'
+		SET @s = CONCAT('INSERT INTO borhandw.', v_aggr_table, ' (partner_id, date_id, hour_id ', v_aggr_id_field_str,', count_bandwidth_kb)'
 				'SELECT partner_id, MAX(activity_date_id), 0 hour_id', v_aggr_id_field_str,', SUM(bandwidth_bytes)/1024 count_bandwidth
 				FROM ', v_table_name, '	WHERE activity_date_id=date(\'',p_date_val,'\')*1
 				GROUP BY partner_id', v_aggr_id_field_str,'
@@ -1573,7 +1573,7 @@ BEGIN
 		
 		SELECT DATE(archive_last_partition)
 		INTO v_from_archive
-		FROM kalturadw_ds.retention_policy
+		FROM borhandw_ds.retention_policy
 		WHERE table_name = 'dwh_fact_fms_sessions';
 		
 		IF (p_date_val >= v_from_archive) THEN 
@@ -1582,7 +1582,7 @@ BEGIN
                         SET v_table_name = 'dwh_fact_fms_sessions_archive';
                 END IF;
 
-		SET @s = CONCAT('INSERT INTO kalturadw.', v_aggr_table, ' (partner_id, date_id, hour_id', v_aggr_id_field_str,', count_bandwidth_kb)
+		SET @s = CONCAT('INSERT INTO borhandw.', v_aggr_table, ' (partner_id, date_id, hour_id', v_aggr_id_field_str,', count_bandwidth_kb)
 				SELECT session_partner_id, MAX(session_date_id), 0 hour_id', v_aggr_id_field_str,', SUM(total_bytes)/1024 count_bandwidth 
 				FROM ', v_table_name, ' WHERE session_date_id=date(\'',p_date_val,'\')*1
 				GROUP BY session_partner_id', v_aggr_id_field_str,'
@@ -1609,7 +1609,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `kalturadw`.`calc_aggr_day_errors`(p_date_val DATE, p_hour_id INT)
+/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `borhandw`.`calc_aggr_day_errors`(p_date_val DATE, p_hour_id INT)
 BEGIN
         DECLARE v_ignore DATE;
         DECLARE v_from_archive DATE;
@@ -1619,7 +1619,7 @@ BEGIN
  
         SELECT aggr_table, IF(IFNULL(aggr_id_field,'')='','', CONCAT(', ', aggr_id_field)) aggr_id_field
         INTO  v_aggr_table, v_aggr_id_field_str
-        FROM kalturadw_ds.aggr_name_resolver
+        FROM borhandw_ds.aggr_name_resolver
         WHERE aggr_name = 'errors';
  
  
@@ -1627,18 +1627,18 @@ BEGIN
  
         SELECT MAX(DATE(NOW() - INTERVAL archive_delete_days_back DAY))
         INTO v_ignore
-        FROM kalturadw_ds.retention_policy
+        FROM borhandw_ds.retention_policy
         WHERE table_name IN ('dwh_fact_errors');
  
         IF (p_date_val >= v_ignore) THEN
-                SET @s = CONCAT('DELETE FROM kalturadw.',v_aggr_table, ' WHERE date_id = DATE(\'',p_date_val,'\')*1 and hour_id = ', p_hour_id);
+                SET @s = CONCAT('DELETE FROM borhandw.',v_aggr_table, ' WHERE date_id = DATE(\'',p_date_val,'\')*1 and hour_id = ', p_hour_id);
 		
                 PREPARE stmt FROM  @s;
                 EXECUTE stmt;
                 DEALLOCATE PREPARE stmt;
                 SELECT DATE(archive_last_partition)
                 INTO v_from_archive
-                FROM kalturadw_ds.retention_policy
+                FROM borhandw_ds.retention_policy
                 WHERE table_name = 'dwh_fact_errors';
  
                 IF (p_date_val >= v_from_archive) THEN
@@ -1646,7 +1646,7 @@ BEGIN
                 ELSE
                         SET v_table_name = 'dwh_fact_errors_archive';
                 END IF;
-                SET @s = CONCAT('INSERT INTO kalturadw.', v_aggr_table, ' (partner_id, date_id, hour_id ', v_aggr_id_field_str,', count_errors)'
+                SET @s = CONCAT('INSERT INTO borhandw.', v_aggr_table, ' (partner_id, date_id, hour_id ', v_aggr_id_field_str,', count_errors)'
 				'SELECT partner_id, error_date_id, error_hour_id hour_id', v_aggr_id_field_str,', count(*)
 				FROM ', v_table_name, '    WHERE error_date_id=date(\'',p_date_val,'\')*1 AND error_hour_id = ',p_hour_id,'
 				GROUP BY partner_id', v_aggr_id_field_str);
@@ -1671,7 +1671,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50020 DEFINER=`etl`@`localhost`*/ /*!50003 PROCEDURE `kalturadw`.`calc_aggr_day_ingestion`(p_date_id INT(11))
+/*!50003 CREATE*/ /*!50020 DEFINER=`etl`@`localhost`*/ /*!50003 PROCEDURE `borhandw`.`calc_aggr_day_ingestion`(p_date_id INT(11))
 BEGIN
 	DECLARE v_entry_with_flavor_failed_count INT(11);
 	DECLARE v_all_convert_entries_count INT(11);
@@ -1679,10 +1679,10 @@ BEGIN
 	UPDATE aggr_managment SET start_time = NOW() WHERE aggr_name = 'ingestion' AND date_id = p_date_id;
 		
 	            
-	SET @s = CONCAT('INSERT INTO kalturadw.dwh_daily_ingestion (date_id, normal_wait_time_count, medium_wait_time_count, long_wait_time_count, extremely_long_wait_time_count, stuck_wait_time_count, total_ff_wait_time_sec, median_ff_wait_time_sec) '
+	SET @s = CONCAT('INSERT INTO borhandw.dwh_daily_ingestion (date_id, normal_wait_time_count, medium_wait_time_count, long_wait_time_count, extremely_long_wait_time_count, stuck_wait_time_count, total_ff_wait_time_sec, median_ff_wait_time_sec) '
 					'SELECT created_date_id, COUNT(IF(wait_time< 5,1,null)) normal_wait_time, COUNT(IF(wait_time>=5 AND wait_time < 180,1,null)) medium_wait_time, COUNT(IF(wait_time>=180 AND wait_time<900,1,null)) long_wait_time,
 					COUNT(IF(wait_time>=900 AND wait_time < 3600,1,null)) extremely_long_wait_time_count, COUNT(IF(wait_time>=3600,1,null)) stuck, SUM(IF(wait_time>0,wait_time, 0)), calc_median_ff_convert_job_wait_time(' , p_date_id ,')'
-					' FROM kalturadw.dwh_fact_convert_job
+					' FROM borhandw.dwh_fact_convert_job
 					WHERE is_ff = 1 
 					AND created_date_id = ' ,p_date_id , 
 					' ON DUPLICATE KEY UPDATE	
@@ -1699,11 +1699,11 @@ BEGIN
     EXECUTE stmt;
     DEALLOCATE PREPARE stmt;
 	
-	SET @s = CONCAT('INSERT INTO kalturadw.dwh_daily_ingestion (date_id, success_entries_count, failed_entries_count)'
+	SET @s = CONCAT('INSERT INTO borhandw.dwh_daily_ingestion (date_id, success_entries_count, failed_entries_count)'
 					'SELECT ' , p_date_id, ' ,COUNT(IF(entry_status_id=2, 1, NULL)) entries_success, COUNT(IF(entry_status_id=-1, 1, NULL)) entries_failure
 					FROM 
 					(SELECT distinct(entry.entry_id), entry_status_id
-					FROM kalturadw.dwh_dim_entries entry, kalturadw.dwh_dim_batch_job_sep job
+					FROM borhandw.dwh_dim_entries entry, borhandw.dwh_dim_batch_job_sep job
 					WHERE entry.entry_id = job.entry_id
 					AND entry.created_at BETWEEN DATE(' , p_date_id, ') AND DATE(', p_date_id, ') + INTERVAL 1 DAY',
 					' AND entry.entry_media_type_id IN (1,5)
@@ -1717,9 +1717,9 @@ BEGIN
     EXECUTE stmt;
     DEALLOCATE PREPARE stmt;
 	
-	SET @s = CONCAT('INSERT INTO kalturadw.dwh_daily_ingestion (date_id, success_convert_job_count, failed_convert_job_count)'
+	SET @s = CONCAT('INSERT INTO borhandw.dwh_daily_ingestion (date_id, success_convert_job_count, failed_convert_job_count)'
 					'SELECT created_date_id, COUNT(IF(status_id=5,1,NULL)) convert_job_success, COUNT(IF(status_id=6 OR status_id = 10,1,NULL)) convert_job_failure 
-					 FROM kalturadw.dwh_fact_convert_job
+					 FROM borhandw.dwh_fact_convert_job
 					 WHERE created_date_id = ', p_date_id,
 					 ' ON DUPLICATE KEY UPDATE	
 						success_convert_job_count=VALUES(success_convert_job_count),
@@ -1732,17 +1732,17 @@ BEGIN
 	
     SELECT COUNT(DISTINCT(entry_id))
     INTO v_entry_with_flavor_failed_count
-    FROM kalturadw.dwh_fact_convert_job
+    FROM borhandw.dwh_fact_convert_job
     WHERE created_date_id = p_date_id
     AND status_id IN (6,10);
     
     SELECT COUNT(DISTINCT(entry_id))
     INTO v_all_convert_entries_count
-    FROM kalturadw.dwh_fact_convert_job
+    FROM borhandw.dwh_fact_convert_job
     WHERE created_date_id = p_date_id;
 				
     
-    SET @s = CONCAT('INSERT INTO kalturadw.dwh_daily_ingestion (date_id, all_conversion_job_entries_count, failed_conversion_job_entries_count)'
+    SET @s = CONCAT('INSERT INTO borhandw.dwh_daily_ingestion (date_id, all_conversion_job_entries_count, failed_conversion_job_entries_count)'
 			' VALUES (', p_date_id, ",", v_all_convert_entries_count, ",", v_entry_with_flavor_failed_count, ")"
 			' ON DUPLICATE KEY UPDATE	
 			all_conversion_job_entries_count=VALUES(all_conversion_job_entries_count),
@@ -1755,9 +1755,9 @@ BEGIN
     
     
 			
-	SET @s = CONCAT('INSERT INTO kalturadw.dwh_daily_ingestion (date_id, total_wait_time_sec, convert_jobs_count)'
+	SET @s = CONCAT('INSERT INTO borhandw.dwh_daily_ingestion (date_id, total_wait_time_sec, convert_jobs_count)'
 					'SELECT created_date_id, SUM(IF(wait_time>0, wait_time, 0)), COUNT(id)
-					 FROM kalturadw.dwh_fact_convert_job
+					 FROM borhandw.dwh_fact_convert_job
 					 WHERE created_date_id = ' ,p_date_id,
 					 ' ON DUPLICATE KEY UPDATE	
 						total_wait_time_sec=VALUES(total_wait_time_sec),
@@ -1768,9 +1768,9 @@ BEGIN
     EXECUTE stmt;
     DEALLOCATE PREPARE stmt;
     
-    SET @s = CONCAT('INSERT INTO kalturadw.dwh_daily_partner_ingestion (date_id, partner_id, total_conversion_sec)'
+    SET @s = CONCAT('INSERT INTO borhandw.dwh_daily_partner_ingestion (date_id, partner_id, total_conversion_sec)'
 					'SELECT created_date_id, partner_id, SUM(conversion_time)
-					 FROM kalturadw.dwh_fact_convert_job
+					 FROM borhandw.dwh_fact_convert_job
 					 WHERE created_date_id = ' ,p_date_id,
 					 ' AND conversion_time > 0
 					 GROUP BY partner_id' ,
@@ -1800,10 +1800,10 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `kalturadw`.`calc_aggr_day_partner_storage`(date_val DATE)
+/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `borhandw`.`calc_aggr_day_partner_storage`(date_val DATE)
 BEGIN
-    DELETE FROM kalturadw.dwh_hourly_partner_usage WHERE date_id = DATE(date_val)*1 AND IFNULL(count_bandwidth_kb,0) = 0 AND IFNULL(count_transcoding_mb,0) = 0 AND bandwidth_source_id = 1;
-    UPDATE kalturadw.dwh_hourly_partner_usage SET added_storage_mb = 0, deleted_storage_mb = 0, aggr_storage_mb=NULL WHERE date_id = DATE(date_val)*1 AND (IFNULL(count_bandwidth_kb,0) > 0 OR IFNULL(count_transcoding_mb,0) > 0);
+    DELETE FROM borhandw.dwh_hourly_partner_usage WHERE date_id = DATE(date_val)*1 AND IFNULL(count_bandwidth_kb,0) = 0 AND IFNULL(count_transcoding_mb,0) = 0 AND bandwidth_source_id = 1;
+    UPDATE borhandw.dwh_hourly_partner_usage SET added_storage_mb = 0, deleted_storage_mb = 0, aggr_storage_mb=NULL WHERE date_id = DATE(date_val)*1 AND (IFNULL(count_bandwidth_kb,0) > 0 OR IFNULL(count_transcoding_mb,0) > 0);
 	
 	DROP TABLE IF EXISTS temp_aggr_storage;
 	CREATE TEMPORARY TABLE temp_aggr_storage(
@@ -1820,14 +1820,14 @@ BEGIN
 	WHERE		entry_size_date_id=DATE(date_val)*1
 	GROUP BY 	partner_id;
 	
-	INSERT INTO 	kalturadw.dwh_hourly_partner_usage (partner_id, date_id, hour_id, bandwidth_source_id, added_storage_mb, deleted_storage_mb, aggr_storage_mb)
+	INSERT INTO 	borhandw.dwh_hourly_partner_usage (partner_id, date_id, hour_id, bandwidth_source_id, added_storage_mb, deleted_storage_mb, aggr_storage_mb)
 	SELECT		partner_id, DATE(date_val)*1, 0 hour_id, 1, 0, 0, aggr_storage_mb
-	FROM        kalturadw.dwh_hourly_partner_usage
+	FROM        borhandw.dwh_hourly_partner_usage
 	WHERE       date_id = DATE(date_val - INTERVAL 1 DAY)*1
 	AND         bandwidth_source_id = 1
 	ON DUPLICATE KEY UPDATE added_storage_mb=VALUES(added_storage_mb), deleted_storage_mb=VALUES(deleted_storage_mb), aggr_storage_mb = VALUES(aggr_storage_mb);
 	
-	INSERT INTO 	kalturadw.dwh_hourly_partner_usage (partner_id, date_id, hour_id, bandwidth_source_id, added_storage_mb, deleted_storage_mb, aggr_storage_mb)
+	INSERT INTO 	borhandw.dwh_hourly_partner_usage (partner_id, date_id, hour_id, bandwidth_source_id, added_storage_mb, deleted_storage_mb, aggr_storage_mb)
 	SELECT		aggr.partner_id, aggr.date_id, aggr.hour_id, 1, aggr.added_storage_mb, aggr.deleted_storage_mb, aggr.added_storage_mb - aggr.deleted_storage_mb
 	FROM		temp_aggr_storage aggr 
 	ON DUPLICATE KEY UPDATE added_storage_mb=VALUES(added_storage_mb), deleted_storage_mb=VALUES(deleted_storage_mb), aggr_storage_mb=IFNULL(aggr_storage_mb,0) + VALUES(aggr_storage_mb) ;
@@ -1847,7 +1847,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `kalturadw`.`calc_aggr_day_play`(p_date_val DATE,p_hour_id INT(11), p_aggr_name VARCHAR(100))
+/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `borhandw`.`calc_aggr_day_play`(p_date_val DATE,p_hour_id INT(11), p_aggr_name VARCHAR(100))
 BEGIN
 	DECLARE v_aggr_table VARCHAR(100);
 	DECLARE v_aggr_id_field VARCHAR(100);
@@ -1861,14 +1861,14 @@ BEGIN
     		
 	SELECT DATE(NOW() - INTERVAL archive_delete_days_back DAY), DATE(archive_last_partition)
 	INTO v_ignore, v_from_archive
-	FROM kalturadw_ds.retention_policy
+	FROM borhandw_ds.retention_policy
 	WHERE table_name = 'dwh_fact_plays';	
 	
 	IF (p_date_val >= v_ignore) THEN 
 		
 			SELECT aggr_table, aggr_id_field
 			INTO  v_aggr_table, v_aggr_id_field
-			FROM kalturadw_ds.aggr_name_resolver
+			FROM borhandw_ds.aggr_name_resolver
 			WHERE aggr_name = p_aggr_name;	
 			
 			SET extra = CONCAT('pre_aggregation_',p_aggr_name);
@@ -1906,12 +1906,12 @@ BEGIN
 							IF(dim_id_field <> '', 	CONCAT(', e.', REPLACE(dim_id_field,',',', e.')), '')
 						  )
 			INTO  v_aggr_table, v_aggr_id_field
-			FROM kalturadw_ds.aggr_name_resolver
+			FROM borhandw_ds.aggr_name_resolver
 			WHERE aggr_name = p_aggr_name;
 			
 			SELECT IF(join_table <> '' , CONCAT(',', join_table), ''), IF(join_table <> '', CONCAT(' AND ev.' ,join_id_field,'=',join_table,'.',join_id_field), '')
 			INTO v_join_table, v_join_condition
-			FROM kalturadw_ds.aggr_name_resolver
+			FROM borhandw_ds.aggr_name_resolver
 			WHERE aggr_name = p_aggr_name;
 			
 			
@@ -1976,15 +1976,15 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `kalturadw`.`calc_aggr_day_transcoding_usage`(p_date_id INT(11))
+/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `borhandw`.`calc_aggr_day_transcoding_usage`(p_date_id INT(11))
 BEGIN
 	UPDATE aggr_managment SET start_time = NOW() WHERE aggr_name = 'transcoding_usage' AND date_id = p_date_id;
 	
-    UPDATE kalturadw.dwh_hourly_partner_usage SET count_transcoding_mb = 0 WHERE date_id = p_date_id AND bandwidth_source_id = 1;
+    UPDATE borhandw.dwh_hourly_partner_usage SET count_transcoding_mb = 0 WHERE date_id = p_date_id AND bandwidth_source_id = 1;
 	
-	INSERT INTO kalturadw.dwh_hourly_partner_usage (partner_id, date_id, hour_id, bandwidth_source_id, count_transcoding_mb) 
+	INSERT INTO borhandw.dwh_hourly_partner_usage (partner_id, date_id, hour_id, bandwidth_source_id, count_transcoding_mb) 
 	SELECT partner_id, p_date_id, 0 hour_id, 1, SUM(file_size)/1024/1024
-	FROM kalturadw.dwh_dim_batch_job_sep
+	FROM borhandw.dwh_dim_batch_job_sep
 	WHERE created_date_id = p_date_id
 	AND updated_date_id >= p_date_id
 	AND job_type_id = 0
@@ -2009,7 +2009,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `kalturadw`.`calc_aggr_day_user_usage`(p_date_id INT(11))
+/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `borhandw`.`calc_aggr_day_user_usage`(p_date_id INT(11))
 BEGIN
 
     DECLARE v_date DATETIME;
@@ -2155,19 +2155,19 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `kalturadw`.`calc_entries_sizes`(p_date_id INT(11))
+/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `borhandw`.`calc_entries_sizes`(p_date_id INT(11))
 BEGIN
                 DECLARE v_date DATETIME;
                 SET v_date = DATE(p_date_id);
                 UPDATE aggr_managment SET start_time = NOW() WHERE aggr_name = 'storage_usage' AND date_id = p_date_id;
                 
-                DELETE FROM kalturadw.dwh_fact_entries_sizes WHERE entry_size_date_id = p_date_id;
+                DELETE FROM borhandw.dwh_fact_entries_sizes WHERE entry_size_date_id = p_date_id;
                 
                 DROP TABLE IF EXISTS today_file_sync_subset; 
                 
                 CREATE TEMPORARY TABLE today_file_sync_subset AS
                 SELECT DISTINCT s.id, s.partner_id, IFNULL(a.entry_id, object_id) entry_id, object_id, object_type, object_sub_type, s.created_at, s.status, IFNULL(file_size, 0) file_size
-                FROM kalturadw.dwh_dim_file_sync s LEFT OUTER JOIN kalturadw.dwh_dim_flavor_asset a
+                FROM borhandw.dwh_dim_file_sync s LEFT OUTER JOIN borhandw.dwh_dim_flavor_asset a
                 ON (object_type = 4 AND s.object_id = a.id AND a.entry_id IS NOT NULL AND a.ri_ind =0 AND s.partner_id = a.partner_id)
                 WHERE s.ready_at BETWEEN v_date AND v_date + INTERVAL 1 DAY
                 AND object_type IN (1,4)
@@ -2223,7 +2223,7 @@ BEGIN
            
                 INSERT INTO today_sizes
                                 SELECT s.partner_id, IFNULL(a.entry_id, object_id) entry_id, object_id, object_type, object_sub_type, s.created_at, s.status, 0 file_size
-                                FROM kalturadw.dwh_dim_file_sync s LEFT OUTER JOIN kalturadw.dwh_dim_flavor_asset a
+                                FROM borhandw.dwh_dim_file_sync s LEFT OUTER JOIN borhandw.dwh_dim_flavor_asset a
                                 ON (object_type = 4 AND s.object_id = a.id AND a.entry_id IS NOT NULL AND a.ri_ind =0 AND s.partner_id = a.partner_id)
                                 WHERE s.updated_at BETWEEN v_date AND v_date + INTERVAL 1 DAY
                                 AND object_type IN (1,4)
@@ -2237,7 +2237,7 @@ BEGIN
                 
                 CREATE TEMPORARY TABLE deleted_flavors AS 
                 SELECT DISTINCT partner_id, entry_id, id
-                FROM kalturadw.dwh_dim_flavor_asset FORCE INDEX (deleted_at)
+                FROM borhandw.dwh_dim_flavor_asset FORCE INDEX (deleted_at)
                 WHERE STATUS = 3 AND deleted_at BETWEEN v_date AND v_date + INTERVAL 1 DAY
                 AND partner_id NOT IN (100  , -1  , -2  , 0 , 99 );
                                 
@@ -2261,13 +2261,13 @@ BEGIN
 												
 												SELECT entry_status_id
 												INTO v_status
-												FROM kalturadw.dwh_dim_entries
+												FROM borhandw.dwh_dim_entries
 												WHERE entry_id = v_deleted_flavor_entry_id;
 												
 												IF v_STATUS <> 3 THEN
 													INSERT INTO today_sizes
 																	SELECT v_deleted_flavor_partner_id, v_deleted_flavor_entry_id, object_id, object_type, object_sub_type, MAX(created_at), 3 STATUS, 0 file_size
-																	FROM kalturadw.dwh_dim_file_sync
+																	FROM borhandw.dwh_dim_file_sync
 																	WHERE object_id = v_deleted_flavor_id AND object_type = 4 AND ready_at < v_date AND file_size > 0
 																	GROUP BY object_id, object_type, object_sub_type
 													ON DUPLICATE KEY UPDATE
@@ -2281,7 +2281,7 @@ BEGIN
                 
                 DROP TABLE IF EXISTS today_deleted_entries;
                 CREATE TEMPORARY TABLE today_deleted_entries AS 
-                SELECT entry_id, partner_id FROM kalturadw.dwh_dim_entries
+                SELECT entry_id, partner_id FROM borhandw.dwh_dim_entries
                 WHERE modified_at BETWEEN v_date AND v_date + INTERVAL 1 DAY
                 AND partner_id NOT IN (100  , -1  , -2  , 0 , 99 )
                 AND entry_status_id = 3
@@ -2295,7 +2295,7 @@ BEGIN
                 DROP TABLE IF EXISTS yesterday_file_sync_subset; 
                 CREATE TEMPORARY TABLE yesterday_file_sync_subset AS
                 SELECT f.id, f.partner_id, f.object_id, f.object_type, f.object_sub_type, f.created_at, IFNULL(f.file_size, 0) file_size
-                FROM today_sizes today, kalturadw.dwh_dim_file_sync f
+                FROM today_sizes today, borhandw.dwh_dim_file_sync f
                 WHERE f.object_id = today.object_id
                 AND f.partner_id = today.partner_id
                 AND f.object_type = today.object_type
@@ -2331,7 +2331,7 @@ BEGIN
                 WHERE max_id.id = original.id;
                 
                 
-                INSERT INTO kalturadw.dwh_fact_entries_sizes (partner_id, entry_id, entry_additional_size_kb, entry_size_date, entry_size_date_id)
+                INSERT INTO borhandw.dwh_fact_entries_sizes (partner_id, entry_id, entry_additional_size_kb, entry_size_date, entry_size_date_id)
                 SELECT t.partner_id, t.entry_id, ROUND(SUM(t.file_size - IFNULL(Y.file_size, 0))/1024, 3) entry_additional_size_kb, v_date, p_date_id 
                 FROM today_sizes t LEFT OUTER JOIN yesterday_sizes Y 
                 ON t.object_id = Y.object_id
@@ -2348,19 +2348,19 @@ BEGIN
                 DROP TABLE IF EXISTS deleted_entries;
                 CREATE TEMPORARY TABLE deleted_entries AS
                                 SELECT es.partner_id partner_id, es.entry_id entry_id, v_date entry_size_date, p_date_id entry_size_date_id, -SUM(entry_additional_size_kb) entry_additional_size_kb
-                                FROM today_deleted_entries e, kalturadw.dwh_fact_entries_sizes es
+                                FROM today_deleted_entries e, borhandw.dwh_fact_entries_sizes es
                                 WHERE e.entry_id = es.entry_id 
                                                 AND e.partner_id = es.partner_id 
                                                 AND es.entry_size_date_id < p_date_id
                                 GROUP BY es.partner_id, es.entry_id
                                 HAVING SUM(entry_additional_size_kb) > 0;
                 
-                INSERT INTO kalturadw.dwh_fact_entries_sizes (partner_id, entry_id, entry_size_date, entry_size_date_id, entry_additional_size_kb)
+                INSERT INTO borhandw.dwh_fact_entries_sizes (partner_id, entry_id, entry_size_date, entry_size_date_id, entry_additional_size_kb)
                                 SELECT partner_id, entry_id, entry_size_date, entry_size_date_id, entry_additional_size_kb FROM deleted_entries
                 ON DUPLICATE KEY UPDATE 
                                 entry_additional_size_kb = VALUES(entry_additional_size_kb);
                 
-                CALL kalturadw.calc_aggr_day_partner_storage(v_date);
+                CALL borhandw.calc_aggr_day_partner_storage(v_date);
                 UPDATE aggr_managment SET end_time = NOW() WHERE aggr_name = 'storage_usage' AND date_id = p_date_id;
 END */;;
 DELIMITER ;
@@ -2377,7 +2377,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `kalturadw`.`calc_partner_billing_data`(p_date_id INT(11),p_partner_id INT)
+/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `borhandw`.`calc_partner_billing_data`(p_date_id INT(11),p_partner_id INT)
 BEGIN
 	SELECT
         FLOOR(date_id/100) month_id,
@@ -2403,7 +2403,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `kalturadw`.`calc_partner_overage`(p_month_id INTEGER)
+/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `borhandw`.`calc_partner_overage`(p_month_id INTEGER)
 BEGIN
 		DROP TABLE IF EXISTS partner_quotas;
 		CREATE TEMPORARY TABLE partner_quotas AS
@@ -2425,7 +2425,7 @@ BEGIN
 			q.charge_monthly_entries_usd,
 			q.charge_monthly_entries_unit
 		FROM dwh_view_partners_monthly_billing q 
-			LEFT OUTER JOIN kalturadw.dwh_dim_partners p ON (q.partner_id = p.partner_parent_id AND q.partner_group_type_id = 3)
+			LEFT OUTER JOIN borhandw.dwh_dim_partners p ON (q.partner_id = p.partner_parent_id AND q.partner_group_type_id = 3)
 		WHERE is_active = 1 AND q.month_id = p_month_id
         GROUP BY partner_id, usage_partner_id;
         
@@ -2472,7 +2472,7 @@ BEGIN
 				MAX(max_monthly_total_usage_mb) included_total_usage_mb,
 				MAX(charge_monthly_total_usage_mb_unit) charge_monthly_total_usage_mb_unit,
 				MAX(charge_monthly_total_usage_mb_usd) charge_monthly_total_usage_mb_usd
-			FROM partner_quotas pq LEFT OUTER JOIN kalturadw.dwh_hourly_partner_usage partner_usage 
+			FROM partner_quotas pq LEFT OUTER JOIN borhandw.dwh_hourly_partner_usage partner_usage 
 					ON (pq.usage_partner_id = partner_usage.partner_id AND partner_usage.date_id BETWEEN p_month_id*100 AND p_month_id*100+31)
 			GROUP BY pq.partner_id) inner_q
 			WHERE actual_bandwidth_kb > included_bandwidth_kb OR 
@@ -2494,7 +2494,7 @@ BEGIN
 				MAX(max_monthly_entries) included_entries,
 				COUNT(entries.entry_id) actual_entries,
 				get_overage_charge(MAX(max_monthly_entries), COUNT(entries.entry_id), MAX(charge_monthly_entries_unit), MAX(charge_monthly_entries_usd)) charge_overage_entries
-			FROM partner_quotas pq, kalturadw.dwh_dim_entries entries
+			FROM partner_quotas pq, borhandw.dwh_dim_entries entries
 			WHERE 	pq.usage_partner_id = entries.partner_id AND 
 				entries.created_at < LAST_DAY(DATE(p_month_id*100+1)) + INTERVAL 1 DAY AND
 				entries.entry_type_id IN (1,7) 
@@ -2511,7 +2511,7 @@ BEGIN
 				MAX(max_monthly_plays) included_plays,
 				SUM(count_plays) actual_plays,
 				get_overage_charge(MAX(max_monthly_plays), SUM(count_plays), MAX(charge_monthly_plays_unit), MAX(charge_monthly_plays_usd)) charge_overage_plays
-			FROM partner_quotas pq, kalturadw.dwh_hourly_partner plays
+			FROM partner_quotas pq, borhandw.dwh_hourly_partner plays
 			WHERE 	pq.usage_partner_id = plays.partner_id AND
 				date_id BETWEEN p_month_id*100 AND p_month_id*100+31
 			GROUP BY pq.partner_id
@@ -2544,11 +2544,11 @@ BEGIN
 			actual_plays, 
 			charge_overage_plays			
 		FROM partner_overages po 
-		INNER JOIN kalturadw.dwh_dim_partners children ON (po.partner_id = children.partner_id)
-		LEFT OUTER JOIN kalturadw.dwh_dim_partners parents ON (children.partner_parent_id = parents.partner_id)
-		INNER JOIN kalturadw.dwh_dim_partner_group_type group_types ON (IF(parents.partner_id IS NOT NULL, parents.partner_group_type_id,children.partner_group_type_id) = group_types.partner_group_type_id)
-		LEFT OUTER JOIN kalturadw.dwh_dim_partner_class_of_service d_cos ON (children.class_of_service_id = d_cos.partner_class_of_service_id)
-		LEFT OUTER JOIN kalturadw.dwh_dim_partner_vertical d_vertical ON (children.vertical_id = d_vertical.partner_vertical_id)
+		INNER JOIN borhandw.dwh_dim_partners children ON (po.partner_id = children.partner_id)
+		LEFT OUTER JOIN borhandw.dwh_dim_partners parents ON (children.partner_parent_id = parents.partner_id)
+		INNER JOIN borhandw.dwh_dim_partner_group_type group_types ON (IF(parents.partner_id IS NOT NULL, parents.partner_group_type_id,children.partner_group_type_id) = group_types.partner_group_type_id)
+		LEFT OUTER JOIN borhandw.dwh_dim_partner_class_of_service d_cos ON (children.class_of_service_id = d_cos.partner_class_of_service_id)
+		LEFT OUTER JOIN borhandw.dwh_dim_partner_vertical d_vertical ON (children.vertical_id = d_vertical.partner_vertical_id)
 		WHERE parents.partner_group_type_id <> 3 OR parents.partner_group_type_id IS NULL;
 END */;;
 DELIMITER ;
@@ -2565,7 +2565,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `kalturadw`.`calc_partner_usage_data`(p_date_id INT(11),p_partner_id INT,p_total BOOL)
+/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `borhandw`.`calc_partner_usage_data`(p_date_id INT(11),p_partner_id INT,p_total BOOL)
 BEGIN
     IF(p_total) THEN
     
@@ -2607,7 +2607,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50020 DEFINER=`etl`@`localhost`*/ /*!50003 PROCEDURE `kalturadw`.`calc_updated_batch_job`(p_start_date INT(11), p_end_date INT(11))
+/*!50003 CREATE*/ /*!50020 DEFINER=`etl`@`localhost`*/ /*!50003 PROCEDURE `borhandw`.`calc_updated_batch_job`(p_start_date INT(11), p_end_date INT(11))
 BEGIN
                                 
                 BEGIN
@@ -2615,7 +2615,7 @@ BEGIN
                                 DECLARE v_date_id INT(11);
                                 DECLARE done INT DEFAULT 0;
                                 DECLARE days_to_update CURSOR FOR 
-                                SELECT day_id FROM kalturadw.dwh_dim_time WHERE day_id BETWEEN p_start_date AND p_end_date;
+                                SELECT day_id FROM borhandw.dwh_dim_time WHERE day_id BETWEEN p_start_date AND p_end_date;
                                 DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = 1;
                                 
                                 OPEN days_to_update;
@@ -2625,7 +2625,7 @@ BEGIN
                                                 IF done THEN
                                                                 LEAVE read_loop;
                                                 END IF;
-                                                CALL kalturadw.calc_updated_batch_job_day(v_date_id);
+                                                CALL borhandw.calc_updated_batch_job_day(v_date_id);
                                 END LOOP;
                                 CLOSE days_to_update;
                 END;
@@ -2645,7 +2645,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50020 DEFINER=`etl`@`localhost`*/ /*!50003 PROCEDURE `kalturadw`.`calc_updated_batch_job_day`(p_date_id INT(11))
+/*!50003 CREATE*/ /*!50020 DEFINER=`etl`@`localhost`*/ /*!50003 PROCEDURE `borhandw`.`calc_updated_batch_job_day`(p_date_id INT(11))
 BEGIN
                 DECLARE v_date DATETIME;
                 DECLARE v_ignore_partner_ids TEXT;
@@ -2655,14 +2655,14 @@ BEGIN
                 SELECT IFNULL(GROUP_CONCAT(ignore_partner.partner_id),'')
 				INTO v_ignore_partner_ids
 				FROM 
-				(SELECT partner_id FROM kalturadw.dwh_dim_batch_job_sep WHERE job_type_id = 0 AND job_sub_type_id IN (1,2,3,99) AND updated_date_id = p_date_id
+				(SELECT partner_id FROM borhandw.dwh_dim_batch_job_sep WHERE job_type_id = 0 AND job_sub_type_id IN (1,2,3,99) AND updated_date_id = p_date_id
 				GROUP BY partner_id
 				HAVING COUNT(*) > 1000) ignore_partner;
                                 
                 
-                SET @s = CONCAT("INSERT INTO kalturadw.dwh_fact_convert_job(id, job_type_id, status_id, created_date_id, updated_date_id, finish_date_id, partner_id, entry_id, dc, wait_time, conversion_time, is_ff)
+                SET @s = CONCAT("INSERT INTO borhandw.dwh_fact_convert_job(id, job_type_id, status_id, created_date_id, updated_date_id, finish_date_id, partner_id, entry_id, dc, wait_time, conversion_time, is_ff)
 				SELECT id, job_type_id, status_id, created_date_id, updated_date_id, DATE(finish_time)*1, partner_id, entry_id, dc, time_to_sec(timediff(queue_time, created_at)) wait_time, IF(finish_time IS NULL, -1, time_to_sec(timediff(finish_time, queue_time))) conversion_time, 0
-				FROM kalturadw.dwh_dim_batch_job_sep WHERE job_type_id = 0 AND job_sub_type_id IN (1,2,3,99) AND priority <> 10 AND queue_time IS NOT NULL AND updated_date_id = ", p_date_id, IF(LENGTH(v_ignore_partner_ids)=0,"",CONCAT(" AND partner_id NOT IN (" , v_ignore_partner_ids, ")")),
+				FROM borhandw.dwh_dim_batch_job_sep WHERE job_type_id = 0 AND job_sub_type_id IN (1,2,3,99) AND priority <> 10 AND queue_time IS NOT NULL AND updated_date_id = ", p_date_id, IF(LENGTH(v_ignore_partner_ids)=0,"",CONCAT(" AND partner_id NOT IN (" , v_ignore_partner_ids, ")")),
 				" ON DUPLICATE KEY UPDATE 
 					status_id = VALUES(status_id),
 					updated_date_id = VALUES(updated_date_id),
@@ -2677,24 +2677,24 @@ BEGIN
 				SELECT IFNULL(GROUP_CONCAT(ignore_partner.partner_id),'')
 				INTO v_ignore_partner_ids
 				FROM 
-				(SELECT partner_id FROM kalturadw.dwh_dim_batch_job_sep WHERE job_type_id = 10 AND updated_date_id = p_date_id
+				(SELECT partner_id FROM borhandw.dwh_dim_batch_job_sep WHERE job_type_id = 10 AND updated_date_id = p_date_id
 				GROUP BY partner_id
 				HAVING COUNT(*) > 1000) ignore_partner;
 			
-		DROP TABLE IF EXISTS kalturadw.tmp_convert_job_ids;
+		DROP TABLE IF EXISTS borhandw.tmp_convert_job_ids;
 			
-		SET @s = CONCAT("CREATE TEMPORARY TABLE kalturadw.tmp_convert_job_ids AS SELECT id FROM kalturadw.dwh_dim_batch_job_sep WHERE job_type_id = 10 AND priority <> 10 AND updated_date_id = ", p_date_id,
+		SET @s = CONCAT("CREATE TEMPORARY TABLE borhandw.tmp_convert_job_ids AS SELECT id FROM borhandw.dwh_dim_batch_job_sep WHERE job_type_id = 10 AND priority <> 10 AND updated_date_id = ", p_date_id,
 		IF(LENGTH(v_ignore_partner_ids)=0,"",CONCAT(" AND partner_id NOT IN (" , v_ignore_partner_ids, ")")), ";");
 		
 		PREPARE stmt FROM  @s;
 		EXECUTE stmt;
 		DEALLOCATE PREPARE stmt;	
 				
-                INSERT INTO kalturadw.dwh_fact_convert_job(id, job_type_id, status_id, created_date_id, updated_date_id, finish_date_id, partner_id, entry_id, dc, wait_time, conversion_time, is_ff)
+                INSERT INTO borhandw.dwh_fact_convert_job(id, job_type_id, status_id, created_date_id, updated_date_id, finish_date_id, partner_id, entry_id, dc, wait_time, conversion_time, is_ff)
                                 SELECT id, job_type_id, status_id, created_date_id, updated_date_id, DATE(finish)*1, partner_id, c.entry_id, dc, TIME_TO_SEC(TIMEDIFF(queue_time, created_at)) wait_time, IF(finish IS NULL, -1, TIME_TO_SEC(TIMEDIFF(finish, queue_time))) conversion_time, 1 
 				FROM (SELECT entry_id, root_job_id, MIN(finish_time) AS finish 
-                FROM kalturadw.dwh_dim_batch_job_sep, tmp_convert_job_ids t WHERE root_job_id = t.id AND job_type_id = 0 AND job_sub_type_id IN (1,2,3,99) GROUP BY entry_id)
-                AS c INNER JOIN kalturadw.dwh_dim_batch_job_sep batch_job ON c.root_job_id = batch_job.root_job_id AND c.finish =  batch_job.finish_time
+                FROM borhandw.dwh_dim_batch_job_sep, tmp_convert_job_ids t WHERE root_job_id = t.id AND job_type_id = 0 AND job_sub_type_id IN (1,2,3,99) GROUP BY entry_id)
+                AS c INNER JOIN borhandw.dwh_dim_batch_job_sep batch_job ON c.root_job_id = batch_job.root_job_id AND c.finish =  batch_job.finish_time
                 GROUP BY c.entry_id
 				ON DUPLICATE KEY UPDATE 
 					status_id = VALUES(status_id),
@@ -2709,7 +2709,7 @@ BEGIN
                                 DECLARE v_created_date_id INT(11);
                                 DECLARE done INT DEFAULT 0;
                                 DECLARE days_to_aggregate CURSOR FOR 
-                                SELECT DISTINCT(created_date_id) FROM kalturadw.dwh_fact_convert_job WHERE updated_date_id = p_date_id
+                                SELECT DISTINCT(created_date_id) FROM borhandw.dwh_fact_convert_job WHERE updated_date_id = p_date_id
                                 AND MONTH(DATE(created_date_id) + INTERVAL 1 MONTH) >=  MONTH(DATE(p_date_id));
                                 DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = 1;
                                 
@@ -2720,7 +2720,7 @@ BEGIN
                                                 IF done THEN
                                                                 LEAVE read_loop;
                                                 END IF;
-                                                INSERT INTO kalturadw.aggr_managment(aggr_name,date_id,hour_id,data_insert_time) 
+                                                INSERT INTO borhandw.aggr_managment(aggr_name,date_id,hour_id,data_insert_time) 
 												VALUES ("ingestion", v_created_date_id, 0 ,NOW())
                                                 ON DUPLICATE KEY UPDATE
                                                                 data_insert_time = VALUES(data_insert_time);
@@ -2743,7 +2743,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `kalturadw`.`do_tables_to_new`(p_greater_than_or_equal_date_id int, p_less_than_date_id int, p_table_name varchar(256))
+/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `borhandw`.`do_tables_to_new`(p_greater_than_or_equal_date_id int, p_less_than_date_id int, p_table_name varchar(256))
 BEGIN
 	DECLARE v_copied int;
 	declare v_column varchar(256);
@@ -2752,7 +2752,7 @@ BEGIN
 
 	SELECT is_copied, column_name
 	INTO v_copied, v_column
-	FROM kalturadw_ds.tables_to_new
+	FROM borhandw_ds.tables_to_new
 	WHERE greater_than_or_equal_date_id = p_greater_than_or_equal_date_id AND 
 	      	less_than_date_id = p_less_than_date_id AND 
 		table_name = p_table_name;
@@ -2764,7 +2764,7 @@ BEGIN
 		FROM (
 			SELECT  column_name
 	                FROM information_schema.COLUMNS
-        	        WHERE CONCAT(table_schema,'.',table_name) IN (CONCAT('kalturadw.',p_table_name),CONCAT('kalturadw.',p_table_name,'_new'))
+        	        WHERE CONCAT(table_schema,'.',table_name) IN (CONCAT('borhandw.',p_table_name),CONCAT('borhandw.',p_table_name,'_new'))
 			 GROUP BY column_name
 			 HAVING COUNT(*) > 1
 			 ORDER BY MIN(ordinal_position)
@@ -2799,7 +2799,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `kalturadw`.`generate_daily_usage_report`(p_date_val DATE)
+/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `borhandw`.`generate_daily_usage_report`(p_date_val DATE)
 BEGIN
 	DECLARE yesterday_date_id INT(11);
 	
@@ -2815,7 +2815,7 @@ BEGIN
 	SET 5_days_ago_date_id = (DATE(p_date_val) - INTERVAL 5 DAY)*1;
 	SET 30_days_ago_date_id = (DATE(p_date_val) - INTERVAL 30 DAY)*1;
 	
-	INSERT INTO kalturadw.dwh_daily_usage_reports (measure, classification, DATE, yesterday, the_day_before, diff, last_5_days_avg, last_30_days_avg, outer_order, inner_order)
+	INSERT INTO borhandw.dwh_daily_usage_reports (measure, classification, DATE, yesterday, the_day_before, diff, last_5_days_avg, last_30_days_avg, outer_order, inner_order)
 	
 	SELECT 	measure AS Measure, 
 		classification AS Classification, 
@@ -2844,7 +2844,7 @@ BEGIN
 			SUM(IF (created_at BETWEEN DATE(the_day_before_yesteray_date_id) AND DATE(the_day_before_yesteray_date_id) + INTERVAL 1 DAY, 1, 0)) the_day_before,
 			SUM(IF (created_at BETWEEN DATE(5_days_ago_date_id) AND DATE(yesterday_date_id) + INTERVAL 1 DAY, 1, 0))/5 last_5_days,
 			COUNT(*)/30 last_30_days			
-			FROM kalturadw.dwh_dim_entries 
+			FROM borhandw.dwh_dim_entries 
 			WHERE created_at BETWEEN DATE(30_days_ago_date_id) AND DATE(yesterday_date_id) + INTERVAL 1 DAY
 			GROUP BY IF(entry_media_type_id NOT IN (1, 5, 2, 6), IF (entry_media_type_id IN (11,12,13), -99999, -1), entry_media_type_id)
 	) e RIGHT OUTER JOIN 
@@ -2864,7 +2864,7 @@ BEGIN
 				WHEN 'SHOW' THEN 4
 				WHEN 'PDF' THEN 5
 				ELSE 6 END sort_order
-		FROM (SELECT entry_media_type_id, entry_media_type_name FROM kalturadw.dwh_dim_entry_media_type UNION SELECT -99999, 'PDF') entry_media_type
+		FROM (SELECT entry_media_type_id, entry_media_type_name FROM borhandw.dwh_dim_entry_media_type UNION SELECT -99999, 'PDF') entry_media_type
 		WHERE entry_media_type_id IN (1, 5, 2, 6, -99999, -1)
 	) t
 	ON e.entry_media_type_id = t.entry_media_type_id
@@ -2878,7 +2878,7 @@ BEGIN
 		SUM(IF (modified_at BETWEEN DATE(the_day_before_yesteray_date_id) AND DATE(the_day_before_yesteray_date_id) + INTERVAL 1 DAY, 1, 0)) the_day_before,
 		SUM(IF (modified_at BETWEEN DATE(5_days_ago_date_id) AND DATE(yesterday_date_id) + INTERVAL 1 DAY, 1, 0))/5 last_5_days,
 		COUNT(*)/30 last_30_days, 2 outer_order, 1 inner_order
-		FROM kalturadw.dwh_dim_entries 
+		FROM borhandw.dwh_dim_entries 
 		WHERE modified_at BETWEEN DATE(30_days_ago_date_id) AND DATE(yesterday_date_id) + INTERVAL 1 DAY
 		AND entry_status_id = 3) deleted_entries
 	UNION
@@ -2897,7 +2897,7 @@ BEGIN
 			SUM(IF (created_at BETWEEN DATE(the_day_before_yesteray_date_id) AND DATE(the_day_before_yesteray_date_id) + INTERVAL 1 DAY, 1, 0)) the_day_before,
 			SUM(IF (created_at BETWEEN DATE(5_days_ago_date_id) AND DATE(yesterday_date_id) + INTERVAL 1 DAY, 1, 0))/5 last_5_days,
 			COUNT(*)/30 last_30_days
-			FROM kalturadw.dwh_dim_entries
+			FROM borhandw.dwh_dim_entries
 			WHERE created_at BETWEEN DATE(30_days_ago_date_id) AND DATE(yesterday_date_id) + INTERVAL 1 DAY
 			AND entry_media_source_id = 1
 			GROUP BY IF (entry_status_id = 2, 0, IF (entry_status_id IN (-2, -1, 0, 1, 4), 1, NULL))
@@ -2924,7 +2924,7 @@ BEGIN
 			SUM(IF (created_at BETWEEN DATE(the_day_before_yesteray_date_id) AND DATE(the_day_before_yesteray_date_id) + INTERVAL 1 DAY, 1, 0)) the_day_before,
 			SUM(IF (created_at BETWEEN DATE(5_days_ago_date_id) AND DATE(yesterday_date_id) + INTERVAL 1 DAY, 1, 0))/5 last_5_days,
 			COUNT(*)/30 last_30_days
-			FROM kalturadw.dwh_dim_entries
+			FROM borhandw.dwh_dim_entries
 			WHERE created_at BETWEEN DATE(30_days_ago_date_id) AND DATE(yesterday_date_id) + INTERVAL 1 DAY
 			AND entry_media_source_id = 2
 			GROUP BY IF (entry_status_id = 2, 0, IF (entry_status_id IN (-2, -1, 0, 1, 4), 1, NULL))
@@ -2951,7 +2951,7 @@ BEGIN
 			SUM(IF (created_at BETWEEN DATE(the_day_before_yesteray_date_id) AND DATE(the_day_before_yesteray_date_id) + INTERVAL 1 DAY, 1, 0)) the_day_before,
 			SUM(IF (created_at BETWEEN DATE(5_days_ago_date_id) AND DATE(yesterday_date_id) + INTERVAL 1 DAY, 1, 0))/5 last_5_days,
 			COUNT(*)/30 last_30_days
-			FROM kalturadw.dwh_dim_entries
+			FROM borhandw.dwh_dim_entries
 			WHERE created_at BETWEEN DATE(30_days_ago_date_id) AND DATE(yesterday_date_id) + INTERVAL 1 DAY
 			AND entry_media_source_id NOT IN (1, 2)
 			GROUP BY IF (entry_status_id = 2, 0, IF (entry_status_id IN (-2, -1, 0, 1, 4), 1, NULL))
@@ -2978,7 +2978,7 @@ BEGIN
 			SUM(IF (created_at BETWEEN DATE(the_day_before_yesteray_date_id) AND DATE(the_day_before_yesteray_date_id) + INTERVAL 1 DAY, 1, 0)) the_day_before,
 			SUM(IF (created_at BETWEEN DATE(5_days_ago_date_id) AND DATE(yesterday_date_id) + INTERVAL 1 DAY, 1, 0))/5 last_5_days,
 			COUNT(*)/30 last_30_days
-			FROM kalturadw.dwh_dim_entries
+			FROM borhandw.dwh_dim_entries
 			WHERE created_at BETWEEN DATE(30_days_ago_date_id) AND DATE(yesterday_date_id) + INTERVAL 1 DAY
 			GROUP BY IF (entry_status_id = 2, 0, IF (entry_status_id IN (-2, -1, 0, 1, 4), 1, NULL))
 		) e
@@ -2999,7 +2999,7 @@ BEGIN
 		SUM(IF (date_id BETWEEN 5_days_ago_date_id AND yesterday_date_id, count_storage, 0))/5 last_5_days,
 		SUM(count_storage)/30 last_30_days,
 		7 outer_order, 1 inner_order
-		FROM kalturadw.dwh_aggr_partner 
+		FROM borhandw.dwh_aggr_partner 
 		WHERE date_id BETWEEN 30_days_ago_date_id AND yesterday_date_id) STORAGE
 	
 	UNION 
@@ -3015,7 +3015,7 @@ BEGIN
 		SUM(IF (date_id BETWEEN the_day_before_yesteray_date_id AND the_day_before_yesteray_date_id, count_plays, 0)) the_day_before,
 		SUM(IF (date_id BETWEEN 5_days_ago_date_id AND yesterday_date_id, count_plays, 0))/5 last_5_days,
 		SUM(count_plays)/30 last_30_days, 1 sort_order
-		FROM kalturadw.dwh_aggr_events_entry
+		FROM borhandw.dwh_aggr_events_entry
 		WHERE date_id BETWEEN 30_days_ago_date_id AND yesterday_date_id
 		
 		UNION
@@ -3024,7 +3024,7 @@ BEGIN
 		SUM(IF (date_id BETWEEN the_day_before_yesteray_date_id AND the_day_before_yesteray_date_id, count_plays_25, 0)) the_day_before,
 		SUM(IF (date_id BETWEEN 5_days_ago_date_id AND yesterday_date_id, count_plays_25, 0))/5 last_5_days,
 		SUM(count_plays_25)/30 last_30_days, 2 sort_order
-		FROM kalturadw.dwh_aggr_events_entry
+		FROM borhandw.dwh_aggr_events_entry
 		WHERE date_id BETWEEN 30_days_ago_date_id AND yesterday_date_id
 		UNION 
 		SELECT '50%' classification,
@@ -3032,7 +3032,7 @@ BEGIN
 		SUM(IF (date_id BETWEEN the_day_before_yesteray_date_id AND the_day_before_yesteray_date_id, count_plays_50, 0)) the_day_before,
 		SUM(IF (date_id BETWEEN 5_days_ago_date_id AND yesterday_date_id, count_plays_50, 0))/5 last_5_days,
 		SUM(count_plays_50)/30 last_30_days, 3 sort_order
-		FROM kalturadw.dwh_aggr_events_entry
+		FROM borhandw.dwh_aggr_events_entry
 		WHERE date_id BETWEEN 30_days_ago_date_id AND yesterday_date_id
 	
 		UNION 
@@ -3042,7 +3042,7 @@ BEGIN
 		SUM(IF (date_id BETWEEN the_day_before_yesteray_date_id AND the_day_before_yesteray_date_id, count_plays_75, 0)) the_day_before,
 		SUM(IF (date_id BETWEEN 5_days_ago_date_id AND yesterday_date_id, count_plays_75, 0))/5 last_5_days,
 		SUM(count_plays_75)/30 last_30_days, 4 sort_order
-		FROM kalturadw.dwh_aggr_events_entry
+		FROM borhandw.dwh_aggr_events_entry
 		WHERE date_id BETWEEN 30_days_ago_date_id AND yesterday_date_id
 		UNION 
 		SELECT '100%' classification,
@@ -3050,7 +3050,7 @@ BEGIN
 		SUM(IF (date_id BETWEEN the_day_before_yesteray_date_id AND the_day_before_yesteray_date_id, count_plays_100, 0)) the_day_before,
 		SUM(IF (date_id BETWEEN 5_days_ago_date_id AND yesterday_date_id, count_plays_100, 0))/5 last_5_days,
 		SUM(count_plays_100)/30 last_30_days, 5 sort_order
-		FROM kalturadw.dwh_aggr_events_entry
+		FROM borhandw.dwh_aggr_events_entry
 		WHERE date_id BETWEEN 30_days_ago_date_id AND yesterday_date_id
 	) playback ) playback
 	
@@ -3068,7 +3068,7 @@ BEGIN
 			SUM(IF (created_at BETWEEN DATE(the_day_before_yesteray_date_id) AND DATE(the_day_before_yesteray_date_id) + INTERVAL 1 DAY, 1, 0)) the_day_before,
 			SUM(IF (created_at BETWEEN DATE(5_days_ago_date_id) AND DATE(yesterday_date_id) + INTERVAL 1 DAY, 1, 0))/5 last_5_days,
 			COUNT(*)/30 last_30_days
-		FROM kalturadw.dwh_dim_partners
+		FROM borhandw.dwh_dim_partners
 		WHERE created_at BETWEEN DATE(30_days_ago_date_id) AND DATE(yesterday_date_id) + INTERVAL 1 DAY
 		GROUP BY IF(partner_type_id NOT IN (1, 102, 101, 104, 106, 103), 2, partner_type_id)
 	) p
@@ -3076,7 +3076,7 @@ BEGIN
 	(
 		SELECT partner_type_id, 
 		CASE partner_type_name
-			WHEN 'KMC_SIGNUP' THEN 'Kaltura'
+			WHEN 'BMC_SIGNUP' THEN 'Borhan'
 			WHEN 'DRUPAL' THEN 'Drupal'
 			WHEN 'WORDPRESS' THEN 'WordPress'
 			WHEN 'MODDLE' THEN 'Moodle'
@@ -3085,7 +3085,7 @@ BEGIN
 			ELSE 'Other' 
 		END caption,
 		CASE partner_type_name
-			WHEN 'KMC_SIGNUP' THEN 1
+			WHEN 'BMC_SIGNUP' THEN 1
 			WHEN 'DRUPAL' THEN 2
 			WHEN 'WORDPRESS' THEN 3
 			WHEN 'MOODLE' THEN 4
@@ -3094,7 +3094,7 @@ BEGIN
 			ELSE 7 
 		END sort_order, 
 		partner_type_name
-		FROM kalturadw.dwh_dim_partner_type WHERE partner_type_id NOT IN (0,-1, 105, 100)
+		FROM borhandw.dwh_dim_partner_type WHERE partner_type_id NOT IN (0,-1, 105, 100)
 	) t
 	ON (p.partner_type_id = t.partner_type_id)) Registrations
 	
@@ -3114,13 +3114,13 @@ BEGIN
 			SUM(IF (activity_date_id BETWEEN (DATE(the_day_before_yesteray_date_id) - INTERVAL 3 DAY)*1 AND (DATE(the_day_before_yesteray_date_id) - INTERVAL 3 DAY)*1 , amount, 0))/1024 the_day_before,
 			SUM(IF (activity_date_id BETWEEN (DATE(5_days_ago_date_id) - INTERVAL 3 DAY)*1 AND (DATE(yesterday_date_id) - INTERVAL 3 DAY)*1 , amount, 0))/5/1024 last_5_days,
 			SUM(amount)/30/1024 last_30_days
-			FROM kalturadw.dwh_fact_partner_activities 
+			FROM borhandw.dwh_fact_partner_activities 
 			WHERE partner_activity_id = 1 AND activity_date_id BETWEEN (DATE(30_days_ago_date_id) - INTERVAL 3 DAY)*1 AND (DATE(yesterday_date_id) - INTERVAL 3 DAY)*1 
 			GROUP BY partner_sub_activity_id
 		) bandwidth 
 		RIGHT OUTER JOIN
 		(
-			SELECT 1 id, 'www.kaltura.com' caption, 4 sort_order
+			SELECT 1 id, 'www.borhan.com' caption, 4 sort_order
 			UNION 
 			SELECT 2 id, 'Limelight' caption, 2 sort_order
 			UNION 
@@ -3146,7 +3146,7 @@ BEGIN
 		CONCAT(diff, '%') AS 'Diff',
 		FORMAT(last_5_days_avg, 2) AS 'Last 5 Days (AVG)', 
 		FORMAT(last_30_days_avg, 2) AS 'Last 30 Days (AVG)'
-		FROM kalturadw.dwh_daily_usage_reports
+		FROM borhandw.dwh_daily_usage_reports
 		WHERE DATE = IF (measure = 'Bandwidth (MB)',DATE(p_date_val) - INTERVAL 3 DAY, DATE(p_date_val))
 		ORDER BY outer_order, inner_order;
 END */;;
@@ -3164,7 +3164,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `kalturadw`.`get_data_for_operational`(p_sync_type VARCHAR(55))
+/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `borhandw`.`get_data_for_operational`(p_sync_type VARCHAR(55))
 BEGIN
 	DECLARE v_execution_start_time DATETIME;
 	
@@ -3179,14 +3179,14 @@ BEGIN
 	
 	SET v_execution_start_time = NOW();
    
-    UPDATE kalturadw_ds.parameters	
+    UPDATE borhandw_ds.parameters	
     SET date_value = v_execution_start_time 
     WHERE id = v_execution_start_time_parameter_id;
 
     IF p_sync_type='entry' THEN 
     
         SELECT e.entry_id, e.plays, e.views
-        FROM dwh_entry_plays_views e, kalturadw_ds.parameters p
+        FROM dwh_entry_plays_views e, borhandw_ds.parameters p
         WHERE e.updated_at > p.date_value AND p.id = 4;
     
     ELSE
@@ -3195,12 +3195,12 @@ BEGIN
             bridge_entity, bridge_table, last_execution_parameter_id, execution_start_time_parameter_id
         INTO	v_group_column, v_entity_table, v_aggregation_phrase, v_aggregation_table, 
             v_bridge_entity, v_bridge_table, v_last_execution_parameter_id, v_execution_start_time_parameter_id
-        FROM kalturadw_ds.operational_syncs WHERE operational_sync_name = p_sync_type;
+        FROM borhandw_ds.operational_syncs WHERE operational_sync_name = p_sync_type;
 
-        UPDATE kalturadw_ds.parameters	SET date_value = v_execution_start_time WHERE id = v_execution_start_time_parameter_id;
+        UPDATE borhandw_ds.parameters	SET date_value = v_execution_start_time WHERE id = v_execution_start_time_parameter_id;
 
         SET @s = CONCAT('SELECT dim.', v_group_column,', ', v_aggregation_phrase, 
-                ' FROM ', v_aggregation_table ,' aggr, ', IF (v_bridge_table IS NULL, '', CONCAT(v_bridge_table, ' bridge, ')), v_entity_table, ' dim, kalturadw_ds.parameters p',
+                ' FROM ', v_aggregation_table ,' aggr, ', IF (v_bridge_table IS NULL, '', CONCAT(v_bridge_table, ' bridge, ')), v_entity_table, ' dim, borhandw_ds.parameters p',
                 ' WHERE aggr.', IF(v_bridge_entity IS NULL, v_group_column, 
                             CONCAT(v_bridge_entity, ' = bridge.',v_bridge_entity, ' AND bridge.', v_group_column)), 
                 ' = dim.', v_group_column, ' AND dim.operational_measures_updated_at > p.date_value AND p.id = ', v_last_execution_parameter_id,
@@ -3226,16 +3226,16 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `kalturadw`.`mark_operational_sync_as_done`(p_sync_type VARCHAR(55))
+/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `borhandw`.`mark_operational_sync_as_done`(p_sync_type VARCHAR(55))
 BEGIN
 	DECLARE v_last_execution_parameter_id INT;
 	DECLARE v_execution_start_time_parameter_id INT;
 	
 	SELECT last_execution_parameter_id, execution_start_time_parameter_id
 	INTO	v_last_execution_parameter_id, v_execution_start_time_parameter_id
-	FROM kalturadw_ds.operational_syncs WHERE operational_sync_name = p_sync_type;
+	FROM borhandw_ds.operational_syncs WHERE operational_sync_name = p_sync_type;
 
-	UPDATE kalturadw_ds.parameters main, kalturadw_ds.parameters start_time	
+	UPDATE borhandw_ds.parameters main, borhandw_ds.parameters start_time	
 	SET main.date_value = start_time.date_value
 	WHERE main.id = v_last_execution_parameter_id AND start_time.id = v_execution_start_time_parameter_id;
 END */;;
@@ -3253,7 +3253,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `kalturadw`.`move_innodb_to_archive`()
+/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `borhandw`.`move_innodb_to_archive`()
 BEGIN
 	DECLARE v_table_name VARCHAR(256);
 	DECLARE v_archive_name VARCHAR(256);	
@@ -3278,7 +3278,7 @@ BEGIN
 		partition_expression column_name,
 		MAX(IF(CONCAT(r.table_name, '_archive') = p.table_name,1,0)) is_archived, 
 		MAX(IF(r.table_name=p.table_name,1,0)) is_in_fact
-	FROM information_schema.PARTITIONS p, kalturadw_ds.retention_policy r
+	FROM information_schema.PARTITIONS p, borhandw_ds.retention_policy r
 	WHERE LENGTH(partition_description) = 8 
 	AND DATE(partition_description)*1 IS NOT NULL
 	AND (p.table_name = r.table_name OR CONCAT(r.table_name, '_archive') = p.table_name)
@@ -3303,7 +3303,7 @@ BEGIN
 		
 		SELECT if(count(*)=0,0,v_is_archived), if(count(*)=0, 0,v_is_in_fact)
 		INTO v_drop_from_archive, v_drop_from_fact
-		FROM kalturadw_ds.retention_policy
+		FROM borhandw_ds.retention_policy
 		WHERE DATE(NOW() - INTERVAL archive_delete_days_back DAY)*1 >= v_partition_date_id
 		AND table_name = v_table_name;
 
@@ -3318,7 +3318,7 @@ BEGIN
 		
 		SELECT if(count(*)=0,0, v_is_in_fact)
 		INTO v_migrate_from_fact
-		FROM kalturadw_ds.retention_policy
+		FROM borhandw_ds.retention_policy
 		WHERE DATE(NOW() - INTERVAL archive_start_days_back DAY)*1 >= v_partition_date_id
 		AND table_name = v_table_name
 		AND v_is_in_fact > 0;
@@ -3347,7 +3347,7 @@ BEGIN
 			EXECUTE stmt;
 			DEALLOCATE PREPARE stmt;
 			
-			UPDATE kalturadw_ds.retention_policy
+			UPDATE borhandw_ds.retention_policy
 			SET archive_last_partition = DATE(v_partition_date_id)
 			WHERE table_name = v_table_name;
 
@@ -3380,12 +3380,12 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `kalturadw`.`populate_time_dim`(start_date datetime, end_date datetime)
+/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `borhandw`.`populate_time_dim`(start_date datetime, end_date datetime)
     DETERMINISTIC
 BEGIN    
 
     WHILE start_date <= end_date DO
-	INSERT INTO kalturadw.dwh_dim_time 
+	INSERT INTO borhandw.dwh_dim_time 
 	(day_id, date_field, datetime_field, day_eng_name, YEAR, month_str, month_id, month_eng_name, MONTH, day_of_year, day_of_month, 
 	day_of_week, week_id, week_of_year, week_eng_name, day_of_week_desc, day_of_week_short_desc, month_desc, month_short_desc, 
 	QUARTER, quarter_id, quarter_eng_name)
@@ -3412,7 +3412,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `kalturadw`.`post_aggregation_entry`(date_val DATE, p_hour_id INT(11))
+/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `borhandw`.`post_aggregation_entry`(date_val DATE, p_hour_id INT(11))
 BEGIN
 	CALL add_plays_views(date_val*1, p_hour_id);
 END */;;
@@ -3430,7 +3430,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `kalturadw`.`post_aggregation_live_entry`(date_val DATE, p_hour_id INT(11))
+/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `borhandw`.`post_aggregation_live_entry`(date_val DATE, p_hour_id INT(11))
 BEGIN
         CALL add_live_plays_views(date_val*1, p_hour_id);
 
@@ -3449,12 +3449,12 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `kalturadw`.`post_aggregation_partner`(date_val DATE, p_hour_id INT(11))
+/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `borhandw`.`post_aggregation_partner`(date_val DATE, p_hour_id INT(11))
 BEGIN
 	DECLARE v_aggr_table VARCHAR(100);
 	
 	SELECT aggr_table INTO v_aggr_table
-	FROM kalturadw_ds.aggr_name_resolver
+	FROM borhandw_ds.aggr_name_resolver
 	WHERE aggr_name = 'partner';
 	
 	SET @s = CONCAT('INSERT INTO ',v_aggr_table,'
@@ -3568,11 +3568,11 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `kalturadw`.`post_aggregation_widget`(date_val DATE, p_hour_id INT(11))
+/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `borhandw`.`post_aggregation_widget`(date_val DATE, p_hour_id INT(11))
 BEGIN
 	DECLARE v_aggr_table VARCHAR(100);
     SELECT aggr_table INTO  v_aggr_table
-	FROM kalturadw_ds.aggr_name_resolver
+	FROM borhandw_ds.aggr_name_resolver
 	WHERE aggr_name = 'widget';
 	
 	SET @s = CONCAT('
@@ -3608,7 +3608,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `kalturadw`.`pre_aggregation_entry`(date_val DATE, p_hour_id INT(11))
+/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `borhandw`.`pre_aggregation_entry`(date_val DATE, p_hour_id INT(11))
 BEGIN
 	CALL remove_plays_views(date_val*1, p_hour_id);
 END */;;
@@ -3626,7 +3626,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `kalturadw`.`pre_aggregation_live_entry`(date_val DATE, p_hour_id INT(11))
+/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `borhandw`.`pre_aggregation_live_entry`(date_val DATE, p_hour_id INT(11))
 BEGIN
         CALL remove_live_plays_views(date_val*1, p_hour_id);
 END */;;
@@ -3644,14 +3644,14 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `kalturadw`.`remove_live_plays_views`(p_date_id INT, p_hour_id INT)
+/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `borhandw`.`remove_live_plays_views`(p_date_id INT, p_hour_id INT)
 BEGIN
   DECLARE v_done INT DEFAULT FALSE;
   DECLARE v_entry_id VARCHAR(20);
   DECLARE v_plays INT;
   DECLARE v_views INT;
 
-  DECLARE entries CURSOR FOR SELECT entry_id, count_plays, count_loads FROM kalturadw.dwh_hourly_events_live_entry WHERE date_id = p_date_id AND hour_id = p_hour_id;
+  DECLARE entries CURSOR FOR SELECT entry_id, count_plays, count_loads FROM borhandw.dwh_hourly_events_live_entry WHERE date_id = p_date_id AND hour_id = p_hour_id;
 
   DECLARE CONTINUE HANDLER FOR NOT FOUND SET v_done = TRUE;
 
@@ -3694,7 +3694,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `kalturadw`.`remove_plays_views`(p_date_id INT, p_hour_id INT)
+/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `borhandw`.`remove_plays_views`(p_date_id INT, p_hour_id INT)
 BEGIN
   DECLARE v_done INT DEFAULT FALSE;
   DECLARE v_entry_id VARCHAR(20);

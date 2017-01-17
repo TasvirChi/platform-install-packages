@@ -5,9 +5,9 @@ if (count($argv)<4){
 }
 require_once('create_session.php');
 $admin_partner_id = -2;
-$config = new KalturaConfiguration($admin_partner_id);
+$config = new BorhanConfiguration($admin_partner_id);
 $config->serviceUrl = $argv[4];
-$client = new KalturaClient($config);
+$client = new BorhanClient($config);
 $expiry = null;
 $privileges = null;
 $email=$argv[2];
@@ -15,11 +15,11 @@ $name='Linux Rules';
 $cmsPassword=$argv[3];
 $secret = $argv[1];
 $userId = null;
-$type = KalturaSessionType::ADMIN;
+$type = BorhanSessionType::ADMIN;
 $ks = $client->session->start($secret, $userId, $type, $admin_partner_id, $expiry, $privileges);
 $client->setKs($ks);
-$partner = new KalturaPartner();
-$partner->website="http://www.kaltura.com";
+$partner = new BorhanPartner();
+$partner->website="http://www.borhan.com";
 $partner->adminName=$name;
 $partner->name=$name;
 $partner->description=" "; //cannot be empty or null

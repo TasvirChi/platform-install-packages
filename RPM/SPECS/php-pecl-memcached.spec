@@ -16,7 +16,7 @@ BuildRoot:    %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 # 5.2.10 required to HAVE_JSON enabled
 BuildRequires: php-devel >= 5.3.0, php-pear
-BuildRequires: kaltura-libmemcached-devel >= 1.0 , zlib-devel
+BuildRequires: borhan-libmemcached-devel >= 1.0 , zlib-devel
 
 Requires(post): %{__pecl}
 Requires(postun): %{__pecl}
@@ -47,7 +47,7 @@ cd %{pecl_name}-%{version}
 %build
 cd %{pecl_name}-%{version}
 phpize
-%configure --with-libmemcached-dir=/opt/kaltura
+%configure --with-libmemcached-dir=/opt/borhan
 %{__make} %{?_smp_mflags}
 
 
@@ -99,12 +99,12 @@ fi
 
 
 %changelog
-* Mon Dec 25 2014 Jess Portnoy <jess.portnoy@kaltura.com> - 2.2.0-1
+* Mon Dec 25 2014 Jess Portnoy <jess.portnoy@borhan.com> - 2.2.0-1
 - Version bounce.
-- Use kaltura-libmemcached instead of libmemcached.
+- Use borhan-libmemcached instead of libmemcached.
 
-* Fri Jan 3 2014 Jess Portnoy <jess.portnoy@kaltura.com> - 2.1.0-1
-- First build for Kaltura CE. 
+* Fri Jan 3 2014 Jess Portnoy <jess.portnoy@borhan.com> - 2.1.0-1
+- First build for Borhan CE. 
 
 * Sun Jul 12 2009 Remi Collet <fedora@famillecollet.com> - 1.0.0-1
 - Update to 1.0.0 (First stable release)

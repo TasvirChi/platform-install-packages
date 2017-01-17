@@ -1,4 +1,4 @@
-USE `kalturadw`;
+USE `borhandw`;
 
 DROP TABLE IF EXISTS `dwh_dim_entries_new`;
 
@@ -89,7 +89,7 @@ DELIMITER $$
 
 DELIMITER ;
 
-INSERT INTO `kalturadw`.`dwh_dim_entries_new` 
+INSERT INTO `borhandw`.`dwh_dim_entries_new` 
 	(`entry_id`, 
 	`kshow_id`, 
 	`kuser_id`, 
@@ -238,8 +238,8 @@ SELECT distinct `entry_id`,
 	`end_date_id`, 
 	`end_hour_id` from dwh_dim_entries;
 
-DROP TABLE kalturadw.dwh_dim_entries;
-RENAME TABLE kalturadw.dwh_dim_entries_new TO kalturadw.dwh_dim_entries;
+DROP TABLE borhandw.dwh_dim_entries;
+RENAME TABLE borhandw.dwh_dim_entries_new TO borhandw.dwh_dim_entries;
 
 DELIMITER $$
 

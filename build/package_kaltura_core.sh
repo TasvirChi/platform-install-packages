@@ -1,15 +1,15 @@
 #!/bin/bash -e 
 #===============================================================================
-#          FILE: package_kaltura_core.sh
-#         USAGE: ./package_kaltura_core.sh 
+#          FILE: package_borhan_core.sh
+#         USAGE: ./package_borhan_core.sh 
 #   DESCRIPTION: 
 #       OPTIONS: ---
 # 	LICENSE: AGPLv3+
 #  REQUIREMENTS: ---
 #          BUGS: ---
 #         NOTES: ---
-#        AUTHOR: Jess Portnoy (), <jess.portnoy@kaltura.com>
-#  ORGANIZATION: Kaltura, inc.
+#        AUTHOR: Jess Portnoy (), <jess.portnoy@borhan.com>
+#  ORGANIZATION: Borhan, inc.
 #       CREATED: 01/10/14 08:46:43 EST
 #      REVISION:  ---
 #===============================================================================
@@ -25,9 +25,9 @@ if [ ! -x "`which wget 2>/dev/null`" ];then
 	echo "Need to install wget."
 	exit 2
 fi
-wget $KALTURA_CORE_URI -O$RPM_SOURCES_DIR/$KALTURA_SERVER_VERSION.zip
-echo "Packaged into $RPM_SOURCES_DIR/$KALTURA_SERVER_VERSION.zip"
-`dirname $0`/package_kaltura_clients-generator.sh
+wget $BORHAN_CORE_URI -O$RPM_SOURCES_DIR/$BORHAN_SERVER_VERSION.zip
+echo "Packaged into $RPM_SOURCES_DIR/$BORHAN_SERVER_VERSION.zip"
+`dirname $0`/package_borhan_clients-generator.sh
 if [ -x "`which rpmbuild 2>/dev/null`" ];then
-	rpmbuild -bb $RPM_SPECS_DIR/kaltura-base.spec
+	rpmbuild -bb $RPM_SPECS_DIR/borhan-base.spec
 fi

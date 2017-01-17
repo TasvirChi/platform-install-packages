@@ -1,6 +1,6 @@
 <?php
 
-define ('CONFIG_DIR','/opt/kaltura/app/alpha/config/');
+define ('CONFIG_DIR','/opt/borhan/app/alpha/config/');
 $kConfLocalPath = CONFIG_DIR.'/kConfLocal.php';
 $kConfPath = CONFIG_DIR.'/kConf.php';
 require_once $kConfLocalPath;

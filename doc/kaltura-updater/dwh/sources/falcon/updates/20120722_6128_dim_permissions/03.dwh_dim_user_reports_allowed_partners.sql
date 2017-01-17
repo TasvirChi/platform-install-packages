@@ -1,6 +1,6 @@
 DELIMITER $$
 
-USE `kalturadw`$$
+USE `borhandw`$$
 
 DROP VIEW IF EXISTS `dwh_dim_user_reports_allowed_partners`$$
 

@@ -1,18 +1,18 @@
 
-%define base_prefix /opt/kaltura
+%define base_prefix /opt/borhan
 Summary: Tool for HLS segmentation 
-Name: kaltura-segmenter
+Name: borhan-segmenter
 Version: 1.0
 Release: 2
 License: GPLv2
 Group: Applications/Multimedia
 
-Packager: Jess Portnoy <jess.portnoy@kaltura.com> 
-Vendor: Kaltura, Inc.
+Packager: Jess Portnoy <jess.portnoy@borhan.com> 
+Vendor: Borhan, Inc.
 
 Source: %{name}-%{version}.tar.gz
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
-BuildRequires:kaltura-ffmpeg-aux-devel = 0.6
+BuildRequires:borhan-ffmpeg-aux-devel = 0.6
 
 %description
 Tool for HLS segmentation 
@@ -41,8 +41,8 @@ cp %{base_prefix}/ffmpeg-0.6/lib/libavformat.so.52 %{base_prefix}/ffmpeg-0.6/lib
 %{base_prefix}/lib/libavutil.so.50
 
 %changelog
-* Thu Oct 15 2014 Jess Portnoy <jess.portnoy@kaltura.com> - 1.0-2
-- Since kaltura-ffmpeg-aux is now of v2.1.3 and segmenter need 0.6, package the needed libs as part of this RPM.
+* Thu Oct 15 2014 Jess Portnoy <jess.portnoy@borhan.com> - 1.0-2
+- Since borhan-ffmpeg-aux is now of v2.1.3 and segmenter need 0.6, package the needed libs as part of this RPM.
 
-* Wed Jan 8 2014 Jess Portnoy <jess.portnoy@kaltura.com> - 1.0-1 
+* Wed Jan 8 2014 Jess Portnoy <jess.portnoy@borhan.com> - 1.0-1 
 - Initial build.

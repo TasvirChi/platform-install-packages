@@ -7,7 +7,7 @@ SOURCE_PACKAGING_DIR ?= $(shell egrep '^SOURCE_PACKAGING_DIR=' $(RC_FILE) | cut 
 include ../includes/build-revision.mk
 archive := $(SOURCE_PACKAGING_DIR)/ffmpeg-$(FFMPEG_VERSION).tar.bz2 
 tree := ffmpeg-$(FFMPEG_VERSION)
-BASE_PREFIX=opt/kaltura/$(tree)
+BASE_PREFIX=opt/borhan/$(tree)
 # These are used for cross-compiling and for saving the configure script
 # from having to guess our platform (since we know it already)
 DEB_HOST_GNU_TYPE   ?= $(shell dpkg-architecture -qDEB_HOST_GNU_TYPE)
@@ -33,8 +33,8 @@ config.status: $(tree)
 	    --prefix="$(BASE_PREFIX)" \
 	    --libdir="$(BASE_PREFIX)/lib" \
 	    --shlibdir="$(BASE_PREFIX)/lib" \
-	    --extra-cflags=" -fPIC -I/opt/kaltura/include" \
-	    --extra-ldflags="-L/opt/kaltura/lib" \
+	    --extra-cflags=" -fPIC -I/opt/borhan/include" \
+	    --extra-ldflags="-L/opt/borhan/lib" \
 	    --disable-devices \
 	    --enable-bzlib \
 	    --enable-libgsm \
@@ -105,8 +105,8 @@ binary-indep:;
 
 # Build architecture-dependent files here.
 binary-arch: build install
-	mkdir -p $(BASE_PREFIX) debian/kaltura-ffmpeg-aux/opt/kaltura/bin/ 
-	dh_link $(BASE_PREFIX)/bin/ffmpeg opt/kaltura/bin/ffmpeg-aux
+	mkdir -p $(BASE_PREFIX) debian/borhan-ffmpeg-aux/opt/borhan/bin/ 
+	dh_link $(BASE_PREFIX)/bin/ffmpeg opt/borhan/bin/ffmpeg-aux
 	dh_testdir
 	dh_testroot
 	#dh_installchangelogs ChangeLog

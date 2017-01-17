@@ -17,7 +17,7 @@ Ubuntu build ENV: You must also make sure the multiverse repo is enabled.
 
 GIT repo
 ========
-$ git clone https://github.com/kaltura/platform-install-packages
+$ git clone https://github.com/borhan/platform-install-packages
 
 dir structure
 ========================
@@ -53,18 +53,18 @@ Utility scripts
 ===============
 under build/deb-specific:
 
-* bounce_core_ver.sh - utiliy script to bounce core version for kaltura-base, kaltura-front and kaltura-batch. Should be run whenever a new branch is created
+* bounce_core_ver.sh - utiliy script to bounce core version for borhan-base, borhan-front and borhan-batch. Should be run whenever a new branch is created
 
 Deployment instructions
 ================================
 Each deployment has instructions here:
-https://kaltura.atlassian.net/wiki/display/QAC/QA.Core+Production+Deployments
+https://borhan.atlassian.net/wiki/display/QAC/QA.Core+Production+Deployments
 That includes the new versions for updated components as well as PHP/SQL scripts to run.
 The versions should be updated in platform-install-packages/build/sources.rc
 
 Step by step release process
 ============================
-1. read instructions at: https://kaltura.atlassian.net/wiki/display/QAC/QA.Core+Production+Deployments
+1. read instructions at: https://borhan.atlassian.net/wiki/display/QAC/QA.Core+Production+Deployments
 
 2. update versions in platform-install-packages/build/sources.rc.
 
@@ -72,20 +72,20 @@ Step by step release process
 This will update the Core version in the various relevant spec files. $DIST is the release codename, for example, 10.n.n codename is 'jupiter'.
 
 4. update specs for additional components according to versions in the deployment doc, i.e:
-if KMC is of a new version then update deb/kaltura-kmc/debian/changelog, for kdp3, update deb/kaltura-kdp3/debian/changelog, etc
+if BMC is of a new version then update deb/borhan-bmc/debian/changelog, for bdp3, update deb/borhan-bdp3/debian/changelog, etc
 
 5. Add changelog entries according to what is stated in the deployment doc to each component.
 
-6. for the modified components, run the respective package_*.sh script, for instance, if KMC was updated run:
-platform-install-packages/build/package_kaltura_kmc.sh
-for KDP3 run:
-platform-install-packages/build/package_kaltura_kdp3.sh
+6. for the modified components, run the respective package_*.sh script, for instance, if BMC was updated run:
+platform-install-packages/build/package_borhan_bmc.sh
+for BDP3 run:
+platform-install-packages/build/package_borhan_bdp3.sh
 and so on.
 If a new package is introduces, make sure to create a wrapper script for it as well. 
 
 7. build the deb:
 ```
-cd kaltura-$PACKAGE_NAME && dpkg-buildpackage -b -uc
+cd borhan-$PACKAGE_NAME && dpkg-buildpackage -b -uc
 ```
 if the source retrieval succeeded but build failed, you can simply correct what needs correction and then run:
 ```
@@ -96,4 +96,4 @@ once more, no need to repackage for that.
 8. once all debs are built, use: 
 $ cd /root/repo/path && sudo reprepro --basedir=. includedeb jupiter ~jess/sources/platform-install-packages/deb/path/to/deb
 
-9. run sanity on the test machine using kaltura-sanity.sh and make sure all passes successfully.
+9. run sanity on the test machine using borhan-sanity.sh and make sure all passes successfully.

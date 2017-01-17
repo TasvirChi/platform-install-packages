@@ -8,8 +8,8 @@
 #  REQUIREMENTS: ---
 #          BUGS: ---
 #         NOTES: ---
-#        AUTHOR: Tan-Tan, <Jonathan.Kanarek@kaltura.com>
-#  ORGANIZATION: Kaltura, inc.
+#        AUTHOR: Tan-Tan, <Jonathan.Kanarek@borhan.com>
+#  ORGANIZATION: Borhan, inc.
 #       CREATED: 12/24/14
 #      REVISION:  ---
 #===============================================================================

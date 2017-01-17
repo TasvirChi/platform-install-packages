@@ -1,21 +1,21 @@
 /*6140*/
-USE kalturadw_ds;
+USE borhandw_ds;
 
-DROP TABLE IF EXISTS kalturadw_ds.fact_tables;
-CREATE TABLE kalturadw_ds.fact_tables
+DROP TABLE IF EXISTS borhandw_ds.fact_tables;
+CREATE TABLE borhandw_ds.fact_tables
 	(fact_table_id INT NOT NULL,
 	fact_table_name VARCHAR(50),
 	UNIQUE KEY (fact_table_id));
 	
-INSERT INTO kalturadw_ds.fact_tables VALUES (1,'kalturadw.dwh_fact_events'), 
-				(2,'kalturadw.dwh_fact_bandwidth_usage'),
-				(3,'kalturadw.dwh_fact_fms_session_events'),
-				(4,'kalturadw.dwh_fact_api_calls'),
-				(5,'kalturadw.dwh_fact_incomplete_api_calls'),
-				(6,'kalturadw.dwh_fact_errors');
+INSERT INTO borhandw_ds.fact_tables VALUES (1,'borhandw.dwh_fact_events'), 
+				(2,'borhandw.dwh_fact_bandwidth_usage'),
+				(3,'borhandw.dwh_fact_fms_session_events'),
+				(4,'borhandw.dwh_fact_api_calls'),
+				(5,'borhandw.dwh_fact_incomplete_api_calls'),
+				(6,'borhandw.dwh_fact_errors');
 	
-DROP TABLE IF EXISTS kalturadw_ds.fact_stats;	
-CREATE TABLE kalturadw_ds.fact_stats
+DROP TABLE IF EXISTS borhandw_ds.fact_stats;	
+CREATE TABLE borhandw_ds.fact_stats
 	(fact_table_id int not null,
 	date_id int not null,
 	hour_id int not null,
@@ -23,15 +23,15 @@ CREATE TABLE kalturadw_ds.fact_stats
 	uncalculated_records int not null default 0,
 	unique key (fact_table_id, date_id, hour_id));
 	
-ALTER TABLE kalturadw_ds.staging_areas
+ALTER TABLE borhandw_ds.staging_areas
 		ADD COLUMN target_table_id INT AFTER target_table,
 		ADD COLUMN reaggr_percent_trigger INT NOT NULL DEFAULT 0;
 
-UPDATE kalturadw_ds.staging_areas s, kalturadw_ds.fact_tables f
+UPDATE borhandw_ds.staging_areas s, borhandw_ds.fact_tables f
 SET s.target_table_id = f.fact_table_id
 WHERE s.target_table = f.fact_table_name;
 
-ALTER TABLE kalturadw_ds.staging_areas
+ALTER TABLE borhandw_ds.staging_areas
 	CHANGE COLUMN target_table_id target_table_id INT NOT NULL,
 	DROP COLUMN target_table;
 	
@@ -39,7 +39,7 @@ ALTER TABLE kalturadw_ds.staging_areas
 	
 DELIMITER $$
 
-USE `kalturadw_ds`$$
+USE `borhandw_ds`$$
 
 DROP PROCEDURE IF EXISTS `transfer_cycle_partition`$$
 
@@ -81,7 +81,7 @@ BEGIN
 				'IFNULL(total_records, 0) calculated_records from ',
 				'(SELECT ', aggr_date, ' date_id, ', aggr_hour, ' hour_id, count(*) new_rows FROM ',src_table,
 				' WHERE ', partition_field,'  = ',p_cycle_id, ' group by date_id, hour_id) ds ',
-				'LEFT OUTER JOIN kalturadw_ds.fact_stats fs on ds.date_id = fs.date_id AND ds.hour_id = fs.hour_id
+				'LEFT OUTER JOIN borhandw_ds.fact_stats fs on ds.date_id = fs.date_id AND ds.hour_id = fs.hour_id
 				AND fs.fact_table_id = ', tgt_table_id);
 		PREPARE stmt FROM @s;
 		EXECUTE stmt;
@@ -89,9 +89,9 @@ BEGIN
 		
 		
 		IF ((LENGTH(AGGR_DATE) > 0) && (LENGTH(aggr_names) > 0)) THEN
-			SET @s = CONCAT('INSERT INTO kalturadw.aggr_managment(aggr_name, date_id, hour_id, data_insert_time)
+			SET @s = CONCAT('INSERT INTO borhandw.aggr_managment(aggr_name, date_id, hour_id, data_insert_time)
 					SELECT aggr_name, date_id, hour_id, now() 
-					FROM kalturadw_ds.aggr_name_resolver a, tmp_stats ts
+					FROM borhandw_ds.aggr_name_resolver a, tmp_stats ts
 					WHERE 	aggr_name in ', aggr_names, '
 					AND date_id >= date(\'',reset_aggr_min_date,'\')
 					AND if(calculated_records=0,100, uncalculated_records*100/(calculated_records+uncalculated_records)) > ', v_reaggr_percent_trigger, '
@@ -115,7 +115,7 @@ BEGIN
 		EXECUTE stmt;
 		DEALLOCATE PREPARE stmt;
 			
-		INSERT INTO kalturadw_ds.fact_stats (fact_table_id, date_id, hour_id, total_records, uncalculated_records)
+		INSERT INTO borhandw_ds.fact_stats (fact_table_id, date_id, hour_id, total_records, uncalculated_records)
 			SELECT tgt_table_id, date_id, hour_id,
 				IF(calculated_records=0 OR uncalculated_records*100/(calculated_records+uncalculated_records) > v_reaggr_percent_trigger,
 					calculated_records + uncalculated_records, calculated_records),
@@ -144,7 +144,7 @@ DELIMITER ;
 /* 6141 */
 DELIMITER $$
 
-USE `kalturadw`$$
+USE `borhandw`$$
 
 DROP PROCEDURE IF EXISTS `calc_partner_billing_storage_per_category`$$
 
@@ -163,10 +163,10 @@ BEGIN
     SELECT  IF(ec.updated_at IS NULL OR c.category_name IS NULL,'-', c.category_name) category_name,  
         entry_size_date_id, 
         SUM(entry_additional_size_kb)/1024 aggr_storage_mb
-    FROM    kalturadw.dwh_fact_entries_sizes es
-        LEFT OUTER JOIN kalturadw.dwh_dim_entry_categories ec ON (ec.entry_id = es.entry_id AND ec.partner_id = es.partner_id)     
-        LEFT OUTER JOIN kalturadw.dwh_dim_categories c ON (ec.category_id = c.category_id)
-        LEFT OUTER JOIN kalturadw.dwh_dim_entries e ON (ec.partner_id = e.partner_id AND ec.entry_id = e.entry_id AND ec.updated_at = e.updated_at)
+    FROM    borhandw.dwh_fact_entries_sizes es
+        LEFT OUTER JOIN borhandw.dwh_dim_entry_categories ec ON (ec.entry_id = es.entry_id AND ec.partner_id = es.partner_id)     
+        LEFT OUTER JOIN borhandw.dwh_dim_categories c ON (ec.category_id = c.category_id)
+        LEFT OUTER JOIN borhandw.dwh_dim_entries e ON (ec.partner_id = e.partner_id AND ec.entry_id = e.entry_id AND ec.updated_at = e.updated_at)
     WHERE es.partner_id = p_partner_id
     AND es.entry_size_date_id <= p_end_date_id    
     GROUP BY  IF(ec.updated_at IS NULL OR c.category_name IS NULL,'-', c.category_name) ,  es.entry_size_date_id;
@@ -196,9 +196,9 @@ END$$
 DELIMITER ;
 
 /* 6142 */
-INSERT INTO kalturadw_ds.parameters (id, parameter_name, int_value, date_value) VALUES (10, 'convert_job_fact_last_update', 0, NOW());
+INSERT INTO borhandw_ds.parameters (id, parameter_name, int_value, date_value) VALUES (10, 'convert_job_fact_last_update', 0, NOW());
 
-use `kalturadw_bisources`;
+use `borhandw_bisources`;
 
 DROP TABLE IF EXISTS `bisources_batch_job_exec_status`;
 
@@ -233,11 +233,11 @@ CREATE TABLE `bisources_upload_token_status` (
 INSERT INTO `bisources_upload_token_status`(`upload_token_status_id`,`upload_token_status_name`) 		
 VALUES 	(0,'PENDING'),(1,'PARTIAL_UPLOAD'),(2,'FULL_UPLOAD'),(3,'CLOSED'),(4,'TIMED_OUT'),(5,'DELETED');
 			
-INSERT INTO `kalturadw`.`bisources_tables` (`table_name`, `to_update`) VALUES('batch_job_object_type',1);
-INSERT INTO `kalturadw`.`bisources_tables` (`table_name`, `to_update`) VALUES('batch_job_exec_status',1);
-INSERT INTO `kalturadw`.`bisources_tables` (`table_name`, `to_update`) VALUES('upload_token_status',1);
+INSERT INTO `borhandw`.`bisources_tables` (`table_name`, `to_update`) VALUES('batch_job_object_type',1);
+INSERT INTO `borhandw`.`bisources_tables` (`table_name`, `to_update`) VALUES('batch_job_exec_status',1);
+INSERT INTO `borhandw`.`bisources_tables` (`table_name`, `to_update`) VALUES('upload_token_status',1);
 
-use `kalturadw`;
+use `borhandw`;
 
 DROP TABLE IF EXISTS `dwh_dim_batch_job_exec_status`;
 
@@ -280,12 +280,12 @@ CREATE TABLE `dwh_dim_upload_token_object_type` (
   UNIQUE KEY `browser` (`upload_token_object_type_name`)
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
-USE kalturadw_ds;
+USE borhandw_ds;
 
-INSERT INTO kalturadw_ds.pentaho_sequences VALUES(11,'dimensions/update_batch_job_sep.ktr',1,TRUE);
-INSERT INTO kalturadw_ds.pentaho_sequences VALUES(12,'dimensions/update_upload_token.ktr',1,TRUE);
+INSERT INTO borhandw_ds.pentaho_sequences VALUES(11,'dimensions/update_batch_job_sep.ktr',1,TRUE);
+INSERT INTO borhandw_ds.pentaho_sequences VALUES(12,'dimensions/update_upload_token.ktr',1,TRUE);
 
-USE `kalturadw`;
+USE `borhandw`;
 
 DROP TABLE IF EXISTS `dwh_dim_batch_job_sep`;
 
@@ -385,7 +385,7 @@ CREATE TABLE `dwh_daily_ingestion` (
 PARTITION BY RANGE (date_id)
 (PARTITION @PARTITION_NAME@ VALUES LESS THAN (@PARTITION_VALUE@) ENGINE = InnoDB);
 
-CALL kalturadw.add_monthly_partition_for_table('dwh_daily_ingestion');
+CALL borhandw.add_monthly_partition_for_table('dwh_daily_ingestion');
 
 DROP TABLE IF EXISTS `dwh_daily_partner_ingestion`;
 
@@ -398,11 +398,11 @@ CREATE TABLE `dwh_daily_partner_ingestion` (
 PARTITION BY RANGE (date_id)
 (PARTITION @PARTITION_NAME@ VALUES LESS THAN (@PARTITION_VALUE@) ENGINE = InnoDB);
 
-CALL kalturadw.add_monthly_partition_for_table('dwh_daily_partner_ingestion');
+CALL borhandw.add_monthly_partition_for_table('dwh_daily_partner_ingestion');
 
 DELIMITER $$
 
-USE `kalturadw`$$
+USE `borhandw`$$
 
 DROP PROCEDURE IF EXISTS `add_partitions`$$
 
@@ -439,7 +439,7 @@ DELIMITER ;
 
 DELIMITER $$
 
-USE `kalturadw`$$
+USE `borhandw`$$
 
 DROP PROCEDURE IF EXISTS `calc_updated_batch_job`$$
 
@@ -451,7 +451,7 @@ BEGIN
                                 DECLARE v_date_id INT(11);
                                 DECLARE done INT DEFAULT 0;
                                 DECLARE days_to_update CURSOR FOR 
-                                SELECT day_id FROM kalturadw.dwh_dim_time WHERE day_id BETWEEN p_start_date AND p_end_date;
+                                SELECT day_id FROM borhandw.dwh_dim_time WHERE day_id BETWEEN p_start_date AND p_end_date;
                                 DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = 1;
                                 
                                 OPEN days_to_update;
@@ -461,7 +461,7 @@ BEGIN
                                                 IF done THEN
                                                                 LEAVE read_loop;
                                                 END IF;
-                                                CALL kalturadw.calc_updated_batch_job_day(v_date_id);
+                                                CALL borhandw.calc_updated_batch_job_day(v_date_id);
                                 END LOOP;
                                 CLOSE days_to_update;
                 END;
@@ -472,7 +472,7 @@ DELIMITER ;
 
 DELIMITER $$
 
-USE `kalturadw`$$
+USE `borhandw`$$
 
 DROP PROCEDURE IF EXISTS `calc_updated_batch_job_day`$$
 
@@ -486,14 +486,14 @@ BEGIN
                 SELECT IFNULL(GROUP_CONCAT(ignore_partner.partner_id),'')
 				INTO v_ignore_partner_ids
 				FROM 
-				(SELECT partner_id FROM kalturadw.dwh_dim_batch_job_sep WHERE job_type_id = 0 AND job_sub_type_id IN (1,2,3,99) AND updated_date_id = p_date_id
+				(SELECT partner_id FROM borhandw.dwh_dim_batch_job_sep WHERE job_type_id = 0 AND job_sub_type_id IN (1,2,3,99) AND updated_date_id = p_date_id
 				GROUP BY partner_id
 				HAVING COUNT(*) > 1000) ignore_partner;
                                 
                 
-                SET @s = CONCAT("INSERT INTO kalturadw.dwh_fact_convert_job(id, job_type_id, status_id, created_date_id, updated_date_id, finish_date_id, partner_id, entry_id, dc, wait_time, conversion_time, is_ff)
+                SET @s = CONCAT("INSERT INTO borhandw.dwh_fact_convert_job(id, job_type_id, status_id, created_date_id, updated_date_id, finish_date_id, partner_id, entry_id, dc, wait_time, conversion_time, is_ff)
 				SELECT id, job_type_id, status_id, created_date_id, updated_date_id, DATE(finish_time)*1, partner_id, entry_id, dc, time_to_sec(timediff(queue_time, created_at)) wait_time, IF(finish_time IS NULL, -1, time_to_sec(timediff(finish_time, queue_time))) conversion_time, 0
-				FROM kalturadw.dwh_dim_batch_job_sep WHERE job_type_id = 0 AND job_sub_type_id IN (1,2,3,99) AND priority <> 10 AND queue_time IS NOT NULL AND updated_date_id = ", p_date_id, IF(LENGTH(v_ignore_partner_ids)=0,"",CONCAT(" AND partner_id NOT IN (" , v_ignore_partner_ids, ")")),
+				FROM borhandw.dwh_dim_batch_job_sep WHERE job_type_id = 0 AND job_sub_type_id IN (1,2,3,99) AND priority <> 10 AND queue_time IS NOT NULL AND updated_date_id = ", p_date_id, IF(LENGTH(v_ignore_partner_ids)=0,"",CONCAT(" AND partner_id NOT IN (" , v_ignore_partner_ids, ")")),
 				" ON DUPLICATE KEY UPDATE 
 					status_id = VALUES(status_id),
 					updated_date_id = VALUES(updated_date_id),
@@ -508,24 +508,24 @@ BEGIN
 				SELECT IFNULL(GROUP_CONCAT(ignore_partner.partner_id),'')
 				INTO v_ignore_partner_ids
 				FROM 
-				(SELECT partner_id FROM kalturadw.dwh_dim_batch_job_sep WHERE job_type_id = 10 AND updated_date_id = p_date_id
+				(SELECT partner_id FROM borhandw.dwh_dim_batch_job_sep WHERE job_type_id = 10 AND updated_date_id = p_date_id
 				GROUP BY partner_id
 				HAVING COUNT(*) > 1000) ignore_partner;
 			
-		DROP TABLE IF EXISTS kalturadw.tmp_convert_job_ids;
+		DROP TABLE IF EXISTS borhandw.tmp_convert_job_ids;
 			
-		SET @s = CONCAT("CREATE TEMPORARY TABLE kalturadw.tmp_convert_job_ids AS SELECT id FROM kalturadw.dwh_dim_batch_job_sep WHERE job_type_id = 10 AND priority <> 10 AND updated_date_id = ", p_date_id,
+		SET @s = CONCAT("CREATE TEMPORARY TABLE borhandw.tmp_convert_job_ids AS SELECT id FROM borhandw.dwh_dim_batch_job_sep WHERE job_type_id = 10 AND priority <> 10 AND updated_date_id = ", p_date_id,
 		IF(LENGTH(v_ignore_partner_ids)=0,"",CONCAT(" AND partner_id NOT IN (" , v_ignore_partner_ids, ")")), ";");
 		
 		PREPARE stmt FROM  @s;
 		EXECUTE stmt;
 		DEALLOCATE PREPARE stmt;	
 				
-                INSERT INTO kalturadw.dwh_fact_convert_job(id, job_type_id, status_id, created_date_id, updated_date_id, finish_date_id, partner_id, entry_id, dc, wait_time, conversion_time, is_ff)
+                INSERT INTO borhandw.dwh_fact_convert_job(id, job_type_id, status_id, created_date_id, updated_date_id, finish_date_id, partner_id, entry_id, dc, wait_time, conversion_time, is_ff)
                                 SELECT id, job_type_id, status_id, created_date_id, updated_date_id, DATE(finish)*1, partner_id, c.entry_id, dc, TIME_TO_SEC(TIMEDIFF(queue_time, created_at)) wait_time, IF(finish IS NULL, -1, TIME_TO_SEC(TIMEDIFF(finish, queue_time))) conversion_time, 1 
 				FROM (SELECT entry_id, root_job_id, MIN(finish_time) AS finish 
-                FROM kalturadw.dwh_dim_batch_job_sep, tmp_convert_job_ids t WHERE root_job_id = t.id AND job_type_id = 0 AND job_sub_type_id IN (1,2,3,99) GROUP BY entry_id)
-                AS c INNER JOIN kalturadw.dwh_dim_batch_job_sep batch_job ON c.root_job_id = batch_job.root_job_id AND c.finish =  batch_job.finish_time
+                FROM borhandw.dwh_dim_batch_job_sep, tmp_convert_job_ids t WHERE root_job_id = t.id AND job_type_id = 0 AND job_sub_type_id IN (1,2,3,99) GROUP BY entry_id)
+                AS c INNER JOIN borhandw.dwh_dim_batch_job_sep batch_job ON c.root_job_id = batch_job.root_job_id AND c.finish =  batch_job.finish_time
                 GROUP BY c.entry_id
 				ON DUPLICATE KEY UPDATE 
 					status_id = VALUES(status_id),
@@ -540,7 +540,7 @@ BEGIN
                                 DECLARE v_created_date_id INT(11);
                                 DECLARE done INT DEFAULT 0;
                                 DECLARE days_to_aggregate CURSOR FOR 
-                                SELECT DISTINCT(created_date_id) FROM kalturadw.dwh_fact_convert_job WHERE updated_date_id = p_date_id
+                                SELECT DISTINCT(created_date_id) FROM borhandw.dwh_fact_convert_job WHERE updated_date_id = p_date_id
                                 AND MONTH(DATE(created_date_id) + INTERVAL 1 MONTH) >=  MONTH(DATE(p_date_id));
                                 DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = 1;
                                 
@@ -551,7 +551,7 @@ BEGIN
                                                 IF done THEN
                                                                 LEAVE read_loop;
                                                 END IF;
-                                                INSERT INTO kalturadw.aggr_managment(aggr_name,date_id,hour_id,data_insert_time) 
+                                                INSERT INTO borhandw.aggr_managment(aggr_name,date_id,hour_id,data_insert_time) 
 												VALUES ("ingestion", v_created_date_id, 0 ,NOW())
                                                 ON DUPLICATE KEY UPDATE
                                                                 data_insert_time = VALUES(data_insert_time);
@@ -565,7 +565,7 @@ DELIMITER ;
 
 DELIMITER $$
 
-USE `kalturadw`$$
+USE `borhandw`$$
 
 DROP FUNCTION IF EXISTS `calc_median_ff_convert_job_wait_time`$$
 
@@ -576,13 +576,13 @@ BEGIN
 	SET v_median = 0;
 	SELECT t1.wait_time AS median_val INTO v_median FROM (
 	SELECT @rownum:=@rownum+1 AS `row_number`, IF(d.wait_time>0, d.wait_time, 0) wait_time
-	FROM kalturadw.dwh_fact_convert_job d,  (SELECT @rownum:=0) r
+	FROM borhandw.dwh_fact_convert_job d,  (SELECT @rownum:=0) r
 	WHERE created_date_id = p_date_id AND is_ff = 1 
 	ORDER BY d.wait_time
 	) AS t1, 
 	(
 	SELECT COUNT(*) AS total_rows
-	FROM kalturadw.dwh_fact_convert_job d
+	FROM borhandw.dwh_fact_convert_job d
 	WHERE created_date_id = p_date_id AND is_ff = 1 
 	) AS t2
 	WHERE 1
@@ -595,7 +595,7 @@ DELIMITER ;
 
 DELIMITER $$
 
-USE `kalturadw`$$
+USE `borhandw`$$
 
 DROP PROCEDURE IF EXISTS `calc_aggr_day_ingestion`$$
 
@@ -607,10 +607,10 @@ BEGIN
 	UPDATE aggr_managment SET start_time = NOW() WHERE aggr_name = 'ingestion' AND date_id = p_date_id;
 		
 	            
-	SET @s = CONCAT('INSERT INTO kalturadw.dwh_daily_ingestion (date_id, normal_wait_time_count, medium_wait_time_count, long_wait_time_count, extremely_long_wait_time_count, stuck_wait_time_count, total_ff_wait_time_sec, median_ff_wait_time_sec) '
+	SET @s = CONCAT('INSERT INTO borhandw.dwh_daily_ingestion (date_id, normal_wait_time_count, medium_wait_time_count, long_wait_time_count, extremely_long_wait_time_count, stuck_wait_time_count, total_ff_wait_time_sec, median_ff_wait_time_sec) '
 					'SELECT created_date_id, COUNT(IF(wait_time< 5,1,null)) normal_wait_time, COUNT(IF(wait_time>=5 AND wait_time < 180,1,null)) medium_wait_time, COUNT(IF(wait_time>=180 AND wait_time<900,1,null)) long_wait_time,
 					COUNT(IF(wait_time>=900 AND wait_time < 3600,1,null)) extremely_long_wait_time_count, COUNT(IF(wait_time>=3600,1,null)) stuck, SUM(IF(wait_time>0,wait_time, 0)), calc_median_ff_convert_job_wait_time(' , p_date_id ,')'
-					' FROM kalturadw.dwh_fact_convert_job
+					' FROM borhandw.dwh_fact_convert_job
 					WHERE is_ff = 1 
 					AND created_date_id = ' ,p_date_id , 
 					' ON DUPLICATE KEY UPDATE	
@@ -627,11 +627,11 @@ BEGIN
     EXECUTE stmt;
     DEALLOCATE PREPARE stmt;
 	
-	SET @s = CONCAT('INSERT INTO kalturadw.dwh_daily_ingestion (date_id, success_entries_count, failed_entries_count)'
+	SET @s = CONCAT('INSERT INTO borhandw.dwh_daily_ingestion (date_id, success_entries_count, failed_entries_count)'
 					'SELECT ' , p_date_id, ' ,COUNT(IF(entry_status_id=2, 1, NULL)) entries_success, COUNT(IF(entry_status_id=-1, 1, NULL)) entries_failure
 					FROM 
 					(SELECT distinct(entry.entry_id), entry_status_id
-					FROM kalturadw.dwh_dim_entries entry, kalturadw.dwh_dim_batch_job_sep job
+					FROM borhandw.dwh_dim_entries entry, borhandw.dwh_dim_batch_job_sep job
 					WHERE entry.entry_id = job.entry_id
 					AND entry.created_at BETWEEN DATE(' , p_date_id, ') AND DATE(', p_date_id, ') + INTERVAL 1 DAY',
 					' AND entry.entry_media_type_id IN (1,5)
@@ -645,9 +645,9 @@ BEGIN
     EXECUTE stmt;
     DEALLOCATE PREPARE stmt;
 	
-	SET @s = CONCAT('INSERT INTO kalturadw.dwh_daily_ingestion (date_id, success_convert_job_count, failed_convert_job_count)'
+	SET @s = CONCAT('INSERT INTO borhandw.dwh_daily_ingestion (date_id, success_convert_job_count, failed_convert_job_count)'
 					'SELECT created_date_id, COUNT(IF(status_id=5,1,NULL)) convert_job_success, COUNT(IF(status_id=6 OR status_id = 10,1,NULL)) convert_job_failure 
-					 FROM kalturadw.dwh_fact_convert_job
+					 FROM borhandw.dwh_fact_convert_job
 					 WHERE created_date_id = ', p_date_id,
 					 ' ON DUPLICATE KEY UPDATE	
 						success_convert_job_count=VALUES(success_convert_job_count),
@@ -660,17 +660,17 @@ BEGIN
 	
     SELECT COUNT(DISTINCT(entry_id))
     INTO v_entry_with_flavor_failed_count
-    FROM kalturadw.dwh_fact_convert_job
+    FROM borhandw.dwh_fact_convert_job
     WHERE created_date_id = p_date_id
     AND status_id IN (6,10);
     
     SELECT COUNT(DISTINCT(entry_id))
     INTO v_all_convert_entries_count
-    FROM kalturadw.dwh_fact_convert_job
+    FROM borhandw.dwh_fact_convert_job
     WHERE created_date_id = p_date_id;
 				
     
-    SET @s = CONCAT('INSERT INTO kalturadw.dwh_daily_ingestion (date_id, all_conversion_job_entries_count, failed_conversion_job_entries_count)'
+    SET @s = CONCAT('INSERT INTO borhandw.dwh_daily_ingestion (date_id, all_conversion_job_entries_count, failed_conversion_job_entries_count)'
 			' VALUES (', p_date_id, ",", v_all_convert_entries_count, ",", v_entry_with_flavor_failed_count, ")"
 			' ON DUPLICATE KEY UPDATE	
 			all_conversion_job_entries_count=VALUES(all_conversion_job_entries_count),
@@ -683,9 +683,9 @@ BEGIN
     
     
 			
-	SET @s = CONCAT('INSERT INTO kalturadw.dwh_daily_ingestion (date_id, total_wait_time_sec, convert_jobs_count)'
+	SET @s = CONCAT('INSERT INTO borhandw.dwh_daily_ingestion (date_id, total_wait_time_sec, convert_jobs_count)'
 					'SELECT created_date_id, SUM(IF(wait_time>0, wait_time, 0)), COUNT(id)
-					 FROM kalturadw.dwh_fact_convert_job
+					 FROM borhandw.dwh_fact_convert_job
 					 WHERE created_date_id = ' ,p_date_id,
 					 ' ON DUPLICATE KEY UPDATE	
 						total_wait_time_sec=VALUES(total_wait_time_sec),
@@ -696,9 +696,9 @@ BEGIN
     EXECUTE stmt;
     DEALLOCATE PREPARE stmt;
     
-    SET @s = CONCAT('INSERT INTO kalturadw.dwh_daily_partner_ingestion (date_id, partner_id, total_conversion_sec)'
+    SET @s = CONCAT('INSERT INTO borhandw.dwh_daily_partner_ingestion (date_id, partner_id, total_conversion_sec)'
 					'SELECT created_date_id, partner_id, SUM(conversion_time)
-					 FROM kalturadw.dwh_fact_convert_job
+					 FROM borhandw.dwh_fact_convert_job
 					 WHERE created_date_id = ' ,p_date_id,
 					 ' AND conversion_time > 0
 					 GROUP BY partner_id' ,
@@ -717,7 +717,7 @@ END$$
 
 DELIMITER ;
 
-USE `kalturadw`;
+USE `borhandw`;
 
 DROP TABLE IF EXISTS `dwh_fact_convert_job`;
 
@@ -739,11 +739,11 @@ CREATE TABLE `dwh_fact_convert_job` (
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8;
 
 /* 6143 */
-USE `kalturadw`;
+USE `borhandw`;
 
-DROP TABLE IF EXISTS kalturadw.`dwh_hourly_events_context_app_devices`;
+DROP TABLE IF EXISTS borhandw.`dwh_hourly_events_context_app_devices`;
 
-CREATE TABLE kalturadw.`dwh_hourly_events_context_app_devices` (
+CREATE TABLE borhandw.`dwh_hourly_events_context_app_devices` (
   `partner_id` INT NOT NULL DEFAULT -1,
   `date_id` INT NOT NULL,
   `hour_id` INT NOT NULL,
@@ -801,11 +801,11 @@ CREATE TABLE kalturadw.`dwh_hourly_events_context_app_devices` (
 PARTITION BY RANGE (date_id)
 (PARTITION @PARTITION_NAME@ VALUES LESS THAN (@PARTITION_VALUE@) ENGINE = INNODB);
 
-CALL kalturadw.add_monthly_partition_for_table('dwh_hourly_events_context_app_devices');
+CALL borhandw.add_monthly_partition_for_table('dwh_hourly_events_context_app_devices');
 
 DELIMITER $$
 
-USE `kalturadw`$$
+USE `borhandw`$$
 
 DROP PROCEDURE IF EXISTS `add_partitions`$$
 
@@ -842,26 +842,26 @@ END$$
 
 DELIMITER ;
 
-INSERT INTO kalturadw_ds.aggr_name_resolver (aggr_name, aggr_table, aggr_id_field, dim_id_field, aggr_type)
+INSERT INTO borhandw_ds.aggr_name_resolver (aggr_name, aggr_table, aggr_id_field, dim_id_field, aggr_type)
 VALUES ('app_devices', 'dwh_hourly_events_context_app_devices', 'context_id,application_id,os_id,browser_id', '', 'events');
 
-UPDATE kalturadw_ds.staging_areas  SET post_transfer_aggregations = REPLACE(post_transfer_aggregations, ')',',\'app_devices\')') WHERE process_id in (1,3);
+UPDATE borhandw_ds.staging_areas  SET post_transfer_aggregations = REPLACE(post_transfer_aggregations, ')',',\'app_devices\')') WHERE process_id in (1,3);
 
 /* 6145 */ 
-ALTER TABLE kalturadw.dwh_dim_file_sync 
+ALTER TABLE borhandw.dwh_dim_file_sync 
 CHANGE COLUMN id id BIGINT(20),
 ADD COLUMN deleted_id BIGINT(20) DEFAULT '0' AFTER `ri_ind`;
 
-ALTER TABLE kalturadw.dwh_dim_file_sync 
+ALTER TABLE borhandw.dwh_dim_file_sync 
 DROP INDEX unique_key;
 
-ALTER TABLE kalturadw.dwh_dim_file_sync 
+ALTER TABLE borhandw.dwh_dim_file_sync 
 ADD UNIQUE KEY unique_index (object_id,object_type,object_sub_type,version,dc,deleted_id);
 
 /* 6146 */
 DELIMITER $$
 
-USE `kalturadw`$$
+USE `borhandw`$$
 
 DROP PROCEDURE IF EXISTS `calc_entries_sizes`$$
 
@@ -871,13 +871,13 @@ BEGIN
                 SET v_date = DATE(p_date_id);
                 UPDATE aggr_managment SET start_time = NOW() WHERE aggr_name = 'storage_usage' AND date_id = p_date_id;
                 
-                DELETE FROM kalturadw.dwh_fact_entries_sizes WHERE entry_size_date_id = p_date_id;
+                DELETE FROM borhandw.dwh_fact_entries_sizes WHERE entry_size_date_id = p_date_id;
                 
                 DROP TABLE IF EXISTS today_file_sync_subset; 
                 
                 CREATE TEMPORARY TABLE today_file_sync_subset AS
                 SELECT DISTINCT s.id, s.partner_id, IFNULL(a.entry_id, object_id) entry_id, object_id, object_type, object_sub_type, s.created_at, s.status, IFNULL(file_size, 0) file_size
-                FROM kalturadw.dwh_dim_file_sync s LEFT OUTER JOIN kalturadw.dwh_dim_flavor_asset a
+                FROM borhandw.dwh_dim_file_sync s LEFT OUTER JOIN borhandw.dwh_dim_flavor_asset a
                 ON (object_type = 4 AND s.object_id = a.id AND a.entry_id IS NOT NULL AND a.ri_ind =0 AND s.partner_id = a.partner_id)
                 WHERE s.ready_at BETWEEN v_date AND v_date + INTERVAL 1 DAY
                 AND object_type IN (1,4)
@@ -933,7 +933,7 @@ BEGIN
            
                 INSERT INTO today_sizes
                                 SELECT s.partner_id, IFNULL(a.entry_id, object_id) entry_id, object_id, object_type, object_sub_type, s.created_at, s.status, 0 file_size
-                                FROM kalturadw.dwh_dim_file_sync s LEFT OUTER JOIN kalturadw.dwh_dim_flavor_asset a
+                                FROM borhandw.dwh_dim_file_sync s LEFT OUTER JOIN borhandw.dwh_dim_flavor_asset a
                                 ON (object_type = 4 AND s.object_id = a.id AND a.entry_id IS NOT NULL AND a.ri_ind =0 AND s.partner_id = a.partner_id)
                                 WHERE s.updated_at BETWEEN v_date AND v_date + INTERVAL 1 DAY
                                 AND object_type IN (1,4)
@@ -947,7 +947,7 @@ BEGIN
                 
                 CREATE TEMPORARY TABLE deleted_flavors AS 
                 SELECT DISTINCT partner_id, entry_id, id
-                FROM kalturadw.dwh_dim_flavor_asset FORCE INDEX (deleted_at)
+                FROM borhandw.dwh_dim_flavor_asset FORCE INDEX (deleted_at)
                 WHERE STATUS = 3 AND deleted_at BETWEEN v_date AND v_date + INTERVAL 1 DAY
                 AND partner_id NOT IN (100  , -1  , -2  , 0 , 99 );
                                 
@@ -971,13 +971,13 @@ BEGIN
 												
 												SELECT entry_status_id
 												INTO v_status
-												FROM kalturadw.dwh_dim_entries
+												FROM borhandw.dwh_dim_entries
 												WHERE entry_id = v_deleted_flavor_entry_id;
 												
 												IF v_STATUS <> 3 THEN
 													INSERT INTO today_sizes
 																	SELECT v_deleted_flavor_partner_id, v_deleted_flavor_entry_id, object_id, object_type, object_sub_type, MAX(created_at), 3 STATUS, 0 file_size
-																	FROM kalturadw.dwh_dim_file_sync
+																	FROM borhandw.dwh_dim_file_sync
 																	WHERE object_id = v_deleted_flavor_id AND object_type = 4 AND ready_at < v_date AND file_size > 0
 																	GROUP BY object_id, object_type, object_sub_type
 													ON DUPLICATE KEY UPDATE
@@ -991,7 +991,7 @@ BEGIN
                 
                 DROP TABLE IF EXISTS today_deleted_entries;
                 CREATE TEMPORARY TABLE today_deleted_entries AS 
-                SELECT entry_id, partner_id FROM kalturadw.dwh_dim_entries
+                SELECT entry_id, partner_id FROM borhandw.dwh_dim_entries
                 WHERE modified_at BETWEEN v_date AND v_date + INTERVAL 1 DAY
                 AND partner_id NOT IN (100  , -1  , -2  , 0 , 99 )
                 AND entry_status_id = 3
@@ -1005,7 +1005,7 @@ BEGIN
                 DROP TABLE IF EXISTS yesterday_file_sync_subset; 
                 CREATE TEMPORARY TABLE yesterday_file_sync_subset AS
                 SELECT f.id, f.partner_id, f.object_id, f.object_type, f.object_sub_type, f.created_at, IFNULL(f.file_size, 0) file_size
-                FROM today_sizes today, kalturadw.dwh_dim_file_sync f
+                FROM today_sizes today, borhandw.dwh_dim_file_sync f
                 WHERE f.object_id = today.object_id
                 AND f.partner_id = today.partner_id
                 AND f.object_type = today.object_type
@@ -1041,7 +1041,7 @@ BEGIN
                 WHERE max_id.id = original.id;
                 
                 
-                INSERT INTO kalturadw.dwh_fact_entries_sizes (partner_id, entry_id, entry_additional_size_kb, entry_size_date, entry_size_date_id)
+                INSERT INTO borhandw.dwh_fact_entries_sizes (partner_id, entry_id, entry_additional_size_kb, entry_size_date, entry_size_date_id)
                 SELECT t.partner_id, t.entry_id, ROUND(SUM(t.file_size - IFNULL(Y.file_size, 0))/1024, 3) entry_additional_size_kb, v_date, p_date_id 
                 FROM today_sizes t LEFT OUTER JOIN yesterday_sizes Y 
                 ON t.object_id = Y.object_id
@@ -1058,19 +1058,19 @@ BEGIN
                 DROP TABLE IF EXISTS deleted_entries;
                 CREATE TEMPORARY TABLE deleted_entries AS
                                 SELECT es.partner_id partner_id, es.entry_id entry_id, v_date entry_size_date, p_date_id entry_size_date_id, -SUM(entry_additional_size_kb) entry_additional_size_kb
-                                FROM today_deleted_entries e, kalturadw.dwh_fact_entries_sizes es
+                                FROM today_deleted_entries e, borhandw.dwh_fact_entries_sizes es
                                 WHERE e.entry_id = es.entry_id 
                                                 AND e.partner_id = es.partner_id 
                                                 AND es.entry_size_date_id < p_date_id
                                 GROUP BY es.partner_id, es.entry_id
                                 HAVING SUM(entry_additional_size_kb) > 0;
                 
-                INSERT INTO kalturadw.dwh_fact_entries_sizes (partner_id, entry_id, entry_size_date, entry_size_date_id, entry_additional_size_kb)
+                INSERT INTO borhandw.dwh_fact_entries_sizes (partner_id, entry_id, entry_size_date, entry_size_date_id, entry_additional_size_kb)
                                 SELECT partner_id, entry_id, entry_size_date, entry_size_date_id, entry_additional_size_kb FROM deleted_entries
                 ON DUPLICATE KEY UPDATE 
                                 entry_additional_size_kb = VALUES(entry_additional_size_kb);
                 
-                CALL kalturadw.calc_aggr_day_partner_storage(v_date);
+                CALL borhandw.calc_aggr_day_partner_storage(v_date);
                 UPDATE aggr_managment SET end_time = NOW() WHERE aggr_name = 'storage_usage' AND date_id = p_date_id;
 END$$
 
@@ -1078,4 +1078,4 @@ DELIMITER ;
 
 
 
-CALL kalturadw.add_partitions();
+CALL borhandw.add_partitions();

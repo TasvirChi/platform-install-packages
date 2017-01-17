@@ -1,69 +1,69 @@
-%define baseurl installrepo.kaltura.org
+%define baseurl installrepo.borhan.org
 %define path releases/latest/RPMS
 %define testpath releases/nightly/RPMS
-%define prefix /opt/kaltura 
-Summary: Kaltura Server release file and package configuration
-Name: kaltura-release
+%define prefix /opt/borhan 
+Summary: Borhan Server release file and package configuration
+Name: borhan-release
 Version: 9.14.0
 Release: 4 
 License: AGPLv3+
 Group: Server/Platform 
-URL: http://kaltura.org
+URL: http://borhan.org
 
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
 BuildArch: noarch
 
 %description
-Kaltura Server release file. This package contains yum 
-configuration for the Kaltura RPM Repository, as well as the public
+Borhan Server release file. This package contains yum 
+configuration for the Borhan RPM Repository, as well as the public
 GPG keys used to sign them.
 
 
 
 
 %build
-%{__cat} <<EOF >kaltura.repo
-# URL: http://kaltura.org/
-[Kaltura]
-name = Kaltura Server
+%{__cat} <<EOF >borhan.repo
+# URL: http://borhan.org/
+[Borhan]
+name = Borhan Server
 baseurl = http://%{baseurl}/%{path}/\$basearch/
-gpgkey = http://%{baseurl}/releases/RPM-GPG-KEY-kaltura
+gpgkey = http://%{baseurl}/releases/RPM-GPG-KEY-borhan
 gpgcheck = 1 
 enabled = 1
 
-[Kaltura-noarch]
-name = Kaltura Server arch independent
+[Borhan-noarch]
+name = Borhan Server arch independent
 baseurl = http://%{baseurl}/%{path}/noarch
-gpgkey = http://%{baseurl}/releases/RPM-GPG-KEY-kaltura
+gpgkey = http://%{baseurl}/releases/RPM-GPG-KEY-borhan
 gpgcheck = 1
 enabled = 1
 
-[Kaltura-testing]
-name = Kaltura Server arch independent
+[Borhan-testing]
+name = Borhan Server arch independent
 baseurl = http://%{baseurl}/%{testpath}/\$basearch/
-gpgkey = http://%{baseurl}/releases/RPM-GPG-KEY-kaltura
+gpgkey = http://%{baseurl}/releases/RPM-GPG-KEY-borhan
 gpgcheck = 1 
 enabled = 0
 
-[Kaltura-testing-noarch]
-name = Kaltura Server arch independent
+[Borhan-testing-noarch]
+name = Borhan Server arch independent
 baseurl = http://%{baseurl}/%{testpath}/noarch
-gpgkey = http://%{baseurl}/releases/RPM-GPG-KEY-kaltura
+gpgkey = http://%{baseurl}/releases/RPM-GPG-KEY-borhan
 gpgcheck = 1
 enabled = 0
 EOF
 
 %install
 %{__rm} -rf %{buildroot}
-%{__install} -Dp -m0644 kaltura.repo %{buildroot}%{_sysconfdir}/yum.repos.d/kaltura.repo
+%{__install} -Dp -m0644 borhan.repo %{buildroot}%{_sysconfdir}/yum.repos.d/borhan.repo
 
 %clean
 %{__rm} -rf %{buildroot}
 
 %post
 if [ "$1" = 2 ];then
-	if [ -r  %{prefix}/bin/kaltura-functions.rc ];then
-		. %{prefix}/bin/kaltura-functions.rc
+	if [ -r  %{prefix}/bin/borhan-functions.rc ];then
+		. %{prefix}/bin/borhan-functions.rc
 		if [ -r /etc/sysconfig/clock ];then
 			. /etc/sysconfig/clock
 		else 
@@ -76,45 +76,45 @@ exit 0
 
 %files
 %dir %{_sysconfdir}/yum.repos.d/
-%config %{_sysconfdir}/yum.repos.d/kaltura.repo
+%config %{_sysconfdir}/yum.repos.d/borhan.repo
 
 %changelog
-* Thu Apr 10 2014 Jess Portnoy <jess.portnoy@kaltura.com> - 9.14.0-4
+* Thu Apr 10 2014 Jess Portnoy <jess.portnoy@borhan.com> - 9.14.0-4
 - Changed repo name from stable to latest as requested by Zohar.
 
-* Sun Apr 6 2014 Jess Portnoy <jess.portnoy@kaltura.com> - 9.14.0-1
+* Sun Apr 6 2014 Jess Portnoy <jess.portnoy@borhan.com> - 9.14.0-1
 - Ver Bounce to 9.14.0
 
-* Tue Mar 25 2014 Jess Portnoy <jess.portnoy@kaltura.com> - 9.13.0-1
+* Tue Mar 25 2014 Jess Portnoy <jess.portnoy@borhan.com> - 9.13.0-1
 - Ver Bounce to 9.13.0
 
-* Tue Mar 18 2014 Jess Portnoy <jess.portnoy@kaltura.com> - 9.12.0-2
+* Tue Mar 18 2014 Jess Portnoy <jess.portnoy@borhan.com> - 9.12.0-2
 - We will be signing our RPMs from now on.
 
-* Sun Mar 9 2014 Jess Portnoy <jess.portnoy@kaltura.com> - 9.12.0-1
+* Sun Mar 9 2014 Jess Portnoy <jess.portnoy@borhan.com> - 9.12.0-1
 - Ver Bounce to 9.12.0
 
 * Thu Feb 27 2014 David Bezemer <info@davidbezemer.nl> - 9.11.0-6
 - Add testing to base package
 
-* Wed Feb 26 2014 Jess Portnoy <jess.portnoy@kaltura.com> - 9.11.0-5
+* Wed Feb 26 2014 Jess Portnoy <jess.portnoy@borhan.com> - 9.11.0-5
 - Added update becon.
 
-* Tue Feb 25 2014 Jess Portnoy <jess.portnoy@kaltura.com> - 9.11.0-3
+* Tue Feb 25 2014 Jess Portnoy <jess.portnoy@borhan.com> - 9.11.0-3
 - URL to repo modified to include 'releases' in path.
 
-* Sun Feb 23 2014 Jess Portnoy <jess.portnoy@kaltura.com> - 9.11.0-2
+* Sun Feb 23 2014 Jess Portnoy <jess.portnoy@borhan.com> - 9.11.0-2
 - dont need i686
 
-* Sun Feb 23 2014 Jess Portnoy <jess.portnoy@kaltura.com> - 9.11.0-1
+* Sun Feb 23 2014 Jess Portnoy <jess.portnoy@borhan.com> - 9.11.0-1
 - 9.11.0
 
-* Mon Jan 27 2014 Jess Portnoy <jess.portnoy@kaltura.com> - 9.9.0-1
+* Mon Jan 27 2014 Jess Portnoy <jess.portnoy@borhan.com> - 9.9.0-1
 - 9.9.0
 
-* Sun Jan 26 2014 Jess Portnoy <jess.portnoy@kaltura.com> - 9.7.0-3
+* Sun Jan 26 2014 Jess Portnoy <jess.portnoy@borhan.com> - 9.7.0-3
 - Added 32bit repos.
 
-* Wed Jan 22 2014 Jess Portnoy <jess.portnoy@kaltura.com> - 9.7.0-1
+* Wed Jan 22 2014 Jess Portnoy <jess.portnoy@borhan.com> - 9.7.0-1
 - initial release.
 

@@ -6,7 +6,7 @@ if (count($argv)<6){
 }
 // relevant account user
 $partnerId = $argv[2];
-$config = new KalturaConfiguration($partnerId);
+$config = new BorhanConfiguration($partnerId);
 // URL of the API machine
 $config->serviceUrl = $argv[1];
 // sha1 secret
@@ -20,10 +20,10 @@ $csvFileData = $argv[5];
 // type here is CSV but can also work with XML
 $bulkUploadType = $argv[6];
 //$bulkUploadType = $argv[6];
-$client=generate_ks($config->serviceUrl,$partnerId,$secret,$type=KalturaSessionType::ADMIN,$userId=null,$expiry = null,$privileges = null);
+$client=generate_ks($config->serviceUrl,$partnerId,$secret,$type=BorhanSessionType::ADMIN,$userId=null,$expiry = null,$privileges = null);
 // conversion profile to be used
 //if you want a specific one:
-//$filter = new KalturaConversionProfileFilter();
+//$filter = new BorhanConversionProfileFilter();
 //$filter->nameEqual = 'Name';                                                                                                                                        
 //$pager = null;                                                                                                                                                      
 //$result = $client->conversionProfile->listAction($filter, $pager);                                                                                                  

@@ -1,10 +1,10 @@
 /*
 SQLyog Community v8.7 
-MySQL - 5.1.47 : Database - kalturadw
+MySQL - 5.1.47 : Database - borhandw
 *********************************************************************
 */
 
-use `kalturadw`;
+use `borhandw`;
 
 DROP TABLE IF EXISTS `dwh_dim_upload_token_status`;
 

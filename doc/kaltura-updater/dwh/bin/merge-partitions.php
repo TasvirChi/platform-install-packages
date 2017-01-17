@@ -16,7 +16,7 @@ mysql_select_db('information_schema');
 mysql_query("grant all privileges on *.* to 'etl'@'localhost';");
 mysql_query("grant all privileges on *.* to 'etl'@'127.0.0.1';");
 
-$partitions = mysql_query("SELECT DISTINCT TABLE_SCHEMA, TABLE_NAME, PARTITION_EXPRESSION FROM `PARTITIONS` where PARTITION_NAME is not null AND TABLE_SCHEMA = 'kalturadw'");
+$partitions = mysql_query("SELECT DISTINCT TABLE_SCHEMA, TABLE_NAME, PARTITION_EXPRESSION FROM `PARTITIONS` where PARTITION_NAME is not null AND TABLE_SCHEMA = 'borhandw'");
 $value = date('Ymd');
 $name = date('Ymd', time() - 24*60*60 );
 

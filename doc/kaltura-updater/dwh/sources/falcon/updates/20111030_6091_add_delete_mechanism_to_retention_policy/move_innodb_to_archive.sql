@@ -1,6 +1,6 @@
 DELIMITER $$
 
-USE `kalturadw`$$
+USE `borhandw`$$
 
 DROP PROCEDURE IF EXISTS `move_innodb_to_archive`$$
 
@@ -29,7 +29,7 @@ BEGIN
 		partition_expression column_name,
 		MAX(IF(CONCAT(r.table_name, '_archive') = p.table_name,1,0)) is_archived, 
 		MAX(IF(r.table_name=p.table_name,1,0)) is_in_fact
-	FROM information_schema.PARTITIONS p, kalturadw_ds.retention_policy r
+	FROM information_schema.PARTITIONS p, borhandw_ds.retention_policy r
 	WHERE LENGTH(partition_description) = 8 
 	AND DATE(partition_description)*1 IS NOT NULL
 	AND (p.table_name = r.table_name OR CONCAT(r.table_name, '_archive') = p.table_name)
@@ -54,7 +54,7 @@ BEGIN
 		-- Check if a partition exists in the archive or the fact and is older than the delete policy
 		SELECT if(count(*)=0,0,v_is_archived), if(count(*)=0, 0,v_is_in_fact)
 		INTO v_drop_from_archive, v_drop_from_fact
-		FROM kalturadw_ds.retention_policy
+		FROM borhandw_ds.retention_policy
 		WHERE DATE(NOW() - INTERVAL archive_delete_days_back DAY)*1 >= v_partition_date_id
 		AND table_name = v_table_name;
 
@@ -69,7 +69,7 @@ BEGIN
 		-- Check if a partition exists in the fact and is older than the archive policy
 		SELECT if(count(*)=0,0, v_is_in_fact)
 		INTO v_migrate_from_fact
-		FROM kalturadw_ds.retention_policy
+		FROM borhandw_ds.retention_policy
 		WHERE DATE(NOW() - INTERVAL archive_start_days_back DAY)*1 >= v_partition_date_id
 		AND table_name = v_table_name
 		AND v_is_in_fact > 0;
@@ -98,7 +98,7 @@ BEGIN
 			EXECUTE stmt;
 			DEALLOCATE PREPARE stmt;
 			
-			UPDATE kalturadw_ds.retention_policy
+			UPDATE borhandw_ds.retention_policy
 			SET archive_last_partition = DATE(v_partition_date_id)
 			WHERE table_name = v_table_name;
 

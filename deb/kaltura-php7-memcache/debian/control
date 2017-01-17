@@ -1,12 +1,12 @@
-Source: kaltura-php7-memcache
+Source: borhan-php7-memcache
 Section: php
 Priority: optional
-Maintainer: Jess Portnoy <jess.portnoy@kaltura.com>
-Build-Depends: debhelper (>= 9), kaltura-php7-dev (>= 7.0.0), kaltura-php7-dev, pkg-php-tools (>= 1.6), zlib1g-dev
+Maintainer: Jess Portnoy <jess.portnoy@borhan.com>
+Build-Depends: debhelper (>= 9), borhan-php7-dev (>= 7.0.0), borhan-php7-dev, pkg-php-tools (>= 1.6), zlib1g-dev
 Standards-Version: 3.9.5
 Homepage: http://pecl.php.net/package/memcache
 
-Package: kaltura-php7-memcache
+Package: borhan-php7-memcache
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}, 
 #${phppear:Debian-Depends},

@@ -1,4 +1,4 @@
-INSERT IGNORE INTO kalturadw.dwh_dim_ui_conf (ui_conf_type_id, 
+INSERT IGNORE INTO borhandw.dwh_dim_ui_conf (ui_conf_type_id, 
 						partner_id, 
 						subp_id, 
 						created_at, 
@@ -22,4 +22,4 @@ INSERT IGNORE INTO kalturadw.dwh_dim_ui_conf (ui_conf_type_id,
 						-1 ui_conf_status_id, 
 						ui_conf_id,
 						1 ri_ind
-			FROM kalturadw.dwh_hourly_events_devices;
+			FROM borhandw.dwh_hourly_events_devices;

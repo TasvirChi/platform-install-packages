@@ -1,12 +1,12 @@
-USE kalturadw;
+USE borhandw;
 DROP TABLE IF EXISTS tmp_devices_migration;
 CREATE TABLE tmp_devices_migration
-SELECT day_id, DATE(19700101) start_time, DATE(19700101) end_time, 0 is_copied FROM kalturadw.dwh_dim_time
+SELECT day_id, DATE(19700101) start_time, DATE(19700101) end_time, 0 is_copied FROM borhandw.dwh_dim_time
 WHERE day_id BETWEEN 20111001 AND DATE(NOW())*1;
 
 DELIMITER $$
 
-USE `kalturadw`$$
+USE `borhandw`$$
 
 DROP PROCEDURE IF EXISTS `tmp_fix_devices`$$
 
@@ -14,7 +14,7 @@ CREATE DEFINER=`etl`@`localhost` PROCEDURE `tmp_fix_devices`()
 BEGIN
         DECLARE v_date_id INT;
         DECLARE done INT DEFAULT 0;
-        DECLARE fix_devices_cursor CURSOR FOR SELECT day_id FROM kalturadw.tmp_devices_migration WHERE is_copied = 0 ORDER BY day_id;
+        DECLARE fix_devices_cursor CURSOR FOR SELECT day_id FROM borhandw.tmp_devices_migration WHERE is_copied = 0 ORDER BY day_id;
         DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = 1;
         OPEN fix_devices_cursor ;
 
@@ -24,9 +24,9 @@ BEGIN
                         LEAVE read_loop;
                 END IF;
 
-                UPDATE kalturadw.tmp_devices_migration SET start_time = NOW() WHERE day_id = v_date_id;
+                UPDATE borhandw.tmp_devices_migration SET start_time = NOW() WHERE day_id = v_date_id;
 
-                INSERT INTO kalturadw.dwh_hourly_events_devices_new
+                INSERT INTO borhandw.dwh_hourly_events_devices_new
 			SELECT fact.partner_id AS partner_id,
 			date_id,
 			hour_id,
@@ -80,13 +80,13 @@ BEGIN
 			SUM(count_bandwidth_kb) AS count_bandwidth_kb,
 			SUM(total_admins) AS total_admins,
 			SUM(total_media_entries) AS total_media_entries
-			FROM kalturadw.dwh_hourly_events_devices fact, kalturadw.dwh_dim_entries dim
+			FROM borhandw.dwh_hourly_events_devices fact, borhandw.dwh_dim_entries dim
 			WHERE fact.entry_id = dim.entry_id
 			AND fact.date_id = v_date_id
 			GROUP BY partner_id, date_id, hour_id, location_id, country_id, os_id, browser_id, ui_conf_id, entry_media_type_id;
 
 
-                UPDATE kalturadw.tmp_devices_migration SET end_time = NOW(), is_copied = 1 WHERE day_id = v_date_id;
+                UPDATE borhandw.tmp_devices_migration SET end_time = NOW(), is_copied = 1 WHERE day_id = v_date_id;
         END LOOP;
         CLOSE fix_devices_cursor;
 
@@ -94,7 +94,7 @@ BEGIN
 
 DELIMITER ;
 
-CALL kalturadw.tmp_fix_devices();
+CALL borhandw.tmp_fix_devices();
 
 DROP TABLE tmp_devices_migration;
 DROP PROCEDURE IF EXISTS `tmp_fix_devices`;

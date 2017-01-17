@@ -1,4 +1,4 @@
-USE kalturadw;
+USE borhandw;
 
 DROP TABLE IF EXISTS `dwh_hourly_partner_usage_new`;
 CREATE TABLE `dwh_hourly_partner_usage_new` (
@@ -15,7 +15,7 @@ CREATE TABLE `dwh_hourly_partner_usage_new` (
 /*!50100 PARTITION BY RANGE (date_id)
 (PARTITION p_0 VALUES LESS THAN (1) ENGINE = InnoDB)*/;
 
-CALL kalturadw.apply_table_partitions_to_target_table('dwh_hourly_partner_usage');
+CALL borhandw.apply_table_partitions_to_target_table('dwh_hourly_partner_usage');
 
 INSERT INTO dwh_hourly_partner_usage_new
 SELECT * FROM dwh_hourly_partner_usage;

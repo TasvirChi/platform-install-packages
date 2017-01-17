@@ -1,4 +1,4 @@
-USE kalturadw;
+USE borhandw;
 DROP TABLE IF EXISTS dwh_hourly_events_devices_new;
 
 CREATE TABLE `dwh_hourly_events_devices_new` (

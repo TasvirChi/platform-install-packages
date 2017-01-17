@@ -19,12 +19,12 @@ MYSQL_ROOT="root"
 MYSQL_ROOT_PW=""
 
 # Change to full path where the exports should be stored
-EXPORT_PATH="/opt/kaltura-updater/exports"
+EXPORT_PATH="/opt/borhan-updater/exports"
 # Change to full path where the logs should be stored
-LOG_PATH="/opt/kaltura-updater/logs"
+LOG_PATH="/opt/borhan-updater/logs"
 
-# Change to full path where your new kaltura is installed, most likely /opt/kaltura
-KALTURA_INSTALL="/opt/kaltura"
-WEB_DIR="/opt/kaltura/web"
+# Change to full path where your new borhan is installed, most likely /opt/borhan
+BORHAN_INSTALL="/opt/borhan"
+WEB_DIR="/opt/borhan/web"
 SERVICE_URL="http://[host]"
 

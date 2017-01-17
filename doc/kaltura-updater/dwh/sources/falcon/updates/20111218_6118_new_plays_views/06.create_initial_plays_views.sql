@@ -1,4 +1,4 @@
-USE kalturadw;
+USE borhandw;
 
 DROP PROCEDURE IF EXISTS calc_plays_views;
 
@@ -10,7 +10,7 @@ BEGIN
     DECLARE v_hour_id INT(11);
     DECLARE v_done INT(1) DEFAULT 0;
 
-    DECLARE c_partitions CURSOR FOR SELECT DISTINCT date_id, hour_id FROM kalturadw.dwh_hourly_events_entry;
+    DECLARE c_partitions CURSOR FOR SELECT DISTINCT date_id, hour_id FROM borhandw.dwh_hourly_events_entry;
     DECLARE CONTINUE HANDLER FOR NOT FOUND SET v_done = 1;
 
     OPEN c_partitions;
@@ -29,7 +29,7 @@ BEGIN
 
         INSERT INTO dwh_entry_plays_views(entry_id, plays, views)
         SELECT aggr.entry_id, IFNULL(SUM(count_plays), 0) plays, IFNULL(SUM(count_loads), 0) views
-        FROM kalturadw.dwh_hourly_events_entry aggr
+        FROM borhandw.dwh_hourly_events_entry aggr
         WHERE date_id BETWEEN v_date_id AND v_date_id AND hour_id = v_hour_id
         group by entry_id
         ON DUPLICATE KEY UPDATE

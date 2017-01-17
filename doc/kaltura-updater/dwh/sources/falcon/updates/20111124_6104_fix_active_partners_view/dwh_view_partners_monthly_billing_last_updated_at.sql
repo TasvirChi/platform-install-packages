@@ -1,6 +1,6 @@
 DELIMITER $$
 
-USE `kalturadw`$$
+USE `borhandw`$$
 
 DROP VIEW IF EXISTS `dwh_view_partners_monthly_billing_last_updated_at`$$
 

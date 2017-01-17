@@ -1,40 +1,40 @@
-Dear Kaltura administrator,
+Dear Borhan administrator,
 
 
 
-Thank you for installing Kaltura, the open source media asset management platform.
+Thank you for installing Borhan, the open source media asset management platform.
 
 
-This email confirms that you've successfully installed a Kaltura server on:
+This email confirms that you've successfully installed a Borhan server on:
 
 @SERVICE_URL@
 
 
-To begin using your new Kaltura server, access the Admin Console at:
+To begin using your new Borhan server, access the Admin Console at:
 
 @SERVICE_URL@/admin_console/
 
 
 Use @ADMIN_CONSOLE_ADMIN_MAIL@ and the the password you've entered while installing.
 
-When logged in to the KAC, click on "Add New Publisher" to create a new account and being using Kaltura.
+When logged in to the KAC, click on "Add New Publisher" to create a new account and being using Borhan.
 
 
-Please tell us about your experience running Kaltura at: http://bit.ly/kcommnuitysurvey
+Please tell us about your experience running Borhan at: http://bit.ly/kcommnuitysurvey
 
 
 
-6 Quick Tips For Smooth Kaltura Maintenance -
+6 Quick Tips For Smooth Borhan Maintenance -
 
 
 Tip #1:
 
-Join the community discussion board at: http://forum.kaltura.org to get help, meet other Kaltura community members and share your Kaltura stories!
+Join the community discussion board at: http://forum.borhan.org to get help, meet other Borhan community members and share your Borhan stories!
 
 
 Tip #2:
 
-In order to automate the installation of your Kaltura server (if you running in a cluster, or just to make the next install faster) - you can use the answers file that was generated for you during the installation, and pass it as a parameter to the post-install script. 
+In order to automate the installation of your Borhan server (if you running in a cluster, or just to make the next install faster) - you can use the answers file that was generated for you during the installation, and pass it as a parameter to the post-install script. 
 
 Find your answers file at: @ANSFILE@
 
@@ -49,38 +49,38 @@ Find your install log file at: @BASE_DIR@/log
 Tip #4:
 If you ever come across issues, increase log verbosity to 7 using the following method.        
 Run the following command using root:    
-sed -i 's@^writers.\(.*\).filters.priority.priority\s*=\s*7@writers.\1.filters.priority.priority=4@g' /opt/kaltura/app/configurations/logger.ini
+sed -i 's@^writers.\(.*\).filters.priority.priority\s*=\s*7@writers.\1.filters.priority.priority=4@g' /opt/borhan/app/configurations/logger.ini
 Then restart your Apache.    
 
-Run `kaltlog` (using root), which will continuously track (using `tail`) an error grep from all Kaltura log files.
+Run `kaltlog` (using root), which will continuously track (using `tail`) an error grep from all Borhan log files.
 
-You can also use: `allkaltlog` (using root), which will dump all the error lines from the Kaltura logs once. Note that this can result in a lot of output, so the best way to use it will be to redirect to a file: `allkaltlog > errors.txt`.
+You can also use: `allkaltlog` (using root), which will dump all the error lines from the Borhan logs once. Note that this can result in a lot of output, so the best way to use it will be to redirect to a file: `allkaltlog > errors.txt`.
 This output can be used to analyze past failures but for active debugging use the kaltlog alias.   
 
 
 Tip #5:
 
-Follow http://bit.ly/kcore-release-notes for the latest Kaltura release notes.
+Follow http://bit.ly/kcore-release-notes for the latest Borhan release notes.
 
 
 Tip #6:
 
-Visit http://knowledge.kaltura.com to read documentation and learn more.
+Visit http://knowledge.borhan.com to read documentation and learn more.
 
-Visit http://www.kaltura.org to join the community and get help.
-
-
-
-We're excited to have you join the Kaltura community!
-
-Please email community@kaltura.com for any questions, ideas or join us for a beer!
+Visit http://www.borhan.org to join the community and get help.
 
 
 
+We're excited to have you join the Borhan community!
 
-The Kaltura team
+Please email community@borhan.com for any questions, ideas or join us for a beer!
 
-community@kaltura.com
 
-http://corp.kaltura.com
+
+
+The Borhan team
+
+community@borhan.com
+
+http://corp.borhan.com
 

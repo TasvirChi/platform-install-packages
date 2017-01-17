@@ -1,13 +1,13 @@
 #!/usr/bin/make -f
-COMP_NAME ?= kaltura-postinst
+COMP_NAME ?= borhan-postinst
 
 DEB_VERSION := $(shell dpkg-parsechangelog | egrep '^Version:' | cut -f 2 -d ' ')
 RC_FILE :=../../build/sources.rc
-KALTURA_POSTINST_VERSION ?= $(shell egrep '^KALTURA_POSTINST_VERSION=' $(RC_FILE) | cut -d = -f 2| sed 's@"@@g')
+BORHAN_POSTINST_VERSION ?= $(shell egrep '^BORHAN_POSTINST_VERSION=' $(RC_FILE) | cut -d = -f 2| sed 's@"@@g')
 SOURCE_PACKAGING_DIR ?= $(shell egrep '^SOURCE_PACKAGING_DIR=' $(RC_FILE) | cut -d = -f 2| sed 's@"@@g')
-KALTURA_PREFIX ?= $(shell egrep '^KALTURA_PREFIX=' $(RC_FILE) | cut -d = -f 2| sed 's@"@@g')
+BORHAN_PREFIX ?= $(shell egrep '^BORHAN_PREFIX=' $(RC_FILE) | cut -d = -f 2| sed 's@"@@g')
 include ../includes/build-revision.mk
-archive := $(SOURCE_PACKAGING_DIR)/kaltura-postinst-$(KALTURA_POSTINST_VERSION).tar.gz
+archive := $(SOURCE_PACKAGING_DIR)/borhan-postinst-$(BORHAN_POSTINST_VERSION).tar.gz
 tree := postinst
 
 clean:
@@ -16,7 +16,7 @@ clean:
 	rm -rf debian/tmp
 
 $(archive):
-	~/sources/platform-install-packages/build/package_kaltura_postinst.sh
+	~/sources/platform-install-packages/build/package_borhan_postinst.sh
 
 $(tree): $(archive)
 	tar zxf $(archive)
@@ -27,7 +27,7 @@ install: build
 
 binary-indep: install
 	dh_installdirs
-	dh_install $(tree)/* $(KALTURA_PREFIX)/bin
+	dh_install $(tree)/* $(BORHAN_PREFIX)/bin
 	dh_gencontrol -u-v$(DEB_VERSION) 
 	dh_installdebconf
 	dh_installdeb

@@ -1,4 +1,4 @@
 #!/bin/sh
 if [ "$1" = "configure" ];then
-	ln -sf /opt/kaltura/web/flash/kmc/uiconf/kaltura/kmc /opt/kaltura/web/content/uiconf/kaltura/kmc
+	ln -sf /opt/borhan/web/flash/bmc/uiconf/borhan/bmc /opt/borhan/web/content/uiconf/borhan/bmc
 fi

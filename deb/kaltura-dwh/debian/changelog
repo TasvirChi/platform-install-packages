@@ -1,30 +1,30 @@
-kaltura-dwh (11.3.0-2) kajam; urgency=low
+borhan-dwh (11.3.0-2) kajam; urgency=low
 
-  * Cleaner fix for https://github.com/kaltura/platform-install-packages/pull/545 
+  * Cleaner fix for https://github.com/borhan/platform-install-packages/pull/545 
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Tue, 09 Aug 2016 13:57:50 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Tue, 09 Aug 2016 13:57:50 +0000
 
-kaltura-dwh (11.3.0-1) kajam; urgency=low
+borhan-dwh (11.3.0-1) kajam; urgency=low
 
   * Add last month dates to the DWH setup to avoid partition count issues.
 
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Mon, 11 Jul 2016 16:28:26 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Mon, 11 Jul 2016 16:28:26 +0000
 
-kaltura-dwh (10.10.0-2) jupiter; urgency=low
+borhan-dwh (10.10.0-2) jupiter; urgency=low
 
   * live entry aggregation ddl changes
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Thu, 15 Oct 2015 13:26:55 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Thu, 15 Oct 2015 13:26:55 +0000
 
-kaltura-dwh (10.10.0-1) jupiter; urgency=low
+borhan-dwh (10.10.0-1) jupiter; urgency=low
 
   * fix call to send_install_becon()
 
- -- Jess Portnoy <jess.portnoy@kaltura.com>  Mon, 27 Apr 2015 18:02:43 +0200
+ -- Jess Portnoy <jess.portnoy@borhan.com>  Mon, 27 Apr 2015 18:02:43 +0200
 
-kaltura-dwh (10.0.0-1) jupiter; urgency=low
+borhan-dwh (10.0.0-1) jupiter; urgency=low
 
   - First package
 
- -- Jess Portnoy <jess.portnoy@kaltura.com>  Thu, 18 Dec 2013 18:02:43 +0200
+ -- Jess Portnoy <jess.portnoy@borhan.com>  Thu, 18 Dec 2013 18:02:43 +0200

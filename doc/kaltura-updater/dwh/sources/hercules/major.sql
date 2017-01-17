@@ -1,6 +1,6 @@
 DELIMITER $$
 
-USE `kalturadw`$$
+USE `borhandw`$$
 
 DROP PROCEDURE IF EXISTS `get_data_for_operational`$$
 
@@ -23,19 +23,19 @@ BEGIN
             bridge_entity, bridge_table, last_execution_parameter_id, execution_start_time_parameter_id
         INTO	v_group_column, v_entity_table, v_aggregation_phrase, v_aggregation_table, 
             v_bridge_entity, v_bridge_table, v_last_execution_parameter_id, v_execution_start_time_parameter_id
-        FROM kalturadw_ds.operational_syncs WHERE operational_sync_name = p_sync_type;
-        UPDATE kalturadw_ds.parameters	SET date_value = v_execution_start_time WHERE id = v_execution_start_time_parameter_id;
+        FROM borhandw_ds.operational_syncs WHERE operational_sync_name = p_sync_type;
+        UPDATE borhandw_ds.parameters	SET date_value = v_execution_start_time WHERE id = v_execution_start_time_parameter_id;
     
     IF p_sync_type='entry' THEN 
     
 	SELECT e.entry_id, e.plays, e.views
-        FROM dwh_entry_plays_views e, kalturadw_ds.parameters p, kalturadw.dwh_dim_entries d
+        FROM dwh_entry_plays_views e, borhandw_ds.parameters p, borhandw.dwh_dim_entries d
         WHERE e.updated_at > p.date_value AND p.id = 4 AND e.entry_id = d.entry_id;
     
     ELSE
     
         SET @s = CONCAT('SELECT dim.', v_group_column,', ', v_aggregation_phrase, 
-                ' FROM ', v_aggregation_table ,' aggr, ', IF (v_bridge_table IS NULL, '', CONCAT(v_bridge_table, ' bridge, ')), v_entity_table, ' dim, kalturadw_ds.parameters p',
+                ' FROM ', v_aggregation_table ,' aggr, ', IF (v_bridge_table IS NULL, '', CONCAT(v_bridge_table, ' bridge, ')), v_entity_table, ' dim, borhandw_ds.parameters p',
                 ' WHERE aggr.', IF(v_bridge_entity IS NULL, v_group_column, 
                             CONCAT(v_bridge_entity, ' = bridge.',v_bridge_entity, ' AND bridge.', v_group_column)), 
                 ' = dim.', v_group_column, ' AND dim.operational_measures_updated_at > p.date_value AND p.id = ', v_last_execution_parameter_id,
@@ -50,15 +50,15 @@ END$$
 
 DELIMITER ;
 
-ALTER TABLE kalturadw_ds.locks MODIFY lock_name varchar(265) DEFAULT NULL;
+ALTER TABLE borhandw_ds.locks MODIFY lock_name varchar(265) DEFAULT NULL;
 
 -- 6147
-UPDATE kalturadw.dwh_dim_bandwidth_source SET bandwidth_source_name = 'akamai_HD_1.0' WHERE bandwidth_source_id = 7;
-REPLACE INTO kalturadw.dwh_dim_bandwidth_source (bandwidth_source_id,bandwidth_source_name, is_live) values (8,'akamai_HD_2.0(HDS)', 0);
+UPDATE borhandw.dwh_dim_bandwidth_source SET bandwidth_source_name = 'akamai_HD_1.0' WHERE bandwidth_source_id = 7;
+REPLACE INTO borhandw.dwh_dim_bandwidth_source (bandwidth_source_id,bandwidth_source_name, is_live) values (8,'akamai_HD_2.0(HDS)', 0);
 
 DELIMITER $$
 
-USE `kalturadw`$$
+USE `borhandw`$$
 
 DROP PROCEDURE IF EXISTS `calc_aggr_day_bandwidth`$$
 
@@ -73,17 +73,17 @@ BEGIN
 	UPDATE aggr_managment SET start_time = NOW() WHERE aggr_name = p_aggr_name AND date_id = DATE(p_date_val)*1;
 	SELECT MAX(DATE(NOW() - INTERVAL archive_delete_days_back DAY))
 	INTO v_ignore
-	FROM kalturadw_ds.retention_policy
+	FROM borhandw_ds.retention_policy
 	WHERE table_name IN('dwh_fact_bandwidth_usage', 'dwh_fact_fms_sessions');
 	
 	IF (p_date_val >= v_ignore) THEN 
 		
 		SELECT aggr_table, IF(IFNULL(aggr_id_field,'')='','', CONCAT(', ', aggr_id_field)) aggr_id_field
 		INTO  v_aggr_table, v_aggr_id_field_str
-		FROM kalturadw_ds.aggr_name_resolver
+		FROM borhandw_ds.aggr_name_resolver
 		WHERE aggr_name = p_aggr_name;
 		
-		SET @s = CONCAT('UPDATE kalturadw.',v_aggr_table, ' SET count_bandwidth_kb = NULL WHERE date_id = DATE(\'',p_date_val,'\')*1');
+		SET @s = CONCAT('UPDATE borhandw.',v_aggr_table, ' SET count_bandwidth_kb = NULL WHERE date_id = DATE(\'',p_date_val,'\')*1');
 		PREPARE stmt FROM  @s;
                 EXECUTE stmt;
                 DEALLOCATE PREPARE stmt;
@@ -91,7 +91,7 @@ BEGIN
 		/* HTTP */
 		SELECT DATE(archive_last_partition)
 		INTO v_from_archive
-		FROM kalturadw_ds.retention_policy
+		FROM borhandw_ds.retention_policy
 		WHERE table_name = 'dwh_fact_bandwidth_usage';
 	
                 IF (p_date_val >= v_from_archive) THEN 
@@ -100,7 +100,7 @@ BEGIN
                         SET v_table_name = 'dwh_fact_bandwidth_usage_archive';
                 END IF;
                 
-		SET @s = CONCAT('INSERT INTO kalturadw.', v_aggr_table, ' (partner_id, date_id, hour_id ', v_aggr_id_field_str,', count_bandwidth_kb)'
+		SET @s = CONCAT('INSERT INTO borhandw.', v_aggr_table, ' (partner_id, date_id, hour_id ', v_aggr_id_field_str,', count_bandwidth_kb)'
 				'SELECT partner_id, MAX(activity_date_id), 0 hour_id', v_aggr_id_field_str,', SUM(bandwidth_bytes)/1024 count_bandwidth
 				FROM ', v_table_name, '	WHERE activity_date_id=date(\'',p_date_val,'\')*1
 				GROUP BY partner_id', v_aggr_id_field_str,'
@@ -114,7 +114,7 @@ BEGIN
 		/* FMS */
 		SELECT DATE(archive_last_partition)
 		INTO v_from_archive
-		FROM kalturadw_ds.retention_policy
+		FROM borhandw_ds.retention_policy
 		WHERE table_name = 'dwh_fact_fms_sessions';
 		
 		IF (p_date_val >= v_from_archive) THEN 
@@ -123,7 +123,7 @@ BEGIN
                         SET v_table_name = 'dwh_fact_fms_sessions_archive';
                 END IF;
 
-		SET @s = CONCAT('INSERT INTO kalturadw.', v_aggr_table, ' (partner_id, date_id, hour_id', v_aggr_id_field_str,', count_bandwidth_kb)
+		SET @s = CONCAT('INSERT INTO borhandw.', v_aggr_table, ' (partner_id, date_id, hour_id', v_aggr_id_field_str,', count_bandwidth_kb)
 				SELECT session_partner_id, MAX(session_date_id), 0 hour_id', v_aggr_id_field_str,', SUM(total_bytes)/1024 count_bandwidth 
 				FROM ', v_table_name, ' WHERE session_date_id=date(\'',p_date_val,'\')*1
 				GROUP BY session_partner_id', v_aggr_id_field_str,'
@@ -139,16 +139,16 @@ END$$
 
 DELIMITER ;
 
-DROP TABLE IF EXISTS kalturadw.`dwh_dim_http_delivery_source`;
+DROP TABLE IF EXISTS borhandw.`dwh_dim_http_delivery_source`;
 
-CREATE TABLE kalturadw.`dwh_dim_http_delivery_source` (
+CREATE TABLE borhandw.`dwh_dim_http_delivery_source` (
   `process_id` INT(10) NOT NULL,
   `bandwidth_source_id` INT(11) NOT NULL,
   `file_regex` VARCHAR(100) NOT NULL DEFAULT '.*',
   UNIQUE KEY (`process_id`,`bandwidth_source_id`, `file_regex`)
 );
 
-REPLACE INTO kalturadw.`dwh_dim_http_delivery_source`
+REPLACE INTO borhandw.`dwh_dim_http_delivery_source`
 			(`process_id`,`bandwidth_source_id`,`file_regex`) 
 VALUES 		(4,4,'_77660\\.|_113110\.|_146829\\.'),(4,7,'_105515\\.|_146836\\.|_146832\\.'),(4,8,'_159949\.'),(6,3,'.*');
 
@@ -156,7 +156,7 @@ VALUES 		(4,4,'_77660\\.|_113110\.|_146829\\.'),(4,7,'_105515\\.|_146836\\.|_146
 
 DELIMITER $$
 
-USE `kalturadw`$$
+USE `borhandw`$$
 
 DROP PROCEDURE IF EXISTS `calc_aggr_day_user_usage`$$
 
@@ -296,15 +296,15 @@ DELIMITER ;
 
 -- 6149
 
-REPLACE INTO kalturadw_ds.processes (id, process_name, max_files_per_cycle) VALUES (10, 'bandwidth_usage_AKAMAI_LIVE_URTMP', 50);
+REPLACE INTO borhandw_ds.processes (id, process_name, max_files_per_cycle) VALUES (10, 'bandwidth_usage_AKAMAI_LIVE_URTMP', 50);
 
 
-REPLACE INTO kalturadw.dwh_dim_bandwidth_source (bandwidth_source_id,bandwidth_source_name, is_live) VALUES (9, 'akamai_live_urtmp',1);
+REPLACE INTO borhandw.dwh_dim_bandwidth_source (bandwidth_source_id,bandwidth_source_name, is_live) VALUES (9, 'akamai_live_urtmp',1);
 
-REPLACE INTO kalturadw.dwh_dim_http_delivery_source(process_id,bandwidth_source_id,file_regex)
+REPLACE INTO borhandw.dwh_dim_http_delivery_source(process_id,bandwidth_source_id,file_regex)
 VALUES (10,9,'_172678\\.|_213019\\.');
 
-REPLACE INTO kalturadw_ds.staging_areas
+REPLACE INTO borhandw_ds.staging_areas
         (id,
         process_id,
         source_table,
@@ -328,15 +328,15 @@ VALUES
 
 -- 6150
 
-REPLACE INTO kalturadw_ds.processes (id, process_name, max_files_per_cycle) VALUE (11, 'bandwidth_usage_unrecognized_files', 50);
+REPLACE INTO borhandw_ds.processes (id, process_name, max_files_per_cycle) VALUE (11, 'bandwidth_usage_unrecognized_files', 50);
 
 -- 6151
 
-ALTER TABLE kalturadw.dwh_hourly_partner_usage ADD COLUMN count_transcoding_mb DECIMAL(19,4) DEFAULT 0;
+ALTER TABLE borhandw.dwh_hourly_partner_usage ADD COLUMN count_transcoding_mb DECIMAL(19,4) DEFAULT 0;
 
 DELIMITER $$
 
-USE `kalturadw`$$
+USE `borhandw`$$
 
 DROP PROCEDURE IF EXISTS `calc_aggr_day_transcoding_usage`$$
 
@@ -344,11 +344,11 @@ CREATE PROCEDURE `calc_aggr_day_transcoding_usage`(p_date_id INT(11))
 BEGIN
 	UPDATE aggr_managment SET start_time = NOW() WHERE aggr_name = 'transcoding_usage' AND date_id = p_date_id;
 	
-    UPDATE kalturadw.dwh_hourly_partner_usage SET count_transcoding_mb = 0 WHERE date_id = p_date_id AND bandwidth_source_id = 1;
+    UPDATE borhandw.dwh_hourly_partner_usage SET count_transcoding_mb = 0 WHERE date_id = p_date_id AND bandwidth_source_id = 1;
 
-	INSERT INTO kalturadw.dwh_hourly_partner_usage (partner_id, date_id, hour_id, bandwidth_source_id, count_transcoding_mb)
+	INSERT INTO borhandw.dwh_hourly_partner_usage (partner_id, date_id, hour_id, bandwidth_source_id, count_transcoding_mb)
 	SELECT partner_id, p_date_id, 0 hour_id, 1, SUM(file_size)/1024/1024
-	FROM kalturadw.dwh_dim_batch_job_sep
+	FROM borhandw.dwh_dim_batch_job_sep
 	WHERE created_date_id = p_date_id
 	AND updated_date_id >= p_date_id
 	AND job_type_id = 0
@@ -364,14 +364,14 @@ DELIMITER ;
 
 DELIMITER $$
 
-USE `kalturadw`$$
+USE `borhandw`$$
 
 DROP PROCEDURE IF EXISTS `calc_aggr_day_partner_storage`$$
 
 CREATE PROCEDURE `calc_aggr_day_partner_storage`(date_val DATE)
 BEGIN
-    DELETE FROM kalturadw.dwh_hourly_partner_usage WHERE date_id = DATE(date_val)*1 AND IFNULL(count_bandwidth_kb,0) = 0 AND IFNULL(count_transcoding_mb,0) = 0 AND bandwidth_source_id = 1;
-    UPDATE kalturadw.dwh_hourly_partner_usage SET added_storage_mb = 0, deleted_storage_mb = 0, aggr_storage_mb=NULL WHERE date_id = DATE(date_val)*1 AND (IFNULL(count_bandwidth_kb,0) > 0 OR IFNULL(count_transcoding_mb,0) > 0);
+    DELETE FROM borhandw.dwh_hourly_partner_usage WHERE date_id = DATE(date_val)*1 AND IFNULL(count_bandwidth_kb,0) = 0 AND IFNULL(count_transcoding_mb,0) = 0 AND bandwidth_source_id = 1;
+    UPDATE borhandw.dwh_hourly_partner_usage SET added_storage_mb = 0, deleted_storage_mb = 0, aggr_storage_mb=NULL WHERE date_id = DATE(date_val)*1 AND (IFNULL(count_bandwidth_kb,0) > 0 OR IFNULL(count_transcoding_mb,0) > 0);
 	
 	DROP TABLE IF EXISTS temp_aggr_storage;
 	CREATE TEMPORARY TABLE temp_aggr_storage(
@@ -388,14 +388,14 @@ BEGIN
 	WHERE		entry_size_date_id=DATE(date_val)*1
 	GROUP BY 	partner_id;
 
-	INSERT INTO 	kalturadw.dwh_hourly_partner_usage (partner_id, date_id, hour_id, bandwidth_source_id, added_storage_mb, deleted_storage_mb, aggr_storage_mb)
+	INSERT INTO 	borhandw.dwh_hourly_partner_usage (partner_id, date_id, hour_id, bandwidth_source_id, added_storage_mb, deleted_storage_mb, aggr_storage_mb)
 	SELECT		partner_id, DATE(date_val)*1, 0 hour_id, 1, 0, 0, aggr_storage_mb
-	FROM        kalturadw.dwh_hourly_partner_usage
+	FROM        borhandw.dwh_hourly_partner_usage
 	WHERE       date_id = DATE(date_val - INTERVAL 1 DAY)*1
 	AND         bandwidth_source_id = 1
 	ON DUPLICATE KEY UPDATE added_storage_mb=VALUES(added_storage_mb), deleted_storage_mb=VALUES(deleted_storage_mb), aggr_storage_mb = VALUES(aggr_storage_mb);
 
-	INSERT INTO 	kalturadw.dwh_hourly_partner_usage (partner_id, date_id, hour_id, bandwidth_source_id, added_storage_mb, deleted_storage_mb, aggr_storage_mb)
+	INSERT INTO 	borhandw.dwh_hourly_partner_usage (partner_id, date_id, hour_id, bandwidth_source_id, added_storage_mb, deleted_storage_mb, aggr_storage_mb)
 	SELECT		aggr.partner_id, aggr.date_id, aggr.hour_id, 1, aggr.added_storage_mb, aggr.deleted_storage_mb, aggr.added_storage_mb - aggr.deleted_storage_mb
 	FROM		temp_aggr_storage aggr 
 	ON DUPLICATE KEY UPDATE added_storage_mb=VALUES(added_storage_mb), deleted_storage_mb=VALUES(deleted_storage_mb), aggr_storage_mb=IFNULL(aggr_storage_mb,0) + VALUES(aggr_storage_mb) ;
@@ -407,7 +407,7 @@ DELIMITER ;
 -- 6152
 DELIMITER $$
 
-USE `kalturadw`$$
+USE `borhandw`$$
 
 DROP PROCEDURE IF EXISTS `calc_aggr_day`$$
 
@@ -425,14 +425,14 @@ BEGIN
     		
 	SELECT DATE(NOW() - INTERVAL archive_delete_days_back DAY), DATE(archive_last_partition)
 	INTO v_ignore, v_from_archive
-	FROM kalturadw_ds.retention_policy
+	FROM borhandw_ds.retention_policy
 	WHERE table_name = 'dwh_fact_events';	
 	
 	IF (p_date_val >= v_ignore) THEN 
 		IF (DATE(p_date_val)*1 > 20120709) THEN 
 			SELECT aggr_table, aggr_id_field
 			INTO  v_aggr_table, v_aggr_id_field
-			FROM kalturadw_ds.aggr_name_resolver
+			FROM borhandw_ds.aggr_name_resolver
 			WHERE aggr_name = p_aggr_name;	
 			
 			SET extra = CONCAT('pre_aggregation_',p_aggr_name);
@@ -470,12 +470,12 @@ BEGIN
 							IF(dim_id_field <> '', 	CONCAT(', e.', REPLACE(dim_id_field,',',', e.')), '')
 						  )
 			INTO  v_aggr_table, v_aggr_id_field
-			FROM kalturadw_ds.aggr_name_resolver
+			FROM borhandw_ds.aggr_name_resolver
 			WHERE aggr_name = p_aggr_name;
 			
 			SELECT IF(join_table <> '' , CONCAT(',', join_table), ''), IF(join_table <> '', CONCAT(' AND ev.' ,join_id_field,'=',join_table,'.',join_id_field), '')
 			INTO v_join_table, v_join_condition
-			FROM kalturadw_ds.aggr_name_resolver
+			FROM borhandw_ds.aggr_name_resolver
 			WHERE aggr_name = p_aggr_name;
 			
 			
@@ -644,16 +644,16 @@ DELIMITER ;
 
 -- 6153
 
-ALTER TABLE kalturadw.dwh_dim_batch_job_sep MODIFY dwh_id bigint NOT NULL AUTO_INCREMENT,
+ALTER TABLE borhandw.dwh_dim_batch_job_sep MODIFY dwh_id bigint NOT NULL AUTO_INCREMENT,
 MODIFY id bigint DEFAULT NULL,
 MODIFY parent_job_id bigint DEFAULT NULL,
 MODIFY bulk_job_id bigint DEFAULT NULL,
 MODIFY root_job_id bigint DEFAULT NULL,
 MODIFY batch_job_lock_id bigint DEFAULT NULL;
 
-UPDATE kalturadw_ds.pentaho_sequences SET is_active = 0 WHERE job_name = 'dimensions/update_batch_job.ktr';
+UPDATE borhandw_ds.pentaho_sequences SET is_active = 0 WHERE job_name = 'dimensions/update_batch_job.ktr';
 
-ALTER TABLE kalturadw.dwh_dim_entries ADD COLUMN stream_id int(11),
+ALTER TABLE borhandw.dwh_dim_entries ADD COLUMN stream_id int(11),
 ADD INDEX stream_id (stream_id);
 
 

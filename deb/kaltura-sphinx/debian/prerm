@@ -1,5 +1,5 @@
 #!/bin/sh
 if [ "$1" = "remove" -o $1 = "purge" ] ; then
-    /usr/sbin/service kaltura-sphinx stop >/dev/null 2>&1
-    update-rc.d -f kaltura-sphinx remove
+    /usr/sbin/service borhan-sphinx stop >/dev/null 2>&1
+    update-rc.d -f borhan-sphinx remove
 fi

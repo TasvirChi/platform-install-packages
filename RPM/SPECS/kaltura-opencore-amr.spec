@@ -1,6 +1,6 @@
-%define prefix /opt/kaltura
+%define prefix /opt/borhan
 Summary: Adaptive Multi-Rate Floating-point (AMR) Speech Codec
-Name: kaltura-libopencore-amr
+Name: borhan-libopencore-amr
 Version: 0.1.3
 Release: 1
 License: Apache License V2.0
@@ -40,7 +40,7 @@ you will need to install %{name}-devel.
 %{__rm} -rf %{buildroot}
 %{__make} install DESTDIR="%{buildroot}"
 %{__mkdir_p} $RPM_BUILD_ROOT%{_sysconfdir}/ld.so.conf.d
-cat > $RPM_BUILD_ROOT%{_sysconfdir}/ld.so.conf.d/kaltura-libopencore-amrnb.conf << EOF
+cat > $RPM_BUILD_ROOT%{_sysconfdir}/ld.so.conf.d/borhan-libopencore-amrnb.conf << EOF
 %{prefix}/lib
 EOF
 
@@ -51,7 +51,7 @@ EOF
 %{__rm} -rf %{buildroot}
 
 %files
-%config %{_sysconfdir}/ld.so.conf.d/kaltura-libopencore-amrnb.conf
+%config %{_sysconfdir}/ld.so.conf.d/borhan-libopencore-amrnb.conf
 %defattr(-, root, root, 0755)
 %doc AUTHORS ChangeLog COPYING LICENSE README
 %{prefix}/lib/libopencore-amrnb.so.*
@@ -70,8 +70,8 @@ EOF
 %exclude %{prefix}/lib/libopencore-amrwb.la
 
 %changelog
-* Tue Dec 9 2014 Jess Portnoy <jess.portnoy@kaltura.com> - 0.1.3-1
+* Tue Dec 9 2014 Jess Portnoy <jess.portnoy@borhan.com> - 0.1.3-1
 - Bounce to 0.1.3
 
-* Sun Jan 6 2014 Jess Portnoy <jess.portnoy@kaltura.com> - 0.9.11-1
+* Sun Jan 6 2014 Jess Portnoy <jess.portnoy@borhan.com> - 0.9.11-1
 - Initial package.

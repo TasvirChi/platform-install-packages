@@ -1,7 +1,7 @@
-Setting up a Drop folder in Kaltura
+Setting up a Drop folder in Borhan
 ====================================
 
-######After Creating a Publisher in Kaltura 
+######After Creating a Publisher in Borhan 
 
 * Creat a Transcoding Profile ( I have created in my name as blackyboy transcoding 
 
@@ -19,28 +19,28 @@ Setting up a Drop folder in Kaltura
 
 * Conversion Profile ID: Choose your created name Here from Drop list
 
-* Drop Folder Storage Path: /opt/kaltura/web/content/blackyboy (or) any folder name
+* Drop Folder Storage Path: /opt/borhan/web/content/blackyboy (or) any folder name
 
   Check file size every (seconds): 10
 
 * Choose Manual Deletion if you Don't want to delete the Source.
 
-  Save it ... that't it in KMC side..
+  Save it ... that't it in BMC side..
 
 -------------------------------------------------------------------------
 
 ### Then in Terminal 
 
-* Create a directory named as you have mentioned here (Drop Folder Storage Path: /opt/kaltura/web/content/blackyboy)
+* Create a directory named as you have mentioned here (Drop Folder Storage Path: /opt/borhan/web/content/blackyboy)
 
 ```
-Eg : mkdir /opt/kaltura/web/content/blackyboy
+Eg : mkdir /opt/borhan/web/content/blackyboy
 ```
 
 * Then add a user for FTP
 
 ```
-# useradd -d /opt/kaltura/web/content/blackyboy blackyboy  ( home Dir of this blackyboy user is /opt/kaltura/web/content/blackyboy )
+# useradd -d /opt/borhan/web/content/blackyboy blackyboy  ( home Dir of this blackyboy user is /opt/borhan/web/content/blackyboy )
 ```
 (skel file error will be display, we don't need a bash profile so don't mind the error)
 
@@ -53,30 +53,30 @@ New passwd: ********
 Con Passwd: ********
 ```
 
-* Add the user blackyboy to apache & kaltura Group
-   Only kaltura Group is Enough
+* Add the user blackyboy to apache & borhan Group
+   Only borhan Group is Enough
 
 ```
-# usermod -a -G apache,kaltura blackyboy
+# usermod -a -G apache,borhan blackyboy
 
 ```
 
 * Navigate to directory 
 
 ```
-# cd /opt/kaltura/web/content
+# cd /opt/borhan/web/content
 ```
 
 * Change the Ownership of blackyboy
 
 ```
-# chown blackyboy:kaltura blackyboy/
+# chown blackyboy:borhan blackyboy/
 
 ```
   Note : Here i have setuped for sftp because ftp is not secured one, If we need ftp just 2 more step to be added in above steps, those are 
 
 ```
-# usermod -a -G ftp,kaltura blackyboy
+# usermod -a -G ftp,borhan blackyboy
 
 ```
 
@@ -88,9 +88,9 @@ Con Passwd: ********
 
 * Login the sftp from filezilla 
 
-  And upload a video file, it will be uploaded to **/opt/kaltura/web/content/blackyboy**
+  And upload a video file, it will be uploaded to **/opt/borhan/web/content/blackyboy**
 
-  After Completing upload it wait's for 10 seconds and it will move to KMC Content TAB and Start to convert it Using      Transcoding profile Which we have created.
+  After Completing upload it wait's for 10 seconds and it will move to BMC Content TAB and Start to convert it Using      Transcoding profile Which we have created.
 
   We can see the Progress of uploading from (Drop folder) Under Content TAB 
 

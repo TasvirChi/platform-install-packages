@@ -8,7 +8,7 @@ VER=$1
 DIST=$2
 BASE_CHECKOUT=/home/jess/sources/platform-install-packages/deb/
 cd $BASE_CHECKOUT
-for COMP in kaltura-base kaltura-front kaltura-batch ;do  
+for COMP in borhan-base borhan-front borhan-batch ;do  
 	CHLOG_FILE=$COMP/debian/changelog
 	if [ -f $CHLOG_FILE ];then
 		dch -v $VER-1 "Switching to $VER" -D $DIST -c $CHLOG_FILE 

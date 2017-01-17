@@ -4,6 +4,6 @@ set -e
 
 
 
-dpkg-maintscript-helper mv_conffile /opt/kaltura/app/configurations/php/fpm/main.conf /opt/kaltura/app/configurations/php/fpm/php-fpm.conf 5.3.5-1 -- "$@"
+dpkg-maintscript-helper mv_conffile /opt/borhan/app/configurations/php/fpm/main.conf /opt/borhan/app/configurations/php/fpm/php-fpm.conf 5.3.5-1 -- "$@"
 
 exit 0

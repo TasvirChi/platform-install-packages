@@ -1,7 +1,7 @@
 <?php
 
-require_once('/opt/kaltura/app/tests/lib/KalturaClient.php');
-require_once ('/opt/kaltura/app/tests/monitoring/KalturaMonitorResult.php');
+require_once('/opt/borhan/app/tests/lib/BorhanClient.php');
+require_once ('/opt/borhan/app/tests/monitoring/BorhanMonitorResult.php');
 
 $options = getopt('', array(
 	'service-url:',
@@ -14,7 +14,7 @@ if(!isset($options['service-url']))
 	exit(-1);
 }
 
-class KalturaMonitorClientLogger implements IKalturaLogger
+class BorhanMonitorClientLogger implements IBorhanLogger
 {
 	function log($msg)
 	{
@@ -22,7 +22,7 @@ class KalturaMonitorClientLogger implements IKalturaLogger
 	}
 }
 
-class KalturaMonitorClient extends KalturaClient
+class BorhanMonitorClient extends BorhanClient
 {
 	protected function doHttpRequest($url, $params = array(), $files = array())
 	{
@@ -123,7 +123,7 @@ class KalturaMonitorClient extends KalturaClient
 $config = parse_ini_file(dirname(__FILE__).'/sanity_config.ini', true);
 
 $serviceUrl = $config['client']['serviceUrl'];
-$clientConfig = new KalturaConfiguration();
+$clientConfig = new BorhanConfiguration();
 $clientConfig->partnerId = null;
 $clientConfig->serviceUrl = $serviceUrl;
 
@@ -131,6 +131,6 @@ $clientConfig->serviceUrl = $serviceUrl;
 	$clientConfig->$attribute = $value;
 
 if(isset($options['debug']))
-	$clientConfig->setLogger(new KalturaMonitorClientLogger());
+	$clientConfig->setLogger(new BorhanMonitorClientLogger());
 */
-$client = new KalturaMonitorClient($clientConfig);
+$client = new BorhanMonitorClient($clientConfig);

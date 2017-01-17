@@ -2,14 +2,14 @@
 
 set -e
 
-dpkg-maintscript-helper rm_conffile /opt/kaltura/app/configurations/php/conf.d/sqlite.ini 5.3.9~ -- "$@"
+dpkg-maintscript-helper rm_conffile /opt/borhan/app/configurations/php/conf.d/sqlite.ini 5.3.9~ -- "$@"
 #DEBHELPER#
 
-inidir=/opt/kaltura/app/configurations/php/mods-available
+inidir=/opt/borhan/app/configurations/php/mods-available
 for dsoname in sqlite3 pdo_sqlite ; do
     inifile=${dsoname}.ini
 
-    dpkg-maintscript-helper mv_conffile /opt/kaltura/app/configurations/php/conf.d/${inifile} ${inidir}/${inifile} 7.0.0-1 -- "$@";
+    dpkg-maintscript-helper mv_conffile /opt/borhan/app/configurations/php/conf.d/${inifile} ${inidir}/${inifile} 7.0.0-1 -- "$@";
 
     # Query which package has this conffile registered
     if which ucfq >/dev/null; then
@@ -27,7 +27,7 @@ for dsoname in sqlite3 pdo_sqlite ; do
 		ucf --purge ${inidir}/${inifile}
 	    fi
 	    #if which ucfr >/dev/null; then
-	    #	ucfr --purge kaltura-php7-sqlite ${inidir}/${inifile}
+	    #	ucfr --purge borhan-php7-sqlite ${inidir}/${inifile}
 	    #fi
 	fi
     fi

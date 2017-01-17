@@ -1,4 +1,4 @@
-USE kalturadw;
+USE borhandw;
 
 CREATE TABLE dwh_entry_plays_views_20120812 LIKE dwh_entry_plays_views;
 INSERT INTO dwh_entry_plays_views_20120812 SELECT * FROM dwh_entry_plays_views;
@@ -6,7 +6,7 @@ INSERT INTO dwh_entry_plays_views_20120812 SELECT * FROM dwh_entry_plays_views;
 DROP TABLE IF EXISTS tmp_pv;
 CREATE TEMPORARY TABLE tmp_pv
 SELECT * FROM (SELECT entry_id, IFNULL(SUM(count_plays),0) p , IFNULL(SUM(count_loads),0) v
-FROM kalturadw.dwh_hourly_events_entry
+FROM borhandw.dwh_hourly_events_entry
 GROUP BY entry_id
 UNION 
 SELECT * FROM entry_plays_views_before_08_2009) tmp;

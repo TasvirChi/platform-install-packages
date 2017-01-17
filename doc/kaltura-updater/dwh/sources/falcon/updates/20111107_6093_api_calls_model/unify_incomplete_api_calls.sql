@@ -1,6 +1,6 @@
 DELIMITER $$
 
-USE `kalturadw_ds`$$
+USE `borhandw_ds`$$
 
 DROP PROCEDURE IF EXISTS `unify_incomplete_api_calls`$$
 
@@ -35,8 +35,8 @@ BEGIN
         IFNULL(cycle_calls.error_code_id, old_calls.error_code_id) error_code_id,
         IFNULL(cycle_calls.duration_msecs, old_calls.duration_msecs) duration_msecs
     FROM 
-        kalturadw.dwh_fact_incomplete_api_calls cycle_calls, 
-        kalturadw.dwh_fact_incomplete_api_calls old_calls
+        borhandw.dwh_fact_incomplete_api_calls cycle_calls, 
+        borhandw.dwh_fact_incomplete_api_calls old_calls
     WHERE 
         cycle_calls.session_id = old_calls.session_id
         AND cycle_calls.request_index = old_calls.request_index
@@ -46,7 +46,7 @@ BEGIN
                 AND IFNULL(cycle_calls.duration_msecs, old_calls.duration_msecs) IS NOT NULL;
  
         
-    INSERT INTO kalturadw.dwh_fact_api_calls (file_id, line_number, session_id, request_index, api_call_time, api_call_date_id, 
+    INSERT INTO borhandw.dwh_fact_api_calls (file_id, line_number, session_id, request_index, api_call_time, api_call_date_id, 
                         api_call_hour_id, partner_id, action_id, os_id, browser_id, client_tag_id, is_admin,
                         pid, host_id, user_ip, user_ip_number, country_id, location_id, master_partner_id, 
                         ks, kuser_id, is_in_multi_request, success, error_code_id, duration_msecs)
@@ -57,23 +57,23 @@ BEGIN
     FROM unified_api_calls;
      
         
-    INSERT INTO kalturadw.dwh_fact_errors
+    INSERT INTO borhandw.dwh_fact_errors
         (file_id, line_number, partner_id, 
         error_time, error_date_id, error_hour_id, 
         error_object_id, error_object_type_id, error_code_id)
     SELECT     file_id, line_number, partner_id, 
         api_call_time, api_call_date_id, api_call_hour_id,
         CONCAT(session_id, '_', request_index), error_object_type_id, error_code_id
-    FROM unified_api_calls u, kalturadw.dwh_dim_error_object_types eot
+    FROM unified_api_calls u, borhandw.dwh_dim_error_object_types eot
     WHERE eot.error_object_type_name = 'API Call'
     AND error_code_id IS NOT NULL;
     
-    DELETE kalturadw.dwh_fact_incomplete_api_calls
-    FROM     kalturadw.dwh_fact_incomplete_api_calls, 
+    DELETE borhandw.dwh_fact_incomplete_api_calls
+    FROM     borhandw.dwh_fact_incomplete_api_calls, 
         unified_api_calls unified_calls
     WHERE 
-        kalturadw.dwh_fact_incomplete_api_calls.session_id = unified_calls.session_id
-        AND kalturadw.dwh_fact_incomplete_api_calls.request_index = unified_calls.request_index;
+        borhandw.dwh_fact_incomplete_api_calls.session_id = unified_calls.session_id
+        AND borhandw.dwh_fact_incomplete_api_calls.request_index = unified_calls.request_index;
 END$$
 
 DELIMITER ;

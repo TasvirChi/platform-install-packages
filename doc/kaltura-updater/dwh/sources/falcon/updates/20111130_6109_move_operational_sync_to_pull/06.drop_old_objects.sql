@@ -1,4 +1,4 @@
-USE kalturadw_ds;
+USE borhandw_ds;
 
 DROP TABLE IF EXISTS `updated_entries`;
 DROP TABLE IF EXISTS `updated_kusers_storage_usage`;

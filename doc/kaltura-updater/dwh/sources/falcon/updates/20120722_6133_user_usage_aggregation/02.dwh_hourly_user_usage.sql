@@ -1,8 +1,8 @@
-USE `kalturadw`;
+USE `borhandw`;
 
-DROP TABLE IF EXISTS kalturadw.`dwh_hourly_user_usage`;
+DROP TABLE IF EXISTS borhandw.`dwh_hourly_user_usage`;
 
-CREATE TABLE kalturadw.`dwh_hourly_user_usage` (
+CREATE TABLE borhandw.`dwh_hourly_user_usage` (
   `partner_id` INT(11) NOT NULL,
   `kuser_id` INT(11) NOT NULL,
   `date_id` INT(11) NOT NULL,
@@ -19,4 +19,4 @@ CREATE TABLE kalturadw.`dwh_hourly_user_usage` (
 PARTITION BY RANGE (date_id)
 (PARTITION @PARTITION_NAME@ VALUES LESS THAN (@PARTITION_VALUE@) ENGINE = INNODB);
  
- CALL kalturadw.add_monthly_partition_for_table('dwh_hourly_user_usage');
+ CALL borhandw.add_monthly_partition_for_table('dwh_hourly_user_usage');

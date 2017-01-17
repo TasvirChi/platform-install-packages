@@ -1,7 +1,7 @@
-USE `kalturadw_ds`;
+USE `borhandw_ds`;
 -- MySQL dump 10.13  Distrib 5.1.73, for redhat-linux-gnu (x86_64)
 --
--- Host: localhost    Database: kalturadw_ds
+-- Host: localhost    Database: borhandw_ds
 -- ------------------------------------------------------
 -- Server version	5.1.73
 /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
@@ -12,7 +12,7 @@ USE `kalturadw_ds`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Dumping routines for database 'kalturadw_ds'
+-- Dumping routines for database 'borhandw_ds'
 --
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -23,14 +23,14 @@ USE `kalturadw_ds`;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 FUNCTION `kalturadw_ds`.`get_error_code`(error_code_reason_param varchar(255)) RETURNS smallint(6)
+/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 FUNCTION `borhandw_ds`.`get_error_code`(error_code_reason_param varchar(255)) RETURNS smallint(6)
     NO SQL
 BEGIN
 	DECLARE error_code smallint(6);
-	INSERT IGNORE kalturadw_ds.invalid_ds_lines_error_codes (error_code_reason) VALUES(error_code_reason_param);
+	INSERT IGNORE borhandw_ds.invalid_ds_lines_error_codes (error_code_reason) VALUES(error_code_reason_param);
 	SELECT error_code_id 
 		INTO error_code
-		FROM kalturadw_ds.invalid_ds_lines_error_codes
+		FROM borhandw_ds.invalid_ds_lines_error_codes
 		WHERE error_code_reason = error_code_reason_param;
 	return error_code;
 END */;;
@@ -48,17 +48,17 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 FUNCTION `kalturadw_ds`.`get_ip_country_location`(ip BIGINT) RETURNS varchar(30) CHARSET latin1
+/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 FUNCTION `borhandw_ds`.`get_ip_country_location`(ip BIGINT) RETURNS varchar(30) CHARSET latin1
     READS SQL DATA
     DETERMINISTIC
 BEGIN
 	DECLARE res VARCHAR(30);
 	SELECT CONCAT(country_id,",",location_id)
 	INTO res
-	FROM kalturadw.dwh_dim_ip_ranges
+	FROM borhandw.dwh_dim_ip_ranges
 	WHERE ip_from = (
 	SELECT MAX(ip_from) 
-	FROM kalturadw.dwh_dim_ip_ranges
+	FROM borhandw.dwh_dim_ip_ranges
 	WHERE ip >= ip_from
 	) ;
 	RETURN res;
@@ -77,12 +77,12 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `kalturadw_ds`.`add_cycle_partition`(p_cycle_id VARCHAR(10))
+/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `borhandw_ds`.`add_cycle_partition`(p_cycle_id VARCHAR(10))
 BEGIN
 	DECLARE table_name VARCHAR(32);
 	DECLARE done INT DEFAULT 0;
 	DECLARE staging_areas_cursor CURSOR FOR SELECT source_table 
-						FROM kalturadw_ds.staging_areas, kalturadw_ds.cycles 
+						FROM borhandw_ds.staging_areas, borhandw_ds.cycles 
 						WHERE staging_areas.process_id = cycles.process_id AND cycles.cycle_id = p_cycle_id;
 	
 	DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = 1;
@@ -92,7 +92,7 @@ BEGIN
 		IF done THEN
 			LEAVE read_loop;
 		END IF;
-		SET @s = CONCAT('alter table kalturadw_ds.',table_name,' ADD PARTITION (partition p_' ,	p_cycle_id ,' values in (', p_cycle_id ,'))');
+		SET @s = CONCAT('alter table borhandw_ds.',table_name,' ADD PARTITION (partition p_' ,	p_cycle_id ,' values in (', p_cycle_id ,'))');
 		PREPARE stmt FROM  @s;
 		EXECUTE stmt;
 		DEALLOCATE PREPARE stmt;
@@ -113,13 +113,13 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `kalturadw_ds`.`drop_cycle_partition`(p_cycle_id VARCHAR(10))
+/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `borhandw_ds`.`drop_cycle_partition`(p_cycle_id VARCHAR(10))
 BEGIN
 	DECLARE table_name VARCHAR(32);
 	DECLARE p_exists INT;
 	DECLARE done INT DEFAULT 0;
 	DECLARE staging_areas_cursor CURSOR FOR SELECT source_table 
-						FROM kalturadw_ds.staging_areas, kalturadw_ds.cycles 
+						FROM borhandw_ds.staging_areas, borhandw_ds.cycles 
 						WHERE staging_areas.process_id = cycles.process_id AND cycles.cycle_id = p_cycle_id;
 	
 	DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = 1;
@@ -134,10 +134,10 @@ BEGIN
 		FROM information_schema.PARTITIONS 
 		WHERE partition_name = CONCAT('p_',p_cycle_id)
 		AND table_name = table_name
-		AND table_schema = 'kalturadw_ds';
+		AND table_schema = 'borhandw_ds';
 		
 		IF(p_exists>0) THEN
-			SET @s = CONCAT('alter table kalturadw_ds.',table_name,' drop PARTITION  p_' ,p_cycle_id);
+			SET @s = CONCAT('alter table borhandw_ds.',table_name,' drop PARTITION  p_' ,p_cycle_id);
 			PREPARE stmt FROM  @s;
 			EXECUTE stmt;
 			DEALLOCATE PREPARE stmt;
@@ -159,7 +159,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `kalturadw_ds`.`empty_cycle_partition`(p_cycle_id VARCHAR(10))
+/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `borhandw_ds`.`empty_cycle_partition`(p_cycle_id VARCHAR(10))
 BEGIN
 	CALL drop_cycle_partition(p_cycle_id);
 	CALL add_cycle_partition(p_cycle_id);
@@ -178,7 +178,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `kalturadw_ds`.`fms_sessionize`(
+/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `borhandw_ds`.`fms_sessionize`(
   partition_id INTEGER)
 BEGIN
   DECLARE FMS_STALE_SESSION_PURGE DATETIME;
@@ -230,9 +230,9 @@ SELECT session_id, MAX(event_time), MAX(event_date_id), MAX(client_ip), MAX(clie
     MAX(IF(t.event_type='connect',1,0)) is_connected_ind,
     MAX(IF(t.event_type='disconnect',1,0)) is_disconnected_ind
   FROM ds_fms_session_events e
- INNER JOIN kalturadw.dwh_dim_fms_event_type t ON e.event_type_id = t.event_type_id
+ INNER JOIN borhandw.dwh_dim_fms_event_type t ON e.event_type_id = t.event_type_id
  INNER JOIN files f ON e.file_id = f.file_id
-  LEFT OUTER JOIN kalturadw.dwh_dim_fms_bandwidth_source fbs ON (e.fms_app_id = fbs.fms_app_id AND f.process_id = fbs.process_id AND f.file_name REGEXP fbs.file_regex)
+  LEFT OUTER JOIN borhandw.dwh_dim_fms_bandwidth_source fbs ON (e.fms_app_id = fbs.fms_app_id AND f.process_id = fbs.process_id AND f.file_name REGEXP fbs.file_regex)
   WHERE e.cycle_id = partition_id
   GROUP BY session_id
   HAVING MAX(bandwidth_source_id) IS NOT NULL;
@@ -281,7 +281,7 @@ SELECT session_id, MAX(event_time), MAX(event_date_id), MAX(client_ip), MAX(clie
   WHERE (partner_id IS NOT NULL AND is_connected_ind = 1 AND is_disconnected_ind = 1) OR
         GREATEST(session_time,updated_time) < FMS_STALE_SESSION_PURGE;
 
-  INSERT INTO kalturadw.dwh_fact_fms_sessions (session_id,session_time,session_date_id,session_client_ip, session_client_ip_number, country_id, location_id,session_partner_id,bandwidth_source_id,total_bytes)
+  INSERT INTO borhandw.dwh_fact_fms_sessions (session_id,session_time,session_date_id,session_client_ip, session_client_ip_number, country_id, location_id,session_partner_id,bandwidth_source_id,total_bytes)
   SELECT session_id,session_time,session_date_id,session_client_ip, session_client_ip_number, country_id, location_id,session_partner_id,bandwidth_source_id,total_bytes
   FROM ds_temp_fms_sessions
   ON DUPLICATE KEY UPDATE
@@ -308,7 +308,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `kalturadw_ds`.`fms_sessionize_by_date_id`(p_event_date_id INT)
+/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `borhandw_ds`.`fms_sessionize_by_date_id`(p_event_date_id INT)
 BEGIN
 	DROP TABLE IF EXISTS ds_temp_fms_session_aggr;
 	DROP TABLE IF EXISTS ds_temp_fms_sessions;
@@ -329,7 +329,7 @@ BEGIN
 	    agg_bandwidth_source_id     INT(11)
 	  ) ENGINE = MEMORY;
 	 
-	  CREATE TABLE `kalturadw_ds`.ds_temp_fms_sessions (
+	  CREATE TABLE `borhandw_ds`.ds_temp_fms_sessions (
 	    session_id         		VARCHAR(20) NOT NULL,
 	    session_time       		DATETIME    NOT NULL,
 	    session_date_id    		INT(11),
@@ -351,10 +351,10 @@ BEGIN
 			SUM(IF(t.event_type='disconnect',client_to_server_bytes,0)) dis_cs_bytes,
 			SUM(IF(t.event_type='disconnect',server_to_client_bytes,0)) dis_sc_bytes,
 			MAX(partner_id) partner_id, MAX(bandwidth_source_id) bandwidth_source_id
-		FROM kalturadw.dwh_fact_fms_session_events e 
-		INNER JOIN kalturadw.dwh_dim_fms_event_type t ON e.event_type_id = t.event_type_id
+		FROM borhandw.dwh_fact_fms_session_events e 
+		INNER JOIN borhandw.dwh_dim_fms_event_type t ON e.event_type_id = t.event_type_id
 		INNER JOIN files f ON e.file_id = f.file_id
-		LEFT OUTER JOIN kalturadw.dwh_dim_fms_bandwidth_source fbs ON (e.fms_app_id = fbs.fms_app_id AND f.process_id = fbs.process_id)
+		LEFT OUTER JOIN borhandw.dwh_dim_fms_bandwidth_source fbs ON (e.fms_app_id = fbs.fms_app_id AND f.process_id = fbs.process_id)
 		WHERE e.event_date_id = p_event_date_id 
 		GROUP BY session_id
 		HAVING MAX(bandwidth_source_id) IS NOT NULL;
@@ -365,7 +365,7 @@ BEGIN
 		FROM ds_temp_fms_session_aggr
 		WHERE agg_partner_id IS NOT NULL AND agg_partner_id NOT IN (100  , -1  , -2  , 0 , 99 ) AND agg_dis_cs_bytes >0 AND agg_con_cs_bytes > 0;
 	
-	INSERT INTO kalturadw.dwh_fact_fms_sessions (session_id,session_time,session_date_id,session_client_ip, session_client_ip_number, session_client_country_id, session_client_location_id,session_partner_id,bandwidth_source_id,total_bytes)
+	INSERT INTO borhandw.dwh_fact_fms_sessions (session_id,session_time,session_date_id,session_client_ip, session_client_ip_number, session_client_country_id, session_client_location_id,session_partner_id,bandwidth_source_id,total_bytes)
 	SELECT session_id,session_time,session_date_id,session_client_ip, session_client_ip_number, session_client_country_id, session_client_location_id,session_partner_id,bandwidth_source_id,total_bytes
 	FROM ds_temp_fms_sessions
 	ON DUPLICATE KEY UPDATE
@@ -392,7 +392,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `kalturadw_ds`.`insert_invalid_ds_line`(line_number_param INT(11), 
+/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `borhandw_ds`.`insert_invalid_ds_line`(line_number_param INT(11), 
 									file_id_param INT(11), 
 									error_reason_param VARCHAR(255), 
 									ds_line_param VARCHAR(4096), 
@@ -418,27 +418,27 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `kalturadw_ds`.`register_file`(p_file_name VARCHAR(750), p_process_id INT, p_file_size_kb INT(11), p_compression_suffix VARCHAR(10), p_subdir VARCHAR(1024))
+/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `borhandw_ds`.`register_file`(p_file_name VARCHAR(750), p_process_id INT, p_file_size_kb INT(11), p_compression_suffix VARCHAR(10), p_subdir VARCHAR(1024))
 BEGIN
 	DECLARE v_assigned_server_id INT;
 	DECLARE v_cycle_id INT;
 	DECLARE v_file_id INT;
 	
-	SELECT file_id INTO v_file_id FROM kalturadw_ds.files WHERE file_name = p_file_name AND process_id = p_process_id AND compression_suffix = p_compression_suffix;
+	SELECT file_id INTO v_file_id FROM borhandw_ds.files WHERE file_name = p_file_name AND process_id = p_process_id AND compression_suffix = p_compression_suffix;
 	
 	IF (v_file_id IS NULL) THEN
 		SELECT etl_server_id INTO v_assigned_server_id
-			FROM kalturadw_ds.etl_servers s
-				LEFT OUTER JOIN kalturadw_ds.cycles c 
+			FROM borhandw_ds.etl_servers s
+				LEFT OUTER JOIN borhandw_ds.cycles c 
 					ON (s.etl_server_id = c.assigned_server_id AND c.STATUS = 'REGISTERED' AND c.process_id = p_process_id)
-				LEFT OUTER JOIN kalturadw_ds.files f
+				LEFT OUTER JOIN borhandw_ds.files f
 					ON (c.cycle_id = f.cycle_id)		
 			GROUP BY etl_server_id
 			ORDER BY SUM(file_size_kb)/lb_constant, lb_constant desc LIMIT 1;
 		
 		IF (v_assigned_server_id IS NOT NULL) THEN
 			SELECT c.cycle_id INTO v_cycle_id 
-				FROM kalturadw_ds.processes p INNER JOIN kalturadw_ds.cycles c ON (c.process_id = p.id) LEFT OUTER JOIN kalturadw_ds.files f ON (c.cycle_id = f.cycle_id)
+				FROM borhandw_ds.processes p INNER JOIN borhandw_ds.cycles c ON (c.process_id = p.id) LEFT OUTER JOIN borhandw_ds.files f ON (c.cycle_id = f.cycle_id)
 				WHERE 	p.id = p_process_id AND
 					c.STATUS='REGISTERED' AND
 					c.assigned_server_id = v_assigned_server_id
@@ -447,14 +447,14 @@ BEGIN
 			
 			
 			IF (v_cycle_id IS NOT NULL) THEN 
-				INSERT INTO kalturadw_ds.files 	(file_name, file_status, insert_time, file_size_kb, process_id, cycle_id, compression_suffix, subdir)
+				INSERT INTO borhandw_ds.files 	(file_name, file_status, insert_time, file_size_kb, process_id, cycle_id, compression_suffix, subdir)
 							VALUES	(p_file_name, 'IN_CYCLE', NOW(), p_file_size_kb, p_process_id, v_cycle_id, p_compression_suffix, p_subdir);
 			ELSE
-				INSERT INTO kalturadw_ds.cycles (STATUS, insert_time, process_id, assigned_server_id)
+				INSERT INTO borhandw_ds.cycles (STATUS, insert_time, process_id, assigned_server_id)
 							VALUES	('REGISTERED', NOW(), p_process_id, v_assigned_server_id);
 				SET v_cycle_id = LAST_INSERT_ID();
 				CALL add_cycle_partition(v_cycle_id);
-				INSERT INTO kalturadw_ds.files 	(file_name, file_status, insert_time, file_size_kb, process_id, cycle_id, compression_suffix, subdir)
+				INSERT INTO borhandw_ds.files 	(file_name, file_status, insert_time, file_size_kb, process_id, cycle_id, compression_suffix, subdir)
 							VALUES	(p_file_name, 'IN_CYCLE', NOW(), p_file_size_kb, p_process_id, v_cycle_id, p_compression_suffix, p_subdir);
 			END IF;
 		END IF;
@@ -474,11 +474,11 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `kalturadw_ds`.`restore_file_status`(
+/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `borhandw_ds`.`restore_file_status`(
 	pfile_id INT(20)
     )
 BEGIN
-	UPDATE kalturadw_ds.files f
+	UPDATE borhandw_ds.files f
 	SET f.file_status = f.prev_status,
 	    f.prev_status = f.file_status
 	WHERE f.file_id = pfile_id;
@@ -497,24 +497,24 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `kalturadw_ds`.`set_cycle_status`(
+/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `borhandw_ds`.`set_cycle_status`(
 	p_cycle_id INT(20),
 	new_cycle_status VARCHAR(20)
     )
 BEGIN
-	UPDATE kalturadw_ds.cycles c
+	UPDATE borhandw_ds.cycles c
 	SET c.prev_status = c.status
 	    ,c.status = new_cycle_status
 	WHERE c.cycle_id = p_cycle_id;
 	
 	IF new_cycle_status = 'RUNNING'
 	THEN 
-		UPDATE kalturadw_ds.cycles c
+		UPDATE borhandw_ds.cycles c
 		SET c.run_time = NOW()
 		WHERE c.cycle_id = p_cycle_id;
 	ELSEIF new_cycle_status = 'TRANSFERING'
 	THEN 
-		UPDATE kalturadw_ds.cycles c
+		UPDATE borhandw_ds.cycles c
 		SET c.transfer_time = NOW()
 		WHERE c.cycle_id = p_cycle_id;
 	END IF;
@@ -533,7 +533,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `kalturadw_ds`.`set_file_status`(
+/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `borhandw_ds`.`set_file_status`(
 	pfile_id INT(20),
 	new_file_status VARCHAR(20)
     )
@@ -554,7 +554,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `kalturadw_ds`.`set_file_status_full`(
+/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `borhandw_ds`.`set_file_status_full`(
 	pfile_id INT(20),
 	new_file_status VARCHAR(20),
 	override_safety_check INT
@@ -564,7 +564,7 @@ BEGIN
 	IF override_safety_check = 1 THEN
 		SELECT f.file_status
 		INTO cur_status
-		FROM kalturadw_ds.files f
+		FROM borhandw_ds.files f
 		WHERE f.file_id = pfile_id;
 		IF  new_file_status NOT IN ('WAITING','RUNNING','PROCESSED','TRANSFERING','DONE','FAILED')
 		 OR new_file_status = 'RUNNING' AND cur_status <> 'WAITING'
@@ -580,18 +580,18 @@ BEGIN
 		END IF;
 	END IF;
 	
-	UPDATE kalturadw_ds.files f
+	UPDATE borhandw_ds.files f
 	SET f.prev_status = f.file_status
 	    ,f.file_status = new_file_status
 	WHERE f.file_id = pfile_id;
 	IF new_file_status = 'RUNNING'
 	THEN 
-		UPDATE kalturadw_ds.files f
+		UPDATE borhandw_ds.files f
 		SET f.run_time = NOW()
 		WHERE f.file_id = pfile_id;
 	ELSEIF new_file_status = 'TRANSFERING'
 	THEN 
-		UPDATE kalturadw_ds.files f
+		UPDATE borhandw_ds.files f
 		SET f.transfer_time = NOW()
 		WHERE f.file_id = pfile_id;
 	END IF;
@@ -610,7 +610,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `kalturadw_ds`.`transfer_cycle_partition`(p_cycle_id VARCHAR(10))
+/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `borhandw_ds`.`transfer_cycle_partition`(p_cycle_id VARCHAR(10))
 BEGIN
 	DECLARE src_table VARCHAR(45);
 	DECLARE tgt_table VARCHAR(45);
@@ -648,7 +648,7 @@ BEGIN
 				'IFNULL(total_records, 0) calculated_records from ',
 				'(SELECT ', aggr_date, ' date_id, ', aggr_hour, ' hour_id, count(*) new_rows FROM ',src_table,
 				' WHERE ', partition_field,'  = ',p_cycle_id, ' group by date_id, hour_id) ds ',
-				'LEFT OUTER JOIN kalturadw_ds.fact_stats fs on ds.date_id = fs.date_id AND ds.hour_id = fs.hour_id
+				'LEFT OUTER JOIN borhandw_ds.fact_stats fs on ds.date_id = fs.date_id AND ds.hour_id = fs.hour_id
 				AND fs.fact_table_id = ', tgt_table_id);
 		PREPARE stmt FROM @s;
 		EXECUTE stmt;
@@ -656,9 +656,9 @@ BEGIN
 		
 		
 		IF ((LENGTH(AGGR_DATE) > 0) && (LENGTH(aggr_names) > 0)) THEN
-			SET @s = CONCAT('INSERT INTO kalturadw.aggr_managment(aggr_name, date_id, hour_id, data_insert_time)
+			SET @s = CONCAT('INSERT INTO borhandw.aggr_managment(aggr_name, date_id, hour_id, data_insert_time)
 					SELECT aggr_name, date_id, hour_id, now() 
-					FROM kalturadw_ds.aggr_name_resolver a, tmp_stats ts
+					FROM borhandw_ds.aggr_name_resolver a, tmp_stats ts
 					WHERE 	aggr_name in ', aggr_names, '
 					AND date_id >= date(\'',reset_aggr_min_date,'\')
 					AND if(calculated_records=0,100, uncalculated_records*100/(calculated_records+uncalculated_records)) > ', v_reaggr_percent_trigger, '
@@ -682,7 +682,7 @@ BEGIN
 		EXECUTE stmt;
 		DEALLOCATE PREPARE stmt;
 			
-		INSERT INTO kalturadw_ds.fact_stats (fact_table_id, date_id, hour_id, total_records, uncalculated_records)
+		INSERT INTO borhandw_ds.fact_stats (fact_table_id, date_id, hour_id, total_records, uncalculated_records)
 			SELECT tgt_table_id, date_id, hour_id,
 				IF(calculated_records=0 OR uncalculated_records*100/(calculated_records+uncalculated_records) > v_reaggr_percent_trigger,
 					calculated_records + uncalculated_records, calculated_records),
@@ -719,7 +719,7 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `kalturadw_ds`.`unify_incomplete_api_calls`(p_cycle_id INTEGER)
+/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `borhandw_ds`.`unify_incomplete_api_calls`(p_cycle_id INTEGER)
 BEGIN
     DROP TABLE IF EXISTS unified_api_calls;
     CREATE TEMPORARY TABLE unified_api_calls
@@ -750,8 +750,8 @@ BEGIN
         IFNULL(cycle_calls.error_code_id, old_calls.error_code_id) error_code_id,
         IFNULL(cycle_calls.duration_msecs, old_calls.duration_msecs) duration_msecs
     FROM 
-        kalturadw.dwh_fact_incomplete_api_calls cycle_calls, 
-        kalturadw.dwh_fact_incomplete_api_calls old_calls
+        borhandw.dwh_fact_incomplete_api_calls cycle_calls, 
+        borhandw.dwh_fact_incomplete_api_calls old_calls
     WHERE 
         cycle_calls.session_id = old_calls.session_id
         AND cycle_calls.request_index = old_calls.request_index
@@ -761,7 +761,7 @@ BEGIN
                 AND IFNULL(cycle_calls.duration_msecs, old_calls.duration_msecs) IS NOT NULL;
  
         
-    INSERT INTO kalturadw.dwh_fact_api_calls (file_id, line_number, session_id, request_index, api_call_time, api_call_date_id, 
+    INSERT INTO borhandw.dwh_fact_api_calls (file_id, line_number, session_id, request_index, api_call_time, api_call_date_id, 
                         api_call_hour_id, partner_id, action_id, os_id, browser_id, client_tag_id, is_admin,
                         pid, host_id, user_ip, user_ip_number, country_id, location_id, master_partner_id, 
                         ks, kuser_id, is_in_multi_request, success, error_code_id, duration_msecs)
@@ -772,23 +772,23 @@ BEGIN
     FROM unified_api_calls;
      
         
-    INSERT INTO kalturadw.dwh_fact_errors
+    INSERT INTO borhandw.dwh_fact_errors
         (file_id, line_number, partner_id, 
         error_time, error_date_id, error_hour_id, 
         error_object_id, error_object_type_id, error_code_id)
     SELECT     file_id, line_number, partner_id, 
         api_call_time, api_call_date_id, api_call_hour_id,
         CONCAT(session_id, '_', request_index), error_object_type_id, error_code_id
-    FROM unified_api_calls u, kalturadw.dwh_dim_error_object_types eot
+    FROM unified_api_calls u, borhandw.dwh_dim_error_object_types eot
     WHERE eot.error_object_type_name = 'API Call'
     AND error_code_id IS NOT NULL;
     
-    DELETE kalturadw.dwh_fact_incomplete_api_calls
-    FROM     kalturadw.dwh_fact_incomplete_api_calls, 
+    DELETE borhandw.dwh_fact_incomplete_api_calls
+    FROM     borhandw.dwh_fact_incomplete_api_calls, 
         unified_api_calls unified_calls
     WHERE 
-        kalturadw.dwh_fact_incomplete_api_calls.session_id = unified_calls.session_id
-        AND kalturadw.dwh_fact_incomplete_api_calls.request_index = unified_calls.request_index;
+        borhandw.dwh_fact_incomplete_api_calls.session_id = unified_calls.session_id
+        AND borhandw.dwh_fact_incomplete_api_calls.request_index = unified_calls.request_index;
 END */;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;

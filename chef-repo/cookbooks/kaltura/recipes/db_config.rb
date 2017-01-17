@@ -1,14 +1,14 @@
-log "Configuring Kaltura DB"
-template "/etc/yum.repos.d/kaltura.repo" do
-    source "kaltura.repo.erb"
+log "Configuring Borhan DB"
+template "/etc/yum.repos.d/borhan.repo" do
+    source "borhan.repo.erb"
     mode 0600
     owner "root"
     group "root"
 end
-package "kaltura-base" do
+package "borhan-base" do
   action :install
  end
-package "kaltura-postinst" do
+package "borhan-postinst" do
   action :install
  end
 #%w{ apr apr-util lynx }.each do |pkg|
@@ -17,17 +17,17 @@ package "kaltura-postinst" do
 #  end
 #end
 
-template "/root/kaltura.ans" do
-    source "kaltura.ans.erb"
+template "/root/borhan.ans" do
+    source "borhan.ans.erb"
     mode 0600
     owner "root"
     group "root"
 end
 
-bash "setup Kaltura DB" do
+bash "setup Borhan DB" do
      user "root"
      code <<-EOH
-	#{node[:kaltura][:BASE_DIR]}/bin/kaltura-base-config.sh /root/kaltura.ans
-	"#{node[:kaltura][:BASE_DIR]}"/bin/kaltura-db-config.sh #{node[:kaltura][:DB1_HOST]} #{node[:kaltura][:SUPER_USER]} #{node[:kaltura][:SUPER_USER_PASSWD]} #{node[:kaltura][:DB1_PORT]}
+	#{node[:borhan][:BASE_DIR]}/bin/borhan-base-config.sh /root/borhan.ans
+	"#{node[:borhan][:BASE_DIR]}"/bin/borhan-db-config.sh #{node[:borhan][:DB1_HOST]} #{node[:borhan][:SUPER_USER]} #{node[:borhan][:SUPER_USER_PASSWD]} #{node[:borhan][:DB1_PORT]}
      EOH
 end

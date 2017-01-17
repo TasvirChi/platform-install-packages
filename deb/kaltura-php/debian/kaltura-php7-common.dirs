@@ -1,9 +1,9 @@
-/opt/kaltura/lib/php7/libexec
-/opt/kaltura/share/lintian/overrides
-/opt/kaltura/share/doc/php7-common
-/opt/kaltura/share/php7
+/opt/borhan/lib/php7/libexec
+/opt/borhan/share/lintian/overrides
+/opt/borhan/share/doc/php7-common
+/opt/borhan/share/php7
 /var/lib/php7
-/opt/kaltura/lib/php7
-/opt/kaltura/app/configurations/php/conf.d
-/opt/kaltura/app/configurations/php/mods-available
+/opt/borhan/lib/php7
+/opt/borhan/app/configurations/php/conf.d
+/opt/borhan/app/configurations/php/mods-available
 /usr/sbin

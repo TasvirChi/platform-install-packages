@@ -16,13 +16,13 @@ function clipi($client,$entry_id,$overwrite)
 	$clipDuration = $endTime - $startTime;
 
 	// Create New Clip
-	$operation1 = new KalturaClipAttributes();
+	$operation1 = new BorhanClipAttributes();
 	$operation1->offset = $startTime;
 	$operation1->duration = $clipDuration;
 
 	// Add New Resource
-	$resource = new KalturaOperationResource();
-	$resource->resource = new KalturaEntryResource();
+	$resource = new BorhanOperationResource();
+	$resource->resource = new BorhanEntryResource();
 	$resource->resource->entryId = $entry_id;
 	$resource->operationAttributes = array($operation1);
 
@@ -36,9 +36,9 @@ function clipi($client,$entry_id,$overwrite)
 		}
 	} else {
 		// Create New Media Entry
-		$entry = new KalturaMediaEntry();
+		$entry = new BorhanMediaEntry();
 		$entry->name = "New Clipped sanity";
-		$entry->description = "Run by kaltura-sanity.sh";
+		$entry->description = "Run by borhan-sanity.sh";
 		$entry->mediaType = 1; //The new media type
 
 		// New Clip
@@ -58,5 +58,5 @@ $entry_id = $argv[4];
 $overwrite = $argv[5];
 $basedir=dirname(__FILE__);
 require_once($basedir.'/create_session.php');
-$client=generate_ks($service_url,$partnerId,$secret,$type=KalturaSessionType::ADMIN,$userId=null);
+$client=generate_ks($service_url,$partnerId,$secret,$type=BorhanSessionType::ADMIN,$userId=null);
 echo(clipi($client,$entry_id,$overwrite)). " was created.\n";

@@ -1,16 +1,16 @@
-%define prefix /opt/kaltura
+%define prefix /opt/borhan
 %define real_name mcrypt
 
 Summary: Data encryption library
-Name: kaltura-libmcrypt
+Name: borhan-libmcrypt
 Version: 2.5.8
 Release: 2 
 License: LGPL
 Group: System Environment/Libraries
 URL: http://mcrypt.sourceforge.net/
 
-Packager: Jess Portnoy <jess.portnoy@kaltura.com> 
-Vendor: Kaltura, Inc. 
+Packager: Jess Portnoy <jess.portnoy@borhan.com> 
+Vendor: Borhan, Inc. 
 
 Source: http://sourceforge.net/projects/mcrypt/files/Libmcrypt/%{version}/libmcrypt-%{version}.tar.gz
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
@@ -52,7 +52,7 @@ you will need to install %{name}-devel.
 %{__rm} -rf %{buildroot}
 %{__mkdir_p} $RPM_BUILD_ROOT%{_sysconfdir}/ld.so.conf.d
 %{__make} install DESTDIR="%{buildroot}"
-cat > $RPM_BUILD_ROOT%{_sysconfdir}/ld.so.conf.d/kaltura_libmcrypt.conf << EOF
+cat > $RPM_BUILD_ROOT%{_sysconfdir}/ld.so.conf.d/borhan_libmcrypt.conf << EOF
 %{prefix}/lib
 EOF
 
@@ -75,7 +75,7 @@ EOF
 %defattr(-, root, root, 0755)
 %doc doc/README* doc/example.c
 %doc %{prefix}/share/man/man?/*
-%config %{_sysconfdir}/ld.so.conf.d/kaltura_libmcrypt.conf
+%config %{_sysconfdir}/ld.so.conf.d/borhan_libmcrypt.conf
 %{prefix}/bin/*
 %{prefix}/lib/*.a
 #%{prefix}/lib/*.so
@@ -84,17 +84,17 @@ EOF
 %exclude %{prefix}/lib/*.la
 
 %changelog
-* Mon Dec 8 2014 Jess Portnoy <jess.portnoy@kaltura.com> - 2.5.8-1
+* Mon Dec 8 2014 Jess Portnoy <jess.portnoy@borhan.com> - 2.5.8-1
 - Bounce to 2.5.8
 
-* Mon Jan 6 2014 Jess Portnoy <jess.portnoy@kaltura.com> - 2.5.7-5
+* Mon Jan 6 2014 Jess Portnoy <jess.portnoy@borhan.com> - 2.5.7-5
 - Corrected LD_LIBRARY_PATH
 
-* Mon Jan 6 2014 Jess Portnoy <jess.portnoy@kaltura.com> - 2.5.7-4
+* Mon Jan 6 2014 Jess Portnoy <jess.portnoy@borhan.com> - 2.5.7-4
 - Added 'Provides'.
 
-* Wed Dec 25 2013 Jess Portnoy <jess.portnoy@kaltura.com> - 2.5.7-3 
-- Adopted for Kaltura.
+* Wed Dec 25 2013 Jess Portnoy <jess.portnoy@borhan.com> - 2.5.7-3 
+- Adopted for Borhan.
 
 * Sat Apr 08 2006 Dries Verachtert <dries@ulyssis.org> - 2.5.7-1.2 - 7981/dag
 - Rebuild for Fedora Core 5.

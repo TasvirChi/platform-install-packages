@@ -1,6 +1,6 @@
-%define prefix /opt/kaltura
+%define prefix /opt/borhan
 Summary: Toolkit for RTMP streams
-Name: kaltura-rtmpdump
+Name: borhan-rtmpdump
 Version: 2.3
 Release: 3
 License: GPLv2+
@@ -18,24 +18,24 @@ BuildRequires: libgcrypt-devel
 rtmpdump is a toolkit for RTMP streams. All forms of RTMP are supported,
 including rtmp://, rtmpt://, rtmpe://, rtmpte://, and rtmps://. 
 
-%package -n kaltura-librtmp
+%package -n borhan-librtmp
 Summary: Support library for RTMP streams
 License: LGPLv2+
 Group: Applications/Internet
 Provides: librtmp
 
-%description -n kaltura-librtmp
+%description -n borhan-librtmp
 librtmp is a suport library for RTMP streams. All forms of RTMP are supported,
 including rtmp://, rtmpt://, rtmpe://, rtmpte://, and rtmps://. 
 
-%package -n kaltura-librtmp-devel
+%package -n borhan-librtmp-devel
 Summary: Files for librtmp development
 License: LGPLv2+
 Group: Applications/Internet
 Requires: librtmp = %{version}-%{release}
 Provides: librtmp-devel
 
-%description -n kaltura-librtmp-devel
+%description -n borhan-librtmp-devel
 librtmp is a suport library for RTMP streams. The librtmp-devel package
 contains include files needed to develop applications using librtmp.
 
@@ -52,8 +52,8 @@ contains include files needed to develop applications using librtmp.
 %clean
 %{__rm} -rf %{buildroot}
 
-%post -n kaltura-librtmp -p /sbin/ldconfig
-%postun -n kaltura-librtmp -p /sbin/ldconfig
+%post -n borhan-librtmp -p /sbin/ldconfig
+%postun -n borhan-librtmp -p /sbin/ldconfig
 
 %files
 %defattr(-, root, root, 0755)
@@ -65,12 +65,12 @@ contains include files needed to develop applications using librtmp.
 %{prefix}/sbin/rtmpsrv
 %{prefix}/sbin/rtmpsuck
 
-%files -n kaltura-librtmp
+%files -n borhan-librtmp
 %defattr(-, root, root, 0755)
 %doc librtmp/COPYING
 %{prefix}/lib/librtmp.so.0
 
-%files -n kaltura-librtmp-devel
+%files -n borhan-librtmp-devel
 %defattr(-, root, root, 0755)
 %doc ChangeLog
 %doc %{prefix}/share/man/man3/librtmp.3*
@@ -80,8 +80,8 @@ contains include files needed to develop applications using librtmp.
 %exclude %{prefix}/lib/librtmp.a
 
 %changelog
-* Mon Dec 8 2014 Jess Portnoy <jess.portnoy@kaltura.com> 2.3-3
+* Mon Dec 8 2014 Jess Portnoy <jess.portnoy@borhan.com> 2.3-3
 - Added Provides librtmp-devel tag
 
-* Sun Jan 5 2014 Jess Portnoy <jess.portnoy@kaltura.com> 2.3-2
-- Adopted for Kaltura. Required for kaltura-ffmpeg. 
+* Sun Jan 5 2014 Jess Portnoy <jess.portnoy@borhan.com> 2.3-2
+- Adopted for Borhan. Required for borhan-ffmpeg. 

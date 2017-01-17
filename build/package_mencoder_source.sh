@@ -8,8 +8,8 @@
 #  REQUIREMENTS: ---
 #          BUGS: ---
 #         NOTES: ---
-#        AUTHOR: Jess Portnoy (), <jess.portnoy@kaltura.com>
-#  ORGANIZATION: Kaltura, inc.
+#        AUTHOR: Jess Portnoy (), <jess.portnoy@borhan.com>
+#  ORGANIZATION: Borhan, inc.
 #       CREATED: 12/29/13 05:24:47 EST
 #      REVISION:  ---
 #===============================================================================
@@ -37,5 +37,5 @@ else
 fi
 
 if [ -x "`which rpmbuild 2>/dev/null`" ];then
-	rpmbuild -ba $RPM_SPECS_DIR/kaltura-mencoder.spec
+	rpmbuild -ba $RPM_SPECS_DIR/borhan-mencoder.spec
 fi

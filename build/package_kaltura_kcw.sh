@@ -1,15 +1,15 @@
 #!/bin/bash -e 
 #===============================================================================
-#          FILE: package_kaltura_kcw.sh
-#         USAGE: ./package_kaltura_kcw.sh 
+#          FILE: package_borhan_bcw.sh
+#         USAGE: ./package_borhan_bcw.sh 
 #   DESCRIPTION: 
 #       OPTIONS: ---
 # 	LICENSE: AGPLv3+
 #  REQUIREMENTS: ---
 #          BUGS: ---
 #         NOTES: ---
-#        AUTHOR: Jess Portnoy (), <jess.portnoy@kaltura.com>
-#  ORGANIZATION: Kaltura, inc.
+#        AUTHOR: Jess Portnoy (), <jess.portnoy@borhan.com>
+#  ORGANIZATION: Borhan, inc.
 #       CREATED: 01/10/14 08:46:43 EST
 #      REVISION:  ---
 #===============================================================================
@@ -27,27 +27,27 @@ if [ ! -x "`which svn 2>/dev/null`" ];then
 fi
 
 # remove left overs:
-rm -rf $SOURCE_PACKAGING_DIR/$KCW_RPM_NAME/*
+rm -rf $SOURCE_PACKAGING_DIR/$BCW_RPM_NAME/*
 
-#kaltura_svn export --force --quiet $KCW_URI/$KCW_VERSION $SOURCE_PACKAGING_DIR/$KCW_RPM_NAME/$KCW_VERSION 
-wget $KCW_URI -O $SOURCE_PACKAGING_DIR/kcw-$KCW_VERSION 
-mkdir $SOURCE_PACKAGING_DIR/$KCW_RPM_NAME/
-cd $SOURCE_PACKAGING_DIR/$KCW_RPM_NAME
-unzip $SOURCE_PACKAGING_DIR/kcw-$KCW_VERSION
+#borhan_svn export --force --quiet $BCW_URI/$BCW_VERSION $SOURCE_PACKAGING_DIR/$BCW_RPM_NAME/$BCW_VERSION 
+wget $BCW_URI -O $SOURCE_PACKAGING_DIR/bcw-$BCW_VERSION 
+mkdir $SOURCE_PACKAGING_DIR/$BCW_RPM_NAME/
+cd $SOURCE_PACKAGING_DIR/$BCW_RPM_NAME
+unzip $SOURCE_PACKAGING_DIR/bcw-$BCW_VERSION
 
 
-for KCW_UICONF_VERSION in $KCW_UICONF_VERSIONS;do
-	kaltura_svn export --force --quiet $KCW_UICONF_URI/$KCW_UICONF_VERSION $SOURCE_PACKAGING_DIR/$KCW_RPM_NAME/uiconf/kaltura/kmc/kcw
+for BCW_UICONF_VERSION in $BCW_UICONF_VERSIONS;do
+	borhan_svn export --force --quiet $BCW_UICONF_URI/$BCW_UICONF_VERSION $SOURCE_PACKAGING_DIR/$BCW_RPM_NAME/uiconf/borhan/bmc/bcw
 done
-kaltura_svn export --force --quiet $KCW_UICONF_GENERIC_URI $SOURCE_PACKAGING_DIR/$KCW_RPM_NAME/uiconf/kaltura/generic/kcw_2.1.5
-kaltura_svn export --force --quiet $KCW_UICONF_EDITOR_URI $SOURCE_PACKAGING_DIR/$KCW_RPM_NAME/uiconf/kcweditor/locales/en_US
+borhan_svn export --force --quiet $BCW_UICONF_GENERIC_URI $SOURCE_PACKAGING_DIR/$BCW_RPM_NAME/uiconf/borhan/generic/bcw_2.1.5
+borhan_svn export --force --quiet $BCW_UICONF_EDITOR_URI $SOURCE_PACKAGING_DIR/$BCW_RPM_NAME/uiconf/bcweditor/locales/en_US
 cd $SOURCE_PACKAGING_DIR
 
 # flash things DO NOT need exec perms.
-find $KCW_RPM_NAME -type f -exec chmod -x {} \;
+find $BCW_RPM_NAME -type f -exec chmod -x {} \;
 
-tar jcf $RPM_SOURCES_DIR/$KCW_RPM_NAME-$KCW_VERSION.tar.bz2 $KCW_RPM_NAME
-echo "Packaged into $RPM_SOURCES_DIR/$KCW_RPM_NAME-$KCW_VERSION.tar.bz2"
+tar jcf $RPM_SOURCES_DIR/$BCW_RPM_NAME-$BCW_VERSION.tar.bz2 $BCW_RPM_NAME
+echo "Packaged into $RPM_SOURCES_DIR/$BCW_RPM_NAME-$BCW_VERSION.tar.bz2"
 if [ -x "`which rpmbuild 2>/dev/null`" ];then
-	rpmbuild -ba $RPM_SPECS_DIR/$KCW_RPM_NAME.spec
+	rpmbuild -ba $RPM_SPECS_DIR/$BCW_RPM_NAME.spec
 fi

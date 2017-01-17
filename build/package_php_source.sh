@@ -8,8 +8,8 @@
 #  REQUIREMENTS: ---
 #          BUGS: ---
 #         NOTES: ---
-#        AUTHOR: Tan-Tan, <jonathan.kanarek@kaltura.com>
-#  ORGANIZATION: Kaltura, inc.
+#        AUTHOR: Tan-Tan, <jonathan.kanarek@borhan.com>
+#  ORGANIZATION: Borhan, inc.
 #       CREATED: 12/17/14
 #      REVISION:  ---
 #===============================================================================
@@ -44,9 +44,9 @@ else
 fi
 
 if [ -x "`which rpmbuild 2>/dev/null`" ];then
-	rpmbuild -ba $RPM_SPECS_DIR/kaltura-libmcrypt.spec
-	kaltura_install kaltura-libmcrypt $LIBMCRYPT_VERSION
-	kaltura_install kaltura-libmcrypt-devel $LIBMCRYPT_VERSION
+	rpmbuild -ba $RPM_SPECS_DIR/borhan-libmcrypt.spec
+	borhan_install borhan-libmcrypt $LIBMCRYPT_VERSION
+	borhan_install borhan-libmcrypt-devel $LIBMCRYPT_VERSION
 	rpmbuild -ba $RPM_SPECS_DIR/php-mcrypt.spec
 fi
 
@@ -64,9 +64,9 @@ rm libmemcached-$LIBMEMCACHED_VERSION/libhashkit/hsieh.cc
 rm -f libmemcached-$LIBMEMCACHED_VERSION-exhsieh.tar.gz
 tar czf libmemcached-$LIBMEMCACHED_VERSION-exhsieh.tar.gz libmemcached-$LIBMEMCACHED_VERSION
 if [ -x "`which rpmbuild 2>/dev/null`" ];then
-	rpmbuild -ba $RPM_SPECS_DIR/kaltura-libmemcached.spec
-	kaltura_install kaltura-libmemcached $LIBMEMCACHED_VERSION
-	kaltura_install kaltura-libmemcached-devel $LIBMEMCACHED_VERSION
+	rpmbuild -ba $RPM_SPECS_DIR/borhan-libmemcached.spec
+	borhan_install borhan-libmemcached $LIBMEMCACHED_VERSION
+	borhan_install borhan-libmemcached-devel $LIBMEMCACHED_VERSION
 fi
 
 

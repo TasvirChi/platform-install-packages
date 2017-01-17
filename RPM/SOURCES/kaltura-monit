@@ -16,10 +16,10 @@
 . /etc/init.d/functions
 
 ### Default variables
-#export PATH=/opt/kaltura/bin:$PATH
-CONFIG="/opt/kaltura/app/configurations/monit/monit.conf"
+#export PATH=/opt/borhan/bin:$PATH
+CONFIG="/opt/borhan/app/configurations/monit/monit.conf"
 pidfile="/var/run/monit.pid"
-MONIT="/opt/kaltura/bin/monit"
+MONIT="/opt/borhan/bin/monit"
 prog=`basename $MONIT`
 
 # Check if requirements are met

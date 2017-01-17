@@ -37,17 +37,17 @@
 
 * For **Storage URL** type http://{yourbucketname}.s3.amazonaws.com (replace {yourbucketname} with your bucket name on S3)
 
-* In **Storage Base Directory**, write “/{yourbucketname}/kaltura” (keep in mind the leading slash, and change                 yourbucketname to your bucket name)
+* In **Storage Base Directory**, write “/{yourbucketname}/borhan” (keep in mind the leading slash, and change                 yourbucketname to your bucket name)
 
 * **Storage Username** – enter your amazon aws api Access Key ID
 
 * **Storage Password** – paste your amazon aws api Secret Access Key
 
-* Under HTTP Delivery Base URL, type “http://{your amazon cloudfront domain}/kaltura” – replace {your amazon cloudfront   domain} with the cloudfront domain you created in the previous section).
+* Under HTTP Delivery Base URL, type “http://{your amazon cloudfront domain}/borhan” – replace {your amazon cloudfront   domain} with the cloudfront domain you created in the previous section).
 
 ```
-HTTP Delivery Base URL*:  http://d2xxxxxxxxxxxx.cloudfront.net/kaltura
-HTTPS Delivery Base URL:  https://d2xxxxxxxxxxxx.cloudfront.net/kaltura
+HTTP Delivery Base URL*:  http://d2xxxxxxxxxxxx.cloudfront.net/borhan
+HTTPS Delivery Base URL:  https://d2xxxxxxxxxxxx.cloudfront.net/borhan
 
 ```
 
@@ -69,11 +69,11 @@ HTTPS Delivery Base URL:  https://d2xxxxxxxxxxxx.cloudfront.net/kaltura
 
   Final Step – Enable the remote storage profile
 
-* Click on the dropdown box next to your new storage profile in the Remote Storage Profiles page in Kaltura Admin         Console
+* Click on the dropdown box next to your new storage profile in the Remote Storage Profiles page in Borhan Admin         Console
 
 * Select **Export Automatically** and then click **OK**
 
 * You will receive the confirmation that your storage was autoed :)
 
   Test your new configuration
-  You can go ahead and test your new configuration. Upload a new video in the KMC, let it convert, and wait for it to     get distributed. After that, try to play the entry and analyse it in your favorite sniffer. You should see that the     movies are being downloaded from your cloudfront CDN, look for flv and mp4 files.
+  You can go ahead and test your new configuration. Upload a new video in the BMC, let it convert, and wait for it to     get distributed. After that, try to play the entry and analyse it in your favorite sniffer. You should see that the     movies are being downloaded from your cloudfront CDN, look for flv and mp4 files.

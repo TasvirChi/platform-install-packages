@@ -1,6 +1,6 @@
 DELIMITER $$
 
-USE `kalturadw`$$
+USE `borhandw`$$
 
 DROP PROCEDURE IF EXISTS `calc_aggr_day`$$
 
@@ -15,7 +15,7 @@ BEGIN
 		
 	SELECT DATE(NOW() - INTERVAL archive_delete_days_back DAY), DATE(archive_last_partition)
 	INTO v_ignore, v_from_archive
-	FROM kalturadw_ds.retention_policy
+	FROM borhandw_ds.retention_policy
 	WHERE table_name = 'dwh_fact_events';	
 	
 	IF (p_date_val >= v_ignore) THEN 
@@ -31,7 +31,7 @@ BEGIN
 						IF(dim_id_field <> '', 	CONCAT(', e.', REPLACE(dim_id_field,',',', e.')), '')
 					  )
 		INTO  v_aggr_table, v_aggr_id_field_str
-		FROM kalturadw_ds.aggr_name_resolver
+		FROM borhandw_ds.aggr_name_resolver
 		WHERE aggr_name = p_aggr_name;
 		
 		

@@ -7,15 +7,15 @@
 #  REQUIREMENTS: ---
 #          BUGS: ---
 #         NOTES: ---
-#        AUTHOR: Jess Portnoy (), <jess.portnoy@kaltura.com>
-#  ORGANIZATION: Kaltura, inc.
+#        AUTHOR: Jess Portnoy (), <jess.portnoy@borhan.com>
+#  ORGANIZATION: Borhan, inc.
 #       CREATED: 02/18/14 10:45:12 EST
 #      REVISION:  ---
 #===============================================================================
 
 #set -o nounset                              # Treat unset variables as an error
-# this is to fix https://github.com/kaltura/platform-install-packages/issues/28
-. /etc/kaltura.d/system.ini
+# this is to fix https://github.com/borhan/platform-install-packages/issues/28
+. /etc/borhan.d/system.ini
 #select id from user_login_data where partner_id=99
 IS=`echo "select id from user_login_data where config_partner_id=99 and first_name='ninty' limit 1"|mysql -N -h$DB1_HOST -u $DB1_USER -p$DB1_PASS $DB1_NAME -P$DB1_PORT`
 if [ -n "$IS" ];then

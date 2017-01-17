@@ -1,7 +1,7 @@
 %define prefix /usr
 
 Summary: Library for encoding and decoding H264/AVC video streams
-Name: kaltura-fdk-aac
+Name: borhan-fdk-aac
 Version: 0.1.3
 Release: 1
 License: GPL
@@ -40,7 +40,7 @@ autoconf || true
 %{__rm} -rf %{buildroot}
 %{__make} install DESTDIR="%{buildroot}"
 %{__mkdir_p} $RPM_BUILD_ROOT%{_sysconfdir}/ld.so.conf.d
-cat > $RPM_BUILD_ROOT%{_sysconfdir}/ld.so.conf.d/kaltura_fdk-aac.conf << EOF
+cat > $RPM_BUILD_ROOT%{_sysconfdir}/ld.so.conf.d/borhan_fdk-aac.conf << EOF
 %{prefix}/lib
 EOF
 
@@ -54,7 +54,7 @@ EOF
 %defattr(-, root, root, 0755)
 %doc ChangeLog NOTICE MODULE_LICENSE_FRAUNHOFER 
 %{prefix}/lib/libfdk*.so*
-%config %{_sysconfdir}/ld.so.conf.d/kaltura_fdk-aac.conf
+%config %{_sysconfdir}/ld.so.conf.d/borhan_fdk-aac.conf
 
 %files devel
 %defattr(-, root, root, 0755)
@@ -64,5 +64,5 @@ EOF
 %{prefix}/lib/libfdk-aac.la
 
 %changelog
-* Wed Jan 22 2014 Jess Portnoy <jess.portnoy@kaltura.com> - 0.1.3-1
+* Wed Jan 22 2014 Jess Portnoy <jess.portnoy@borhan.com> - 0.1.3-1
 - initial release.

@@ -7,35 +7,35 @@ if (count($argv)<11){
  <delivery proto: APPLE_HTTP|HDS|HTTP|RTMP|AKAMAI_HD|AKAMAI_HDS|AKAMAI_HLS_DIRECT|AKAMAI_HLS_MANIFEST>'."\n";
     exit (1);
 }
-require_once('/opt/kaltura/web/content/clientlibs/php5/KalturaClient.php');
+require_once('/opt/borhan/web/content/clientlibs/php5/BorhanClient.php');
 
-$protocols['FTP'] = KalturaStorageProfileProtocol::FTP;
-$protocols['SFTP'] = KalturaStorageProfileProtocol::SFTP;
-$protocols['SCP'] = KalturaStorageProfileProtocol::SCP;
-$protocols['S3'] = KalturaStorageProfileProtocol::S3;
+$protocols['FTP'] = BorhanStorageProfileProtocol::FTP;
+$protocols['SFTP'] = BorhanStorageProfileProtocol::SFTP;
+$protocols['SCP'] = BorhanStorageProfileProtocol::SCP;
+$protocols['S3'] = BorhanStorageProfileProtocol::S3;
 
 
-$deliveries['APPLE_HTTP'] = KalturaDeliveryProfileType::APPLE_HTTP; 
-$deliveries['HDS'] = KalturaDeliveryProfileType::HDS;
-$deliveries['HTTP'] = KalturaDeliveryProfileType::HTTP;
-$deliveries['RTMP'] = KalturaDeliveryProfileType::RTMP;
-$deliveries['AKAMAI_HD'] = KalturaDeliveryProfileType::AKAMAI_HD;
-$deliveries['AKAMAI_HDS'] = KalturaDeliveryProfileType::AKAMAI_HDS;
-$deliveries['AKAMAI_HLS_DIRECT'] = KalturaDeliveryProfileType::AKAMAI_HLS_DIRECT;
-$deliveries['AKAMAI_HLS_MANIFEST'] = KalturaDeliveryProfileType::AKAMAI_HLS_MANIFEST;
-$deliveries['AKAMAI_HLS_DIRECT'] = KalturaDeliveryProfileType::AKAMAI_HLS_DIRECT;
-$deliveries['AKAMAI_HLS_MANIFEST'] = KalturaDeliveryProfileType::AKAMAI_HLS_MANIFEST;
-$deliveries['AKAMAI_HD'] = KalturaDeliveryProfileType::AKAMAI_HD;
-$deliveries['AKAMAI_HDS'] = KalturaDeliveryProfileType::AKAMAI_HDS;
-$deliveries['AKAMAI_HTTP'] = KalturaDeliveryProfileType::AKAMAI_HTTP;
-$deliveries['AKAMAI_RTMP'] = KalturaDeliveryProfileType::AKAMAI_RTMP;
+$deliveries['APPLE_HTTP'] = BorhanDeliveryProfileType::APPLE_HTTP; 
+$deliveries['HDS'] = BorhanDeliveryProfileType::HDS;
+$deliveries['HTTP'] = BorhanDeliveryProfileType::HTTP;
+$deliveries['RTMP'] = BorhanDeliveryProfileType::RTMP;
+$deliveries['AKAMAI_HD'] = BorhanDeliveryProfileType::AKAMAI_HD;
+$deliveries['AKAMAI_HDS'] = BorhanDeliveryProfileType::AKAMAI_HDS;
+$deliveries['AKAMAI_HLS_DIRECT'] = BorhanDeliveryProfileType::AKAMAI_HLS_DIRECT;
+$deliveries['AKAMAI_HLS_MANIFEST'] = BorhanDeliveryProfileType::AKAMAI_HLS_MANIFEST;
+$deliveries['AKAMAI_HLS_DIRECT'] = BorhanDeliveryProfileType::AKAMAI_HLS_DIRECT;
+$deliveries['AKAMAI_HLS_MANIFEST'] = BorhanDeliveryProfileType::AKAMAI_HLS_MANIFEST;
+$deliveries['AKAMAI_HD'] = BorhanDeliveryProfileType::AKAMAI_HD;
+$deliveries['AKAMAI_HDS'] = BorhanDeliveryProfileType::AKAMAI_HDS;
+$deliveries['AKAMAI_HTTP'] = BorhanDeliveryProfileType::AKAMAI_HTTP;
+$deliveries['AKAMAI_RTMP'] = BorhanDeliveryProfileType::AKAMAI_RTMP;
 
-$playbacks['APPLE_HTTP'] = KalturaPlaybackProtocol::APPLE_HTTP;
-$playbacks['HDS'] = KalturaPlaybackProtocol::HDS;
-$playbacks['RTMP'] = KalturaPlaybackProtocol::RTMP;
-$playbacks['HTTP'] = KalturaPlaybackProtocol::HTTP;
-$playbacks['AKAMAI_HD'] = KalturaPlaybackProtocol::AKAMAI_HD;
-$playbacks['AKAMAI_HDS'] = KalturaPlaybackProtocol::AKAMAI_HDS;
+$playbacks['APPLE_HTTP'] = BorhanPlaybackProtocol::APPLE_HTTP;
+$playbacks['HDS'] = BorhanPlaybackProtocol::HDS;
+$playbacks['RTMP'] = BorhanPlaybackProtocol::RTMP;
+$playbacks['HTTP'] = BorhanPlaybackProtocol::HTTP;
+$playbacks['AKAMAI_HD'] = BorhanPlaybackProtocol::AKAMAI_HD;
+$playbacks['AKAMAI_HDS'] = BorhanPlaybackProtocol::AKAMAI_HDS;
          
 $service_url = $argv[1];
 $partnerId=$argv[2];
@@ -51,39 +51,39 @@ $storage_protocol=$argv[10];
 $playback_protocol=$argv[11];
 
 try{
-	$config = new KalturaConfiguration($partnerId);
+	$config = new BorhanConfiguration($partnerId);
 	$config->serviceUrl = $service_url;  
-	$client = new KalturaClient($config);
-	$ks = $client->session->start($secret, null, KalturaSessionType::ADMIN, -2, null,null);
+	$client = new BorhanClient($config);
+	$ks = $client->session->start($secret, null, BorhanSessionType::ADMIN, -2, null,null);
 	$client->setKs($ks);
 	$config->partnerId=$partnerId;
 	$client->setPartnerId($partnerId);
-	$delivery = new KalturaDeliveryProfile();
+	$delivery = new BorhanDeliveryProfile();
 	$delivery->name = $profile_name;
-	$delivery->status = KalturaDeliveryStatus::ACTIVE;
-	$delivery->type = KalturaDeliveryProfileType::HTTP;
-	$delivery->streamerType = KalturaPlaybackProtocol::HTTP;
+	$delivery->status = BorhanDeliveryStatus::ACTIVE;
+	$delivery->type = BorhanDeliveryProfileType::HTTP;
+	$delivery->streamerType = BorhanPlaybackProtocol::HTTP;
 	$delivery->systemName = $profile_name;
 	$delivery->url = $delivery_url;
-	//$delivery->isDefault = KalturaNullableBoolean::FALSE_VALUE;
+	//$delivery->isDefault = BorhanNullableBoolean::FALSE_VALUE;
 	$delivery_obj=$client->deliveryProfile->add($delivery);
 	if ($protocols[$storage_protocol] === 'S3'){
-		$storageProfile = new KalturaAmazonS3StorageProfile();
-		$storageProfile->filesPermissionInS3 = KalturaAmazonS3StorageProfileFilesPermissionLevel::ACL_PUBLIC_READ;
+		$storageProfile = new BorhanAmazonS3StorageProfile();
+		$storageProfile->filesPermissionInS3 = BorhanAmazonS3StorageProfileFilesPermissionLevel::ACL_PUBLIC_READ;
 	}else{
-		$storageProfile = new KalturaStorageProfile();
+		$storageProfile = new BorhanStorageProfile();
 	}
 
 	$storageProfile->name = $profile_name;
 	$storageProfile->systemName = $profile_name;
-	$storageProfile->status = KalturaStorageProfileStatus::AUTOMATIC;
+	$storageProfile->status = BorhanStorageProfileStatus::AUTOMATIC;
 	$storageProfile->protocol = $protocols[$storage_protocol];
 	$storageProfile->storageUrl = $storage_host;
 	$storageProfile->storageBaseDir = $storage_basedir;
 	$storageProfile->storageUsername = $storage_user;
 	$storageProfile->storagePassword = $storage_passwd;
 	$storageProfile->deliveryProfileIds = array();
-	$storageProfile->deliveryProfileIds[0] = new KalturaKeyValue();
+	$storageProfile->deliveryProfileIds[0] = new BorhanKeyValue();
 	$storageProfile->deliveryProfileIds[0]->key = $playback_protocol;
 	$storageProfile->deliveryProfileIds[0]->value = $delivery_obj->id;
 	$result = $client->storageProfile->add($storageProfile);

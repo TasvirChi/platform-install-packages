@@ -1,20 +1,20 @@
-log "Installing Kaltura Sphinx"
+log "Installing Borhan Sphinx"
 if platform?("redhat", "centos", "fedora")
-	bash "setup Kaltura's repo" do
+	bash "setup Borhan's repo" do
 	     user "root"
 	     code <<-EOH
-		if ! rpm -q kaltura-release;then
-			rpm -ihv "#{node[:kaltura][:KALTURA_RELEASE_RPM]}"
+		if ! rpm -q borhan-release;then
+			rpm -ihv "#{node[:borhan][:BORHAN_RELEASE_RPM]}"
 		else
 			# if the package is already installed, maybe there's a new verison available.
 			# in RPM, it try to update to the same version you have now - it stupidly returns RC 1 and hence the || true.
-			rpm -Uhv "#{node[:kaltura][:KALTURA_RELEASE_RPM]}" || true
+			rpm -Uhv "#{node[:borhan][:BORHAN_RELEASE_RPM]}" || true
 		fi
 		yum clean all
 	     EOH
 	end
 end
-package "kaltura-sphinx" do
+package "borhan-sphinx" do
   action :install
  end
 #%w{ apr apr-util lynx }.each do |pkg|
@@ -22,8 +22,8 @@ package "kaltura-sphinx" do
 #    action :install
 #  end
 #end
-template "/root/kaltura.ans" do
-    source "kaltura.ans.erb"
+template "/root/borhan.ans" do
+    source "borhan.ans.erb"
     mode 0600
     owner "root"
     group "root"
@@ -32,6 +32,6 @@ end
 bash "setup sphinx node" do
      user "root"
      code <<-EOH
-	"#{node[:kaltura][:BASE_DIR]}"/bin/kaltura-sphinx-config.sh /root/kaltura.ans
+	"#{node[:borhan][:BASE_DIR]}"/bin/borhan-sphinx-config.sh /root/borhan.ans
      EOH
 end

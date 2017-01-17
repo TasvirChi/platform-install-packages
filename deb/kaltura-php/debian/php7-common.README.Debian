@@ -28,7 +28,7 @@ Problems starting Apache HTTP Server with PHP 5
   many bug reports in the past due to dynamically-loaded extensions,
   and it's possible there are still bugs in the released packages. If
   Apache fails to start after you install PHP 5, check your list of
-  enabled extensions at the bottom of /opt/kaltura/app/configurations/php/apache2/php.ini (and
+  enabled extensions at the bottom of /opt/borhan/app/configurations/php/apache2/php.ini (and
   in the per-SAPI configuration directory), and try commenting out or
   reordering the extensions until you find a combination that works.
 
@@ -159,14 +159,14 @@ Configuration Layout
 ----------------------------------------------------------------------
 
   Each SAPI (apache2/apache2filter/cgi/cli/fpm) has a different
-  central configuration file /opt/kaltura/app/configurations/php/$SAPI/php.ini.
+  central configuration file /opt/borhan/app/configurations/php/$SAPI/php.ini.
 
   Additionally, each SAPI is configured with the compile-time option 
 
-    --with-config-file-scan-dir=/opt/kaltura/app/configurations/php/$SAPI/conf.d
+    --with-config-file-scan-dir=/opt/borhan/app/configurations/php/$SAPI/conf.d
 
   which for all SAPIs is actually a symlink pointing to a central
-  directory /opt/kaltura/app/configurations/php/conf.d. Any file found in this directory ending
+  directory /opt/borhan/app/configurations/php/conf.d. Any file found in this directory ending
   in .ini will be treated as a configuration file by the PHP SAPI.
 
   The rationale behind this method is that each SAPI can thus be
@@ -176,7 +176,7 @@ Configuration Layout
 
   Note that the usage of the PHP_INI_SCAN_DIR environment variable
   overrides what is set with --with-config-file-scan-dir and thus the
-  directory /opt/kaltura/app/configurations/php/$SAPI/conf.d will no longer be included.
+  directory /opt/borhan/app/configurations/php/$SAPI/conf.d will no longer be included.
 
 Timezone data from system timezone database
 ----------------------------------------------------------------------

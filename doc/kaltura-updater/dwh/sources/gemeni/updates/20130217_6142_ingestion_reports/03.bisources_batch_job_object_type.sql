@@ -1,10 +1,10 @@
 /*
 SQLyog Community v8.7 
-MySQL - 5.1.47 : Database - kalturadw_bisources
+MySQL - 5.1.47 : Database - borhandw_bisources
 *********************************************************************
 */
 
-USE `kalturadw_bisources`;
+USE `borhandw_bisources`;
 
 DROP TABLE IF EXISTS `bisources_batch_job_object_type`;
 

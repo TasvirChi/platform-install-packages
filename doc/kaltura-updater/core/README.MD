@@ -16,46 +16,46 @@ To aid in database schema comparisons, install mysqlworkbench. With this tool yo
 
 ---
 # Important files
-Kaltura configuration files:
-> /opt/kaltura/app/configurations/*.ini
+Borhan configuration files:
+> /opt/borhan/app/configurations/*.ini
 
-Kaltura log files
-> /opt/kaltura/log
+Borhan log files
+> /opt/borhan/log
 
-Kaltura deployment scripts for rebuilding parts of kaltura and defaults
-> /opt/kaltura/app/deployment
+Borhan deployment scripts for rebuilding parts of borhan and defaults
+> /opt/borhan/app/deployment
 
-Kaltura 9x bin, installing & configuring
-> /opt/kaltura/bin 
+Borhan 9x bin, installing & configuring
+> /opt/borhan/bin 
 
 ---
 
 # 1 Normal installation
-Before upgrading any Kaltura release. You should first install and verify that the new Kaltura release is working correctly. Installing Kaltura has been  documented on github. It is advised you use the new RPM based installation. 
+Before upgrading any Borhan release. You should first install and verify that the new Borhan release is working correctly. Installing Borhan has been  documented on github. It is advised you use the new RPM based installation. 
 
-https://github.com/kaltura/platform-install-packages/blob/master/doc/install-kaltura-redhat-based.md#non-ssl-step-by-step-installation
+https://github.com/borhan/platform-install-packages/blob/master/doc/install-borhan-redhat-based.md#non-ssl-step-by-step-installation
 
 ### 1.1 Verify
-After successfully installing Kaltura. First run:
+After successfully installing Borhan. First run:
 
-> /opt/kaltura/bin/kaltura-sanity.sh
+> /opt/borhan/bin/borhan-sanity.sh
 
 Only when everything passes. Proceed to the next step.
 
-### 1.2 Export working Kaltura schemas & routines
-Export the following Kaltura schemas:
+### 1.2 Export working Borhan schemas & routines
+Export the following Borhan schemas:
 
-- kaltura
-- kalturadw
-- kalturadw_bisources
-- kalturadw_ds
-- kalturalog
-- kaltura_sphinx_log
+- borhan
+- borhandw
+- borhandw_bisources
+- borhandw_ds
+- borhanlog
+- borhan_sphinx_log
 
 > bin/export-structure.sh <root-user> <root-pw> <export path>
 
 ### 1.3 Export data 
-While upgrading kaltura, some data migrations are missed. These are:
+While upgrading borhan, some data migrations are missed. These are:
 
 - delivery_profile (Export all data)
 - dynamic_enum (Export all data)
@@ -70,41 +70,41 @@ Open the mysql information_schema database in phpmyadmin or adminer. Save or not
 ---
 
 # 2 Setup the upgrade
-After installing, verifying and exporting the healthy Kaltura system. We setup the actual upgrade process. 
+After installing, verifying and exporting the healthy Borhan system. We setup the actual upgrade process. 
 
-### 2.2 Stop Kaltura services
+### 2.2 Stop Borhan services
 
-> service kaltura-monit stop
-> service kaltura-batch stop
-> service kaltura-sphinx stop
+> service borhan-monit stop
+> service borhan-batch stop
+> service borhan-sphinx stop
 
 ### 2.3 Drop schemas
 Drop the following schemas: 
 
-- kaltura
-- kalturadw
-- kalturadw_bisources
-- kalturadw_ds
-- kalturalog
-- kaltura_sphinx_log
+- borhan
+- borhandw
+- borhandw_bisources
+- borhandw_ds
+- borhanlog
+- borhan_sphinx_log
 
 ### 2.4 Import production database
 Import the production database from a backup, or any other sqldump. After restoration, please verify that you have the following databases again: 
 
-- kaltura
-- kalturadw
-- kalturadw_bisources
-- kalturadw_ds
-- kalturalog
-- kaltura_sphinx_log
+- borhan
+- borhandw
+- borhandw_bisources
+- borhandw_ds
+- borhanlog
+- borhan_sphinx_log
 
 ### 2.5 Import production data
-Import the contents of your production servers /opt/kaltura/web to the new server. 
+Import the contents of your production servers /opt/borhan/web to the new server. 
 
 ---
 
 # 3 Upgrading
-After completing the setup phases. Execute the following steps to start the Kaltura upgrade.
+After completing the setup phases. Execute the following steps to start the Borhan upgrade.
 
 ###3.1 Create config file
 Implement the suplied config.sample.sh as config.sh. Take note:
@@ -114,10 +114,10 @@ Implement the suplied config.sample.sh as config.sh. Take note:
 - Configure the root user & password to avoid authentication issues.
 - Configure the rest to your own specification.
 
-###3.2 Add the Kaltura svn host to the known_hosts file
+###3.2 Add the Borhan svn host to the known_hosts file
 Execute:
 
-> svn export svn+ssh://svnread@kelev.kaltura.com/usr/local/kalsource/backend/server/tags/falcon_2012_08_20 
+> svn export svn+ssh://svnread@kelev.borhan.com/usr/local/kalsource/backend/server/tags/falcon_2012_08_20 
 
 You can just cancel after the host has been added.
 
@@ -138,7 +138,7 @@ This will supply the required configuration files for all exported releases.
 ###4.5 Execute legacy upgrades
 Before starting the upgrade run:
 
-> service kaltura-shpinx start
+> service borhan-shpinx start
 
 Some updates need sphinx to be running, after all upgrades are completed. We will restore & reindex shpinx later on. 
 
@@ -153,10 +153,10 @@ This might take anywhere between 1-2 hours depending on how many releases you in
 ###4.6 Verify the upgrades
 Inspect the run-update log for your upgrade, and inspect errors if they occurred. For failed upgrades you will have to inspect those files and compare them to the results. If a lot of them occurred, fix them, and repeat from step 2.4. 
 
-###4.7 Run current Kaltura updates
+###4.7 Run current Borhan updates
 After all legacy upgrades have been completed run the RMP upgrades. 
 
-> /opt/kaltura/bin/kaltura-config-all.sh
+> /opt/borhan/bin/borhan-config-all.sh
 
 ---
 
@@ -165,16 +165,16 @@ After running all upgrades&updates, we need to check the schema for any misses. 
 
 ###5.1 Export schema states
 On the healthy system
-> mysqldump -uroot -p --routines --no-data kaltura > kaltura.healthy.sql
+> mysqldump -uroot -p --routines --no-data borhan > borhan.healthy.sql
 
 On the updated system
-> mysqldump -uroot -p --routines --no-data kaltura > kaltura.update.sql 
+> mysqldump -uroot -p --routines --no-data borhan > borhan.update.sql 
 
 ###5.2 Compare and create delta script
 Open mysql-workbench, create a new schema and navigate to: database > synchronize with any source. 
 
-As the source select the kaltura.healthy.sql
-As the destination select the kaltura.update.sql
+As the source select the borhan.healthy.sql
+As the destination select the borhan.update.sql
 Specify the alter script file to your own liking
 
 Continue the wizard to completion.
@@ -191,67 +191,67 @@ Mysql workbench is not perfect. Sometimes you will need to repeat the process un
 ---
 
 #6 Restore data
-This step restores missed or otherwise default provided data into Kaltura.
+This step restores missed or otherwise default provided data into Borhan.
 
 ###6.1 Partner data
 Clear all system partners:
-> mysql -uroot -p kaltura -e "DELETE FROM `partner` WHERE `id` < 100"
+> mysql -uroot -p borhan -e "DELETE FROM `partner` WHERE `id` < 100"
 
 Import healthy system partners:
-> mysql -uroot -p kaltura < [step 1.3 partner export.sql]
+> mysql -uroot -p borhan < [step 1.3 partner export.sql]
 
-Check the batch user secret in /opt/kaltura/app/configurations/batch against the user in the database. And change if needed. 
+Check the batch user secret in /opt/borhan/app/configurations/batch against the user in the database. And change if needed. 
 
 ###6.2 Default uiconfs
 Clear uiconfs 
-> mysql -uroot -p kaltura -e "DELETE FROM `ui_conf` WHERE `partner_id` < 100"
+> mysql -uroot -p borhan -e "DELETE FROM `ui_conf` WHERE `partner_id` < 100"
 
 Import uiconfs
-> mysql -uroot -p kaltura < [step 1.3 uiconf export.sql]
+> mysql -uroot -p borhan < [step 1.3 uiconf export.sql]
 
 Redeploy uiconfs
-> php /opt/kaltura/app/deployment/uiconf/deploy_v2.php --ini="/opt/kaltura/web/flash/kmc/v5.37.27/config.ini"
+> php /opt/borhan/app/deployment/uiconf/deploy_v2.php --ini="/opt/borhan/web/flash/bmc/v5.37.27/config.ini"
 
 ###6.3 Restore dynamic enums
 Clear dynamic enums
->mysql -uroot -p kaltura -e "TRUNCATE `dynamic_enum`"
+>mysql -uroot -p borhan -e "TRUNCATE `dynamic_enum`"
 
 Import enums
-> mysql -uroot -p kaltura < [step 1.3 dynamic enum export.sql]
+> mysql -uroot -p borhan < [step 1.3 dynamic enum export.sql]
 
-Delete kaltura classmap caches
-> rm -Rf /opt/kaltura/app/cache/*
+Delete borhan classmap caches
+> rm -Rf /opt/borhan/app/cache/*
 
 To avoid APC caches as wel, restart apache
 > service httpd restart
 
 ###6.4 Restore delivery profiles
 Clear profiles
->mysql -uroot -p kaltura -e "TRUNCATE `delivery_profile`"
+>mysql -uroot -p borhan -e "TRUNCATE `delivery_profile`"
 
 Import profiles
-> mysql -uroot -p kaltura < [step 1.3 delivery export.sql]
+> mysql -uroot -p borhan < [step 1.3 delivery export.sql]
 
 ###6.5 Rebuild sphinx
 Because sphinx was on during all the upgrades, it probably has been seriously mangled. 
 
 Shutdown sphinx
-> service kaltura-shpinx stop
+> service borhan-shpinx stop
 
 Backup and move sphinx data
-> mv /opt/kaltura/sphinx/kaltura* [backup]
+> mv /opt/borhan/sphinx/borhan* [backup]
 
 Backup and move sphinx binlogs
-> mv /opt/kaltura/log/sphinx/data/binlog.* [backup]
+> mv /opt/borhan/log/sphinx/data/binlog.* [backup]
 
 Start sphinx again
-> service kaltura-sphinx start
+> service borhan-sphinx start
 
 Check sphinx is running
-> service kaltura-sphinx status
+> service borhan-sphinx status
 
 Re-index site
-> for FILE in $(ls /opt/kaltura/app/deployment/base/scripts/*Sphinx*); do php $FILE; done
+> for FILE in $(ls /opt/borhan/app/deployment/base/scripts/*Sphinx*); do php $FILE; done
 
 If any errors occur during the re-indexing. Also re-execute the install & insert scripts. 
 
@@ -260,6 +260,6 @@ If any errors occur during the re-indexing. Also re-execute the install & insert
 ###7 Verify the new installation
 After all the steps above have been completed, rerun the execute script to check the system status/
 
-> /opt/kaltura/bin/kaltura-sanity.sh
+> /opt/borhan/bin/borhan-sanity.sh
 
 At this stage, the data warehouse has not yet been updated. So ignore any DWH related issues.

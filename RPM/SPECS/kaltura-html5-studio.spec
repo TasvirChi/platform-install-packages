@@ -1,30 +1,30 @@
-%define prefix /opt/kaltura
+%define prefix /opt/borhan
 
-Summary: Kaltura Open Source Video Platform 
-Name: kaltura-html5-studio
+Summary: Borhan Open Source Video Platform 
+Name: borhan-html5-studio
 Version: v2.0.8
 Release: 1
 License: AGPLv3+
 Group: Server/Platform 
 Source0: %{name}-%{version}.tar.bz2 
 Source1: studio.template.ini
-URL: https://github.com/kaltura/player-studio/releases/download/%{version}/studio_%{version}.zip 
+URL: https://github.com/borhan/player-studio/releases/download/%{version}/studio_%{version}.zip 
 Buildroot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildArch: noarch
 
 %description
-Kaltura is the world's first Open Source Online Video Platform, transforming the way people work, 
+Borhan is the world's first Open Source Online Video Platform, transforming the way people work, 
 learn, and entertain using online video. 
-The Kaltura platform empowers media applications with advanced video management, publishing, 
+The Borhan platform empowers media applications with advanced video management, publishing, 
 and monetization tools that increase their reach and monetization and simplify their video operations. 
-Kaltura improves productivity and interaction among millions of employees by providing enterprises 
+Borhan improves productivity and interaction among millions of employees by providing enterprises 
 powerful online video tools for boosting internal knowledge sharing, training, and collaboration, 
-and for more effective marketing. Kaltura offers next generation learning for millions of students and 
+and for more effective marketing. Borhan offers next generation learning for millions of students and 
 teachers by providing educational institutions disruptive online video solutions for improved teaching,
 learning, and increased engagement across campuses and beyond. 
-For more information visit: http://corp.kaltura.com, http://www.kaltura.org and http://www.html5video.org.
+For more information visit: http://corp.borhan.com, http://www.borhan.org and http://www.html5video.org.
 
-This package installs the Kaltura HTML5 Studio.
+This package installs the Borhan HTML5 Studio.
 
 %prep
 %setup -q
@@ -51,44 +51,44 @@ rm -rf %{buildroot}
 %{prefix}/apps/studio/%{version}
 
 %changelog
-* Mon Dec 19 2016 Jess Portnoy <jess.portnoy@kaltura.com> - v2.0.8-1
+* Mon Dec 19 2016 Jess Portnoy <jess.portnoy@borhan.com> - v2.0.8-1
 - FEC-5936: configuration for player - use latest or update manually
 - Aligned with HTML5 lib v2.51
 
 
-* Mon Oct 10 2016 Jess Portnoy <jess.portnoy@kaltura.com> - v2.0.7-1
+* Mon Oct 10 2016 Jess Portnoy <jess.portnoy@borhan.com> - v2.0.7-1
 - SUP-8880: KMS/KAF deployment players are not editable in The Universal Studio.
 - Aligned with HTML5 lib v2.48.1
 
-* Tue Aug 2 2016 Jess Portnoy <jess.portnoy@kaltura.com> - v2.0.6-1
+* Tue Aug 2 2016 Jess Portnoy <jess.portnoy@borhan.com> - v2.0.6-1
 - Add mobile device emulation mode
 - Aligned with HTML5 lib v2.46
 
-* Sun May 8 2016 Jess Portnoy <jess.portnoy@kaltura.com> - v2.0.5-1
+* Sun May 8 2016 Jess Portnoy <jess.portnoy@borhan.com> - v2.0.5-1
 - FEC-5495 - Update and Upgrade messages contain wrong text
 - Synced with HTML5 lib version v2.43
 
-* Sun Apr 10 2016 Jess Portnoy <jess.portnoy@kaltura.com> - v2.0.4-1
+* Sun Apr 10 2016 Jess Portnoy <jess.portnoy@borhan.com> - v2.0.4-1
 - Synced with HTML5 lib version v2.42
 
-* Fri Mar 11 2016 Jess Portnoy <jess.portnoy@kaltura.com> - v2.0.3-1
+* Fri Mar 11 2016 Jess Portnoy <jess.portnoy@borhan.com> - v2.0.3-1
 - FEC-4776 - Studio hangs when trying to edit UIConf with invalid JSON config
 - Switch between the words "Update" and "Upgrade" in the list view
 - Aligned with HTML5 lib v2.41
 
-* Sun Dec 12 2015 Jess Portnoy <jess.portnoy@kaltura.com> - v2.0.2-1
+* Sun Dec 12 2015 Jess Portnoy <jess.portnoy@borhan.com> - v2.0.2-1
 - FEC-4158 Strings plugin should support per localization key overrides
 - PLAT-3566 - The studio should list also players of type PLAYER_V3 (8).
 - Aligned with HTML5 lib v2.37.1
 
-* Thu Sep 16 2015 Jess Portnoy <jess.portnoy@kaltura.com> - v2.0.1-1
-- SUP-5016 - KMC doesn't save player strings override.
+* Thu Sep 16 2015 Jess Portnoy <jess.portnoy@borhan.com> - v2.0.1-1
+- SUP-5016 - BMC doesn't save player strings override.
 - Aligned with HTML5 lib v2.35
 
-* Fri Jul 24 2015 Jess Portnoy <jess.portnoy@kaltura.com> - v2.0.0-1
+* Fri Jul 24 2015 Jess Portnoy <jess.portnoy@borhan.com> - v2.0.0-1
 - Ver bounce. Aligned with HTML5lib 2.33.
 
-* Sun Jun 28 2015 Jess Portnoy <jess.portnoy@kaltura.com> - v1.9.9-1
+* Sun Jun 28 2015 Jess Portnoy <jess.portnoy@borhan.com> - v1.9.9-1
 - Add Studio support for Embed.ly embeds and Multi DRM plugins
 - FEC-3611 Studio v2: after adding new boolean plugin, grey square displayed over 'delete' icon
 - FEC-3612 Studio v2: need to add validation for Rate Selector selectable speeds
@@ -99,61 +99,61 @@ rm -rf %{buildroot}
 - SUP-4846 Cannot set mediaProxy.preferedFlavorBR without turning the SourceSelector on
 - FEC-3628 Studio v2: need to click twice "Play" button after change player size, if 'auto preview' selected
 
-* Sun May 31 2015 Jess Portnoy <jess.portnoy@kaltura.com> - v1.9.8-1
+* Sun May 31 2015 Jess Portnoy <jess.portnoy@borhan.com> - v1.9.8-1
 - Ver bounce.
 
-* Sun May 4 2015 Jess Portnoy <jess.portnoy@kaltura.com> - v1.9.7-1
+* Sun May 4 2015 Jess Portnoy <jess.portnoy@borhan.com> - v1.9.7-1
 - Ver bounce.
 
-* Sun Apr 5 2015 Jess Portnoy <jess.portnoy@kaltura.com> - v1.9.6-1
+* Sun Apr 5 2015 Jess Portnoy <jess.portnoy@borhan.com> - v1.9.6-1
 - Ver bounce.
 
-* Sun Mar 8 2015 Jess Portnoy <jess.portnoy@kaltura.com> - v1.9.5-1
+* Sun Mar 8 2015 Jess Portnoy <jess.portnoy@borhan.com> - v1.9.5-1
 - SUP-3496 - Change file name when download with Universal studio
 
-* Sun Jan 25 2015 Jess Portnoy <jess.portnoy@kaltura.com> - v1.9.4-1
+* Sun Jan 25 2015 Jess Portnoy <jess.portnoy@borhan.com> - v1.9.4-1
 - FEC-2673 - Universal Studio allows to save empty UIVars
 
-* Wed Jan 7 2015 Jess Portnoy <jess.portnoy@kaltura.com> - v1.9.3-1
+* Wed Jan 7 2015 Jess Portnoy <jess.portnoy@borhan.com> - v1.9.3-1
 - SUP-3132 - Control Bar Icons are not transparent
 
-* Thu Dec 11 2014 Jess Portnoy <jess.portnoy@kaltura.com> - v1.9.2-1
+* Thu Dec 11 2014 Jess Portnoy <jess.portnoy@borhan.com> - v1.9.2-1
 - FEC-2401 - Add Strings plugin to Studio
 
-* Mon Dec 1 2014 Jess Portnoy <jess.portnoy@kaltura.com> - v1.9.1-1
+* Mon Dec 1 2014 Jess Portnoy <jess.portnoy@borhan.com> - v1.9.1-1
 - SUP-3132 - Control Bar Icons are not transparent
 
-* Sun Nov 2 2014 Jess Portnoy <jess.portnoy@kaltura.com> - v1.9-1
+* Sun Nov 2 2014 Jess Portnoy <jess.portnoy@borhan.com> - v1.9-1
 - FEC-2049 - Send a notification of an error when the s_code in omniture fails to load
 
-* Sun Sep 21 2014 Jess Portnoy <jess.portnoy@kaltura.com> - v1.8-1
+* Sun Sep 21 2014 Jess Portnoy <jess.portnoy@borhan.com> - v1.8-1
 - Bouncing.
 
-* Sun Aug 31 2014 Jess Portnoy <jess.portnoy@kaltura.com> - v1.5-2
-- https://github.com/kaltura/platform-install-packages/issues/214
+* Sun Aug 31 2014 Jess Portnoy <jess.portnoy@borhan.com> - v1.5-2
+- https://github.com/borhan/platform-install-packages/issues/214
 
-* Thu Jul 10 2014 Jess Portnoy <jess.portnoy@kaltura.com> - v1.5-1
+* Thu Jul 10 2014 Jess Portnoy <jess.portnoy@borhan.com> - v1.5-1
 - Disable player upgrade in case of playlist
 
-* Sat Jun 14 2014 Jess Portnoy <jess.portnoy@kaltura.com> - v1.1-4
+* Sat Jun 14 2014 Jess Portnoy <jess.portnoy@borhan.com> - v1.1-4
 - Bouncing.
  
-* Wed May 21 2014 Jess Portnoy <jess.portnoy@kaltura.com> - v1.1-1
+* Wed May 21 2014 Jess Portnoy <jess.portnoy@borhan.com> - v1.1-1
 - Additional Player v2 configurations available
 
-* Thu Apr 24 2014 Jess Portnoy <jess.portnoy@kaltura.com> - v0.9.7-1
+* Thu Apr 24 2014 Jess Portnoy <jess.portnoy@borhan.com> - v0.9.7-1
 - SUP-1805 - Studio V2 features - logo plugin
 - SUP-1808 - Studio V2 features - Info plugin
 - SUP-1928 - Studio V2 features - Watched color selector
 
-* Sun Apr 6 2014 Jess Portnoy <jess.portnoy@kaltura.com> - v0.9.6-1
+* Sun Apr 6 2014 Jess Portnoy <jess.portnoy@borhan.com> - v0.9.6-1
 - FEC-1166 - Player Studio "does not support IE8 message" 
 - FEC-1163 - Player studio gives absolute http urls for players, breaks HTTPS
 - FEC-1162 - Can't scroll in player list in Universal studio
 - FEC-1157 - Studio Duplicate should not require up-to-date player 
 - FEC-1155 - Studio search is cut off in firefox 
 
-* Tue Mar 25 2014 Jess Portnoy <jess.portnoy@kaltura.com> - v0.9.4-1
+* Tue Mar 25 2014 Jess Portnoy <jess.portnoy@borhan.com> - v0.9.4-1
 - Navigation menu added
 - FEC-1097 Default value is missing in L&F ( title label)
 - FEC-1116 Flash Tabs no longer display UI after clicking on Studio in Firefox
@@ -163,13 +163,13 @@ rm -rf %{buildroot}
 
 
 
-* Fri Mar 14 2014 Jess Portnoy <jess.portnoy@kaltura.com> - v0.9.2-1
+* Fri Mar 14 2014 Jess Portnoy <jess.portnoy@borhan.com> - v0.9.2-1
 - IE8 support
 - FEC-883 vast UI
 - FEC-1073 various UI issues with shlomit & michael
 - FEC-995 Support HTML Companions ads vast default config.
 
-* Sun Feb 23 2014 Jess Portnoy <jess.portnoy@kaltura.com> - v0.9-1
+* Sun Feb 23 2014 Jess Portnoy <jess.portnoy@borhan.com> - v0.9-1
 - Fixes:  
     FEC-1008 Unable to Update player in IE9
     FEC-1003 video is not loading on ie9
@@ -185,11 +185,11 @@ rm -rf %{buildroot}
     FEC-988 Apply changes button is green even while you load at first time the player
     FEC-964 line in all dropboxes is asymmetric
 
-* Thu Feb 13 2014 Jess Portnoy <jess.portnoy@kaltura.com> - v0.3-3
-- Fixes the other points in https://github.com/kaltura/platform-install-packages/issues/30.
+* Thu Feb 13 2014 Jess Portnoy <jess.portnoy@borhan.com> - v0.3-3
+- Fixes the other points in https://github.com/borhan/platform-install-packages/issues/30.
 
-* Thu Feb 13 2014 Jess Portnoy <jess.portnoy@kaltura.com> - v0.3-2
-- Fixes  https://github.com/kaltura/platform-install-packages/issues/30
-'Also /opt/kaltura/apps/studio/v0.3/ contains the zip archive that contains the same files as the directory, and should be cleaned up'
-* Tue Jan 28 2014 Jess Portnoy <jess.portnoy@kaltura.com> - v0.3-1
+* Thu Feb 13 2014 Jess Portnoy <jess.portnoy@borhan.com> - v0.3-2
+- Fixes  https://github.com/borhan/platform-install-packages/issues/30
+'Also /opt/borhan/apps/studio/v0.3/ contains the zip archive that contains the same files as the directory, and should be cleaned up'
+* Tue Jan 28 2014 Jess Portnoy <jess.portnoy@borhan.com> - v0.3-1
 - initial package.

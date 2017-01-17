@@ -50,7 +50,7 @@ Perform the following on one of the mysql slaves in each datacenter:
 * Install memcached on a dedicated server, and configure two memcached instances
 * Make sure you have a mysql master and slave replication pair
 * Compile and install 'Memcached Functions for MySQL'
-* Install the functions on the database slave by running: mysql kaltura < memcached_functions_mysql-1.1/sql/install_functions.sql 
+* Install the functions on the database slave by running: mysql borhan < memcached_functions_mysql-1.1/sql/install_functions.sql 
 * Configure the 'Memcached Functions for MySQL' library to use the shared memcache server by adding the command 'select memc_servers_set('<global memcache host>:<global memcache port>');' to the mysql init script.
     Note: To add an init script for mysql, add the switch 'init-file=<mysql init script path>' to the section [mysqld] in my.cnf and make sure that mysql user has acess to this file
 * Restart mysql
@@ -95,7 +95,7 @@ Ubuntu/Debian:
 Install plugin functions
 =======
 ```
-mysql -u root -p --database kaltura < memcached_functions_mysql-1.1/sql/install_functions.sql 
+mysql -u root -p --database borhan < memcached_functions_mysql-1.1/sql/install_functions.sql 
 ```
 
 Configure memcached server
@@ -119,22 +119,22 @@ Restart MySQL
 service mysqld restart
 ```
 
-Install Kaltura Triggers
+Install Borhan Triggers
 =======
 On API server:
 ```
-php /opt/kaltura/app/deployment/base/scripts/createQueryCacheTriggers.php create <db-slave-host> <db-user> <db-password> realrun
+php /opt/borhan/app/deployment/base/scripts/createQueryCacheTriggers.php create <db-slave-host> <db-user> <db-password> realrun
 ```
 
 Configure API servers to use Query Cache
 =======
-In /opt/kaltura/app/configurations/local.ini
+In /opt/borhan/app/configurations/local.ini
 ```
 query_cache_enabled = true
 query_cache_invalidate_on_change = true
 ```
 
-In /opt/kaltura/app/configurations/cache.ini
+In /opt/borhan/app/configurations/cache.ini
 ```
 [memcacheBig:memcacheBase]
 port = <global memcache port>
@@ -158,7 +158,7 @@ playManifest = memcacheLocal,memcacheBig
 apiV3Feed = filesystemApiV3Feed
 lockKeys = memcacheKeys
 apiWarmup = apc,memcacheBig
-kwidgetSwf = memcacheBig
+bwidgetSwf = memcacheBig
 partnerSecrets = apc,memcacheBig
 liveMediaServer_0 = memcacheBig
 liveMediaServer_1 = memcacheBig
@@ -168,5 +168,5 @@ sphinxExecutedServer = apc
 Activate configuration
 =======
 ```
-touch /opt/kaltura/app/cache/base.reload
+touch /opt/borhan/app/cache/base.reload
 ```

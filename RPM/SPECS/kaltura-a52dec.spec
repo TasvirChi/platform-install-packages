@@ -1,6 +1,6 @@
 %define prefix /usr
 Summary: Library for decoding ATSC A/52 (aka AC-3) audio streams
-Name: kaltura-a52dec
+Name: borhan-a52dec
 Version: 0.7.4
 Release: 11
 License: GPL
@@ -56,7 +56,7 @@ to build programs that use it.
 %{__rm} -rf %{buildroot}
 %{__make} install DESTDIR="%{buildroot}"
 %{__mkdir_p} $RPM_BUILD_ROOT%{_sysconfdir}/ld.so.conf.d
-cat > $RPM_BUILD_ROOT%{_sysconfdir}/ld.so.conf.d/kaltura_a52dec.conf << EOF
+cat > $RPM_BUILD_ROOT%{_sysconfdir}/ld.so.conf.d/borhan_a52dec.conf << EOF
 %{prefix}/lib
 EOF
 
@@ -73,7 +73,7 @@ EOF
 %files
 %defattr(-, root, root, 0755)
 %doc AUTHORS ChangeLog COPYING doc/liba52.txt HISTORY NEWS README TODO
-%config %{_sysconfdir}/ld.so.conf.d/kaltura_a52dec.conf
+%config %{_sysconfdir}/ld.so.conf.d/borhan_a52dec.conf
 %{prefix}/bin/*
 %{prefix}/lib/*.so*
 %{prefix}/share/man/man1/*
@@ -87,14 +87,14 @@ EOF
 
 
 %changelog
-* Sat Feb 15 2014 Jess Portnoy <jess.portnoy@kaltura.com> - 0.7.4-11
+* Sat Feb 15 2014 Jess Portnoy <jess.portnoy@borhan.com> - 0.7.4-11
 - Corrected path to ld.so.conf.d.
 
-* Sun Jan 5 2014 Jess Portnoy <jess.portnoy@kaltura.com> 0.7.4-10
+* Sun Jan 5 2014 Jess Portnoy <jess.portnoy@borhan.com> 0.7.4-10
 - Create a file under /etc/ld.so.conf.d so.
  
-* Sun Jan 5 2014 Jess Portnoy <jess.portnoy@kaltura.com> 0.7.4-9
-- Adopted for Kaltura. Required for kaltura-ffmpeg. 
+* Sun Jan 5 2014 Jess Portnoy <jess.portnoy@borhan.com> 0.7.4-9
+- Adopted for Borhan. Required for borhan-ffmpeg. 
 
 * Fri Mar 17 2006 Matthias Saou <http://freshrpms.net/> 0.7.4-8 - 7981+/dag
 - Release bump to drop the disttag number in FC5 build.

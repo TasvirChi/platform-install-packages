@@ -1,14 +1,14 @@
 #!/bin/sh
-if [ -r /etc/kaltura.d/system.ini ];then
-        . /etc/kaltura.d/system.ini
+if [ -r /etc/borhan.d/system.ini ];then
+        . /etc/borhan.d/system.ini
 else
-        echo "I need this file to get some information. Is Kaltura installed here?"
+        echo "I need this file to get some information. Is Borhan installed here?"
         exit 1;
 fi
-if [ -r $BASE_DIR/bin/kaltura-functions.rc ];then
+if [ -r $BASE_DIR/bin/borhan-functions.rc ];then
         . $BASE_DIR/bin/colors.sh
 else
-        echo "I need $BASE_DIR/bin/functions.rc. Is Kaltura installed here?"
+        echo "I need $BASE_DIR/bin/functions.rc. Is Borhan installed here?"
         exit 2;
 fi
 JAVA_VER=1.7.0
@@ -27,7 +27,7 @@ if [ -z "$JAVA_HOME" ];then
 fi
 echo "
 CATALINA_HOME=$CATALINA_HOME
-JAVA_HOME=$JAVA_HOME" >> /etc/kaltura.d/system.ini
+JAVA_HOME=$JAVA_HOME" >> /etc/borhan.d/system.ini
 
 if ! grep -q Integration $APP_DIR/configurations/plugins.ini;then
 	echo "Integration" >> $APP_DIR/configurations/plugins.ini
@@ -53,7 +53,7 @@ echo -e "${CYAN}Generating clientlibs, please wait${NORMAL}"
 
 php $APP_DIR/generator/generate.php 
 # gen additional needed clients
-php /opt/kaltura/app/generator/generate.php pojo,bpmn
+php /opt/borhan/app/generator/generate.php pojo,bpmn
 find $APP_DIR/cache/ -type f -exec rm {} \;
 php $APP_DIR/deployment/base/scripts/installPlugins.php 
 service httpd reload
@@ -75,7 +75,7 @@ maximumExecutionTime                                                            
 scriptPath                                                                                      = ../plugins/integration/batch/Integrate/KAsyncIntegrateCloserExe.php
 params.maxTimeBeforeFail                                                        = 1000000
 " >> $APP_DIR/configurations/batch/batch.ini
-/etc/init.d/kaltura-batch restart
+/etc/init.d/borhan-batch restart
 service httpd reload
 echo -e "${CYAN}Deploying BPM related population code..${NORMAL}"
 mysql -u$DB1_USER -p$DB1_PASS $DB1_NAME <  $APP_DIR/deployment/updates/sql/2014_11_20_business_process_server.sql
@@ -92,7 +92,7 @@ wget http://cdn.mysql.com/Downloads/Connector-J/mysql-connector-java-$MYSQL_JAVA
 unzip -oq mysql-connector-java-$MYSQL_JAVA_CONNECTOR_VER.zip 
 cp mysql-connector-java-$MYSQL_JAVA_CONNECTOR_VER/mysql-connector-java-$MYSQL_JAVA_CONNECTOR_VER-bin.jar $CATALINA_HOME/lib/
 wget http://central.maven.org/maven2/xerces/xercesImpl/$XERCES_VER/xercesImpl-$XERCES_VER.jar -OxercesImpl-$XERCES_VER.jar
-unzip -oq xercesImpl-$XERCES_VER.jar -d/opt/kaltura/web/content/clientlibs/bpmn/deploy/src
+unzip -oq xercesImpl-$XERCES_VER.jar -d/opt/borhan/web/content/clientlibs/bpmn/deploy/src
 if [ -r $CATALINA_HOME/webapps/activiti-rest/WEB-INF/classes/db.properties ];then
 	mv $CATALINA_HOME/webapps/activiti-rest/WEB-INF/classes/db.properties{,.orig}
 fi
@@ -135,8 +135,8 @@ sed -i 's@target name="deploy" depends="verify-version, jar, bar, compile, set-h
 ant
 php $APP_DIR/tests/standAloneClient/exec.php $APP_DIR/tests/standAloneClient/activitiServer.xml
 #MINUS_TWO_ADMIN_PARTNER_SECRET=`echo "select admin_secret from partner where id=-2" | mysql -N -h $DB1_HOST -p$DB1_PASS $DB1_NAME -u$DB1_USER  -P$DB1_PORT`
-#PARTNER_ID=`php $BASE_DIR/bin/create_partner.php $ADMIN_PARTNER_SECRET bmp_partner@kaltura.com testingpasswd $SERVICE_URL 2>&1`
+#PARTNER_ID=`php $BASE_DIR/bin/create_partner.php $ADMIN_PARTNER_SECRET bmp_partner@borhan.com testingpasswd $SERVICE_URL 2>&1`
 #ADMIN_PARTNER_SECRET=`echo "select admin_secret from partner where id=$PARTNER_ID" | mysql -N -h $DB1_HOST -p$DB1_PASS $DB1_NAME -u$DB1_USER  -P$DB1_PORT`
 #$BASE_DIR/bin/create_metadata.php $PARTNER_ID $MINUS_TWO_ADMIN_PARTNER_SECRET $SERVICE_URL $BASE_DIR/bin/Transcript.xml
-#echo -e "${CYAN}Created partner $PARTNER_ID [bmp_partner@kaltura.com] and generated custom metadata needed for BPM${NORMAL}"
+#echo -e "${CYAN}Created partner $PARTNER_ID [bmp_partner@borhan.com] and generated custom metadata needed for BPM${NORMAL}"
 #$BASE_DIR/bin/create_bpmn_notifications.php $PARTNER_ID $MINUS_TWO_ADMIN_PARTNER_SECRET $SERVICE_URL

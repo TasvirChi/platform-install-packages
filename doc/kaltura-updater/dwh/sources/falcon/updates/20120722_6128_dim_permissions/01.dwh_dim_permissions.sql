@@ -1,6 +1,6 @@
-DROP TABLE IF EXISTS `kalturadw`.`dwh_dim_permissions`;
+DROP TABLE IF EXISTS `borhandw`.`dwh_dim_permissions`;
 
-CREATE TABLE `kalturadw`.`dwh_dim_permissions` (
+CREATE TABLE `borhandw`.`dwh_dim_permissions` (
   `permission_id` INT(11) NOT NULL,
   `type` INT(11) NOT NULL,
   `name` VARCHAR(100) NOT NULL,
@@ -17,8 +17,8 @@ CREATE TABLE `kalturadw`.`dwh_dim_permissions` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 
-CREATE TRIGGER `kalturadw`.`dwh_dim_permissions_setcreationtime_oninsert` BEFORE INSERT
-    ON `kalturadw`.`dwh_dim_permissions`
+CREATE TRIGGER `borhandw`.`dwh_dim_permissions_setcreationtime_oninsert` BEFORE INSERT
+    ON `borhandw`.`dwh_dim_permissions`
     FOR EACH ROW 
         SET new.dwh_creation_date = NOW();
 

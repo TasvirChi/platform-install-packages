@@ -1,15 +1,15 @@
 #!/bin/bash -e 
 #===============================================================================
-#          FILE: package_kaltura_monit.sh
-#         USAGE: ./package_kaltura_monit.sh 
+#          FILE: package_borhan_monit.sh
+#         USAGE: ./package_borhan_monit.sh 
 #   DESCRIPTION: 
 #       OPTIONS: ---
 # 	LICENSE: AGPLv3+
 #  REQUIREMENTS: ---
 #          BUGS: ---
 #         NOTES: ---
-#        AUTHOR: Tan-Tan, <jonathan.kanarek@kaltura.com>
-#  ORGANIZATION: Kaltura, inc.
+#        AUTHOR: Tan-Tan, <jonathan.kanarek@borhan.com>
+#  ORGANIZATION: Borhan, inc.
 #       CREATED: 29/12/14
 #      REVISION:  ---
 #===============================================================================
@@ -37,5 +37,5 @@ fi
 
 echo "Packaged into $RPM_SOURCES_DIR/monit-$MONIT_VERSION.tar.gz"
 if [ -x "`which rpmbuild 2>/dev/null`" ];then
-	rpmbuild -ba $RPM_SPECS_DIR/kaltura-monit.spec
+	rpmbuild -ba $RPM_SPECS_DIR/borhan-monit.spec
 fi

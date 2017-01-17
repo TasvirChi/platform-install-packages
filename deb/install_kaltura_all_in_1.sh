@@ -1,7 +1,7 @@
 #!/bin/sh -e
 set -e
-wget -O - http://installrepo.kaltura.org/repo/apt/debian/kaltura-deb.gpg.key|apt-key add -
-echo "deb [arch=amd64] http://installrepo.kaltura.org/repo/apt/debian jupiter main" > /etc/apt/sources.list.d/kaltura.list
+wget -O - http://installrepo.borhan.org/repo/apt/debian/borhan-deb.gpg.key|apt-key add -
+echo "deb [arch=amd64] http://installrepo.borhan.org/repo/apt/debian jupiter main" > /etc/apt/sources.list.d/borhan.list
 
 # aptitude has a more advanced API then apt-get and is better at resolving deps. For some reason, it is not installed on all deb based system so lets see if we haveit.
 
@@ -28,14 +28,14 @@ elif [ "$DISTRO" = 'Debian' ];then
 	fi
 fi
 $APT_TOOL install mysql-server
-$APT_TOOL install kaltura-postinst
-$APT_TOOL install kaltura-base
-$APT_TOOL install kaltura-widgets kaltura-html5lib kaltura-html5-studio
-$APT_TOOL install kaltura-front
-$APT_TOOL install kaltura-sphinx
-$APT_TOOL install kaltura-db
-$APT_TOOL install kaltura-batch
-$APT_TOOL install kaltura-dwh
-$APT_TOOL install kaltura-nginx
-/etc/init.d/kaltura-nginx start
+$APT_TOOL install borhan-postinst
+$APT_TOOL install borhan-base
+$APT_TOOL install borhan-widgets borhan-html5lib borhan-html5-studio
+$APT_TOOL install borhan-front
+$APT_TOOL install borhan-sphinx
+$APT_TOOL install borhan-db
+$APT_TOOL install borhan-batch
+$APT_TOOL install borhan-dwh
+$APT_TOOL install borhan-nginx
+/etc/init.d/borhan-nginx start
 

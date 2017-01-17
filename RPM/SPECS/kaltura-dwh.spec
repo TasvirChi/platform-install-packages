@@ -1,31 +1,31 @@
-%define prefix /opt/kaltura
-%define kaltura_user kaltura
-Summary: Kaltura Open Source Video Platform - Analytics 
-Name: kaltura-dwh
+%define prefix /opt/borhan
+%define borhan_user borhan
+Summary: Borhan Open Source Video Platform - Analytics 
+Name: borhan-dwh
 Version: 11.3.0
 Release: 1
 License: AGPLv3+
 Group: Server/Platform 
-Source0: https://github.com/kaltura/dwh/archive/%{name}-Kajam-%{version}.zip
-URL: https://github.com/kaltura/dwh/tree/master 
+Source0: https://github.com/borhan/dwh/archive/%{name}-Kajam-%{version}.zip
+URL: https://github.com/borhan/dwh/tree/master 
 Buildroot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
-Requires: kaltura-base,kaltura-pentaho,jre, kaltura-postinst 
+Requires: borhan-base,borhan-pentaho,jre, borhan-postinst 
 BuildArch: noarch
 
 %description
-Kaltura is the world's first Open Source Online Video Platform, transforming the way people work, 
+Borhan is the world's first Open Source Online Video Platform, transforming the way people work, 
 learn, and entertain using online video. 
-The Kaltura platform empowers media applications with advanced video management, publishing, 
+The Borhan platform empowers media applications with advanced video management, publishing, 
 and monetization tools that increase their reach and monetization and simplify their video operations. 
-Kaltura improves productivity and interaction among millions of employees by providing enterprises 
+Borhan improves productivity and interaction among millions of employees by providing enterprises 
 powerful online video tools for boosting internal knowledge sharing, training, and collaboration, 
-and for more effective marketing. Kaltura offers next generation learning for millions of students and 
+and for more effective marketing. Borhan offers next generation learning for millions of students and 
 teachers by providing educational institutions disruptive online video solutions for improved teaching,
 learning, and increased engagement across campuses and beyond. 
-For more information visit: http://corp.kaltura.com, http://www.kaltura.org and http://www.html5video.org.
+For more information visit: http://corp.borhan.com, http://www.borhan.org and http://www.html5video.org.
 
 
-The Kaltura platform enables video management, publishing, syndication and monetization, 
+The Borhan platform enables video management, publishing, syndication and monetization, 
 as well as providing a robust framework for managing rich-media applications, 
 and developing a variety of online workflows for video. 
 
@@ -58,61 +58,61 @@ fi
 
 %post
 if [ "$1" = 0 ];then
-	%{prefix}/bin/kaltura-dwh-config.sh
+	%{prefix}/bin/borhan-dwh-config.sh
 fi
 
 %preun
 if [ "$1" = 0 ] ; then
-	rm -f %{_sysconfdir}/cron.d/kaltura-dwh
+	rm -f %{_sysconfdir}/cron.d/borhan-dwh
 fi
 
 %files
 %dir %{prefix}/web/logs
-%defattr(-, %{kaltura_user},root 0755)
+%defattr(-, %{borhan_user},root 0755)
 %{prefix}/dwh
 
 
 %changelog
-* Thu Jan 7 2016 Jess Portnoy <jess.portnoy@kaltura.com> - 11.3.0-1
+* Thu Jan 7 2016 Jess Portnoy <jess.portnoy@borhan.com> - 11.3.0-1
 - Add Hercules to Iris/Jupiter migration
 - Add Nginx log parsing
 - Add Totals Aggregration
 - Add Live Analytics
 
-* Thu Oct 15 2015 Jess Portnoy <jess.portnoy@kaltura.com> - 9.5.0-2
+* Thu Oct 15 2015 Jess Portnoy <jess.portnoy@borhan.com> - 9.5.0-2
 - Live entry aggregation ddl changes 
 
-* Mon Aug 24 2015 Jess Portnoy <jess.portnoy@kaltura.com> - 9.5.0-1
+* Mon Aug 24 2015 Jess Portnoy <jess.portnoy@borhan.com> - 9.5.0-1
 - Don't use preserved word MAX as query alias.
 - Make sure that file_size is int value like in DB
 
-* Wed Jan 29 2014 Jess Portnoy <jess.portnoy@kaltura.com> - 9.2.0-2
-%%{prefix}/bin/kaltura-dwh-config.sh does not require user interaction, if this is an upgrade just run it at %%post.
+* Wed Jan 29 2014 Jess Portnoy <jess.portnoy@borhan.com> - 9.2.0-2
+%%{prefix}/bin/borhan-dwh-config.sh does not require user interaction, if this is an upgrade just run it at %%post.
 
-* Wed Jan 29 2014 Jess Portnoy <jess.portnoy@kaltura.com> - 9.2.0-1
-- Fixes Unknown column 'invalid_login_count' in 'field list' - this field was dropped from the kaltura operational DB.
+* Wed Jan 29 2014 Jess Portnoy <jess.portnoy@borhan.com> - 9.2.0-1
+- Fixes Unknown column 'invalid_login_count' in 'field list' - this field was dropped from the borhan operational DB.
 
-* Wed Jan 29 2014 Jess Portnoy <jess.portnoy@kaltura.com> - 9.1.0-3
-- Define 'kaltura_user' in the spec.
+* Wed Jan 29 2014 Jess Portnoy <jess.portnoy@borhan.com> - 9.1.0-3
+- Define 'borhan_user' in the spec.
 
-* Wed Jan 29 2014 Jess Portnoy <jess.portnoy@kaltura.com> - 9.1.0-2
-- Make kaltura owner of logs dir.
+* Wed Jan 29 2014 Jess Portnoy <jess.portnoy@borhan.com> - 9.1.0-2
+- Make borhan owner of logs dir.
 - Set exec bit on all shell scripts.
 
-* Mon Jan 27 2014 Jess Portnoy <jess.portnoy@kaltura.com> - 9.1.0-1
+* Mon Jan 27 2014 Jess Portnoy <jess.portnoy@borhan.com> - 9.1.0-1
 - Moving to IX-9.9.0
 
-* Sun Jan 26 2014 Jess Portnoy <jess.portnoy@kaltura.com> - 9.1.0-8
+* Sun Jan 26 2014 Jess Portnoy <jess.portnoy@borhan.com> - 9.1.0-8
 - Sources moved to GIT.
 
-* Sat Jan 18 2014 Jess Portnoy <jess.portnoy@kaltura.com> - 9.1.0-6
+* Sat Jan 18 2014 Jess Portnoy <jess.portnoy@borhan.com> - 9.1.0-6
 - Plus .kettle config.
 
-* Sat Jan 18 2014 Jess Portnoy <jess.portnoy@kaltura.com> - 9.1.0-5
+* Sat Jan 18 2014 Jess Portnoy <jess.portnoy@borhan.com> - 9.1.0-5
 - Install actual %%{prefix}/dwh dir
 
-* Thu Jan 16 2014 Jess Portnoy <jess.portnoy@kaltura.com> - 9.1.0-3
+* Thu Jan 16 2014 Jess Portnoy <jess.portnoy@borhan.com> - 9.1.0-3
 - Added creation of %%{prefix}/web/logs
 
-* Mon Dec 23 2013 Jess Portnoy <jess.portnoy@kaltura.com> - 9.7.0-1
+* Mon Dec 23 2013 Jess Portnoy <jess.portnoy@borhan.com> - 9.7.0-1
 - First package

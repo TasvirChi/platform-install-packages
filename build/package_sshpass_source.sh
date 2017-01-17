@@ -8,8 +8,8 @@
 #  REQUIREMENTS: ---
 #          BUGS: ---
 #         NOTES: ---
-#        AUTHOR: Tan-Tan, <Jonathan.Kanarek@kaltura.com>
-#  ORGANIZATION: Kaltura, inc.
+#        AUTHOR: Tan-Tan, <Jonathan.Kanarek@borhan.com>
+#  ORGANIZATION: Borhan, inc.
 #       CREATED: 01/04/15
 #      REVISION:  ---
 #===============================================================================
@@ -37,6 +37,6 @@ else
 fi
 
 if [ -x "`which rpmbuild 2>/dev/null`" ];then
-	rpmbuild -ba $RPM_SPECS_DIR/kaltura-sshpass.spec
+	rpmbuild -ba $RPM_SPECS_DIR/borhan-sshpass.spec
 fi
 

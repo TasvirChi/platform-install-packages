@@ -1,15 +1,15 @@
-Package: kaltura-php7-gmp
-Source: kaltura-php7
+Package: borhan-php7-gmp
+Source: borhan-php7
 Version: 7.0.0-6
 Architecture: amd64
-Maintainer: Jess Portnoy <jess.portnoy@kaltura.com>
+Maintainer: Jess Portnoy <jess.portnoy@borhan.com>
 Installed-Size: 133
 Pre-Depends: dpkg (>= 1.16.1~)
-Depends: libc6 (>= 2.2.5), libgmp10, phpapi-20151012, kaltura-php7-common (= 7.0.0-6), ucf
+Depends: libc6 (>= 2.2.5), libgmp10, phpapi-20151012, borhan-php7-common (= 7.0.0-6), ucf
 Section: php
 Priority: optional
 Homepage: http://www.php.net/
-Description: GMP module for kaltura-php7
+Description: GMP module for borhan-php7
  This package provides a module for arbitrary precision arithmetic via the
  GNU Multiple Precision (GMP) Arithmetic Library.
  .

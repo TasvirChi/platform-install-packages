@@ -1,17 +1,17 @@
-kaltura-sphinx (2.2.1-4) lynx; urgency=low
+borhan-sphinx (2.2.1-4) lynx; urgency=low
 
   * Fix Default-Start and Default-Stop init levels. 
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Tue, 11 Oct 2016 14:56:41 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Tue, 11 Oct 2016 14:56:41 +0000
 
-kaltura-sphinx (2.2.1-3) jupiter; urgency=low
+borhan-sphinx (2.2.1-3) jupiter; urgency=low
 
   * fix call to send_install_becon()
 
- -- Jess Portnoy <jess.portnoy@kaltura.com>  Mon, 27 Apr 2015 18:02:43 +0200
+ -- Jess Portnoy <jess.portnoy@borhan.com>  Mon, 27 Apr 2015 18:02:43 +0200
 
-kaltura-sphinx (2.2.1-2) jupiter; urgency=low
+borhan-sphinx (2.2.1-2) jupiter; urgency=low
   
   First build.
 
- -- Jess Portnoy <jess.portnoy@kaltura.com>  Thu, 26 Dec 2014 18:00:33 +0200
+ -- Jess Portnoy <jess.portnoy@borhan.com>  Thu, 26 Dec 2014 18:00:33 +0200

@@ -1,4 +1,4 @@
-USE kalturadw;
+USE borhandw;
 
 DELIMITER $$
 
@@ -9,7 +9,7 @@ BEGIN
         DECLARE v_partition_statement VARCHAR(255);
         DECLARE c_partitions
         CURSOR FOR
-        SELECT CONCAT('ALTER TABLE kalturadw.',p_table_name,'_new ADD PARTITION (PARTITION ', partition_name,' VALUES LESS THAN(', partition_description, '));') cmd
+        SELECT CONCAT('ALTER TABLE borhandw.',p_table_name,'_new ADD PARTITION (PARTITION ', partition_name,' VALUES LESS THAN(', partition_description, '));') cmd
         FROM information_schema.PARTITIONS existing, (SELECT MAX(partition_description) latest FROM information_schema.PARTITIONS WHERE table_name =CONCAT(p_table_name,'_new')) new_table
         WHERE existing.partition_description > new_table.latest AND table_name = p_table_name
         ORDER BY partition_description;

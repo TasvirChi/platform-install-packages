@@ -1,15 +1,15 @@
 #!/bin/bash -e 
 #===============================================================================
-#          FILE: package_kaltura_html5lib.sh
-#         USAGE: ./package_kaltura_html5lib.sh 
+#          FILE: package_borhan_html5lib.sh
+#         USAGE: ./package_borhan_html5lib.sh 
 #   DESCRIPTION: 
 #       OPTIONS: ---
 # 	LICENSE: AGPLv3+
 #  REQUIREMENTS: ---
 #          BUGS: ---
 #         NOTES: ---
-#        AUTHOR: Jess Portnoy <jess.portnoy@kaltura.com>
-#  ORGANIZATION: Kaltura, inc.
+#        AUTHOR: Jess Portnoy <jess.portnoy@borhan.com>
+#  ORGANIZATION: Borhan, inc.
 #       CREATED: 01/14/14 11:46:43 EST
 #      REVISION:  ---
 #===============================================================================
@@ -34,7 +34,7 @@ for HTML5LIB_VERSION in $HTML5LIB_VERSIONS;do
 		wget $HTML5LIB_BASE_URI/$HTML5LIB_VERSION -O $HTML5LIB_RPM_NAME-$HTML5LIB_VERSION.tar.gz
 		tar zxf $HTML5LIB_RPM_NAME-$HTML5LIB_VERSION.tar.gz 
 		rm -rf $HTML5LIB_RPM_NAME-$HTML5LIB_VERSION
-		mv `ls -rtd kaltura-mwEmbed-* | tail -1` $HTML5LIB_RPM_NAME-$HTML5LIB_VERSION
+		mv `ls -rtd borhan-mwEmbed-* | tail -1` $HTML5LIB_RPM_NAME-$HTML5LIB_VERSION
 		tar zcf $RPM_SOURCES_DIR/$HTML5LIB_RPM_NAME-$HTML5LIB_VERSION.tar.gz $HTML5LIB_RPM_NAME-$HTML5LIB_VERSION
 		#rm $HTML5LIB_RPM_NAME-$HTML5LIB_VERSION.tar.gz
 		echo "Packaged into $RPM_SOURCES_DIR/$HTML5LIB_RPM_NAME-$HTML5LIB_VERSION.tar.gz"

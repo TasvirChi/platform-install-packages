@@ -1,15 +1,15 @@
 #!/bin/bash - 
 #===============================================================================
-#          FILE: kaltura-mysql-settings.sh
-#         USAGE: ./kaltura-mysql-settings.sh 
+#          FILE: borhan-mysql-settings.sh
+#         USAGE: ./borhan-mysql-settings.sh 
 #   DESCRIPTION: 
 #       OPTIONS: ---
 # 	LICENSE: AGPLv3+
 #  REQUIREMENTS: ---
 #          BUGS: ---
 #         NOTES: ---
-#        AUTHOR: Jess Portnoy (), <jess.portnoy@kaltura.com>
-#  ORGANIZATION: Kaltura, inc.
+#        AUTHOR: Jess Portnoy (), <jess.portnoy@borhan.com>
+#  ORGANIZATION: Borhan, inc.
 #       CREATED: 01/24/14 12:48:32 EST
 #      REVISION:  ---
 #===============================================================================

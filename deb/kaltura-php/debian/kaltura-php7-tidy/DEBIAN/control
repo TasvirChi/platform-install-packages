@@ -1,15 +1,15 @@
-Package: kaltura-php7-tidy
-Source: kaltura-php7
+Package: borhan-php7-tidy
+Source: borhan-php7
 Version: 7.0.0-6
 Architecture: amd64
-Maintainer: Jess Portnoy <jess.portnoy@kaltura.com>
+Maintainer: Jess Portnoy <jess.portnoy@borhan.com>
 Installed-Size: 117
 Pre-Depends: dpkg (>= 1.16.1~)
-Depends: libc6 (>= 2.14), libtidy-0.99-0, phpapi-20151012, kaltura-php7-common (= 7.0.0-6), ucf
+Depends: libc6 (>= 2.14), libtidy-0.99-0, phpapi-20151012, borhan-php7-common (= 7.0.0-6), ucf
 Section: php
 Priority: optional
 Homepage: http://www.php.net/
-Description: tidy module for kaltura-php7
+Description: tidy module for borhan-php7
  This package provides a module for tidy functions in PHP scripts.
  .
  Tidy is an extension based on Libtidy (http://tidy.sf.net/) and allows

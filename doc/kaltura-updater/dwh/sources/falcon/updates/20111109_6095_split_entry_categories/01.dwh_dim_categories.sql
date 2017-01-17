@@ -4,7 +4,7 @@ MySQL - 5.1.37-log
 *********************************************************************
 */
 
-USE kalturadw;
+USE borhandw;
 
 DROP TABLE IF EXISTS `dwh_dim_categories`;
 
@@ -16,8 +16,8 @@ CREATE TABLE `dwh_dim_categories` (
 	PRIMARY KEY (`category_id`), UNIQUE KEY (category_name)
 ) ENGINE=MYISAM DEFAULT CHARSET=utf8; 
 
-CREATE TRIGGER `kalturadw`.`dwh_dim_categories_oninsert` BEFORE INSERT
-    ON `kalturadw`.`dwh_dim_categories`
+CREATE TRIGGER `borhandw`.`dwh_dim_categories_oninsert` BEFORE INSERT
+    ON `borhandw`.`dwh_dim_categories`
     FOR EACH ROW 
 	SET new.dwh_creation_date = NOW();
     

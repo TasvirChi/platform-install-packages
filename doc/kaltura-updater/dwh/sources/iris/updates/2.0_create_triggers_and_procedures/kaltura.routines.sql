@@ -1,7 +1,7 @@
-USE `kaltura`;
+USE `borhan`;
 -- MySQL dump 10.13  Distrib 5.1.73, for redhat-linux-gnu (x86_64)
 --
--- Host: localhost    Database: kaltura
+-- Host: localhost    Database: borhan
 -- ------------------------------------------------------
 -- Server version	5.1.73
 /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
@@ -12,7 +12,7 @@ USE `kaltura`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Dumping routines for database 'kaltura'
+-- Dumping routines for database 'borhan'
 --
 /*!50003 SET @saved_cs_client      = @@character_set_client */ ;
 /*!50003 SET @saved_cs_results     = @@character_set_results */ ;
@@ -23,7 +23,7 @@ USE `kaltura`;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `kaltura`.`update_entries`()
+/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `borhan`.`update_entries`()
 BEGIN
     DECLARE done INT DEFAULT 0;
     DECLARE entry_id CHAR(50);
@@ -54,12 +54,12 @@ DELIMITER ;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = '' */ ;
 DELIMITER ;;
-/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `kaltura`.`update_kusers`()
+/*!50003 CREATE*/ /*!50020 DEFINER=`root`@`localhost`*/ /*!50003 PROCEDURE `borhan`.`update_kusers`()
 BEGIN
     DECLARE done INT DEFAULT 0;
     DECLARE new_kuser_id CHAR(50);
     DECLARE new_storage_size INT;
-    DECLARE updated_kusers CURSOR FOR SELECT kuser_id, storage_kb FROM kaltura.temp_updated_kusers_storage_usage;
+    DECLARE updated_kusers CURSOR FOR SELECT kuser_id, storage_kb FROM borhan.temp_updated_kusers_storage_usage;
     DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = 1;
     OPEN updated_kusers;
     

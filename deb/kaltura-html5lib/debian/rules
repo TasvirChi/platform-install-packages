@@ -5,43 +5,43 @@ RC_FILE :=../../build/sources.rc
 HTML5LIB_LATEST_VERSION ?= $(shell egrep '^HTML5LIB_LATEST_VERSION=' $(RC_FILE) | cut -d = -f 2| sed 's@"@@g')
 HTML5LIB_VERSIONS ?= $(shell egrep '^HTML5LIB_PREV_VERSIONS=' $(RC_FILE) | cut -d = -f 2| sed 's@"@@g')
 RPM_SOURCES_DIR ?= $(shell egrep '^RPM_SOURCES_DIR=' $(RC_FILE) | cut -d = -f 2| sed 's@"@@g')
-KALTURA_PREFIX ?= $(shell egrep '^KALTURA_PREFIX=' $(RC_FILE) | cut -d = -f 2| sed 's@"@@g')
-HTML5LIB_PREFIX=$(KALTURA_PREFIX)/web/html5/html5lib
+BORHAN_PREFIX ?= $(shell egrep '^BORHAN_PREFIX=' $(RC_FILE) | cut -d = -f 2| sed 's@"@@g')
+HTML5LIB_PREFIX=$(BORHAN_PREFIX)/web/html5/html5lib
 include ../includes/build-revision.mk
-archive := $(RPM_SOURCES_DIR)/kaltura-html5-$(HTML5LIB_LATEST_VERSION).tar.gz
-tree := kaltura-html5lib-$(HTML5LIB_LATEST_VERSION)
+archive := $(RPM_SOURCES_DIR)/borhan-html5-$(HTML5LIB_LATEST_VERSION).tar.gz
+tree := borhan-html5lib-$(HTML5LIB_LATEST_VERSION)
 
 clean:
 	dh_clean
-	rm -rf kaltura-html5lib-*
+	rm -rf borhan-html5lib-*
 	rm -rf debian/tmp
 
 $(archive):
-	$(RPM_SOURCES_DIR)/platform-install-packages/build/package_kaltura_html5lib.sh	
+	$(RPM_SOURCES_DIR)/platform-install-packages/build/package_borhan_html5lib.sh	
 
 $(tree): $(archive)
-	tar zxf $(RPM_SOURCES_DIR)/kaltura-html5lib-$(HTML5LIB_LATEST_VERSION).tar.gz
-	tar zxf $(RPM_SOURCES_DIR)/kaltura-html5lib-v2.46.tar.gz
-	tar zxf $(RPM_SOURCES_DIR)/kaltura-html5lib-v2.45.1.tar.gz
-	tar zxf $(RPM_SOURCES_DIR)/kaltura-html5lib-v2.45.tar.gz
-	tar zxf $(RPM_SOURCES_DIR)/kaltura-html5lib-v2.44.tar.gz
-	tar zxf $(RPM_SOURCES_DIR)/kaltura-html5lib-v2.43.tar.gz
-	tar zxf $(RPM_SOURCES_DIR)/kaltura-html5lib-v2.42.tar.gz
-	tar zxf $(RPM_SOURCES_DIR)/kaltura-html5lib-v2.41.tar.gz
-	tar zxf $(RPM_SOURCES_DIR)/kaltura-html5lib-v2.40.tar.gz
-	tar zxf $(RPM_SOURCES_DIR)/kaltura-html5lib-v2.39.tar.gz
-	tar zxf $(RPM_SOURCES_DIR)/kaltura-html5lib-v2.38.1.tar.gz
-	tar zxf $(RPM_SOURCES_DIR)/kaltura-html5lib-v2.38.tar.gz
-	tar zxf $(RPM_SOURCES_DIR)/kaltura-html5lib-v2.37.3.tar.gz
-	tar zxf $(RPM_SOURCES_DIR)/kaltura-html5lib-v2.37.1.tar.gz
-	tar zxf $(RPM_SOURCES_DIR)/kaltura-html5lib-v2.36.tar.gz
-	tar zxf $(RPM_SOURCES_DIR)/kaltura-html5lib-v2.35.5.tar.gz
-	tar zxf $(RPM_SOURCES_DIR)/kaltura-html5lib-v2.34.tar.gz
-	tar zxf $(RPM_SOURCES_DIR)/kaltura-html5lib-v2.33.tar.gz
-	tar zxf $(RPM_SOURCES_DIR)/kaltura-html5lib-v2.32.1.tar.gz
-	tar zxf $(RPM_SOURCES_DIR)/kaltura-html5lib-v2.31.tar.gz
-	tar zxf $(RPM_SOURCES_DIR)/kaltura-html5lib-v2.30.tar.gz
-	tar zxf $(RPM_SOURCES_DIR)/kaltura-html5lib-v2.29.tar.gz
+	tar zxf $(RPM_SOURCES_DIR)/borhan-html5lib-$(HTML5LIB_LATEST_VERSION).tar.gz
+	tar zxf $(RPM_SOURCES_DIR)/borhan-html5lib-v2.46.tar.gz
+	tar zxf $(RPM_SOURCES_DIR)/borhan-html5lib-v2.45.1.tar.gz
+	tar zxf $(RPM_SOURCES_DIR)/borhan-html5lib-v2.45.tar.gz
+	tar zxf $(RPM_SOURCES_DIR)/borhan-html5lib-v2.44.tar.gz
+	tar zxf $(RPM_SOURCES_DIR)/borhan-html5lib-v2.43.tar.gz
+	tar zxf $(RPM_SOURCES_DIR)/borhan-html5lib-v2.42.tar.gz
+	tar zxf $(RPM_SOURCES_DIR)/borhan-html5lib-v2.41.tar.gz
+	tar zxf $(RPM_SOURCES_DIR)/borhan-html5lib-v2.40.tar.gz
+	tar zxf $(RPM_SOURCES_DIR)/borhan-html5lib-v2.39.tar.gz
+	tar zxf $(RPM_SOURCES_DIR)/borhan-html5lib-v2.38.1.tar.gz
+	tar zxf $(RPM_SOURCES_DIR)/borhan-html5lib-v2.38.tar.gz
+	tar zxf $(RPM_SOURCES_DIR)/borhan-html5lib-v2.37.3.tar.gz
+	tar zxf $(RPM_SOURCES_DIR)/borhan-html5lib-v2.37.1.tar.gz
+	tar zxf $(RPM_SOURCES_DIR)/borhan-html5lib-v2.36.tar.gz
+	tar zxf $(RPM_SOURCES_DIR)/borhan-html5lib-v2.35.5.tar.gz
+	tar zxf $(RPM_SOURCES_DIR)/borhan-html5lib-v2.34.tar.gz
+	tar zxf $(RPM_SOURCES_DIR)/borhan-html5lib-v2.33.tar.gz
+	tar zxf $(RPM_SOURCES_DIR)/borhan-html5lib-v2.32.1.tar.gz
+	tar zxf $(RPM_SOURCES_DIR)/borhan-html5lib-v2.31.tar.gz
+	tar zxf $(RPM_SOURCES_DIR)/borhan-html5lib-v2.30.tar.gz
+	tar zxf $(RPM_SOURCES_DIR)/borhan-html5lib-v2.29.tar.gz
 
 build: $(tree)
 
@@ -51,31 +51,31 @@ binary-indep: install
 	dh_installdirs
 	rm -rf $(HTML5LIB_PREFIX)
 	mkdir -p $(HTML5LIB_PREFIX)
-	find kaltura-html5lib-* -name Widevine -exec rm -rf {} \; || true
-	find kaltura-html5lib-* -name UiConfResult.php  -exec cp debian/UiConfResult.php {} \; || true
-	find kaltura-html5lib-* -name simplePhpXMLProxy.php  -exec cp debian/simplePhpXMLProxy.php {} \; || true
-	mv kaltura-html5lib-$(HTML5LIB_LATEST_VERSION) $(HTML5LIB_PREFIX)/$(HTML5LIB_LATEST_VERSION)
-	mv kaltura-html5lib-v2.29 $(HTML5LIB_PREFIX)/v2.29
-	mv kaltura-html5lib-v2.30 $(HTML5LIB_PREFIX)/v2.30
-	mv kaltura-html5lib-v2.31 $(HTML5LIB_PREFIX)/v2.31
-	mv kaltura-html5lib-v2.32.1 $(HTML5LIB_PREFIX)/v2.32.1
-	mv kaltura-html5lib-v2.33 $(HTML5LIB_PREFIX)/v2.33
-	mv kaltura-html5lib-v2.34 $(HTML5LIB_PREFIX)/v2.34
-	mv kaltura-html5lib-v2.35.5 $(HTML5LIB_PREFIX)/v2.35.5
-	mv kaltura-html5lib-v2.36 $(HTML5LIB_PREFIX)/v2.36
-	mv kaltura-html5lib-v2.37.1 $(HTML5LIB_PREFIX)/v2.37.1
-	mv kaltura-html5lib-v2.37.3 $(HTML5LIB_PREFIX)/v2.37.3
-	mv kaltura-html5lib-v2.38 $(HTML5LIB_PREFIX)/v2.38
-	mv kaltura-html5lib-v2.38.1 $(HTML5LIB_PREFIX)/v2.38.1
-	mv kaltura-html5lib-v2.39 $(HTML5LIB_PREFIX)/v2.39
-	mv kaltura-html5lib-v2.40 $(HTML5LIB_PREFIX)/v2.40
-	mv kaltura-html5lib-v2.41 $(HTML5LIB_PREFIX)/v2.41
-	mv kaltura-html5lib-v2.42 $(HTML5LIB_PREFIX)/v2.42
-	mv kaltura-html5lib-v2.43 $(HTML5LIB_PREFIX)/v2.43
-	mv kaltura-html5lib-v2.44 $(HTML5LIB_PREFIX)/v2.44
-	mv kaltura-html5lib-v2.45 $(HTML5LIB_PREFIX)/v2.45
-	mv kaltura-html5lib-v2.45.1 $(HTML5LIB_PREFIX)/v2.45.1
-	mv kaltura-html5lib-v2.46 $(HTML5LIB_PREFIX)/v2.46
+	find borhan-html5lib-* -name Widevine -exec rm -rf {} \; || true
+	find borhan-html5lib-* -name UiConfResult.php  -exec cp debian/UiConfResult.php {} \; || true
+	find borhan-html5lib-* -name simplePhpXMLProxy.php  -exec cp debian/simplePhpXMLProxy.php {} \; || true
+	mv borhan-html5lib-$(HTML5LIB_LATEST_VERSION) $(HTML5LIB_PREFIX)/$(HTML5LIB_LATEST_VERSION)
+	mv borhan-html5lib-v2.29 $(HTML5LIB_PREFIX)/v2.29
+	mv borhan-html5lib-v2.30 $(HTML5LIB_PREFIX)/v2.30
+	mv borhan-html5lib-v2.31 $(HTML5LIB_PREFIX)/v2.31
+	mv borhan-html5lib-v2.32.1 $(HTML5LIB_PREFIX)/v2.32.1
+	mv borhan-html5lib-v2.33 $(HTML5LIB_PREFIX)/v2.33
+	mv borhan-html5lib-v2.34 $(HTML5LIB_PREFIX)/v2.34
+	mv borhan-html5lib-v2.35.5 $(HTML5LIB_PREFIX)/v2.35.5
+	mv borhan-html5lib-v2.36 $(HTML5LIB_PREFIX)/v2.36
+	mv borhan-html5lib-v2.37.1 $(HTML5LIB_PREFIX)/v2.37.1
+	mv borhan-html5lib-v2.37.3 $(HTML5LIB_PREFIX)/v2.37.3
+	mv borhan-html5lib-v2.38 $(HTML5LIB_PREFIX)/v2.38
+	mv borhan-html5lib-v2.38.1 $(HTML5LIB_PREFIX)/v2.38.1
+	mv borhan-html5lib-v2.39 $(HTML5LIB_PREFIX)/v2.39
+	mv borhan-html5lib-v2.40 $(HTML5LIB_PREFIX)/v2.40
+	mv borhan-html5lib-v2.41 $(HTML5LIB_PREFIX)/v2.41
+	mv borhan-html5lib-v2.42 $(HTML5LIB_PREFIX)/v2.42
+	mv borhan-html5lib-v2.43 $(HTML5LIB_PREFIX)/v2.43
+	mv borhan-html5lib-v2.44 $(HTML5LIB_PREFIX)/v2.44
+	mv borhan-html5lib-v2.45 $(HTML5LIB_PREFIX)/v2.45
+	mv borhan-html5lib-v2.45.1 $(HTML5LIB_PREFIX)/v2.45.1
+	mv borhan-html5lib-v2.46 $(HTML5LIB_PREFIX)/v2.46
 	cp debian/LocalSettings.php $(HTML5LIB_PREFIX)/$(HTML5LIB_LATEST_VERSION)/
 	cp debian/LocalSettings.php $(HTML5LIB_PREFIX)/v2.29/
 	cp debian/LocalSettings.php $(HTML5LIB_PREFIX)/v2.30/
@@ -99,7 +99,7 @@ binary-indep: install
 	cp debian/LocalSettings.php $(HTML5LIB_PREFIX)/v2.45.1/
 	cp debian/LocalSettings.php $(HTML5LIB_PREFIX)/v2.46/
 	mkdir $(HTML5LIB_PREFIX)/$(HTML5LIB_LATEST_VERSION)/cache $(HTML5LIB_PREFIX)/v2.35.5/cache $(HTML5LIB_PREFIX)/v2.36/cache $(HTML5LIB_PREFIX)/v2.37.1/cache $(HTML5LIB_PREFIX)/v2.37.3/cache $(HTML5LIB_PREFIX)/v2.38/cache $(HTML5LIB_PREFIX)/v2.38.1/cache $(HTML5LIB_PREFIX)/v2.39/cache $(HTML5LIB_PREFIX)/v2.40/cache $(HTML5LIB_PREFIX)/v2.41/cache $(HTML5LIB_PREFIX)/v2.42/cache $(HTML5LIB_PREFIX)/v2.43/cache $(HTML5LIB_PREFIX)/v2.44/cache $(HTML5LIB_PREFIX)/v2.45/cache $(HTML5LIB_PREFIX)/v2.45.1/cache $(HTML5LIB_PREFIX)/v2.46/cache $(HTML5LIB_PREFIX)/v2.34/cache $(HTML5LIB_PREFIX)/v2.33/cache $(HTML5LIB_PREFIX)/v2.32.1/cache $(HTML5LIB_PREFIX)/v2.31/cache $(HTML5LIB_PREFIX)/v2.30/cache $(HTML5LIB_PREFIX)/v2.29/cache
-	dh_install $(KALTURA_PREFIX)
+	dh_install $(BORHAN_PREFIX)
 	dh_gencontrol -u-v$(DEB_VERSION) 
 	dh_installdebconf
 	dh_installdeb

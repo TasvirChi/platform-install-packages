@@ -1,13 +1,13 @@
 #!/bin/sh
-#         USAGE: ./kaltura-mysql-replication-config.sh 
+#         USAGE: ./borhan-mysql-replication-config.sh 
 #   DESCRIPTION:
 #       OPTIONS: rep_user rep_user_passw master_ip operation <master||slave> 
 # 	LICENSE: AGPLv3+
 #  REQUIREMENTS: ---
 #          BUGS: ---
 #         NOTES: ---
-#        AUTHOR: Jess Portnoy (), jess.portnoy@kaltura.com
-#  ORGANIZATION: Kaltura, inc.
+#        AUTHOR: Jess Portnoy (), jess.portnoy@borhan.com
+#  ORGANIZATION: Borhan, inc.
 #       CREATED: 11/29/2013 03:26:51 PM IST
 #      REVISION:  ---
 #===============================================================================
@@ -17,8 +17,8 @@ if [ $# -lt 4 ];then
 	exit 1
 fi
 
-if grep -q '^#.*configured by Kaltura' /etc/my.cnf ;then
-	echo -en "$0 already ran here.\nIf you want to re-run, please edit /etc/my.cnf and remove the comment: 'configured by Kaltura' and re-run $0.\n"
+if grep -q '^#.*configured by Borhan' /etc/my.cnf ;then
+	echo -en "$0 already ran here.\nIf you want to re-run, please edit /etc/my.cnf and remove the comment: 'configured by Borhan' and re-run $0.\n"
 	exit 1
 fi
 KALT_REP_USER=$1
@@ -28,7 +28,7 @@ OPERATION=$4
 DATE=`date`
 if [ $OPERATION = 'master' ];then
 	# master:
-	sed -i "s@^\[mysqld\]@[mysqld]\n#Master configured by Kaltura on: $DATE\nlog-bin=mysql-bin\nserver-id = 1\n@" /etc/my.cnf
+	sed -i "s@^\[mysqld\]@[mysqld]\n#Master configured by Borhan on: $DATE\nlog-bin=mysql-bin\nserver-id = 1\n@" /etc/my.cnf
 	SQL=`cat <<EOF
 	create user $KALT_REP_USER@'%' identified by '$KALT_REP_PASSWD';
 	GRANT SELECT, PROCESS, FILE, SUPER, REPLICATION CLIENT, REPLICATION SLAVE, RELOAD ON *.* TO $KALT_REP_USER@'%';
@@ -38,7 +38,7 @@ EOF`
 
 elif [ $OPERATION = 'slave' ];then
 	# slave:
-	sed -i "s@^\[mysqld\]@[mysqld]\n#Slave configured by Kaltura on: $DATE\nserver-id = 2\n@" /etc/my.cnf
+	sed -i "s@^\[mysqld\]@[mysqld]\n#Slave configured by Borhan on: $DATE\nserver-id = 2\n@" /etc/my.cnf
 	SQL=`cat <<EOF
 	CHANGE MASTER TO
 	MASTER_HOST='$MASTER',

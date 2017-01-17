@@ -7,20 +7,20 @@
 #  REQUIREMENTS: ---
 #          BUGS: ---
 #         NOTES: ---
-#        AUTHOR: Jess Portnoy (), <jess.portnoy@kaltura.com>
-#  ORGANIZATION: Kaltura, inc.
+#        AUTHOR: Jess Portnoy (), <jess.portnoy@borhan.com>
+#  ORGANIZATION: Borhan, inc.
 #       CREATED: 11/19/2014 05:51:34 PM IST
 #      REVISION:  ---
 #===============================================================================
 
 #set -o nounset                              # Treat unset variables as an error
-KALTURA_FUNCTIONS_RC=`dirname $0`/kaltura-functions.rc
-if [ ! -r "$KALTURA_FUNCTIONS_RC" ];then
-        OUT="${BRIGHT_RED}ERROR:could not find $KALTURA_FUNCTIONS_RC so, exiting..${NORMAL}"
+BORHAN_FUNCTIONS_RC=`dirname $0`/borhan-functions.rc
+if [ ! -r "$BORHAN_FUNCTIONS_RC" ];then
+        OUT="${BRIGHT_RED}ERROR:could not find $BORHAN_FUNCTIONS_RC so, exiting..${NORMAL}"
         echo -en $OUT
         exit 3
 fi
-. $KALTURA_FUNCTIONS_RC
+. $BORHAN_FUNCTIONS_RC
 
 if [ $# -lt 1 ];then
         echo "Usage: $0 <mysql_root_passwd>"
@@ -35,11 +35,11 @@ if [ "$ANS" != 'y' ];then
         exit 2
 fi
 PASSWD=$1
-for i in `mysql -h $DWH_HOST -p$PASSWD kalturadw_bisources -N -e "show tables"`;do mysql -h$DWH_HOST -p$PASSWD kalturadw_bisources -e "drop table $i";done
-for i in `mysql -h $DWH_HOST -p$PASSWD kalturadw -N -e "show tables"`;do mysql -h$DWH_HOST  -p$PASSWD kalturadw -e "drop table $i";done
-for i in `mysql -h $DWH_HOST -p$PASSWD kalturadw_ds -N -e "show tables"`;do mysql -h$DWH_HOST  -p$PASSWD kalturadw_ds -e "drop table $i";done
-for i in `mysql -h $DWH_HOST -p$PASSWD kalturalog -N -e "show tables"`;do mysql -h$DWH_HOST  -p$PASSWD kalturalog -e "drop table $i";done
-for i in `mysql -h $DWH_HOST -p$PASSWD -N -e "Show procedure status" |grep kalturadw|awk -F " " '{print $2}'`;do mysql -h$DWH_HOST  kalturadw -p$PASSWD -e "drop procedure $i;";done
-for i in `mysql -h $DWH_HOST -p$PASSWD -N -e "Show procedure status" |grep kalturadw_ds|awk -F " " '{print $2}'`;do mysql -h$DWH_HOST  kalturadw_ds -p$PASSWD -e "drop procedure $i;";done
+for i in `mysql -h $DWH_HOST -p$PASSWD borhandw_bisources -N -e "show tables"`;do mysql -h$DWH_HOST -p$PASSWD borhandw_bisources -e "drop table $i";done
+for i in `mysql -h $DWH_HOST -p$PASSWD borhandw -N -e "show tables"`;do mysql -h$DWH_HOST  -p$PASSWD borhandw -e "drop table $i";done
+for i in `mysql -h $DWH_HOST -p$PASSWD borhandw_ds -N -e "show tables"`;do mysql -h$DWH_HOST  -p$PASSWD borhandw_ds -e "drop table $i";done
+for i in `mysql -h $DWH_HOST -p$PASSWD borhanlog -N -e "show tables"`;do mysql -h$DWH_HOST  -p$PASSWD borhanlog -e "drop table $i";done
+for i in `mysql -h $DWH_HOST -p$PASSWD -N -e "Show procedure status" |grep borhandw|awk -F " " '{print $2}'`;do mysql -h$DWH_HOST  borhandw -p$PASSWD -e "drop procedure $i;";done
+for i in `mysql -h $DWH_HOST -p$PASSWD -N -e "Show procedure status" |grep borhandw_ds|awk -F " " '{print $2}'`;do mysql -h$DWH_HOST  borhandw_ds -p$PASSWD -e "drop procedure $i;";done
 
 

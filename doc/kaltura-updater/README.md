@@ -5,14 +5,14 @@ http://www.vixyvideo.nl
 
 ##Disclaimer
 
-Please note that this is an alpha version of the Kaltura updater which is
+Please note that this is an alpha version of the Borhan updater which is
 still undergoing final testing before any official release. The
 website, its software and all content found on it are provided on an
-“as is” and “as available” basis. Vixy not Kaltura give any warranties,
+“as is” and “as available” basis. Vixy not Borhan give any warranties,
 whether express or implied, as to the suitability or usability of the
 website, its software or any of its content.
 
-Vixy nor Kaltura will not be liable for any loss, whether such loss is direct,
+Vixy nor Borhan will not be liable for any loss, whether such loss is direct,
 indirect, special or consequential, suffered by any party as a result
 of their use of this updater, its scripts or content. Any
 use is done at the user’s own risk and the user will be solely 

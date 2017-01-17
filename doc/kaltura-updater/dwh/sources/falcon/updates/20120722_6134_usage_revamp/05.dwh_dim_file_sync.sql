@@ -1,4 +1,4 @@
-USE `kalturadw`;
+USE `borhandw`;
 
 DROP TABLE IF EXISTS `dwh_dim_file_sync_new`;
 
@@ -27,15 +27,15 @@ CREATE TABLE `dwh_dim_file_sync_new` (
 	`ri_ind` TINYINT(4) NOT NULL DEFAULT '0'
 ) ENGINE=MYISAM; 
 
-INSERT INTO kalturadw.dwh_dim_file_sync_new 
-SELECT * FROM kalturadw.dwh_dim_file_sync;
+INSERT INTO borhandw.dwh_dim_file_sync_new 
+SELECT * FROM borhandw.dwh_dim_file_sync;
 
-ALTER TABLE kalturadw.dwh_dim_file_sync_new
+ALTER TABLE borhandw.dwh_dim_file_sync_new
   ADD PRIMARY KEY (`id`), 
   ADD UNIQUE KEY `unique_key` (`object_type`,`object_id`,`object_sub_type`,`version`,`dc`),
   ADD KEY `updated_at` (`updated_at`),
   ADD KEY `ready_at` (`ready_at`),
   ADD KEY `dwh_update_date` (`dwh_update_date`);
   
-DROP TABLE kalturadw.dwh_dim_file_sync;
-RENAME TABLE kalturadw.dwh_dim_file_sync_new TO kalturadw.dwh_dim_file_sync;
+DROP TABLE borhandw.dwh_dim_file_sync;
+RENAME TABLE borhandw.dwh_dim_file_sync_new TO borhandw.dwh_dim_file_sync;

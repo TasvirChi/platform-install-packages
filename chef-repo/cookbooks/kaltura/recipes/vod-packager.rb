@@ -1,17 +1,17 @@
-log "Installing Kaltura VOD Packager"
-template "/etc/yum.repos.d/kaltura.repo" do
-    source "kaltura.repo.erb"
+log "Installing Borhan VOD Packager"
+template "/etc/yum.repos.d/borhan.repo" do
+    source "borhan.repo.erb"
     mode 0600
     owner "root"
     group "root"
 end
-package "kaltura-nginx" do
+package "borhan-nginx" do
   action :install
  end
 
 
-template "/root/kaltura.ans" do
-    source "kaltura.ans.erb"
+template "/root/borhan.ans" do
+    source "borhan.ans.erb"
     mode 0600
     owner "root"
     group "root"
@@ -20,6 +20,6 @@ end
 bash "setup Nginx daemon" do
      user "root"
      code <<-EOH
-	#{node[:kaltura][:BASE_DIR]}/bin/kaltura-nginx-config.sh /root/kaltura.ans
+	#{node[:borhan][:BASE_DIR]}/bin/borhan-nginx-config.sh /root/borhan.ans
      EOH
 end

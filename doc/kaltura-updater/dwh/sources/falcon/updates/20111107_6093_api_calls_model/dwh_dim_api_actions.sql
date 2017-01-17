@@ -1,6 +1,6 @@
-DROP TABLE IF EXISTS `kalturadw`.dwh_dim_api_actions;
+DROP TABLE IF EXISTS `borhandw`.dwh_dim_api_actions;
 
-CREATE TABLE `kalturadw`.`dwh_dim_api_actions` (
+CREATE TABLE `borhandw`.`dwh_dim_api_actions` (
   `action_id` INT(11) NOT NULL AUTO_INCREMENT,
   `action_name` VARCHAR(166) NOT NULL DEFAULT '',
   `service_name` VARCHAR(166) NOT NULL DEFAULT '',
@@ -10,7 +10,7 @@ CREATE TABLE `kalturadw`.`dwh_dim_api_actions` (
    UNIQUE KEY (`action_name`, `service_name`)
 ) ENGINE=MYISAM DEFAULT CHARSET=utf8;
 
-CREATE TRIGGER `kalturadw`.`dwh_dim_api_actions_setcreationtime_oninsert` BEFORE INSERT
-    ON `kalturadw`.`dwh_dim_api_actions`
+CREATE TRIGGER `borhandw`.`dwh_dim_api_actions_setcreationtime_oninsert` BEFORE INSERT
+    ON `borhandw`.`dwh_dim_api_actions`
     FOR EACH ROW 
 	SET new.dwh_creation_date = NOW();

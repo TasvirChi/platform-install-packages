@@ -1,7 +1,7 @@
-Source: kaltura-ffmpeg-aux
+Source: borhan-ffmpeg-aux
 Section: libs
 Priority: optional
-Maintainer: Jess Portnoy <jess.portnoy@kaltura.com>
+Maintainer: Jess Portnoy <jess.portnoy@borhan.com>
 Standards-Version: 3.9.4
 Homepage: http://ffmpeg.org/
 Build-Depends-Indep:
@@ -50,7 +50,7 @@ Build-Depends:
  yasm [any-amd64 any-i386],
  zlib1g-dev
 
-Package: kaltura-ffmpeg-aux
+Package: borhan-ffmpeg-aux
 Section: video
 Architecture: any
 Pre-Depends:

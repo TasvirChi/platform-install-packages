@@ -11,7 +11,7 @@
 #  REQUIREMENTS:  ---
 #          BUGS:  ---
 #         NOTES:  ---
-#        AUTHOR: Jess Portnoy <jess.portnoy@kaltura.com>
+#        AUTHOR: Jess Portnoy <jess.portnoy@borhan.com>
 #       COMPANY: 
 #       CREATED: 07/27/2011 11:42:19 AM IDT
 #      REVISION:  ---

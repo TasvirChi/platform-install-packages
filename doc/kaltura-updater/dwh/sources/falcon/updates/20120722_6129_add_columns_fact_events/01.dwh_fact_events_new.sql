@@ -1,8 +1,8 @@
-USE kalturadw;
+USE borhandw;
 
-DROP TABLE IF EXISTS kalturadw.dwh_fact_events_new;
+DROP TABLE IF EXISTS borhandw.dwh_fact_events_new;
 
-CREATE TABLE kalturadw.dwh_fact_events_new (
+CREATE TABLE borhandw.dwh_fact_events_new (
   `file_id` int(11) NOT NULL,
   `event_id` int(11) NOT NULL,
   `event_type_id` smallint(6) NOT NULL,

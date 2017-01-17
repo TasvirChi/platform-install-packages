@@ -1,7 +1,7 @@
-Source: kaltura-sphinx
+Source: borhan-sphinx
 Section: misc
 Priority: extra
-Maintainer: Jess Portnoy <jess.portnoy@kaltura.com>
+Maintainer: Jess Portnoy <jess.portnoy@borhan.com>
 Build-Depends: 
  debhelper (>= 7.0.50),
  autotools-dev,
@@ -9,17 +9,17 @@ Build-Depends:
  libtool,
  libexpat-dev,
 
-Package: kaltura-sphinx
+Package: borhan-sphinx
 Section: misc
 Architecture: any
 Pre-Depends:
  dpkg (>= 1.15.7.2~)
 Depends: 
  libmysqlclient18,
- kaltura-base, libodbc1
+ borhan-base, libodbc1
  ${misc:Depends},
  ${shlibs:Depends}
-Description: Sphinx full-text search server - for Kaltura
+Description: Sphinx full-text search server - for Borhan
  Sphinx is a full-text search server that adds many advanced features
  on top of plain old text searching. Data can be fetched directly from
  a database, or streamed in XML format. MySQL, PostgreSQL, SQL Server,

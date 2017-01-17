@@ -1,5 +1,5 @@
 
-%define base_prefix /opt/kaltura/ffmpeg
+%define base_prefix /opt/borhan/ffmpeg
 %define _without_gsm 1
 %define _without_nut 1
 
@@ -24,15 +24,15 @@
 %{?el5:%define _without_theora 1}
 
 Summary: Utilities and libraries to record, convert and stream audio and video
-Name: kaltura-ffmpeg-aux
+Name: borhan-ffmpeg-aux
 Version: 2.1.3
 Release: 1
 License: GPL
 Group: Applications/Multimedia
 URL: http://ffmpeg.org/
 
-Packager: Jess Portnoy <jess.portnoy@kaltura.com> 
-Vendor: Kaltura, Inc.
+Packager: Jess Portnoy <jess.portnoy@borhan.com> 
+Vendor: Borhan, Inc.
 
 Source: http://www.ffmpeg.org/releases/ffmpeg-%{version}.tar.bz2
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
@@ -45,12 +45,12 @@ BuildRequires: schroedinger-devel
 BuildRequires: libtheora-devel
 BuildRequires: libvorbis-devel
 BuildRequires: xvidcore-devel
-%{!?_without_a52dec:BuildRequires: kaltura-a52dec-devel}
+%{!?_without_a52dec:BuildRequires: borhan-a52dec-devel}
 %{!?_without_dc1394:BuildRequires: libdc1394-devel}
 %{!?_without_gsm:BuildRequires: gsm-devel}
-%{!?_without_lame:BuildRequires: kaltura-lame-devel}
+%{!?_without_lame:BuildRequires: borhan-lame-devel}
 %{!?_without_nut:BuildRequires: libnut-devel}
-%{!?_without_opencore_amr:BuildRequires: kaltura-libopencore-amr-devel}
+%{!?_without_opencore_amr:BuildRequires: borhan-libopencore-amr-devel}
 %{!?_without_openjpeg:BuildRequires: openjpeg-devel}
 %{!?_without_rtmp:BuildRequires: librtmp-devel}
 %{!?_without_schroedinger:BuildRequires: schroedinger-devel}
@@ -58,19 +58,19 @@ BuildRequires: xvidcore-devel
 %{!?_without_theora:BuildRequires: libogg-devel, libtheora-devel}
 %{!?_without_vorbis:BuildRequires: libogg-devel, libvorbis-devel}
 %{!?_without_vpx:BuildRequires: libvpx-devel >= 1.3.0}
-%{!?_without_x264:BuildRequires: kaltura-x264-devel}
+%{!?_without_x264:BuildRequires: borhan-x264-devel}
 %{!?_without_xvid:BuildRequires: xvidcore-devel}
 %{!?_without_a52dec:Requires: a52dec}
 BuildRequires: yasm-devel
 BuildRequires: libass-devel 
-BuildRequires: kaltura-x264-devel 
+BuildRequires: borhan-x264-devel 
 BuildRequires: gsm-devel
 BuildRequires: speex-devel
 BuildRequires: libvpx-devel >= 1.3.0
 BuildRequires: schroedinger-devel 
 BuildRequires: libtheora-devel
 BuildRequires: xvidcore-devel >= 1.3.2
-Requires:kaltura-a52dec,libass,kaltura-x264
+Requires:borhan-a52dec,libass,borhan-x264
 Requires: libvpx >= 1.3.0
 
 %description
@@ -86,18 +86,18 @@ quality polyphase filter.
 Summary: Header files and static library for the ffmpeg codec library
 Group: Development/Libraries
 Requires: %{name} = %{version}
-Requires: imlib2-devel, SDL-devel, freetype-devel, zlib-devel, pkgconfig,kaltura-x264
-%{!?_without_a52dec:Requires: kaltura-a52dec-devel}
+Requires: imlib2-devel, SDL-devel, freetype-devel, zlib-devel, pkgconfig,borhan-x264
+%{!?_without_a52dec:Requires: borhan-a52dec-devel}
 %{!?_without_dc1394:Requires: libdc1394-devel}
 %{!?_without_faad:Requires: faad2-devel}
 %{!?_without_gsm:Requires: gsm-devel}
-%{!?_without_lame:Requires: kaltura-lame-devel}
+%{!?_without_lame:Requires: borhan-lame-devel}
 %{!?_without_openjpeg:Requires: openjpeg-devel}
 %{!?_without_rtmp:Requires: librtmp-devel}
 %{!?_without_schroedinger:Requires: schroedinger-devel}
 %{!?_without_vorbis:Requires: libogg-devel, libvorbis-devel}
 %{!?_without_vpx:Requires: libvpx-devel}
-%{!?_without_x264:Requires: kaltura-x264-devel}
+%{!?_without_x264:Requires: borhan-x264-devel}
 %{!?_without_xvid:Requires: xvidcore-devel}
 
 %description devel
@@ -130,8 +130,8 @@ export CFLAGS="%{optflags}"
 %ifarch x86_64
     --extra-cflags="%{optflags} -fPIC" \
 %endif
-    --extra-cflags="%{optflags} -fPIC -I/opt/kaltura/include" \
-    --extra-ldflags="-L/opt/kaltura/lib" \
+    --extra-cflags="%{optflags} -fPIC -I/opt/borhan/include" \
+    --extra-ldflags="-L/opt/borhan/lib" \
     --disable-devices \
     --enable-bzlib \
     --enable-libgsm \
@@ -183,12 +183,12 @@ cd -
 # a compatibility symlink
 %{__mkdir_p} %{buildroot}%{base_prefix}-%{version}/include/postproc/
 %{__mkdir_p} $RPM_BUILD_ROOT%{_sysconfdir}/profile.d
-cat > $RPM_BUILD_ROOT%{_sysconfdir}/profile.d/kaltura_ffmpeg_aux.sh << EOF
+cat > $RPM_BUILD_ROOT%{_sysconfdir}/profile.d/borhan_ffmpeg_aux.sh << EOF
 PATH=\$PATH:%{base_prefix}-%{version}/bin
 export PATH
 EOF
 %{__mkdir_p} $RPM_BUILD_ROOT%{_sysconfdir}/ld.so.conf.d
-cat > $RPM_BUILD_ROOT%{_sysconfdir}/ld.so.conf.d/kaltura_ffmpeg_aux.conf << EOF
+cat > $RPM_BUILD_ROOT%{_sysconfdir}/ld.so.conf.d/borhan_ffmpeg_aux.conf << EOF
 %{base_prefix}-%{version}/lib
 EOF
 
@@ -198,13 +198,13 @@ EOF
 %post
 /sbin/ldconfig
 chcon -t textrel_shlib_t %{base_prefix}-%{version}/lib/libav{codec,device,format,util}.so.*.*.* &>/dev/null || :
-ln -fs %{base_prefix}-%{version}/bin/ffmpeg /opt/kaltura/bin/ffmpeg-aux 
+ln -fs %{base_prefix}-%{version}/bin/ffmpeg /opt/borhan/bin/ffmpeg-aux 
 
 %postun 
 /sbin/ldconfig
 if [ "$1" = 0 ] ; then
-	rm -f /opt/kaltura/bin/ffmpeg-aux
-	rm -f /opt/kaltura/bin/qt-faststart
+	rm -f /opt/borhan/bin/ffmpeg-aux
+	rm -f /opt/borhan/bin/qt-faststart
 fi
 
 
@@ -212,8 +212,8 @@ fi
 %defattr(-, root, root, 0755)
 %doc Changelog COPYING* CREDITS INSTALL MAINTAINERS RELEASE README
 %doc %{base_prefix}-%{version}/share/man/man1
-%config %{_sysconfdir}/profile.d/kaltura_ffmpeg_aux.sh
-%config %{_sysconfdir}/ld.so.conf.d/kaltura_ffmpeg_aux.conf
+%config %{_sysconfdir}/profile.d/borhan_ffmpeg_aux.sh
+%config %{_sysconfdir}/ld.so.conf.d/borhan_ffmpeg_aux.conf
 #%{base_prefix}-%{version}/bin/ffprobe
 %{base_prefix}-%{version}/bin/*
 #%{base_prefix}-%{version}/bin/ffplay
@@ -255,11 +255,11 @@ fi
 %{base_prefix}-%{version}/share
 
 %changelog
-* Thu Oct 15 2014 Jess Portnoy <jess.portnoy@kaltura.com> - 2.1.3-1
+* Thu Oct 15 2014 Jess Portnoy <jess.portnoy@borhan.com> - 2.1.3-1
 - Upgraded to 2.1.3
 
-* Sun Jan 12 2014 Jess Portnoy <jess.portnoy@kaltura.com> - 0.6-2
-- Remove symlink to /opt/kaltura/bin at %%postun.
+* Sun Jan 12 2014 Jess Portnoy <jess.portnoy@borhan.com> - 0.6-2
+- Remove symlink to /opt/borhan/bin at %%postun.
 
-* Wed Dec 25 2013 Jess Portnoy <jess.portnoy@kaltura.com> - 0.6-1
+* Wed Dec 25 2013 Jess Portnoy <jess.portnoy@borhan.com> - 0.6-1
 - Initial build.

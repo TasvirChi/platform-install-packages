@@ -2,13 +2,13 @@
 
 DEB_VERSION := $(shell dpkg-parsechangelog | egrep '^Version:' | cut -f 2 -d ' ')
 RC_FILE :=../../build/sources.rc
-KCW_VERSION ?= $(shell egrep '^KCW_VERSION=' $(RC_FILE) | cut -d = -f 2| sed 's@"@@g')
+BCW_VERSION ?= $(shell egrep '^BCW_VERSION=' $(RC_FILE) | cut -d = -f 2| sed 's@"@@g')
 SOURCE_PACKAGING_DIR ?= $(shell egrep '^RPM_SOURCES_DIR=' $(RC_FILE) | cut -d = -f 2| sed 's@"@@g')
-KALTURA_PREFIX ?= $(shell egrep '^KALTURA_PREFIX=' $(RC_FILE) | cut -d = -f 2| sed 's@"@@g')
-KCW_PREFIX=$(KALTURA_PREFIX)/web/flash/kcw
+BORHAN_PREFIX ?= $(shell egrep '^BORHAN_PREFIX=' $(RC_FILE) | cut -d = -f 2| sed 's@"@@g')
+BCW_PREFIX=$(BORHAN_PREFIX)/web/flash/bcw
 include ../includes/build-revision.mk
-archive := $(SOURCE_PACKAGING_DIR)/kaltura-kcw-$(KCW_VERSION).tar.bz2
-tree := kaltura-kcw
+archive := $(SOURCE_PACKAGING_DIR)/borhan-bcw-$(BCW_VERSION).tar.bz2
+tree := borhan-bcw
 
 clean:
 	dh_clean
@@ -16,7 +16,7 @@ clean:
 	rm -rf debian/tmp
 
 $(archive):
-	$(SOURCE_PACKAGING_DIR)/platform-install-packages/build/package_kaltura_kcw.sh	
+	$(SOURCE_PACKAGING_DIR)/platform-install-packages/build/package_borhan_bcw.sh	
 
 $(tree): $(archive)
 	tar jxf $(archive)
@@ -27,12 +27,12 @@ install: build
 
 binary-indep: install
 	dh_installdirs
-	rm -rf $(KCW_PREFIX)
-	mkdir -p $(KCW_PREFIX) $(KALTURA_PREFIX)/web/content/uiconf/kaltura/generic
-	mv $(tree)/uiconf/kaltura/generic/kcw_2.1.5 $(KALTURA_PREFIX)/web/content/uiconf/kaltura/generic/
-	mv $(tree)/$(KCW_VERSION) $(KCW_PREFIX)
-	find $(KALTURA_PREFIX)/web/flash/kcw -name ".project" -exec rm {} \;
-	dh_install $(KALTURA_PREFIX)
+	rm -rf $(BCW_PREFIX)
+	mkdir -p $(BCW_PREFIX) $(BORHAN_PREFIX)/web/content/uiconf/borhan/generic
+	mv $(tree)/uiconf/borhan/generic/bcw_2.1.5 $(BORHAN_PREFIX)/web/content/uiconf/borhan/generic/
+	mv $(tree)/$(BCW_VERSION) $(BCW_PREFIX)
+	find $(BORHAN_PREFIX)/web/flash/bcw -name ".project" -exec rm {} \;
+	dh_install $(BORHAN_PREFIX)
 	dh_gencontrol -u-v$(DEB_VERSION) 
 	dh_installdebconf
 	dh_installdeb

@@ -1,6 +1,6 @@
 DELIMITER $$
 
-USE `kalturadw`$$
+USE `borhandw`$$
 
 DROP PROCEDURE IF EXISTS `calc_partner_billing_storage_per_category`$$
 
@@ -19,10 +19,10 @@ BEGIN
     SELECT  IF(ec.updated_at IS NULL OR c.category_name IS NULL,'-', c.category_name) category_name,  
         entry_size_date_id, 
         SUM(entry_additional_size_kb)/1024 aggr_storage_mb
-    FROM    kalturadw.dwh_fact_entries_sizes es
-        LEFT OUTER JOIN kalturadw.dwh_dim_entry_categories ec ON (ec.entry_id = es.entry_id AND ec.partner_id = es.partner_id)     
-        LEFT OUTER JOIN kalturadw.dwh_dim_categories c ON (ec.category_id = c.category_id)
-        LEFT OUTER JOIN kalturadw.dwh_dim_entries e ON (ec.partner_id = e.partner_id AND ec.entry_id = e.entry_id AND ec.updated_at = e.updated_at)
+    FROM    borhandw.dwh_fact_entries_sizes es
+        LEFT OUTER JOIN borhandw.dwh_dim_entry_categories ec ON (ec.entry_id = es.entry_id AND ec.partner_id = es.partner_id)     
+        LEFT OUTER JOIN borhandw.dwh_dim_categories c ON (ec.category_id = c.category_id)
+        LEFT OUTER JOIN borhandw.dwh_dim_entries e ON (ec.partner_id = e.partner_id AND ec.entry_id = e.entry_id AND ec.updated_at = e.updated_at)
     WHERE es.partner_id = p_partner_id
     AND es.entry_size_date_id <= p_end_date_id    
     GROUP BY  IF(ec.updated_at IS NULL OR c.category_name IS NULL,'-', c.category_name) ,  es.entry_size_date_id;

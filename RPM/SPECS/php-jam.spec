@@ -28,7 +28,7 @@
 Name:      php-jam
 Version:   1.0.0
 Release:   2
-Packager:  Jess Portnoy <jess.portnoy@kaltura.com>
+Packager:  Jess Portnoy <jess.portnoy@borhan.com>
 Summary:   PHP monitoring system that supports storing PHP errors (events) into different storage backends. 
 License:   PHP License
 Group:     Web/Applications
@@ -257,5 +257,5 @@ echo ";jam.module_error_reporting='email=E_ERROR'" >> %{buildroot}/%{_sysconfdir
 
 
 %changelog
-* Tue Dec 29 2015 Jess Portnoy <jess.portnoy@kaltura.com>
+* Tue Dec 29 2015 Jess Portnoy <jess.portnoy@borhan.com>
  - First JaM build.

@@ -1,15 +1,15 @@
 #!/bin/bash -e 
 #===============================================================================
-#          FILE: package_kaltura_kvpm.sh
-#         USAGE: ./package_kaltura_kvpm.sh 
+#          FILE: package_borhan_kvpm.sh
+#         USAGE: ./package_borhan_kvpm.sh 
 #   DESCRIPTION: 
 #       OPTIONS: ---
 # 	LICENSE: AGPLv3+
 #  REQUIREMENTS: ---
 #          BUGS: ---
 #         NOTES: ---
-#        AUTHOR: Jess Portnoy (), <jess.portnoy@kaltura.com>
-#  ORGANIZATION: Kaltura, inc.
+#        AUTHOR: Jess Portnoy (), <jess.portnoy@borhan.com>
+#  ORGANIZATION: Borhan, inc.
 #       CREATED: 01/10/14 08:46:43 EST
 #      REVISION:  ---
 #===============================================================================
@@ -26,7 +26,7 @@ if [ ! -x "`which svn 2>/dev/null`" ];then
 	exit 2
 fi
 
-kaltura_svn export --force --quiet $FLEX_WRAPPER_URI $SOURCE_PACKAGING_DIR/$FLEX_WRAPPER_RPM_NAME
+borhan_svn export --force --quiet $FLEX_WRAPPER_URI $SOURCE_PACKAGING_DIR/$FLEX_WRAPPER_RPM_NAME
 
 cd $SOURCE_PACKAGING_DIR
 # flash things DO NOT need exec perms.

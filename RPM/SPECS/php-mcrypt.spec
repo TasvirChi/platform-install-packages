@@ -12,17 +12,17 @@ License: The PHP License
 Group: Development/Languages
 URL: http://www.php.net/
 
-Packager: Jess Portnoy <jess.portnoy@kaltura.com> 
-Vendor: Kaltura, Inc. 
+Packager: Jess Portnoy <jess.portnoy@borhan.com> 
+Vendor: Borhan, Inc. 
 Source: http://museum.php.net/php5/php-%{version}.tar.bz2
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
 Requires: php-api = %{php_api}
-%{?_with_mcrypt:BuildRequires: kaltura-libmcrypt-devel}
+%{?_with_mcrypt:BuildRequires: borhan-libmcrypt-devel}
 
 BuildRequires: php-devel = %{version}
 Provides: php-mcrypt 
-Requires: kaltura-libmcrypt
-BuildRequires: kaltura-libmcrypt-devel
+Requires: borhan-libmcrypt
+BuildRequires: borhan-libmcrypt-devel
 BuildRequires: libxml2-devel
 %description
 PHP is an HTML-embedded scripting language.
@@ -35,8 +35,8 @@ has not been included in the basic PHP package for CentOS/RHEL/Fedora.
 
 %build
 export CFLAGS="%{optflags} -fno-strict-aliasing -Wno-pointer-sign"
-export LDFLAGS="-L/opt/kaltura/lib"
-export C_INCLUDE_PATH="/opt/kaltura/include"
+export LDFLAGS="-L/opt/borhan/lib"
+export C_INCLUDE_PATH="/opt/borhan/include"
 for mod in %{php_modules}; do
     pushd ext/$mod/
     rm -rf tests/
@@ -44,7 +44,7 @@ for mod in %{php_modules}; do
     phpize
     %configure \
         --with-libdir="%{_lib}" \
-        --with-mcrypt=shared,/opt/kaltura \
+        --with-mcrypt=shared,/opt/borhan \
 
     # cause libtool to avoid passing -rpath when linking
     # (this hack is well-known as "libtool rpath workaround")
@@ -77,14 +77,14 @@ done
 
 
 %changelog
-* Thu Dec 25 2014 Jess Portnoy <jess.portnoy@kaltura.com> - 5.3.3-4
-- Build using the kaltura-libmcrypt packages and make sure the linkage is done against /opt/kaltura/lib.
+* Thu Dec 25 2014 Jess Portnoy <jess.portnoy@borhan.com> - 5.3.3-4
+- Build using the borhan-libmcrypt packages and make sure the linkage is done against /opt/borhan/lib.
 
-* Mon Jan 6 2014 Jess Portnoy <jess.portnoy@kaltura.com> - 5.3.3-3
+* Mon Jan 6 2014 Jess Portnoy <jess.portnoy@borhan.com> - 5.3.3-3
 - It does not PROVIDE libmcrypt, it requires it.
 
-* Mon Jan 6 2014 Jess Portnoy <jess.portnoy@kaltura.com> - 5.3.3-2
+* Mon Jan 6 2014 Jess Portnoy <jess.portnoy@borhan.com> - 5.3.3-2
 - Quiet setup and fixed extension directive.
 
-* Sun Jan 5 2014 Jess Portnoy <jess.portnoy@kaltura.com> - 5.3.3-1
+* Sun Jan 5 2014 Jess Portnoy <jess.portnoy@borhan.com> - 5.3.3-1
 - Initial package.

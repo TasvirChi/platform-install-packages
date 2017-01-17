@@ -1,18 +1,18 @@
-ALTER TABLE kalturadw.dwh_fact_fms_sessions 
+ALTER TABLE borhandw.dwh_fact_fms_sessions 
 	CHANGE session_client_location_id location_id int(11), 
 	CHANGE session_client_country_id country_id int(11);
 
-ALTER TABLE kalturadw_ds.fms_incomplete_sessions
+ALTER TABLE borhandw_ds.fms_incomplete_sessions
         CHANGE session_client_location_id location_id int(11), 
         CHANGE session_client_country_id country_id int(11);
 
-ALTER TABLE kalturadw_ds.fms_stale_sessions
+ALTER TABLE borhandw_ds.fms_stale_sessions
         CHANGE session_client_location_id location_id int(11), 
         CHANGE session_client_country_id country_id int(11);
 
 DELIMITER $$
 
-USE `kalturadw_ds`$$
+USE `borhandw_ds`$$
 
 DROP PROCEDURE IF EXISTS `fms_sessionize`$$
 
@@ -68,9 +68,9 @@ SELECT session_id, MAX(event_time), MAX(event_date_id), MAX(client_ip), MAX(clie
     MAX(IF(t.event_type='connect',1,0)) is_connected_ind,
     MAX(IF(t.event_type='disconnect',1,0)) is_disconnected_ind
   FROM ds_fms_session_events e 
- INNER JOIN kalturadw.dwh_dim_fms_event_type t ON e.event_type_id = t.event_type_id
+ INNER JOIN borhandw.dwh_dim_fms_event_type t ON e.event_type_id = t.event_type_id
  INNER JOIN files f ON e.file_id = f.file_id
-  LEFT OUTER JOIN kalturadw.dwh_dim_fms_bandwidth_source fbs ON (e.fms_app_id = fbs.fms_app_id AND f.process_id = fbs.process_id AND f.file_name REGEXP fbs.file_regex)
+  LEFT OUTER JOIN borhandw.dwh_dim_fms_bandwidth_source fbs ON (e.fms_app_id = fbs.fms_app_id AND f.process_id = fbs.process_id AND f.file_name REGEXP fbs.file_regex)
   WHERE e.cycle_id = partition_id
   GROUP BY session_id
   HAVING MAX(bandwidth_source_id) IS NOT NULL;
@@ -119,7 +119,7 @@ SELECT session_id, MAX(event_time), MAX(event_date_id), MAX(client_ip), MAX(clie
   WHERE (partner_id IS NOT NULL AND is_connected_ind = 1 AND is_disconnected_ind = 1) OR
         GREATEST(session_time,updated_time) < FMS_STALE_SESSION_PURGE;
   
-  INSERT INTO kalturadw.dwh_fact_fms_sessions (session_id,session_time,session_date_id,session_client_ip, session_client_ip_number, country_id, location_id,session_partner_id,bandwidth_source_id,total_bytes)
+  INSERT INTO borhandw.dwh_fact_fms_sessions (session_id,session_time,session_date_id,session_client_ip, session_client_ip_number, country_id, location_id,session_partner_id,bandwidth_source_id,total_bytes)
   SELECT session_id,session_time,session_date_id,session_client_ip, session_client_ip_number, country_id, location_id,session_partner_id,bandwidth_source_id,total_bytes
   FROM ds_temp_fms_sessions
   ON DUPLICATE KEY UPDATE

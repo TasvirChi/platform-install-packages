@@ -1,4 +1,4 @@
-ALTER TABLE kalturadw.dwh_dim_time
+ALTER TABLE borhandw.dwh_dim_time
 	CHANGE date_field date_field DATE NOT NULL,
 	ADD day_eng_name VARCHAR(50) AFTER date_field,	
 	ADD datetime_field DATETIME NOT NULL AFTER date_field,
@@ -10,7 +10,7 @@ ALTER TABLE kalturadw.dwh_dim_time
 	ADD quarter_eng_name  VARCHAR(50) AFTER QUARTER,
 	ADD quarter_id INT(11) AFTER QUARTER;
 
-UPDATE kalturadw.dwh_dim_time
+UPDATE borhandw.dwh_dim_time
 SET 	datetime_field = date_field,
 	day_eng_name = DATE_FORMAT(date_field, '%b %e, %Y'),
 	week_id = DATE_FORMAT(date_field, '%Y%U')*1,

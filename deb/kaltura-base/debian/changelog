@@ -1,4 +1,4 @@
-kaltura-base (12.8.0-2) lynx; urgency=low
+borhan-base (12.8.0-2) lynx; urgency=low
 
   * PLAT-6650 - New X265/HEVC support
   * PLAT-5801 - Design batch optimiztion
@@ -7,15 +7,15 @@ kaltura-base (12.8.0-2) lynx; urgency=low
   * PLAT-6668 - When changing entry.entitledUsersEdit/Publish, make the same changes on the child entries
   * PLAT-6708 - At rest encryption fails with transcoding operators
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Fri, 06 Jan 2017 13:35:57 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Fri, 06 Jan 2017 13:35:57 +0000
 
-kaltura-base (12.8.0-1) lynx; urgency=low
+borhan-base (12.8.0-1) lynx; urgency=low
 
   * Switching to 12.8.0
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Thu, 22 Dec 2016 13:55:53 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Thu, 22 Dec 2016 13:55:53 +0000
 
-kaltura-base (12.7.0-2) lynx; urgency=low
+borhan-base (12.7.0-2) lynx; urgency=low
 
   * SUP-9163 - first status of a user
   * SUP-9535 - iTunes Syndication feed not updating explicit tag in channel
@@ -30,15 +30,15 @@ kaltura-base (12.7.0-2) lynx; urgency=low
   * PLAT-6448 - hbbtv - support set-top boxes
   * PLAT-6461 - new player initialization - create play manifest URL
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Mon, 19 Dec 2016 16:57:47 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Mon, 19 Dec 2016 16:57:47 +0000
 
-kaltura-base (12.7.0-1) lynx; urgency=low
+borhan-base (12.7.0-1) lynx; urgency=low
 
   * Switching to 12.7.0
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Tue, 13 Dec 2016 16:04:38 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Tue, 13 Dec 2016 16:04:38 +0000
 
-kaltura-base (12.6.0-2) lynx; urgency=low
+borhan-base (12.6.0-2) lynx; urgency=low
 
   * SUP-9130 - Cannot download media via KMS
   * SUP-9437 - WN - 414 Request-URI Too Large errors on player version 2.48.1
@@ -47,39 +47,39 @@ kaltura-base (12.6.0-2) lynx; urgency=low
   * PLAT-6419 - Recscheduling - Publish - VOD Entry is not published
   * PLAT-6428 - Recscheduling - Recurrence - Weekly series missing two last events (specific case)
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Tue, 06 Dec 2016 13:04:52 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Tue, 06 Dec 2016 13:04:52 +0000
 
-kaltura-base (12.6.0-1) lynx; urgency=low
+borhan-base (12.6.0-1) lynx; urgency=low
 
   * Switching to 12.6.0
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Thu, 24 Nov 2016 21:42:20 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Thu, 24 Nov 2016 21:42:20 +0000
 
-kaltura-base (12.5.0-2) lynx; urgency=low
+borhan-base (12.5.0-2) lynx; urgency=low
 
   * PLAT-6348 - Add ReplacedEntryId Xsl variable
   * SUP-8727 - Deleting CaptureSpace Quiz entry with presentation removes presentation from original entry
-  * SUP-9501 - Query - in the KMC - Entitlements Settings are empty
+  * SUP-9501 - Query - in the BMC - Entitlements Settings are empty
   * SUP-9451 - Long Conversion Duration for Clipped/trimmed Content - 12H-18H
   * PLAT-5983 - Sphinx improvement - add partnerId to privacy_by_contexts
   * PLAT-6338 - Multi-Audio: audioLanguage - add label tag to manifest - HLS 
-  * PLAT-6412 - add KalturaBaseEntryBaseFilter userIdNotIn field
+  * PLAT-6412 - add BorhanBaseEntryBaseFilter userIdNotIn field
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Tue, 22 Nov 2016 17:35:16 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Tue, 22 Nov 2016 17:35:16 +0000
 
-kaltura-base (12.5.0-1) lynx; urgency=low
+borhan-base (12.5.0-1) lynx; urgency=low
 
   * Switching to 12.5.0
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Wed, 09 Nov 2016 14:40:55 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Wed, 09 Nov 2016 14:40:55 +0000
 
-kaltura-base (12.4.0-1) lynx; urgency=low
+borhan-base (12.4.0-1) lynx; urgency=low
 
   * Switching to 12.4.0
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Tue, 11 Oct 2016 13:12:20 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Tue, 11 Oct 2016 13:12:20 +0000
 
-kaltura-base (12.3.0-2) lynx; urgency=low
+borhan-base (12.3.0-2) lynx; urgency=low
 
   * PLAT-6132 - Display cross day events
   * PLAT-6135 - Get end date of last event of a series
@@ -96,22 +96,22 @@ kaltura-base (12.3.0-2) lynx; urgency=low
   * PLAT-5513 - Possible to set non-existing resource as parent
   * PLAT-6186 - Push notifications code is not compatible with Push server V2
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Mon, 10 Oct 2016 13:14:40 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Mon, 10 Oct 2016 13:14:40 +0000
 
-kaltura-base (12.3.0-1) lynx; urgency=low
+borhan-base (12.3.0-1) lynx; urgency=low
 
   * Switching to 12.3.0
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Tue, 27 Sep 2016 13:17:40 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Tue, 27 Sep 2016 13:17:40 +0000
 
-kaltura-base (12.2.0-2) lynx; urgency=low
+borhan-base (12.2.0-2) lynx; urgency=low
 
   * PLAT-5105 - playManifest refactoring for live - delivery profile
   * PLAT-5916 - Enhance Access Control Creation script for uDRM
   * PLAT-5962 - Support Dash packaging for Firefox standard
   * SUP-9003 - The property "accessControlId" is updatable with admin session only
   * PLAT-5983 - Sphinx improvement - add partnerId to privacy_by_contexts
-  * PLAT-5963 - Add makeHidden property to Kaltura_Client_Type_LiveEntryRecordingOptions
+  * PLAT-5963 - Add makeHidden property to Borhan_Client_Type_LiveEntryRecordingOptions
   * PLAT-5964 - createRecordedEntry method should set display_in_search to -1 if makeHidden is true
   * PLAT-5965 - expose entry's display_in_search property in api v3 
   * PLAT-5966 - In baseEntry.list (or any derived service) - when listing with IdIn, entries with display_in_search = -1 should be returned
@@ -121,46 +121,46 @@ kaltura-base (12.2.0-2) lynx; urgency=low
   * PLAT-5732 - copy annotation cue points from live to VOD
   * PLAT-6047 - yahoo syndication error
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Fri, 23 Sep 2016 15:40:28 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Fri, 23 Sep 2016 15:40:28 +0000
 
-kaltura-base (12.2.0-1) lynx; urgency=low
+borhan-base (12.2.0-1) lynx; urgency=low
 
   * Switching to 12.2.0
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Wed, 14 Sep 2016 15:02:02 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Wed, 14 Sep 2016 15:02:02 +0000
 
-kaltura-base (12.1.0-2) lynx; urgency=low
+borhan-base (12.1.0-2) lynx; urgency=low
 
   * PLAT-5105 - playManifest refactoring for live - delivery profile
   * PLAT-5778 - On playManifest, When Captions are available add them automatically in the packager request
   * PLAT-6024 - Live Delivery profile - enable overiding live delivery profiles per partner similar to how we work with VOD
   * PLAT-5907 - Add live delivery profile configuration in admin console partner configure page
   * SUP-8321 - Trimming VOD of a live entry results in two sources
-  * SUP-8905 - Cross Kaltura distribution failing intermittently 
+  * SUP-8905 - Cross Borhan distribution failing intermittently 
   * SUP-8016 - replacing media to a VOD entry results with adding instead of replacing
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Mon, 12 Sep 2016 10:27:42 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Mon, 12 Sep 2016 10:27:42 +0000
 
-kaltura-base (12.1.0-1) lynx; urgency=low
+borhan-base (12.1.0-1) lynx; urgency=low
 
   * Switching to 12.1.0
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Mon, 29 Aug 2016 15:07:45 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Mon, 29 Aug 2016 15:07:45 +0000
 
-kaltura-base (12.0.0-2) lynx; urgency=low
+borhan-base (12.0.0-2) lynx; urgency=low
 
   * PLAT-5747 - Recurrences aren't created from recurring event 
   * SUP-8866 - YouTube Distributor 
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Sun, 28 Aug 2016 20:36:46 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Sun, 28 Aug 2016 20:36:46 +0000
 
-kaltura-base (12.0.0-1) lynx; urgency=low
+borhan-base (12.0.0-1) lynx; urgency=low
 
   * Switching to 12.0.0
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Mon, 15 Aug 2016 13:55:01 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Mon, 15 Aug 2016 13:55:01 +0000
 
-kaltura-base (11.21.0-2) kajam; urgency=low
+borhan-base (11.21.0-2) kajam; urgency=low
 
   * SUP-8019 - caption URL with 404 error gets set as the caption URL for the entry using bulk
   * SUP-8470 - Thumbnail Preview Displayed Direction 
@@ -169,43 +169,43 @@ kaltura-base (11.21.0-2) kajam; urgency=low
   * PLAT-5742 - Player warm load gets all cue points with no filter so big polls will "kill" the player 
   * PLAT-5878 - scheduleEventResource set on recurring event isn't copied to child recurrences
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Sun, 14 Aug 2016 16:16:11 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Sun, 14 Aug 2016 16:16:11 +0000
 
-kaltura-base (11.21.0-1) kajam; urgency=low
+borhan-base (11.21.0-1) kajam; urgency=low
 
   * Switching to 11.21.0
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Tue, 09 Aug 2016 13:40:14 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Tue, 09 Aug 2016 13:40:14 +0000
 
-kaltura-base (11.20.0-2) kajam; urgency=low
+borhan-base (11.20.0-2) kajam; urgency=low
 
   * SUP-7827 - Access control is not being set by default
   * SUP-8669 - Possible Sphynx issue- When using guest KS, restricted entry is not returned when doing baseEntry->get (expected) but DOES return when baseEntry->List (not expected)
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Tue, 02 Aug 2016 18:45:43 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Tue, 02 Aug 2016 18:45:43 +0000
 
-kaltura-base (11.20.0-1) kajam; urgency=low
+borhan-base (11.20.0-1) kajam; urgency=low
 
   * Switching to 11.20.0
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Wed, 20 Jul 2016 01:53:56 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Wed, 20 Jul 2016 01:53:56 +0000
 
-kaltura-base (11.18.0-2) kajam; urgency=low
+borhan-base (11.18.0-2) kajam; urgency=low
 
   * PLAT-5390 - syndication xml format
   * TOG-369 - Source COPY flavor fails for MPEG-TS files 
   * PLAT-5519 - Bulk upload and drop folder ingestion doesn't work
   * PLAT-5529 - Can not do bulk actions on resource object
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Tue, 05 Jul 2016 19:29:33 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Tue, 05 Jul 2016 19:29:33 +0000
 
-kaltura-base (11.18.0-1) kajam; urgency=low
+borhan-base (11.18.0-1) kajam; urgency=low
 
   * Switching to 11.18.0
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Sun, 26 Jun 2016 14:35:03 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Sun, 26 Jun 2016 14:35:03 +0000
 
-kaltura-base (11.16.0-2) kajam; urgency=low
+borhan-base (11.16.0-2) kajam; urgency=low
 
   * PLAT-4620 - Support delete on MediaPrep
   * PLAT-5408 - VNPT tokenizer
@@ -219,48 +219,48 @@ kaltura-base (11.16.0-2) kajam; urgency=low
   * PLAT-5543 - Searching codeCue points with metadatSearch condition is not working
   * PLAT-5264 - ADVs are not played(SyntaxError: Unexpected token @).
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Fri, 03 Jun 2016 15:30:28 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Fri, 03 Jun 2016 15:30:28 +0000
 
-kaltura-base (11.16.0-1) kajam; urgency=low
+borhan-base (11.16.0-1) kajam; urgency=low
 
   * Switching to 11.16.0
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Tue, 24 May 2016 16:07:46 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Tue, 24 May 2016 16:07:46 +0000
 
-kaltura-base (11.13.0-1) kajam; urgency=low
+borhan-base (11.13.0-1) kajam; urgency=low
 
   * Switching to 11.13.0
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Tue, 12 Apr 2016 14:57:46 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Tue, 12 Apr 2016 14:57:46 +0000
 
-kaltura-base (11.12.0-1) kajam; urgency=low
+borhan-base (11.12.0-1) kajam; urgency=low
 
   * Switching to 11.12.0
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Mon, 28 Mar 2016 20:34:48 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Mon, 28 Mar 2016 20:34:48 +0000
 
-kaltura-base (11.11.0-1) kajam; urgency=low
+borhan-base (11.11.0-1) kajam; urgency=low
 
   * Switching to 11.11.0
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Tue, 15 Mar 2016 11:36:38 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Tue, 15 Mar 2016 11:36:38 +0000
 
-kaltura-base (11.10.0-2) kajam; urgency=low
+borhan-base (11.10.0-2) kajam; urgency=low
 
   * PLAT-5056 - Enable content Pre-positioning on KES - only download
-  * PLAT-5091 - Expose Exception throwing in KalturaClient so it can be overridden by implementors
+  * PLAT-5091 - Expose Exception throwing in BorhanClient so it can be overridden by implementors
   * SUP-6103 - Chapters module embed code not working properly
   * PLAT-4082 - Distribution profile fail (YouTube)
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Fri, 11 Mar 2016 15:22:15 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Fri, 11 Mar 2016 15:22:15 +0000
 
-kaltura-base (11.10.0-1) kajam; urgency=low
+borhan-base (11.10.0-1) kajam; urgency=low
 
   * Switching to 11.10.0
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Tue, 01 Mar 2016 15:38:14 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Tue, 01 Mar 2016 15:38:14 +0000
 
-kaltura-base (11.9.0-2) kajam; urgency=low
+borhan-base (11.9.0-2) kajam; urgency=low
 
   * SUP-6997 - Server returning all stream information when loading the player
   * SUP-7185 - Live stream Passthrough ingest is missing
@@ -271,24 +271,24 @@ kaltura-base (11.9.0-2) kajam; urgency=low
   * PLAT-5097 - "Flavor Asset Status Changed" - http event notification template
   * PLAT-5103 - can not create drm profile from api
   * PLAT-5122 - bad sync between DCs on specific conditions
-  * PLAT-5126 - KalturaCaptionAssetItemFilter returns KalturaCaptionAsset
+  * PLAT-5126 - BorhanCaptionAssetItemFilter returns BorhanCaptionAsset
   * FEC-4958 - Multi Audio tracks: Playmanifest is empty instead of showing the audio sources
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Mon, 29 Feb 2016 12:22:51 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Mon, 29 Feb 2016 12:22:51 +0000
 
-kaltura-base (11.9.0-1) kajam; urgency=low
+borhan-base (11.9.0-1) kajam; urgency=low
 
   * Switching to 11.9.0
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Mon, 15 Feb 2016 15:26:17 +0000
-kaltura-base (11.8.0-2) kajam; urgency=low
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Mon, 15 Feb 2016 15:26:17 +0000
+borhan-base (11.8.0-2) kajam; urgency=low
 
   * SUP-7174 - iOS | Widevine Classic | OVP | uDRM | Licence duration error - app playback fails after approximately 10 min. 
   * SUP-6997 - Server returning all stream information when loading the player
   * SUP-7144 - Image downloaded in jpg format when was uploaded by bulk upload
   * PLAT-5042 - Remove user_videos permission from Facebook connector
   * PLAT-5045 - Recording fails when user stops few seconds after 15 minutes alignment (15:04,30:02 for example )
-  * PLAT-4839 - Kaltura's webex account "kalturawebexhost" records meetings in *.MP4 instead of *.arf
+  * PLAT-4839 - Borhan's webex account "borhanwebexhost" records meetings in *.MP4 instead of *.arf
   * PLAT-4924 - Facebook distribution - missing functionality - Tags
   * PLAT-4925 - Facebook distribution - missing functionality - Place
   * PLAT-4945 - Facebook distribution - update action missing on Custom Metadata Action
@@ -300,39 +300,39 @@ kaltura-base (11.8.0-2) kajam; urgency=low
   * PLAT-4020 - Media Server package is broken
   * PLAT-4714 - Sometimes there is more than one scheduler running on a batch machine
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Sun, 14 Feb 2016 15:50:24 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Sun, 14 Feb 2016 15:50:24 +0000
 
-kaltura-base (11.8.0-1) kajam; urgency=low
+borhan-base (11.8.0-1) kajam; urgency=low
 
   * Switching to 11.8.0
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Mon, 01 Feb 2016 19:16:45 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Mon, 01 Feb 2016 19:16:45 +0000
 
-kaltura-base (11.7.0-1) kajam; urgency=low
+borhan-base (11.7.0-1) kajam; urgency=low
 
   * Switching to 11.7.0
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Mon, 18 Jan 2016 13:20:43 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Mon, 18 Jan 2016 13:20:43 +0000
 
-kaltura-base (11.6.0-1) kajam; urgency=low
+borhan-base (11.6.0-1) kajam; urgency=low
 
   * Switching to 11.6.0
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Tue, 05 Jan 2016 13:10:15 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Tue, 05 Jan 2016 13:10:15 +0000
 
-kaltura-base (11.5.0-1) kajam; urgency=low
+borhan-base (11.5.0-1) kajam; urgency=low
 
   * Switching to 11.5.0
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Mon, 21 Dec 2015 14:04:12 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Mon, 21 Dec 2015 14:04:12 +0000
 
-kaltura-base (11.4.0-1) kajam; urgency=low
+borhan-base (11.4.0-1) kajam; urgency=low
 
   * Switching to 11.4.0
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Mon, 07 Dec 2015 13:34:42 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Mon, 07 Dec 2015 13:34:42 +0000
 
-kaltura-base (11.3.0-2) kajam; urgency=low
+borhan-base (11.3.0-2) kajam; urgency=low
   * Support PHP 7
   * SUP-4598 - Infinite entry creation when using "Create new entry for every broadcast session"
   * SUP-5438 - Converting Live Stream to VOD Not Working at all
@@ -341,69 +341,69 @@ kaltura-base (11.3.0-2) kajam; urgency=low
   * PLAT-3386 - Stream is rewinded on HLS when stopping and starting the stream with FMLE
   * PLAT-4068 - When streaming with FMLE, first chunk has invalid duration (mostly after stop-start)
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Sun, 06 Dec 2015 16:37:44 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Sun, 06 Dec 2015 16:37:44 +0000
 
-kaltura-base (11.3.0-1) kajam; urgency=low
+borhan-base (11.3.0-1) kajam; urgency=low
 
   * Switching to 11.3.0
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Mon, 23 Nov 2015 12:22:48 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Mon, 23 Nov 2015 12:22:48 +0000
 
-kaltura-base (11.2.0-1) kajam; urgency=low
+borhan-base (11.2.0-1) kajam; urgency=low
 
   * Switching to 11.2.0
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Mon, 09 Nov 2015 13:50:23 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Mon, 09 Nov 2015 13:50:23 +0000
 
-kaltura-base (11.1.0-1) kajam; urgency=low
+borhan-base (11.1.0-1) kajam; urgency=low
 
   * Switching to 11.1.0
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Mon, 26 Oct 2015 11:59:20 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Mon, 26 Oct 2015 11:59:20 +0000
 
-kaltura-base (11.0.0-1) kajam; urgency=low
+borhan-base (11.0.0-1) kajam; urgency=low
 
   * Switching to 11.0.0
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Mon, 12 Oct 2015 12:54:56 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Mon, 12 Oct 2015 12:54:56 +0000
 
-kaltura-base (10.21.0-1) jupiter; urgency=low
+borhan-base (10.21.0-1) jupiter; urgency=low
 
   * Switching to 10.21.0
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Mon, 21 Sep 2015 12:39:16 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Mon, 21 Sep 2015 12:39:16 +0000
 
-kaltura-base (10.20.0-1) jupiter; urgency=low
+borhan-base (10.20.0-1) jupiter; urgency=low
 
   * Switching to 10.20.0
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Mon, 07 Sep 2015 14:32:58 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Mon, 07 Sep 2015 14:32:58 +0000
 
-kaltura-base (10.19.0-1) jupiter; urgency=low
+borhan-base (10.19.0-1) jupiter; urgency=low
 
   * Switching to 10.19.0
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Mon, 24 Aug 2015 10:30:35 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Mon, 24 Aug 2015 10:30:35 +0000
 
-kaltura-base (10.18.0-2) jupiter; urgency=low
+borhan-base (10.18.0-2) jupiter; urgency=low
 
   * PLAT-3659 - baseEntry->addfromUploadedFile fails for data entry 
   * SUP-2038 - Multiple Playlists - API inquiry
-  * SUP-5243 - KMC strips KalturaEndUserReportInputFilter when generating CSV
+  * SUP-5243 - BMC strips BorhanEndUserReportInputFilter when generating CSV
   * SUP-4380 - Comments in e-mail notification
   * PLAT-3522 - TR Reverse Proxy - pass "od" parameter when redirecting to mwEmbedLoader.php
   * PLAT-3558 - Add Support for AIFF File Format in base.ini
   * PLAT-3575 - Main file should be ism not a4m
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Thu, 20 Aug 2015 16:10:25 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Thu, 20 Aug 2015 16:10:25 +0000
 
-kaltura-base (10.18.0-1) jupiter; urgency=low
+borhan-base (10.18.0-1) jupiter; urgency=low
 
   * Switching to 10.18.0
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Mon, 10 Aug 2015 10:41:04 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Mon, 10 Aug 2015 10:41:04 +0000
 
-kaltura-base (10.17.0-3) UNRELEASED; urgency=low
+borhan-base (10.17.0-3) UNRELEASED; urgency=low
 
   * SUP-5223 - KMS uploads do not inherit entry's 'Default Metadata Settings'
   * PS-2298 - Custom Metadata HTTP notification - JSON with special chars
@@ -414,22 +414,22 @@ kaltura-base (10.17.0-3) UNRELEASED; urgency=low
   * PLAT-3576 - Remove TTL From Register_File
   * PLAT-3546 - TR Reverse Proxy support - validate domain from "x-forwarded-host" header against white-list
  
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Thu, 06 Aug 2015 13:13:10 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Thu, 06 Aug 2015 13:13:10 +0000
 
-kaltura-base (10.17.0-2) jupiter; urgency=low
+borhan-base (10.17.0-2) jupiter; urgency=low
 
   * Do not compile against FDK and faac as distributing the binary with such support violates license.   
-    See:   https://github.com/kaltura/platform-install-packages/issues/392, https://trac.ffmpeg.org/ticket/4735 
+    See:   https://github.com/borhan/platform-install-packages/issues/392, https://trac.ffmpeg.org/ticket/4735 
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Wed, 05 Aug 2015 14:17:56 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Wed, 05 Aug 2015 14:17:56 +0000
 
-kaltura-base (10.17.0-1) jupiter; urgency=low
+borhan-base (10.17.0-1) jupiter; urgency=low
 
   * Initial build for 10.17.0
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Mon, 27 Jul 2015 14:21:47 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Mon, 27 Jul 2015 14:21:47 +0000
 
-kaltura-base (10.16.0-2) jupiter; urgency=low
+borhan-base (10.16.0-2) jupiter; urgency=low
 
   * SUPPS-299 - Notifications issue - replacement video event
   * SUP-5363 - WebEx Connector Errors - during and after Cisco BACKUP 
@@ -437,17 +437,17 @@ kaltura-base (10.16.0-2) jupiter; urgency=low
   * PLAT-3458 - WV flavor does not created
  
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Fri, 24 Jul 2015 21:46:54 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Fri, 24 Jul 2015 21:46:54 +0000
 
-kaltura-base (10.16.0-1) jupiter; urgency=low
+borhan-base (10.16.0-1) jupiter; urgency=low
 
   * Initial build for 10.16.0
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Fri, 17 Jul 2015 11:37:27 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Fri, 17 Jul 2015 11:37:27 +0000
 
-kaltura-base (10.15.0-1) jupiter; urgency=low
+borhan-base (10.15.0-1) jupiter; urgency=low
 
-  * Local patch for https://github.com/kaltura/server/pull/2838 
+  * Local patch for https://github.com/borhan/server/pull/2838 
   * Disable MySQL strict mode when deploying DB
   * Added HTTP notification templates to deployment
   * PLAT-3178 - eCDN: KES multicast
@@ -473,35 +473,35 @@ kaltura-base (10.15.0-1) jupiter; urgency=low
   * PLAT-3016 - entitlement prevent from load Conversion Profile Default entry
   * PLAT-3287 - removeGroupSmils concurrent modification
   * PLAT-3292 - Playlist API - Cannot save CategoryEntryAdvancedFilter as an advanced search filter
-  * PLAT-3294 - OR between KalturaCategoryEntryAdvancedFilter and KalturaMetadataSearchItem produces AND
+  * PLAT-3294 - OR between BorhanCategoryEntryAdvancedFilter and BorhanMetadataSearchItem produces AND
   * PLAT-3295 - Playlist API - Advanced filter items are duplicated
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Sun, 12 Jul 2015 05:39:34 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Sun, 12 Jul 2015 05:39:34 +0000
 
-kaltura-base (10.14.0-1) jupiter; urgency=low
+borhan-base (10.14.0-1) jupiter; urgency=low
 
   * SUP-4393 - Downloading screen recording from KMS saved as tmp file
   * SUP-4339 - Email notifications send all addresses in the "To" field
   * PLAT-3215 - ES3 - UnMuxed Solution Project
   * PLAT-2908 - syndication feeds using playManifest not working with Access Control
   * PLAT-3072 - many kuser_kgroup queries
-  * PLAT-3059 - KalturaNullableBoolean in format=json
+  * PLAT-3059 - BorhanNullableBoolean in format=json
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Sun, 28 Jun 2015 08:39:13 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Sun, 28 Jun 2015 08:39:13 +0000
 
-kaltura-base (10.13.0-1) jupiter; urgency=low
+borhan-base (10.13.0-1) jupiter; urgency=low
 
   * SUP-4515 - Widevine Media Transcoding Errors
   * SUP-4362 - Adding Tags with less than 2 letters when uploading
   * SUP-4491 - Entry ID containing # sign causing entries not to load
   * SUP-4264 - Thumbnail rotation not working with ARF files
-  * SUP-4001 - Category listing options is not filtering on KMC
+  * SUP-4001 - Category listing options is not filtering on BMC
   * PLAT-2983 - externalSourceType isn't being cloned
   * PLAT-2872 - Refactor media server to suit SyncPoints requirements
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Mon, 15 Jun 2015 08:54:22 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Mon, 15 Jun 2015 08:54:22 +0000
 
-kaltura-base (10.12.0-1) jupiter; urgency=low
+borhan-base (10.12.0-1) jupiter; urgency=low
 
   * SUP-4016 - Cannot find category in analytics "Select Categories" drop down menu
   * SUP-4408 - Specific WMV file not transcoding
@@ -509,49 +509,49 @@ kaltura-base (10.12.0-1) jupiter; urgency=low
   * SUP-4739 - Player's download button does not work in KMS
   * PLAT-2204 - Can't add thumb cuepoint of sub type chapter without a slide
   * PLAT-2987 - Auto-Intermediate-source flow for sources that processable only by Mencoder
-  * https://github.com/kaltura/server/blob/Jupiter-10.12.0-typeReflectorError/api_v3/lib/KalturaTypeReflector.php
+  * https://github.com/borhan/server/blob/Jupiter-10.12.0-typeReflectorError/api_v3/lib/BorhanTypeReflector.php
 
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Sun, 31 May 2015 12:13:26 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Sun, 31 May 2015 12:13:26 +0000
 
-kaltura-base (10.11.0-1) jupiter; urgency=low
+borhan-base (10.11.0-1) jupiter; urgency=low
 
   * PLAT-2871 - Caption search using KalutraBaseEntryFilter::advancedSearch and cross metadata search
   * PLAT-1998 - Avoid the need to update many metadata objects
   * PLAT-2850 - API Changes for Q&A
   * PLAT-2946 - Hide default template uiconfs from partner preview&&embed
-  * SUP-3451 - KMC error - The language 'sv_SE' has to be added before it can be used.
+  * SUP-3451 - BMC error - The language 'sv_SE' has to be added before it can be used.
   * SUP-3965 - Telepictures - high storage usage, flavors are not deleted after export?
   * PLAT-2914 - Too many logs are written to file
   * PLAT-2906 - Json serializer causing Studio crash
   * PLAT-2387 - manual dispatch error
   * PLAT-2934 - clip_test script fails
   * PLAT-2940 - groupUser->list return fatal error
-  * https://github.com/kaltura/server/pull/2561
+  * https://github.com/borhan/server/pull/2561
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Sun, 17 May 2015 12:31:51 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Sun, 17 May 2015 12:31:51 +0000
 
-kaltura-base (10.10.0-2) jupiter; urgency=low
+borhan-base (10.10.0-2) jupiter; urgency=low
 
-  * PLAT-2042 - Kaltura MRSS Ingest for PostMedia (TR next)
+  * PLAT-2042 - Borhan MRSS Ingest for PostMedia (TR next)
   * PLAT-2829 - New feature: Add a pager to playlist->execute
   * SUP-4358 - [Pearson] Java API SDK throws a NumberFormatException
   * PLAT-2865 - Live - isLive remains on true after stop streaming (regression)
   * PLAT-1600 - Duplicate VOD entry is created when stopping streaming before live entry starts to play.
   * PLAT-2497 - randomly the HLS flavors in the cloud transcode are not in sync
-  * PLAT-2885 - Kaltura Live with DVR: Player stuck for a few minutes after loading page
+  * PLAT-2885 - Borhan Live with DVR: Player stuck for a few minutes after loading page
   * WEBC-467 - Application error received when attempting to edit a webcast
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Mon, 04 May 2015 19:32:25 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Mon, 04 May 2015 19:32:25 +0000
 
-kaltura-base (10.10.0-1) jupiter; urgency=low
+borhan-base (10.10.0-1) jupiter; urgency=low
 
   * Switching to 10.10.0
 
- -- Jess Portnoy <jess.portnoy@kaltura.com>  Mon, 27 Apr 2015 13:38:43 +0200
+ -- Jess Portnoy <jess.portnoy@borhan.com>  Mon, 27 Apr 2015 13:38:43 +0200
 
-kaltura-base (10.9.0-1) jupiter; urgency=low
+borhan-base (10.9.0-1) jupiter; urgency=low
 
   * Switching to 10.9.0
 
- -- Jess Portnoy <jess.portnoy@kaltura.com>  Mon, 06 Apr 2015 20:18:43 +0200
+ -- Jess Portnoy <jess.portnoy@borhan.com>  Mon, 06 Apr 2015 20:18:43 +0200

@@ -1,7 +1,7 @@
 %global libzen_version  0.4.34
-%define prefix /opt/kaltura
+%define prefix /opt/borhan
 
-Name:           kaltura-mediainfo
+Name:           borhan-mediainfo
 Version:        0.7.61
 Release:        4
 Summary:        Supplies technical and tag information about a video or audio file (CLI)
@@ -11,13 +11,13 @@ Group:          Applications/Multimedia
 URL:            http://mediaarea.net/MediaInfo
 Source0:        http://mediaarea.net/download/source/mediainfo/%{version}/mediainfo_%{version}.tar.bz2
 
-BuildRequires:  kaltura-libmediainfo-devel >= %{version}
+BuildRequires:  borhan-libmediainfo-devel >= %{version}
 BuildRequires:  pkgconfig(libzen) >= %{libzen_version}
 BuildRequires:  pkgconfig(zlib)
 BuildRequires:  libtool
 BuildRequires:  automake
 BuildRequires:  autoconf
-Requires:  kaltura-libmediainfo = %{version}
+Requires:  borhan-libmediainfo = %{version}
 Requires: libzen = %{libzen_version}
 
 %description
@@ -62,7 +62,7 @@ sed -i 's/AC_PROG_LIBTOOL/LT_INIT/' Project/GNU/*/configure.ac
 pushd Project/GNU/CLI
     ./autogen
     ./configure --enable-static=no --prefix=%{prefix}
-    LIBRARY_PATH=/opt/kaltura/lib make %{?_smp_mflags}
+    LIBRARY_PATH=/opt/borhan/lib make %{?_smp_mflags}
 popd
 
 
@@ -79,8 +79,8 @@ popd
 
 
 %changelog
-* Sat Sep 3 2016 Jess Portnoy <jess.portnoy@kaltura.com> 0.7.61-2
-- Custom build for Kaltura CE, adopted from EPEL's mediainfo
+* Sat Sep 3 2016 Jess Portnoy <jess.portnoy@borhan.com> 0.7.61-2
+- Custom build for Borhan CE, adopted from EPEL's mediainfo
 
 * Tue Oct 23 2012 Vasiliy N. Glazov <vascom2@gmail.com> 0.7.61-1
 - Update to 0.7.61

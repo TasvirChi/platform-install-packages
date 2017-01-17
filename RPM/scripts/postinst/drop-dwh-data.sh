@@ -7,16 +7,16 @@
 #  REQUIREMENTS: ---
 #          BUGS: ---
 #         NOTES: ---
-#        AUTHOR: Jess Portnoy (), <jess.portnoy@kaltura.com>
-#  ORGANIZATION: Kaltura, inc.
+#        AUTHOR: Jess Portnoy (), <jess.portnoy@borhan.com>
+#  ORGANIZATION: Borhan, inc.
 #       CREATED: 11/19/2014 05:51:34 PM IST
 #      REVISION:  ---
 #===============================================================================
 
 #set -o nounset                              # Treat unset variables as an error
 
-if [ -r /etc/kaltura.d/system.ini ];then
-    . /etc/kaltura.d/system.ini
+if [ -r /etc/borhan.d/system.ini ];then
+    . /etc/borhan.d/system.ini
 else
     echo "ERROR: Missing $CONFIG_DIR/system.ini. Exiting.."
     exit 3
@@ -35,14 +35,14 @@ if [ "$ANS" != 'y' ];then
 	exit 2
 fi
 PASSWD=$1
-for i in `mysql -h $DB1_HOST -N -p$PASSWD kalturadw_bisources -e "show tables"`;do mysql -h $DB1_HOST -p$PASSWD kalturadw_bisources -e "drop table $i";done
-for i in `mysql -h $DB1_HOST  -N -p$PASSWD kalturadw -e "select TABLE_NAME from information_schema.views where TABLE_SCHEMA = 'kalturadw';"`;do mysql -h $DB1_HOST -p$PASSWD kalturadw -e "drop view $i";done
-for i in `mysql -h $DB1_HOST  -N -p$PASSWD kalturadw -e "show tables"`;do mysql -h $DB1_HOST -p$PASSWD kalturadw -e "drop table $i";done
-for i in `mysql -h $DB1_HOST  -N -p$PASSWD kalturadw -e "select TABLE_NAME from information_schema.views where TABLE_SCHEMA = 'kalturadw_ds';"`;do mysql -h $DB1_HOST -p$PASSWD kalturadw_ds -e "drop view $i";done
-for i in `mysql -h $DB1_HOST -N -p$PASSWD kalturadw_ds -e "show tables"`;do mysql -h $DB1_HOST -p$PASSWD kalturadw_ds -e "drop table $i";done
-for i in `mysql -h $DB1_HOST -N -p$PASSWD kalturalog -e "show tables"`;do mysql -h $DB1_HOST -p$PASSWD kalturalog -e "drop table $i";done
-for i in `mysql -h $DB1_HOST -p$PASSWD -e "Show function status" |grep kalturadw|awk -F " " '{print $2}'`;do mysql kalturadw -h $DB1_HOST -p$PASSWD -e "drop function $i;";done
-for i in `mysql -h $DB1_HOST -p$PASSWD -e "Show procedure status" |grep kalturadw|awk -F " " '{print $2}'`;do mysql kalturadw -h $DB1_HOST -p$PASSWD -e "drop procedure $i;";done
-for i in `mysql -h $DB1_HOST -p$PASSWD -e "Show function status" |grep kalturadw_ds|awk -F " " '{print $2}'`;do mysql kalturadw_ds -h $DB1_HOST -p$PASSWD -e "drop function $i;";done
-for i in `mysql -h $DB1_HOST -p$PASSWD -e "Show procedure status" |grep kalturadw_ds|awk -F " " '{print $2}'`;do mysql kalturadw_ds -h $DB1_HOST -p$PASSWD -e "drop procedure $i;";done
+for i in `mysql -h $DB1_HOST -N -p$PASSWD borhandw_bisources -e "show tables"`;do mysql -h $DB1_HOST -p$PASSWD borhandw_bisources -e "drop table $i";done
+for i in `mysql -h $DB1_HOST  -N -p$PASSWD borhandw -e "select TABLE_NAME from information_schema.views where TABLE_SCHEMA = 'borhandw';"`;do mysql -h $DB1_HOST -p$PASSWD borhandw -e "drop view $i";done
+for i in `mysql -h $DB1_HOST  -N -p$PASSWD borhandw -e "show tables"`;do mysql -h $DB1_HOST -p$PASSWD borhandw -e "drop table $i";done
+for i in `mysql -h $DB1_HOST  -N -p$PASSWD borhandw -e "select TABLE_NAME from information_schema.views where TABLE_SCHEMA = 'borhandw_ds';"`;do mysql -h $DB1_HOST -p$PASSWD borhandw_ds -e "drop view $i";done
+for i in `mysql -h $DB1_HOST -N -p$PASSWD borhandw_ds -e "show tables"`;do mysql -h $DB1_HOST -p$PASSWD borhandw_ds -e "drop table $i";done
+for i in `mysql -h $DB1_HOST -N -p$PASSWD borhanlog -e "show tables"`;do mysql -h $DB1_HOST -p$PASSWD borhanlog -e "drop table $i";done
+for i in `mysql -h $DB1_HOST -p$PASSWD -e "Show function status" |grep borhandw|awk -F " " '{print $2}'`;do mysql borhandw -h $DB1_HOST -p$PASSWD -e "drop function $i;";done
+for i in `mysql -h $DB1_HOST -p$PASSWD -e "Show procedure status" |grep borhandw|awk -F " " '{print $2}'`;do mysql borhandw -h $DB1_HOST -p$PASSWD -e "drop procedure $i;";done
+for i in `mysql -h $DB1_HOST -p$PASSWD -e "Show function status" |grep borhandw_ds|awk -F " " '{print $2}'`;do mysql borhandw_ds -h $DB1_HOST -p$PASSWD -e "drop function $i;";done
+for i in `mysql -h $DB1_HOST -p$PASSWD -e "Show procedure status" |grep borhandw_ds|awk -F " " '{print $2}'`;do mysql borhandw_ds -h $DB1_HOST -p$PASSWD -e "drop procedure $i;";done
 

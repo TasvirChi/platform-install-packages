@@ -1,12 +1,12 @@
 <?php
 /**
- * This class is used to reflect specific Kaltura objects, arrays & enums
+ * This class is used to reflect specific Borhan objects, arrays & enums
  * This will be the place to boost performance by caching the reflection results to memcache or the filesystem
  *  
  * @package api
  * @subpackage v3
  */
-class KalturaTypeReflector
+class BorhanTypeReflector
 {
 	static private $propertyReservedWords = array(
 		'objectType',
@@ -22,17 +22,17 @@ class KalturaTypeReflector
 	private $_type;
 	
 	/**
-	 * @var array<KalturaPropertyInfo>
+	 * @var array<BorhanPropertyInfo>
 	 */
 	private $_properties;
 	
 	/**
-	 * @var array<KalturaPropertyInfo>
+	 * @var array<BorhanPropertyInfo>
 	 */
 	private $_currentProperties;
 	
 	/**
-	 * @var array<KalturaPropertyInfo>
+	 * @var array<BorhanPropertyInfo>
 	 */
 	private $_constants;
 	
@@ -80,14 +80,14 @@ class KalturaTypeReflector
 	 * Contructs new type reflector instance
 	 *
 	 * @param string $type
-	 * @return KalturaTypeReflector
+	 * @return BorhanTypeReflector
 	 */
-	public function KalturaTypeReflector($type)
+	public function BorhanTypeReflector($type)
 	{
-//		KalturaLog::debug("Reflecting type [$type]");
+//		BorhanLog::debug("Reflecting type [$type]");
 		
 		if (!class_exists($type))
-			throw new KalturaReflectionException("Type \"".$type."\" not found");
+			throw new BorhanReflectionException("Type \"".$type."\" not found");
 			
 		$this->_type = $type;
 		
@@ -97,7 +97,7 @@ class KalturaTypeReflector
 	    if($comments)
 	    {
 	    	$this->_comments = $comments;
-	    	$commentsParser = new KalturaDocCommentParser($comments);
+	    	$commentsParser = new BorhanDocCommentParser($comments);
 	    	$this->_description = $commentsParser->description;
 	    	$this->_deprecated = $commentsParser->deprecated;
 	    	$this->_serverOnly = $commentsParser->serverOnly;
@@ -122,7 +122,7 @@ class KalturaTypeReflector
 	/**
 	 * Return property by name 
 	 * @param string $name
-	 * @return KalturaPropertyInfo
+	 * @return BorhanPropertyInfo
 	 */
 	public function getProperty($name)
 	{
@@ -138,7 +138,7 @@ class KalturaTypeReflector
 	/**
 	 * Return the type properties 
 	 *
-	 * @return array<KalturaPropertyInfo>
+	 * @return array<BorhanPropertyInfo>
 	 */
 	public function getProperties()
 	{
@@ -175,10 +175,10 @@ class KalturaTypeReflector
 								
 							$docComment = $property->getDocComment();
 							
-							$parsedDocComment = new KalturaDocCommentParser( $docComment );
+							$parsedDocComment = new BorhanDocCommentParser( $docComment );
 							if ($parsedDocComment->varType)
 							{
-								$prop = new KalturaPropertyInfo($parsedDocComment->varType, $name);
+								$prop = new BorhanPropertyInfo($parsedDocComment->varType, $name);
 								
 								$prop->setReadOnly($parsedDocComment->readOnly);
 								$prop->setInsertOnly($parsedDocComment->insertOnly);
@@ -220,13 +220,13 @@ class KalturaTypeReflector
 	}
 	
 	/**
-	 * Return the number of inheritance generations since KalturaObject
+	 * Return the number of inheritance generations since BorhanObject
 	 *
 	 * @return int
 	 */
 	public function getInheritanceLevel()
 	{
-		if($this->_type == 'KalturaObject')
+		if($this->_type == 'BorhanObject')
 			return 0;
 			
 		if($this->isEnum() || $this->isStringEnum())
@@ -243,11 +243,11 @@ class KalturaTypeReflector
 	
 	 * Return a type reflector for the parent class (null if none) 
 	 *
-	 * @return KalturaTypeReflector
+	 * @return BorhanTypeReflector
 	 */
 	public function getParentTypeReflector()
 	{
-		if($this->_type == 'KalturaObject')
+		if($this->_type == 'BorhanObject')
 			return null;
 			
 	    $reflectClass = new ReflectionClass($this->_type);
@@ -256,8 +256,8 @@ class KalturaTypeReflector
 	    	throw new Exception("API object [$this->_type] must have parent type, package: [$this->_package] subpackage [$this->_subpackage]");
 	    	
 	    $parentClassName = $parentClass->getName();
-	    if (!in_array($parentClassName, array("KalturaObject", "KalturaEnum", "KalturaStringEnum", "KalturaTypedArray"))) // from the api point of view, those objects are ignored
-            return KalturaTypeReflectorCacher::get($parentClass->getName());
+	    if (!in_array($parentClassName, array("BorhanObject", "BorhanEnum", "BorhanStringEnum", "BorhanTypedArray"))) // from the api point of view, those objects are ignored
+            return BorhanTypeReflectorCacher::get($parentClass->getName());
 	    else
 	        return null;
 	}
@@ -275,7 +275,7 @@ class KalturaTypeReflector
 	/**
 	 * Return only the properties defined in the current class
 	 *
-	 * @return array<KalturaPropertyInfo>
+	 * @return array<BorhanPropertyInfo>
 	 */
 	public function getCurrentProperties()
 	{
@@ -340,20 +340,20 @@ class KalturaTypeReflector
 		if($this->isDynamicEnum())
 		{
 			$type = $this->getType();
-			/* @var $type KalturaDynamicEnum */
+			/* @var $type BorhanDynamicEnum */
 			$baseEnumName = $type::getEnumClass();
-			$pluginInstances = KalturaPluginManager::getPluginInstances('IKalturaEnumerator');
+			$pluginInstances = BorhanPluginManager::getPluginInstances('IBorhanEnumerator');
 			foreach($pluginInstances as $pluginInstance)
 			{
-				/* @var $pluginInstance IKalturaEnumerator */
+				/* @var $pluginInstance IBorhanEnumerator */
 				$pluginName = $pluginInstance->getPluginName();
 				$enums = $pluginInstance->getEnums($baseEnumName);
 				foreach($enums as $enum)
 				{
-					/* @var $enum IKalturaPluginEnum */
+					/* @var $enum IBorhanPluginEnum */
 					$enumConstans = $enum::getAdditionalValues();
 					foreach($enumConstans as $name => $value)
-						$this->_constantsValues[$name] = $pluginName . IKalturaEnumerator::PLUGIN_VALUE_DELIMITER . $value;
+						$this->_constantsValues[$name] = $pluginName . IBorhanEnumerator::PLUGIN_VALUE_DELIMITER . $value;
 				}
 			}
 		}
@@ -364,7 +364,7 @@ class KalturaTypeReflector
 	/**
 	 * Returns the enum constants
 	 *
-	 * @return array<KalturaPropertyInfo>
+	 * @return array<BorhanPropertyInfo>
 	 */
 	public function getConstants()
 	{
@@ -382,9 +382,9 @@ class KalturaTypeReflector
 			foreach($contants as $enum => $value)
 			{
 				if ($this->isEnum())
-					$prop = new KalturaPropertyInfo("int", $enum);
+					$prop = new BorhanPropertyInfo("int", $enum);
 				else
-					$prop = new KalturaPropertyInfo("string", $enum);
+					$prop = new BorhanPropertyInfo("string", $enum);
 					
 				if (isset($constantsDescription[$value]))
 					$prop->setDescription($constantsDescription[$value]);
@@ -398,7 +398,7 @@ class KalturaTypeReflector
 		{
 			$type = $this->getType();
 			$baseEnumName = $type::getEnumClass();
-			$pluginInstances = KalturaPluginManager::getPluginInstances('IKalturaEnumerator');
+			$pluginInstances = BorhanPluginManager::getPluginInstances('IBorhanEnumerator');
 			foreach($pluginInstances as $pluginInstance)
 			{
 				$pluginName = $pluginInstance->getPluginName();
@@ -408,8 +408,8 @@ class KalturaTypeReflector
 					$enumConstans = $enum::getAdditionalValues();
 					foreach($enumConstans as $name => $value)
 					{
-						$value = $pluginName . IKalturaEnumerator::PLUGIN_VALUE_DELIMITER . $value;
-						$prop = new KalturaPropertyInfo("string", $name);
+						$value = $pluginName . IBorhanEnumerator::PLUGIN_VALUE_DELIMITER . $value;
+						$prop = new BorhanPropertyInfo("string", $name);
 						$prop->setDefaultValue($value);
 							
 						if (isset($constantsDescription[$value]))
@@ -431,7 +431,7 @@ class KalturaTypeReflector
 	 */
 	public function isEnum()
 	{
-		return is_subclass_of($this->_type, 'KalturaEnum'); 
+		return is_subclass_of($this->_type, 'BorhanEnum'); 
 	}
 	
 	/**
@@ -471,7 +471,7 @@ class KalturaTypeReflector
 	 */
 	public function isFilter()
 	{
-		return is_subclass_of($this->_type, 'KalturaFilter');
+		return is_subclass_of($this->_type, 'BorhanFilter');
 	}
 	
 	/**
@@ -481,7 +481,7 @@ class KalturaTypeReflector
 	 */
 	public function isStringEnum()
 	{
-		return is_subclass_of($this->_type, 'KalturaStringEnum');
+		return is_subclass_of($this->_type, 'BorhanStringEnum');
 	}
 	
 	/**
@@ -491,7 +491,7 @@ class KalturaTypeReflector
 	 */
 	public function isDynamicEnum()
 	{
-		return is_subclass_of($this->_type, 'KalturaDynamicEnum');
+		return is_subclass_of($this->_type, 'BorhanDynamicEnum');
 	}
 	
 	/**
@@ -501,7 +501,7 @@ class KalturaTypeReflector
 	 */
 	public function isArray()
 	{
-		return is_subclass_of($this->_type, 'KalturaTypedArray');
+		return is_subclass_of($this->_type, 'BorhanTypedArray');
 	}
 	
 	/**
@@ -511,7 +511,7 @@ class KalturaTypeReflector
 	 */
 	public function isAssociativeArray()
 	{
-		return is_subclass_of($this->_type, 'KalturaAssociativeArray');
+		return is_subclass_of($this->_type, 'BorhanAssociativeArray');
 	}
 	
 	/**
@@ -720,21 +720,21 @@ class KalturaTypeReflector
 	
 	public function requiresReadPermission()
 	{
-		return in_array(KalturaPropertyInfo::READ_PERMISSION_NAME, $this->_permissions);
+		return in_array(BorhanPropertyInfo::READ_PERMISSION_NAME, $this->_permissions);
 	}
 	
 	public function requiresUpdatePermission()
 	{
-		return in_array(KalturaPropertyInfo::UPDATE_PERMISSION_NAME, $this->_permissions);
+		return in_array(BorhanPropertyInfo::UPDATE_PERMISSION_NAME, $this->_permissions);
 	}
 	
 	public function requiresInsertPermission()
 	{
-		return in_array(KalturaPropertyInfo::INSERT_PERMISSION_NAME, $this->_permissions);
+		return in_array(BorhanPropertyInfo::INSERT_PERMISSION_NAME, $this->_permissions);
 	}
 	
 	public function requiresUsagePermission()
 	{
-		return in_array(KalturaPropertyInfo::ALL_PERMISSION_NAME, $this->_permissions);
+		return in_array(BorhanPropertyInfo::ALL_PERMISSION_NAME, $this->_permissions);
 	}
 }

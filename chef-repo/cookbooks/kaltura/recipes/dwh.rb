@@ -1,11 +1,11 @@
-log "Installing Kaltura DWH"
-template "/etc/yum.repos.d/kaltura.repo" do
-    source "kaltura.repo.erb"
+log "Installing Borhan DWH"
+template "/etc/yum.repos.d/borhan.repo" do
+    source "borhan.repo.erb"
     mode 0600
     owner "root"
     group "root"
 end
-package "kaltura-dwh" do
+package "borhan-dwh" do
   action :install
   Chef::Config[:yum_timeout] = 3600
  end
@@ -15,8 +15,8 @@ package "kaltura-dwh" do
 #  end
 #end
 
-template "/root/kaltura.ans" do
-    source "kaltura.ans.erb"
+template "/root/borhan.ans" do
+    source "borhan.ans.erb"
     mode 0600
     owner "root"
     group "root"
@@ -25,7 +25,7 @@ end
 bash "setup DWH " do
      user "root"
      code <<-EOH
-	echo "NO" | #{node[:kaltura][:BASE_DIR]}/bin/kaltura-base-config.sh /root/kaltura.ans
-	#{node[:kaltura][:BASE_DIR]}/bin/kaltura-dwh-config.sh /root/kaltura.ans
+	echo "NO" | #{node[:borhan][:BASE_DIR]}/bin/borhan-base-config.sh /root/borhan.ans
+	#{node[:borhan][:BASE_DIR]}/bin/borhan-dwh-config.sh /root/borhan.ans
      EOH
 end

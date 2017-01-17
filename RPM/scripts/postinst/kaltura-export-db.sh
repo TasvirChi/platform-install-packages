@@ -8,8 +8,8 @@
 #  REQUIREMENTS: ---
 #          BUGS: ---
 #         NOTES: ---
-#        AUTHOR: Jess Portnoy (), jess.portnoy@kaltura.com
-#  ORGANIZATION: Kaltura, inc.
+#        AUTHOR: Jess Portnoy (), jess.portnoy@borhan.com
+#  ORGANIZATION: Borhan, inc.
 #       CREATED: 08/10/12 18:07:22 IDT
 #      REVISION:  ---
 #===============================================================================

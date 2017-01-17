@@ -8,8 +8,8 @@
 #  REQUIREMENTS: ---
 #          BUGS: ---
 #         NOTES: ---
-#        AUTHOR: Tan-Tan, <jonathan.kanarek@kaltura.com>
-#  ORGANIZATION: Kaltura, inc.
+#        AUTHOR: Tan-Tan, <jonathan.kanarek@borhan.com>
+#  ORGANIZATION: Borhan, inc.
 #       CREATED: 12/25/14
 #      REVISION:  ---
 #===============================================================================
@@ -36,6 +36,6 @@ else
 fi
 
 if [ -x "`which rpmbuild 2>/dev/null`" ];then
-	rpmbuild -ba $RPM_SPECS_DIR/kaltura-opencore-amr.spec
+	rpmbuild -ba $RPM_SPECS_DIR/borhan-opencore-amr.spec
 fi
 

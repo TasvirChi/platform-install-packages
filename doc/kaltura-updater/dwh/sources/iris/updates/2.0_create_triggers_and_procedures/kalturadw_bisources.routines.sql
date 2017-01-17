@@ -1,7 +1,7 @@
-USE `kalturadw_bisources`;
+USE `borhandw_bisources`;
 -- MySQL dump 10.13  Distrib 5.1.73, for redhat-linux-gnu (x86_64)
 --
--- Host: localhost    Database: kalturadw_bisources
+-- Host: localhost    Database: borhandw_bisources
 -- ------------------------------------------------------
 -- Server version	5.1.73
 /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
@@ -12,7 +12,7 @@ USE `kalturadw_bisources`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Dumping routines for database 'kalturadw_bisources'
+-- Dumping routines for database 'borhandw_bisources'
 --
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 

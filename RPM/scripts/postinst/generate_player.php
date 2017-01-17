@@ -4,27 +4,27 @@ if (count($argv)<4){
         exit (1); 
 }
 
-require_once('/opt/kaltura/web/content/clientlibs/php5/KalturaClient.php');
+require_once('/opt/borhan/web/content/clientlibs/php5/BorhanClient.php');
 $userId = null;
 $expiry = null;
 $privileges = null;
 $secret = $argv[3];
-$type = KalturaSessionType::ADMIN;
+$type = BorhanSessionType::ADMIN;
 $partnerId=$argv[2];
-$config = new KalturaConfiguration($partnerId);
+$config = new BorhanConfiguration($partnerId);
 $config->serviceUrl = $argv[1];
 $player_ver=$argv[4];
-$client = new KalturaClient($config);
+$client = new BorhanClient($config);
 $ks = $client->session->start($secret, $userId, $type, $partnerId, $expiry, $privileges);
 $client->setKs($ks);
-$uiConf = new KalturaUiConf();
+$uiConf = new BorhanUiConf();
 $uiConf->name = 'Sanity player';
 $uiConf->description = "Test player creation via API";
 $uiConf->objType = 1; 
 $uiConf->width = 533; 
 $uiConf->height = 300; 
 $uiConf->htmlParams = '';
-$uiConf->swfUrl = "/flash/kdp3/v$player_ver/kdp3.swf";
+$uiConf->swfUrl = "/flash/bdp3/v$player_ver/bdp3.swf";
 $uiConf->confFile = file_get_contents($argv[5]);
 $uiConf->creationMode=3;
 $uiConf->useCdn = '1';

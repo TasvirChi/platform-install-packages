@@ -7,8 +7,8 @@
 #  REQUIREMENTS: ---
 #          BUGS: ---
 #         NOTES: ---
-#        AUTHOR: Jess Portnoy (), <jess.portnoy@kaltura.com>
-#  ORGANIZATION: Kaltura, inc.
+#        AUTHOR: Jess Portnoy (), <jess.portnoy@borhan.com>
+#  ORGANIZATION: Borhan, inc.
 #       CREATED: 12/01/14 08:26:57 EST
 #      REVISION:  ---
 #===============================================================================
@@ -25,8 +25,8 @@ if [ -d $BASE_DIR_RELEASES/$VERSION ];then
         ln -s  $BASE_DIR_RELEASES/$VERSION $BASE_DIR_RELEASES/nightly
         ln -s  $BASE_DIR_RELEASES/$VERSION $BASE_DIR_RELEASES/latest
         ln -s  $BASE_DIR_RELEASES/$VERSION $BASE_DIR_RELEASES/stable
-        rm -f $BASE_DIR_RELEASES/kaltura-release.noarch.rpm
-        ln -s  $BASE_DIR_RELEASES/$VERSION/RPMS/noarch/kaltura-release-$VERSION-1.noarch.rpm $BASE_DIR_RELEASES/kaltura-release.noarch.rpm
+        rm -f $BASE_DIR_RELEASES/borhan-release.noarch.rpm
+        ln -s  $BASE_DIR_RELEASES/$VERSION/RPMS/noarch/borhan-release-$VERSION-1.noarch.rpm $BASE_DIR_RELEASES/borhan-release.noarch.rpm
 else
         echo "$BASE_DIR_RELEASES/$VERSION no present:("
         exit 2

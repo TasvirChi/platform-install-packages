@@ -14,26 +14,26 @@ reload_apache()
 }
 
 # we've registered a trigger to handle extension updates.
-if [ "$1" = "triggered" ] && [ "$2" = "/opt/kaltura/app/configurations/php/conf.d" ]; then
+if [ "$1" = "triggered" ] && [ "$2" = "/opt/borhan/app/configurations/php/conf.d" ]; then
   reload_apache force-reload
   exit 0
 elif [ "$1" != "configure" ]; then
   exit 0
 fi
 
-phpini="/opt/kaltura/app/configurations/php/apache2/php.ini"
+phpini="/opt/borhan/app/configurations/php/apache2/php.ini"
 
-ucf /opt/kaltura/share/php7/php.ini-production $phpini
-#ucfr kaltura-libapache2-mod-php7 $phpini
+ucf /opt/borhan/share/php7/php.ini-production $phpini
+#ucfr borhan-libapache2-mod-php7 $phpini
 
 if [ -n "$2" ]; then
 	# recover the previous state
-	if [ -e /opt/kaltura/app/configurations/php/apache2/.start ]; then
+	if [ -e /opt/borhan/app/configurations/php/apache2/.start ]; then
 	    a2dismod mpm_event >/dev/null ||true
 	    a2enmod mpm_prefork >/dev/null ||true
 	    a2enmod php7 >/dev/null || true
 	    a2dismod php5 >/dev/null || true
-	    rm -f /opt/kaltura/app/configurations/php/apache2/.start
+	    rm -f /opt/borhan/app/configurations/php/apache2/.start
 	fi
 # we're upgrading. test if we're enabled, and if so, restart to reload the module.
 	if [ -e /etc/apache2/mods-enabled/php7.load ]; then

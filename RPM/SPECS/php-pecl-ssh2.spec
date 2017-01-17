@@ -82,8 +82,8 @@ EOF
 
 
 %changelog
-* Fri Jan 3 2014 Jess Portnoy <jess.portnoy@kaltura.com> - 0.12-1
-- First build for Kaltura CE.
+* Fri Jan 3 2014 Jess Portnoy <jess.portnoy@borhan.com> - 0.12-1
+- First build for Borhan CE.
 - Bounced version to 0.12. 
 
 %changelog

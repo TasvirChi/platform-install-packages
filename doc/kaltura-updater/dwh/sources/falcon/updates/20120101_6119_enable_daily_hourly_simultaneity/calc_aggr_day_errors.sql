@@ -1,6 +1,6 @@
 DELIMITER $$
 
-USE `kalturadw`$$
+USE `borhandw`$$
 
 DROP PROCEDURE IF EXISTS `calc_aggr_day_errors`$$
 
@@ -14,7 +14,7 @@ BEGIN
  
         SELECT aggr_table, IF(IFNULL(aggr_id_field,'')='','', CONCAT(', ', aggr_id_field)) aggr_id_field
         INTO  v_aggr_table, v_aggr_id_field_str
-        FROM kalturadw_ds.aggr_name_resolver
+        FROM borhandw_ds.aggr_name_resolver
         WHERE aggr_name = 'errors';
  
  
@@ -22,18 +22,18 @@ BEGIN
  
         SELECT MAX(DATE(NOW() - INTERVAL archive_delete_days_back DAY))
         INTO v_ignore
-        FROM kalturadw_ds.retention_policy
+        FROM borhandw_ds.retention_policy
         WHERE table_name IN ('dwh_fact_errors');
  
         IF (p_date_val >= v_ignore) THEN
-                SET @s = CONCAT('DELETE FROM kalturadw.',v_aggr_table, ' WHERE date_id = DATE(\'',p_date_val,'\')*1 and hour_id = ', p_hour_id);
+                SET @s = CONCAT('DELETE FROM borhandw.',v_aggr_table, ' WHERE date_id = DATE(\'',p_date_val,'\')*1 and hour_id = ', p_hour_id);
 		
                 PREPARE stmt FROM  @s;
                 EXECUTE stmt;
                 DEALLOCATE PREPARE stmt;
                 SELECT DATE(archive_last_partition)
                 INTO v_from_archive
-                FROM kalturadw_ds.retention_policy
+                FROM borhandw_ds.retention_policy
                 WHERE table_name = 'dwh_fact_errors';
  
                 IF (p_date_val >= v_from_archive) THEN
@@ -41,7 +41,7 @@ BEGIN
                 ELSE
                         SET v_table_name = 'dwh_fact_errors_archive';
                 END IF;
-                SET @s = CONCAT('INSERT INTO kalturadw.', v_aggr_table, ' (partner_id, date_id, hour_id ', v_aggr_id_field_str,', count_errors)'
+                SET @s = CONCAT('INSERT INTO borhandw.', v_aggr_table, ' (partner_id, date_id, hour_id ', v_aggr_id_field_str,', count_errors)'
 				'SELECT partner_id, error_date_id, error_hour_id hour_id', v_aggr_id_field_str,', count(*)
 				FROM ', v_table_name, '    WHERE error_date_id=date(\'',p_date_val,'\')*1 AND error_hour_id = ',p_hour_id,'
 				GROUP BY partner_id', v_aggr_id_field_str);

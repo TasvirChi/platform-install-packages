@@ -1,8 +1,8 @@
 %global libzen_version  0.4.34
-%define prefix /opt/kaltura
+%define prefix /opt/borhan
 %define libname libmediainfo
 
-Name:           kaltura-libmediainfo
+Name:           borhan-libmediainfo
 Version:        0.7.61
 Release:        4
 Summary:        Library for supplies technical and tag information about a video or audio file
@@ -118,8 +118,8 @@ rm -f %{buildroot}%{prefix}/lib/%{libname}.la
 %{prefix}/lib/%{libname}.a
 
 %changelog
-* Sat Sep 3 2016 Jess Portnoy <jess.portnoy@kaltura.com> 0.7.61-2
-- Custom build for Kaltura CE, adopted from EPEL's mediainfo
+* Sat Sep 3 2016 Jess Portnoy <jess.portnoy@borhan.com> 0.7.61-2
+- Custom build for Borhan CE, adopted from EPEL's mediainfo
 
 * Tue Oct 23 2012 Vasiliy N. Glazov <vascom2@gmail.com> 0.7.61-1
 - Update to 0.7.61

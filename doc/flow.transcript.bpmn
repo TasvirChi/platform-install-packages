@@ -1,23 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" xmlns:tns="http://www.kaltura.com/bpm" xmlns:yaoqiang="http://bpmn.sourceforge.net" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.kaltura.com/bpm" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd" id="_1421308331967" exporter="camunda modeler" exporterVersion="2.7.0">
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:activiti="http://activiti.org/bpmn" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:omgdc="http://www.omg.org/spec/DD/20100524/DC" xmlns:omgdi="http://www.omg.org/spec/DD/20100524/DI" xmlns:tns="http://www.borhan.com/bpm" xmlns:yaoqiang="http://bpmn.sourceforge.net" typeLanguage="http://www.w3.org/2001/XMLSchema" expressionLanguage="http://www.w3.org/1999/XPath" targetNamespace="http://www.borhan.com/bpm" xsi:schemaLocation="http://www.omg.org/spec/BPMN/20100524/MODEL BPMN20.xsd" id="_1421308331967" exporter="camunda modeler" exporterVersion="2.7.0">
   <message id="captionAssetAdded" name="captionAssetAdded"></message>
   <message id="humanTranscriptDone" name="humanTranscriptDone"></message>
   <process id="flow-transcript" name="flow-transcript" isExecutable="true">
     <startEvent id="theStart" name="Start"></startEvent>
     <sequenceFlow id="flow1" sourceRef="theStart" targetRef="setVars"></sequenceFlow>
     <scriptTask id="setVars" name="Set Variables" scriptFormat="javascript" activiti:autoStoreVariables="false">
-      <script>importPackage(com.kaltura.client.enums);
-importPackage(com.kaltura.client.types);
+      <script>importPackage(com.borhan.client.enums);
+importPackage(com.borhan.client.types);
 
 println("Initializing variables, entry id[" + entryId + "], partner id [" + partnerId + "], template id [" + templateId + "]");
 
-execution.setVariable("sessionType", KalturaSessionType.ADMIN);
+execution.setVariable("sessionType", BorhanSessionType.ADMIN);
 
-var captionAssetFilter = new KalturaCaptionAssetFilter();
+var captionAssetFilter = new BorhanCaptionAssetFilter();
 captionAssetFilter.entryIdEqual = entryId;
 execution.setVariable("captionAssetFilter", captionAssetFilter);
 
-var captionAssetPager = new KalturaFilterPager();
+var captionAssetPager = new BorhanFilterPager();
 captionAssetPager.pageSize = 1;
 execution.setVariable("captionAssetPager", captionAssetPager);
 
@@ -25,7 +25,7 @@ println("Variables initialized");
 </script>
     </scriptTask>
     <sequenceFlow id="flow10" sourceRef="setVars" targetRef="initClient"></sequenceFlow>
-    <callActivity id="initClient" name="Init Client" calledElement="kaltura-client">
+    <callActivity id="initClient" name="Init Client" calledElement="borhan-client">
       <extensionElements>
         <activiti:in source="endPoint" target="endPoint"></activiti:in>
         <activiti:in source="partnerId" target="partnerId"></activiti:in>
@@ -35,7 +35,7 @@ println("Variables initialized");
       </extensionElements>
     </callActivity>
     <sequenceFlow id="flow11" sourceRef="initClient" targetRef="getMetadata"></sequenceFlow>
-    <callActivity id="captionAsset.list" name="captionAsset.list" calledElement="kaltura-captionAsset-list">
+    <callActivity id="captionAsset.list" name="captionAsset.list" calledElement="borhan-captionAsset-list">
       <extensionElements>
         <activiti:in source="client" target="client"></activiti:in>
         <activiti:in source="captionAssetFilter" target="filter"></activiti:in>
@@ -48,7 +48,7 @@ println("Variables initialized");
     <sequenceFlow id="flow12" name="Yes" sourceRef="captionsFound" targetRef="setTranscriptAlignment">
       <conditionExpression xsi:type="tFormalExpression"><![CDATA[${captionAssets.totalCount > 0}]]></conditionExpression>
     </sequenceFlow>
-    <callActivity id="transcriptAlignment" name="Run Transcript Alignment" calledElement="kaltura-integrate">
+    <callActivity id="transcriptAlignment" name="Run Transcript Alignment" calledElement="borhan-integrate">
       <extensionElements>
         <activiti:in source="client" target="client"></activiti:in>
         <activiti:in source="templateId" target="templateId"></activiti:in>
@@ -62,7 +62,7 @@ println("Variables initialized");
     <sequenceFlow id="flow13" name="No" sourceRef="captionsFound" targetRef="setMachineSpeech2text">
       <conditionExpression xsi:type="tFormalExpression"><![CDATA[${captionAssets.totalCount == 0}]]></conditionExpression>
     </sequenceFlow>
-    <callActivity id="machineSpeech2text" name="Run Machine Speech2Text" calledElement="kaltura-integrate">
+    <callActivity id="machineSpeech2text" name="Run Machine Speech2Text" calledElement="borhan-integrate">
       <extensionElements>
         <activiti:in source="client" target="client"></activiti:in>
         <activiti:in source="templateId" target="templateId"></activiti:in>
@@ -83,18 +83,18 @@ println("Variables initialized");
     <dataObject id="flavorId" name="flavorId" itemSubjectRef="xsd:string"></dataObject>
     <endEvent id="theEnd" name="End"></endEvent>
     <scriptTask id="setTranscriptAlignment" name="Set Transcript Alignment" scriptFormat="javascript" activiti:autoStoreVariables="false">
-      <script>importPackage(com.kaltura.client.enums);
-	importPackage(com.kaltura.client.types);
+      <script>importPackage(com.borhan.client.enums);
+	importPackage(com.borhan.client.types);
 	
 	println("Setting variables for transcript alignment");
 	
-	var transcriptAlignmentData = new KalturaIntegrationJobData();
-	transcriptAlignmentData.providerType = KalturaIntegrationProviderType.EXAMPLE;
-	transcriptAlignmentData.providerData = new KalturaExampleIntegrationJobProviderData();
+	var transcriptAlignmentData = new BorhanIntegrationJobData();
+	transcriptAlignmentData.providerType = BorhanIntegrationProviderType.EXAMPLE;
+	transcriptAlignmentData.providerData = new BorhanExampleIntegrationJobProviderData();
 	transcriptAlignmentData.providerData.exampleUrl = "http://transcript.align";
 	
 	execution.setVariable("transcriptAlignmentData", transcriptAlignmentData);
-	execution.setVariable("transcriptAlignmentObjectType", KalturaBatchJobObjectType.ASSET);
+	execution.setVariable("transcriptAlignmentObjectType", BorhanBatchJobObjectType.ASSET);
 	execution.setVariable("transcriptAlignmentObjectId", flavorId);
 	
 	println("Variables for transcript alignment defined");
@@ -102,18 +102,18 @@ println("Variables initialized");
     </scriptTask>
     <sequenceFlow id="flow17" sourceRef="setTranscriptAlignment" targetRef="transcriptAlignment"></sequenceFlow>
     <scriptTask id="setMachineSpeech2text" name="Set Machine Speech2Text" scriptFormat="javascript" activiti:autoStoreVariables="false">
-      <script>importPackage(com.kaltura.client.enums);
-	importPackage(com.kaltura.client.types);
+      <script>importPackage(com.borhan.client.enums);
+	importPackage(com.borhan.client.types);
 	
 	println("Setting variables for speach to text");
 	
-	var speach2TextData = new KalturaIntegrationJobData();
-	speach2TextData.providerType = KalturaIntegrationProviderType.EXAMPLE;
-	speach2TextData.providerData = new KalturaExampleIntegrationJobProviderData();
+	var speach2TextData = new BorhanIntegrationJobData();
+	speach2TextData.providerType = BorhanIntegrationProviderType.EXAMPLE;
+	speach2TextData.providerData = new BorhanExampleIntegrationJobProviderData();
 	speach2TextData.providerData.exampleUrl = "http://speach.2.text";
 	
 	execution.setVariable("speach2TextData", speach2TextData);
-	execution.setVariable("speach2TextObjectType", KalturaBatchJobObjectType.ASSET);
+	execution.setVariable("speach2TextObjectType", BorhanBatchJobObjectType.ASSET);
 	execution.setVariable("speach2TextObjectId", flavorId);
 	
 	println("Variables for speach to text defined");
@@ -124,10 +124,10 @@ println("Variables initialized");
       <conditionExpression xsi:type="tFormalExpression"><![CDATA[${contributorSource == "No Human"}]]></conditionExpression>
     </sequenceFlow>
     <scriptTask id="getMetadata" name="Get Metadata" scriptFormat="javascript" activiti:autoStoreVariables="false">
-      <script>importPackage(com.kaltura.client.utils);
-importPackage(com.kaltura.client.enums);
+      <script>importPackage(com.borhan.client.utils);
+importPackage(com.borhan.client.enums);
 
-var objectType = KalturaMetadataObjectType.ENTRY;
+var objectType = BorhanMetadataObjectType.ENTRY;
 var profileSystemName = "Transcript";
 var xPath = "/metadata/ContributorSource";
 var contributorSource = MetadataUtils.getValue(client, entryId, objectType, profileSystemName, xPath);
@@ -138,10 +138,10 @@ println("Metadata initialized, contributorSource [" + contributorSource + "]");
     </scriptTask>
     <sequenceFlow id="flow20" sourceRef="getMetadata" targetRef="captionAsset.list"></sequenceFlow>
     <scriptTask id="setMetadataManila" name="Set Metadata - Wait for Manila" scriptFormat="javascript" activiti:autoStoreVariables="false">
-      <script>importPackage(com.kaltura.client.utils);
-importPackage(com.kaltura.client.enums);
+      <script>importPackage(com.borhan.client.utils);
+importPackage(com.borhan.client.enums);
 
-var objectType = KalturaMetadataObjectType.ENTRY;
+var objectType = BorhanMetadataObjectType.ENTRY;
 var profileSystemName = "Transcript";
 var xPath = "/metadata/WaitingForHumanTranscript";
 var metadataValue = "Waiting for Publisher";
@@ -151,12 +151,12 @@ println("Metadata changed, WaitingForHumanTranscript [" + metadataValue + "]");
 </script>
     </scriptTask>
     <scriptTask id="setCielo24EventNotification" name="Set Cielo24 Event-Notification" scriptFormat="javascript" activiti:autoStoreVariables="false">
-      <script>importPackage(com.kaltura.client.enums);
+      <script>importPackage(com.borhan.client.enums);
 
 var cielo24DispatchSystemName = "dispatch_cielo24_human_transcript";
 execution.setVariable("cielo24DispatchSystemName", cielo24DispatchSystemName);
 
-var cielo24DispatchObjectType = KalturaEventNotificationEventObjectType.ENTRY;
+var cielo24DispatchObjectType = BorhanEventNotificationEventObjectType.ENTRY;
 execution.setVariable("cielo24DispatchObjectType", cielo24DispatchObjectType);
 </script>
     </scriptTask>
@@ -166,7 +166,7 @@ execution.setVariable("cielo24DispatchObjectType", cielo24DispatchObjectType);
     <sequenceFlow id="flow22" name="Cielo24" sourceRef="secondPass" targetRef="setCielo24EventNotification">
       <conditionExpression xsi:type="tFormalExpression"><![CDATA[${contributorSource == "Cielo24"}]]></conditionExpression>
     </sequenceFlow>
-    <callActivity id="eventNotificationTemplate.dispath" name="eventNotificationTemplate.dispath" calledElement="kaltura-eventNotificationTemplate-dispatchBySystemName">
+    <callActivity id="eventNotificationTemplate.dispath" name="eventNotificationTemplate.dispath" calledElement="borhan-eventNotificationTemplate-dispatchBySystemName">
       <extensionElements>
         <activiti:in source="client" target="client"></activiti:in>
         <activiti:in source="cielo24DispatchSystemName" target="systemName"></activiti:in>

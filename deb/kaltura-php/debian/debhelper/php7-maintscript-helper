@@ -162,7 +162,7 @@ php7_msg()
 #	particular piece of configuration, a site or a module. It carefully
 #	checks whether the supplied configuration snippet exists and reloads the
 #	web server if the site administrator desires that by call dpkg trigger
-#       /opt/kaltura/app/configurations/php/SAPI/conf.d which is defined for apache2, apache2filter and fpm.
+#       /opt/borhan/app/configurations/php/SAPI/conf.d which is defined for apache2, apache2filter and fpm.
 #
 # Parameters:
 #	command - The command to invoke. Recognized commands are "enconf",
@@ -271,7 +271,7 @@ php7_invoke()
 		;;
 	esac
 	if [ -n "${PHP_NEED_ACTION:-}" -a -n "$rcd_action" ]; then
-	    dpkg-trigger /opt/kaltura/app/configurations/php/$SAPI/conf.d
+	    dpkg-trigger /opt/borhan/app/configurations/php/$SAPI/conf.d
 	fi
     done
 }

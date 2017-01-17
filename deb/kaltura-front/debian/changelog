@@ -1,234 +1,234 @@
-kaltura-front (12.8.0-1) lynx; urgency=low
+borhan-front (12.8.0-1) lynx; urgency=low
 
   * Switching to 12.8.0
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Thu, 22 Dec 2016 13:55:53 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Thu, 22 Dec 2016 13:55:53 +0000
 
-kaltura-front (12.7.0-1) lynx; urgency=low
+borhan-front (12.7.0-1) lynx; urgency=low
 
   * Switching to 12.7.0
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Tue, 13 Dec 2016 16:04:39 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Tue, 13 Dec 2016 16:04:39 +0000
 
-kaltura-front (12.6.0-1) lynx; urgency=low
+borhan-front (12.6.0-1) lynx; urgency=low
 
   * Switching to 12.6.0
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Thu, 24 Nov 2016 21:42:21 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Thu, 24 Nov 2016 21:42:21 +0000
 
-kaltura-front (12.5.0-1) lynx; urgency=low
+borhan-front (12.5.0-1) lynx; urgency=low
 
   * Switching to 12.5.0
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Wed, 09 Nov 2016 14:40:55 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Wed, 09 Nov 2016 14:40:55 +0000
 
-kaltura-front (12.4.0-1) lynx; urgency=low
+borhan-front (12.4.0-1) lynx; urgency=low
 
   * Switching to 12.4.0
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Tue, 11 Oct 2016 13:12:21 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Tue, 11 Oct 2016 13:12:21 +0000
 
-kaltura-front (12.3.0-1) lynx; urgency=low
+borhan-front (12.3.0-1) lynx; urgency=low
 
   * Switching to 12.3.0
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Tue, 27 Sep 2016 13:17:40 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Tue, 27 Sep 2016 13:17:40 +0000
 
-kaltura-front (12.2.0-1) lynx; urgency=low
+borhan-front (12.2.0-1) lynx; urgency=low
 
   * Switching to 12.2.0
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Wed, 14 Sep 2016 15:02:03 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Wed, 14 Sep 2016 15:02:03 +0000
 
-kaltura-front (12.1.0-1) lynx; urgency=low
+borhan-front (12.1.0-1) lynx; urgency=low
 
   * Switching to 12.1.0
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Mon, 29 Aug 2016 15:07:45 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Mon, 29 Aug 2016 15:07:45 +0000
 
-kaltura-front (12.0.0-1) lynx; urgency=low
+borhan-front (12.0.0-1) lynx; urgency=low
 
   * Switching to 12.0.0
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Mon, 15 Aug 2016 13:56:35 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Mon, 15 Aug 2016 13:56:35 +0000
 
-kaltura-front (11.21.0-1) kajam; urgency=low
+borhan-front (11.21.0-1) kajam; urgency=low
 
   * Switching to 11.21.0
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Tue, 09 Aug 2016 13:40:14 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Tue, 09 Aug 2016 13:40:14 +0000
 
-kaltura-front (11.20.0-1) kajam; urgency=low
+borhan-front (11.20.0-1) kajam; urgency=low
 
   * Switching to 11.20.0
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Wed, 20 Jul 2016 01:53:56 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Wed, 20 Jul 2016 01:53:56 +0000
 
-kaltura-front (11.18.0-1) kajam; urgency=low
+borhan-front (11.18.0-1) kajam; urgency=low
 
   * Switching to 11.18.0
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Sun, 26 Jun 2016 14:35:04 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Sun, 26 Jun 2016 14:35:04 +0000
 
-kaltura-front (11.16.0-1) kajam; urgency=low
+borhan-front (11.16.0-1) kajam; urgency=low
 
   * Switching to 11.16.0
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Tue, 24 May 2016 16:07:46 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Tue, 24 May 2016 16:07:46 +0000
 
-kaltura-front (11.13.0-1) kajam; urgency=low
+borhan-front (11.13.0-1) kajam; urgency=low
 
   * Switching to 11.13.0
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Tue, 12 Apr 2016 14:57:46 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Tue, 12 Apr 2016 14:57:46 +0000
 
-kaltura-front (11.12.0-1) kajam; urgency=low
+borhan-front (11.12.0-1) kajam; urgency=low
 
   * Switching to 11.12.0
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Mon, 28 Mar 2016 20:34:48 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Mon, 28 Mar 2016 20:34:48 +0000
 
-kaltura-front (11.11.0-1) kajam; urgency=low
+borhan-front (11.11.0-1) kajam; urgency=low
 
   * Switching to 11.11.0
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Tue, 15 Mar 2016 11:36:38 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Tue, 15 Mar 2016 11:36:38 +0000
 
-kaltura-front (11.10.0-1) kajam; urgency=low
+borhan-front (11.10.0-1) kajam; urgency=low
 
   * Switching to 11.10.0
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Tue, 01 Mar 2016 15:38:14 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Tue, 01 Mar 2016 15:38:14 +0000
 
-kaltura-front (11.9.0-1) kajam; urgency=low
+borhan-front (11.9.0-1) kajam; urgency=low
 
   * Switching to 11.9.0
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Mon, 15 Feb 2016 15:26:17 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Mon, 15 Feb 2016 15:26:17 +0000
 
-kaltura-front (11.8.0-1) kajam; urgency=low
+borhan-front (11.8.0-1) kajam; urgency=low
 
   * Switching to 11.8.0
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Mon, 01 Feb 2016 19:16:45 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Mon, 01 Feb 2016 19:16:45 +0000
 
-kaltura-front (11.7.0-1) kajam; urgency=low
+borhan-front (11.7.0-1) kajam; urgency=low
 
   * Switching to 11.7.0
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Mon, 18 Jan 2016 13:20:44 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Mon, 18 Jan 2016 13:20:44 +0000
 
-kaltura-front (11.6.0-1) kajam; urgency=low
+borhan-front (11.6.0-1) kajam; urgency=low
 
   * Switching to 11.6.0
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Tue, 05 Jan 2016 13:10:15 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Tue, 05 Jan 2016 13:10:15 +0000
 
-kaltura-front (11.5.0-1) kajam; urgency=low
+borhan-front (11.5.0-1) kajam; urgency=low
 
   * Switching to 11.5.0
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Mon, 21 Dec 2015 14:04:12 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Mon, 21 Dec 2015 14:04:12 +0000
 
-kaltura-front (11.4.0-1) kajam; urgency=low
+borhan-front (11.4.0-1) kajam; urgency=low
 
   * Switching to 11.4.0
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Mon, 07 Dec 2015 13:34:42 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Mon, 07 Dec 2015 13:34:42 +0000
 
-kaltura-front (11.3.0-1) kajam; urgency=low
+borhan-front (11.3.0-1) kajam; urgency=low
 
   * Switching to 11.3.0
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Mon, 23 Nov 2015 12:22:48 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Mon, 23 Nov 2015 12:22:48 +0000
 
-kaltura-front (11.2.0-1) kajam; urgency=low
+borhan-front (11.2.0-1) kajam; urgency=low
 
   * Switching to 11.2.0
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Mon, 09 Nov 2015 13:50:23 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Mon, 09 Nov 2015 13:50:23 +0000
 
-kaltura-front (11.1.0-1) kajam; urgency=low
+borhan-front (11.1.0-1) kajam; urgency=low
 
   * Switching to 11.1.0
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Mon, 26 Oct 2015 11:59:20 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Mon, 26 Oct 2015 11:59:20 +0000
 
-kaltura-front (11.0.0-1) kajam; urgency=low
+borhan-front (11.0.0-1) kajam; urgency=low
 
   * Switching to 11.0.0
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Mon, 12 Oct 2015 12:55:00 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Mon, 12 Oct 2015 12:55:00 +0000
 
-kaltura-front (10.21.0-2) jupiter; urgency=low
+borhan-front (10.21.0-2) jupiter; urgency=low
 
   * if a CA cert was provided, use -CAfile when execing openssl verify.
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Wed, 07 Oct 2015 17:37:05 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Wed, 07 Oct 2015 17:37:05 +0000
 
-kaltura-front (10.21.0-1) jupiter; urgency=low
+borhan-front (10.21.0-1) jupiter; urgency=low
 
   * Switching to 10.21.0
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Mon, 21 Sep 2015 12:39:17 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Mon, 21 Sep 2015 12:39:17 +0000
 
-kaltura-front (10.20.0-1) jupiter; urgency=low
+borhan-front (10.20.0-1) jupiter; urgency=low
 
   * Switching to 10.20.0
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Mon, 07 Sep 2015 14:32:58 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Mon, 07 Sep 2015 14:32:58 +0000
 
-kaltura-front (10.19.0-1) jupiter; urgency=low
-
-  * Switching to 10.19.0
-
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Mon, 24 Aug 2015 10:30:36 +0000
-
-kaltura-front (10.19.0-1) jupiter; urgency=low
+borhan-front (10.19.0-1) jupiter; urgency=low
 
   * Switching to 10.19.0
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Mon, 24 Aug 2015 10:29:39 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Mon, 24 Aug 2015 10:30:36 +0000
 
-kaltura-front (10.18.0-1) jupiter; urgency=low
+borhan-front (10.19.0-1) jupiter; urgency=low
+
+  * Switching to 10.19.0
+
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Mon, 24 Aug 2015 10:29:39 +0000
+
+borhan-front (10.18.0-1) jupiter; urgency=low
 
   * Switching to 10.18.0
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Mon, 10 Aug 2015 10:41:05 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Mon, 10 Aug 2015 10:41:05 +0000
 
-kaltura-front (10.17.0-1) jupiter; urgency=low
+borhan-front (10.17.0-1) jupiter; urgency=low
 
   * if service apache2 reload failed lets try service apache2 restart
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Thu, 30 Jul 2015 18:52:39 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Thu, 30 Jul 2015 18:52:39 +0000
 
-kaltura-front (10.15.0-1) jupiter; urgency=low
+borhan-front (10.15.0-1) jupiter; urgency=low
 
   * call db_stop post input stage
   * replace tokens in studio.template.ini
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Mon, 13 Jul 2015 12:23:23 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Mon, 13 Jul 2015 12:23:23 +0000
 
-kaltura-front (10.12.0-1) jupiter; urgency=low
+borhan-front (10.12.0-1) jupiter; urgency=low
 
   * Ver bounce.
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Sun, 31 May 2015 13:00:24 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Sun, 31 May 2015 13:00:24 +0000
 
-kaltura-front (10.11.0-1) jupiter; urgency=low
+borhan-front (10.11.0-1) jupiter; urgency=low
 
   * fix detection of HTML5lib and studio vers.
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Wed, 20 May 2015 17:29:39 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Wed, 20 May 2015 17:29:39 +0000
 
-kaltura-front (10.10.0-1) experimental; urgency=low
+borhan-front (10.10.0-1) experimental; urgency=low
 
   * fix call to send_install_becon
 
- -- Jess Portnoy <jess.portnoy@kaltura.com>  Mon, 27 Apr 2015 16:02:43 +0200
+ -- Jess Portnoy <jess.portnoy@borhan.com>  Mon, 27 Apr 2015 16:02:43 +0200
 
-kaltura-front (10.9.0-1) experimental; urgency=low
+borhan-front (10.9.0-1) experimental; urgency=low
 
   * Switching to 10.9.0
 
- -- Jess Portnoy <jess.portnoy@kaltura.com>  Tue, 7 Apr 2015 16:02:43 +0200
+ -- Jess Portnoy <jess.portnoy@borhan.com>  Tue, 7 Apr 2015 16:02:43 +0200

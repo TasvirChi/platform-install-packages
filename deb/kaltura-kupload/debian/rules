@@ -4,10 +4,10 @@ DEB_VERSION := $(shell dpkg-parsechangelog | egrep '^Version:' | cut -f 2 -d ' '
 RC_FILE :=../../build/sources.rc
 KUPLOAD_VERSION ?= $(shell egrep '^KUPLOAD_VERSION=' $(RC_FILE) | cut -d = -f 2| sed 's@"@@g')
 SOURCE_PACKAGING_DIR ?= $(shell egrep '^SOURCE_PACKAGING_DIR=' $(RC_FILE) | cut -d = -f 2| sed 's@"@@g')
-KALTURA_PREFIX ?= $(shell egrep '^KALTURA_PREFIX=' $(RC_FILE) | cut -d = -f 2| sed 's@"@@g')
-KUPLOAD_PREFIX=$(KALTURA_PREFIX)/web/flash/kupload
+BORHAN_PREFIX ?= $(shell egrep '^BORHAN_PREFIX=' $(RC_FILE) | cut -d = -f 2| sed 's@"@@g')
+KUPLOAD_PREFIX=$(BORHAN_PREFIX)/web/flash/kupload
 include ../includes/build-revision.mk
-archive := $(SOURCE_PACKAGING_DIR)/kaltura-kupload-$(KUPLOAD_VERSION).zip
+archive := $(SOURCE_PACKAGING_DIR)/borhan-kupload-$(KUPLOAD_VERSION).zip
 tree := $(KUPLOAD_VERSION)
 
 clean:
@@ -16,7 +16,7 @@ clean:
 	rm -rf debian/tmp
 
 $(archive):
-	$(SOURCE_PACKAGING_DIR)/platform-install-packages/build/package_kaltura_kupload.sh	
+	$(SOURCE_PACKAGING_DIR)/platform-install-packages/build/package_borhan_kupload.sh	
 
 $(tree): $(archive)
 	unzip -qq -o $(archive)

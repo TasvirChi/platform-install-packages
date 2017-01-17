@@ -1,5 +1,5 @@
-# Creates a kaltura server from a standard centos-6.5 installation
-# this will always create the latest kaltura version using install scripts
+# Creates a borhan server from a standard centos-6.5 installation
+# this will always create the latest borhan version using install scripts
 
 VAGRANTFILE_API_VERSION = "2"
 
@@ -11,6 +11,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     v.memory = 1024
   end
   config.vm.provision "file", source: "oflaDemo-r4472-java6.war", destination: "oflaDemo-r4472-java6.war"
-  config.vm.provision "file", source: "kaltura-install-config.sh", destination: "kaltura-install-config.sh"
-  config.vm.provision "shell", path: "kaltura-install.sh"
+  config.vm.provision "file", source: "borhan-install-config.sh", destination: "borhan-install-config.sh"
+  config.vm.provision "shell", path: "borhan-install.sh"
 end

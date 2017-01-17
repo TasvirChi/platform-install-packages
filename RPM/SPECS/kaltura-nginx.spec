@@ -1,7 +1,7 @@
 #
 %define nginx_home %{_localstatedir}/cache/nginx
-%define nginx_user kaltura
-%define nginx_group kaltura
+%define nginx_user borhan
+%define nginx_group borhan
 %define optflags -O3
 # distribution specific definitions
 %define use_systemd (0%{?fedora} && 0%{?fedora} >= 18) || (0%{?rhel} && 0%{?rhel} >= 7)
@@ -47,11 +47,11 @@ Requires(pre): pwdutils
 %define nginx_rtmp_ver 1.1.10
 # end of distribution specific definitions
 
-Summary: High performance web server customized for Kaltura VOD
-Name: kaltura-nginx
+Summary: High performance web server customized for Borhan VOD
+Name: borhan-nginx
 Version: 1.10.2
 Release: 6
-Vendor: Kaltura inc.
+Vendor: Borhan inc.
 URL: http://nginx.org/
 
 Source0: %{name}-%{version}.tar.gz
@@ -69,18 +69,18 @@ Source11: nginx-secure-token-module-%{nginx_secure_token_ver}.zip
 Source12: nginx-akamai-token-validate-module-%{nginx_token_validate_ver}.zip
 Source13: nginx-module-vts-v%{nginx_vts_ver}.zip
 Source14: nginx-module-rtmp-v%{nginx_rtmp_ver}.zip
-Source15: nginx_kaltura.conf.template 
+Source15: nginx_borhan.conf.template 
 Source16: nginx.conf.template 
 Source17: nginx_ssl.conf.template
-#Patch1: nginx_kaltura.diff 
+#Patch1: nginx_borhan.diff 
 
 License: 2-clause BSD-like license
 
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
 BuildRequires: zlib-devel
 BuildRequires: pcre-devel
-BuildRequires: kaltura-ffmpeg-devel
-Requires: kaltura-ffmpeg
+BuildRequires: borhan-ffmpeg-devel
+Requires: borhan-ffmpeg
 
 Provides: webserver
 Conflicts: nginx
@@ -88,13 +88,13 @@ Conflicts: nginx
 %description
 nginx [engine x] is an HTTP and reverse proxy server, as well as
 a mail proxy server.
-This is a custom Nginx build for the Kaltura VOD module.
-Please see: https://github.com/kaltura/nginx-vod-module for more info.
+This is a custom Nginx build for the Borhan VOD module.
+Please see: https://github.com/borhan/nginx-vod-module for more info.
 
 %package debug
 Summary: debug version of nginx
 Group: System Environment/Daemons
-Requires: kaltura-nginx, kaltura-postinst
+Requires: borhan-nginx, borhan-postinst
 %description debug
 Not stripped version of nginx built with the debugging log support.
 
@@ -113,8 +113,8 @@ unzip -o %{SOURCE14}
 
 
 %build
-LIBRARY_PATH=/opt/kaltura/ffmpeg-3.2/lib
-C_INCLUDE_PATH=/opt/kaltura/ffmpeg-3.2/include
+LIBRARY_PATH=/opt/borhan/ffmpeg-3.2/lib
+C_INCLUDE_PATH=/opt/borhan/ffmpeg-3.2/include
 export LIBRARY_PATH C_INCLUDE_PATH
 
 ./configure \
@@ -222,15 +222,15 @@ make %{?_smp_mflags}
 %{__rm} $RPM_BUILD_ROOT%{_sysconfdir}/nginx/nginx.conf
 #%{__install} -m 644 -p %{SOURCE4} \
 #   $RPM_BUILD_ROOT%{_sysconfdir}/nginx/nginx.conf
-#%{__install} -m 644 -p %{_builddir}/nginx-%{version}/nginx-vod-module-%{nginx_vod_module_ver}/conf/kaltura.conf.template \
-#   $RPM_BUILD_ROOT%{_sysconfdir}/nginx/conf.d/kaltura.conf.template
+#%{__install} -m 644 -p %{_builddir}/nginx-%{version}/nginx-vod-module-%{nginx_vod_module_ver}/conf/borhan.conf.template \
+#   $RPM_BUILD_ROOT%{_sysconfdir}/nginx/conf.d/borhan.conf.template
 #%{__install} -m 644 -p %{_builddir}/nginx-%{version}/nginx-vod-module-%{nginx_vod_module_ver}/conf/nginx.conf.template \
 #   $RPM_BUILD_ROOT%{_sysconfdir}/nginx/conf.d/nginx.conf.template
 #%{__install} -m 644 -p %{_builddir}/nginx-%{version}/nginx-vod-module-%{nginx_vod_module_ver}/conf/ssl.conf.template \
 #   $RPM_BUILD_ROOT%{_sysconfdir}/nginx/conf.d/ssl.conf.template
 
 %{__install} -m 644 -p %{SOURCE15} \
-   $RPM_BUILD_ROOT%{_sysconfdir}/nginx/conf.d/kaltura.conf.template
+   $RPM_BUILD_ROOT%{_sysconfdir}/nginx/conf.d/borhan.conf.template
 %{__install} -m 644 -p %{SOURCE16} \
    $RPM_BUILD_ROOT%{_sysconfdir}/nginx/conf.d/nginx.conf.template
 %{__install} -m 644 -p %{SOURCE17} \
@@ -244,7 +244,7 @@ make %{?_smp_mflags}
 # install systemd-specific files
 %{__mkdir} -p $RPM_BUILD_ROOT%{_unitdir}
 %{__install} -m644 %SOURCE8 \
-        $RPM_BUILD_ROOT%{_unitdir}/kaltura-nginx.service
+        $RPM_BUILD_ROOT%{_unitdir}/borhan-nginx.service
 %{__mkdir} -p $RPM_BUILD_ROOT%{_libexecdir}/initscripts/legacy-actions/nginx
 %{__install} -m755 %SOURCE9 \
         $RPM_BUILD_ROOT%{_libexecdir}/initscripts/legacy-actions/nginx/upgrade
@@ -253,10 +253,10 @@ make %{?_smp_mflags}
 %{__mkdir} -p $RPM_BUILD_ROOT%{_initrddir}
 %if 0%{?suse_version}
 %{__install} -m755 %{SOURCE7} \
-   $RPM_BUILD_ROOT%{_initrddir}/kaltura-nginx
+   $RPM_BUILD_ROOT%{_initrddir}/borhan-nginx
 %else
 %{__install} -m755 %{SOURCE2} \
-   $RPM_BUILD_ROOT%{_initrddir}/kaltura-nginx
+   $RPM_BUILD_ROOT%{_initrddir}/borhan-nginx
 %endif
 %endif
 
@@ -279,7 +279,7 @@ make %{?_smp_mflags}
 %dir %{_sysconfdir}/nginx/conf.d
 
 #%config(noreplace,missingok) %{_sysconfdir}/nginx/nginx.conf
-%config %{_sysconfdir}/nginx/conf.d/kaltura.conf.template
+%config %{_sysconfdir}/nginx/conf.d/borhan.conf.template
 %config %{_sysconfdir}/nginx/conf.d/ssl.conf.template
 %config %{_sysconfdir}/nginx/conf.d/nginx.conf.template
 %config(noreplace) %{_sysconfdir}/nginx/mime.types
@@ -293,11 +293,11 @@ make %{?_smp_mflags}
 %config(noreplace) %{_sysconfdir}/logrotate.d/nginx
 %config(noreplace) %{_sysconfdir}/sysconfig/nginx
 %if %{use_systemd}
-%{_unitdir}/kaltura-nginx.service
+%{_unitdir}/borhan-nginx.service
 %dir %{_libexecdir}/initscripts/legacy-actions/nginx
 %{_libexecdir}/initscripts/legacy-actions/nginx/*
 %else
-%{_initrddir}/kaltura-nginx
+%{_initrddir}/borhan-nginx
 %endif
 
 %dir %{_datadir}/nginx
@@ -314,7 +314,7 @@ make %{?_smp_mflags}
 # Add the "nginx" user
 # create user/group, and update permissions
 getent group %{nginx_group} >/dev/null || groupadd -r %{nginx_group} -g7373 2>/dev/null
-getent passwd %{nginx_user} >/dev/null || useradd -M -r -u7373  -s /bin/bash -c "Kaltura server" -g %{nginx_group} %{nginx_user} 2>/dev/null
+getent passwd %{nginx_user} >/dev/null || useradd -M -r -u7373  -s /bin/bash -c "Borhan server" -g %{nginx_group} %{nginx_user} 2>/dev/null
 
 
 %post
@@ -323,7 +323,7 @@ if [ $1 -eq 1 ]; then
 %if %{use_systemd}
     /usr/bin/systemctl preset nginx.service >/dev/null 2>&1 ||:
 %else
-    /sbin/chkconfig --add kaltura-nginx
+    /sbin/chkconfig --add borhan-nginx
 %endif
     # print site info
     cat <<BANNER
@@ -360,11 +360,11 @@ fi
 %preun
 if [ $1 -eq 0 ]; then
 %if %use_systemd
-    /usr/bin/systemctl --no-reload disable kaltura-nginx.service >/dev/null 2>&1 ||:
-    /usr/bin/systemctl stop kaltura-nginx.service >/dev/null 2>&1 ||:
+    /usr/bin/systemctl --no-reload disable borhan-nginx.service >/dev/null 2>&1 ||:
+    /usr/bin/systemctl stop borhan-nginx.service >/dev/null 2>&1 ||:
 %else
-    /sbin/service kaltura-nginx stop > /dev/null 2>&1
-    /sbin/chkconfig --del kaltura-nginx
+    /sbin/service borhan-nginx stop > /dev/null 2>&1
+    /sbin/chkconfig --del borhan-nginx
 %endif
 fi
 
@@ -373,52 +373,52 @@ fi
 /usr/bin/systemctl daemon-reload >/dev/null 2>&1 ||:
 %endif
 if [ $1 -ge 1 ]; then
-    /sbin/service kaltura-nginx status  >/dev/null 2>&1 || exit 0
-    /sbin/service kaltura-nginx upgrade >/dev/null 2>&1 || echo \
+    /sbin/service borhan-nginx status  >/dev/null 2>&1 || exit 0
+    /sbin/service borhan-nginx upgrade >/dev/null 2>&1 || echo \
         "Binary upgrade failed, please check nginx's error.log"
 fi
 
 %changelog
-* Tue Dec 28 2016 Jess Portnoy <jess.portnoy@kaltura.com> - 1.10.2-5
+* Tue Dec 28 2016 Jess Portnoy <jess.portnoy@borhan.com> - 1.10.2-5
 - Upgrade to vod module 1.12 [latest stable]
 
-* Tue Dec 6 2016 Jess Portnoy <jess.portnoy@kaltura.com> - 1.10.2-4
+* Tue Dec 6 2016 Jess Portnoy <jess.portnoy@borhan.com> - 1.10.2-4
 - Upgrade to vod module 1.11 [latest stable]
 
-* Mon Nov 7 2016 Jess Portnoy <jess.portnoy@kaltura.com> - 1.10.2-3
+* Mon Nov 7 2016 Jess Portnoy <jess.portnoy@borhan.com> - 1.10.2-3
 - VTS module version v0.1.10
 
-* Thu Oct 27 2016 Jess Portnoy <jess.portnoy@kaltura.com> - 1.10.2-2
+* Thu Oct 27 2016 Jess Portnoy <jess.portnoy@borhan.com> - 1.10.2-2
 - Since our configuration now includes directives that are needed for RTMP but have nothing to do with the vod module, configuration for Nginx will come from the platform-install-packages repo and not the nginx-vod-module
-- Remove noreplace attrib from kaltura nginx config templates
+- Remove noreplace attrib from borhan nginx config templates
 
-* Wed Oct 26 2016 Jess Portnoy <jess.portnoy@kaltura.com> - 1.10.2-1
+* Wed Oct 26 2016 Jess Portnoy <jess.portnoy@borhan.com> - 1.10.2-1
 - Upgrade to 1.10 [latest stable]
 - Nginx now compiled with the RTMP module to be used for Live streaming.
 
-* Sun Sep 18 2016 Jess Portnoy <jess.portnoy@kaltura.com> - 1.8.1-10
+* Sun Sep 18 2016 Jess Portnoy <jess.portnoy@borhan.com> - 1.8.1-10
 - Compiled against FFMPEG 3.1.3
 
-* Sun Aug 21 2016 Jess Portnoy <jess.portnoy@kaltura.com> - 1.8.1-8
-- New Nginx vod module - 1.10. See https://github.com/kaltura/nginx-vod-module/releases/tag/1.10
+* Sun Aug 21 2016 Jess Portnoy <jess.portnoy@borhan.com> - 1.8.1-8
+- New Nginx vod module - 1.10. See https://github.com/borhan/nginx-vod-module/releases/tag/1.10
 
-* Tue Jul 05 2016 David Bezemer <david.bezemer@kaltura.com> - 1.8.1-7
+* Tue Jul 05 2016 David Bezemer <david.bezemer@borhan.com> - 1.8.1-7
 - New Nginx vod module - 1.9 - fixes segfaults with XFF headers
 
-* Wed Jun 30 2016 Jess Portnoy <jess.portnoy@kaltura.com> - 1.8.1-6
+* Wed Jun 30 2016 Jess Portnoy <jess.portnoy@borhan.com> - 1.8.1-6
 - Fixed logrotate config
 
-* Sun May 8 2016 Jess Portnoy <jess.portnoy@kaltura.com> - 1.8.1-5
+* Sun May 8 2016 Jess Portnoy <jess.portnoy@borhan.com> - 1.8.1-5
 - New Nginx vod module - 1.8
 
-* Sun Apr 10 2016 Jess Portnoy <jess.portnoy@kaltura.com> - 1.8.1-4
+* Sun Apr 10 2016 Jess Portnoy <jess.portnoy@borhan.com> - 1.8.1-4
 - New Nginx vod module - 1.7
 - New Nginx secure token module - 1.1
 
-* Tue Mar 29 2016 Jess Portnoy <jess.portnoy@kaltura.com> - 1.8.1-2
-- Correctly check whether the nginx_user [kaltura] exists and if not - create.
+* Tue Mar 29 2016 Jess Portnoy <jess.portnoy@borhan.com> - 1.8.1-2
+- Correctly check whether the nginx_user [borhan] exists and if not - create.
 
-* Tue Feb 23 2016 Jess Portnoy <jess.portnoy@kaltura.com> - 1.8.1-1
+* Tue Feb 23 2016 Jess Portnoy <jess.portnoy@borhan.com> - 1.8.1-1
 - support loading json mapping from file (in addition to http)
 - support hds drm encryption
 - support hls fairplay drm
@@ -428,42 +428,42 @@ fi
 - add concat filter
 - add vod_expires / vod_expires_live settings
 
-* Thu Jan 14 2016 Jess Portnoy <jess.portnoy@kaltura.com> - 1.8.0-12
-- https://github.com/kaltura/nginx-vod-module/pull/210
+* Thu Jan 14 2016 Jess Portnoy <jess.portnoy@borhan.com> - 1.8.0-12
+- https://github.com/borhan/nginx-vod-module/pull/210
 
-* Tue Jan 12 2016 Jess Portnoy <jess.portnoy@kaltura.com> - 1.8.0-10
+* Tue Jan 12 2016 Jess Portnoy <jess.portnoy@borhan.com> - 1.8.0-10
 - decryption
 - vod to live
 - use standard nginx upstreams
 - OpenSSL detection during configure
 
-* Sun Nov 22 2015 Jess Portnoy <jess.portnoy@kaltura.com> - 1.8.0-9
+* Sun Nov 22 2015 Jess Portnoy <jess.portnoy@borhan.com> - 1.8.0-9
 - nginx-vod-module tag 1.4
 
-* Tue Sep 29 2015 Jess Portnoy <jess.portnoy@kaltura.com> - 1.8.0-7
+* Tue Sep 29 2015 Jess Portnoy <jess.portnoy@borhan.com> - 1.8.0-7
 - nginx-vod-module tag 1.3
 
-* Wed Sep 23 2015 Jess Portnoy <jess.portnoy@kaltura.com> - 1.8.0-6
+* Wed Sep 23 2015 Jess Portnoy <jess.portnoy@borhan.com> - 1.8.0-6
 - With VTS v0.1.2 - https://github.com/vozlt/nginx-module-vts/issues/19
 
-* Mon Sep 21 2015 Jess Portnoy <jess.portnoy@kaltura.com> - 1.8.0-5
+* Mon Sep 21 2015 Jess Portnoy <jess.portnoy@borhan.com> - 1.8.0-5
 - nginx-vod-module tag 1.2
 - disabled vts until https://github.com/vozlt/nginx-module-vts/commit/47b07ac42c8f9f895774318e7d117bb2dbf88403 is included in a new tag
 
-* Sun May 31 2015 Jess Portnoy <jess.portnoy@kaltura.com> - 1.8.0-4
+* Sun May 31 2015 Jess Portnoy <jess.portnoy@borhan.com> - 1.8.0-4
 - VTS module now tagged.
 
-* Wed May 13 2015 Jess Portnoy <jess.portnoy@kaltura.com> - 1.8.0-3
+* Wed May 13 2015 Jess Portnoy <jess.portnoy@borhan.com> - 1.8.0-3
 - nginx-vod-module tag 1.1
 
-* Tue May 12 2015 Jess Portnoy <jess.portnoy@kaltura.com> - 1.8.0-2
+* Tue May 12 2015 Jess Portnoy <jess.portnoy@borhan.com> - 1.8.0-2
 - Now with the VTS module from https://github.com/vozlt/nginx-module-vts
 
-* Thu Apr 30 2015 Jess Portnoy <jess.portnoy@kaltura.com> - 1.8.0-1
+* Thu Apr 30 2015 Jess Portnoy <jess.portnoy@borhan.com> - 1.8.0-1
 - Upgraded nginx to 1.8.0 and enabled threads. Needed by Ks new feature.
 - See http://nginx.org/en/CHANGES-1.8 for changelog.
 
-* Tue Apr 28 2015 Jess Portnoy <jess.portnoy@kaltura.com> - 1.6.3-1
+* Tue Apr 28 2015 Jess Portnoy <jess.portnoy@borhan.com> - 1.6.3-1
 - 1.6.3 is now stable:
 - Feature: now the "tcp_nodelay" directive works with SPDY connections.
 - Bugfix: in error handling. Thanks to Yichun Zhang and Daniil Bondarev.
@@ -472,14 +472,14 @@ fi
 - Bugfix: in hash table handling. Thanks to Chris West.
 - Bugfix: in integer overflow handling. Thanks to Régis Leroy.
 
-* Tue Apr 28 2015 Jess Portnoy <jess.portnoy@kaltura.com> - 1.6.2-11
-- Kaltura modules tag 1.0.1
+* Tue Apr 28 2015 Jess Portnoy <jess.portnoy@borhan.com> - 1.6.2-11
+- Borhan modules tag 1.0.1
 
-* Tue Apr 14 2015 Jess Portnoy <jess.portnoy@kaltura.com> - 1.6.2-8
-- Kaltura Nginx modules are now tagged.
+* Tue Apr 14 2015 Jess Portnoy <jess.portnoy@borhan.com> - 1.6.2-8
+- Borhan Nginx modules are now tagged.
 
-* Sun Dec 7 2014 Jess Portnoy <jess.portnoy@kaltura.com> - 1.6.2-2
-- Nginx precompiled with https://github.com/kaltura/nginx-vod-module
+* Sun Dec 7 2014 Jess Portnoy <jess.portnoy@borhan.com> - 1.6.2-2
+- Nginx precompiled with https://github.com/borhan/nginx-vod-module
 
 * Tue Sep 16 2014 Sergey Budnevitch <sb@nginx.com>
 - epoch added to the EPEL7/CentOS7 spec to override EPEL one

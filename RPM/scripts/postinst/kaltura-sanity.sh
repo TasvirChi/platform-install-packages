@@ -1,33 +1,33 @@
 #!/bin/bash - 
 #===============================================================================
-#          FILE: kaltura_sanity.sh
-#         USAGE: ./kaltura_sanity.sh 
+#          FILE: borhan_sanity.sh
+#         USAGE: ./borhan_sanity.sh 
 #   DESCRIPTION: post install sanity script 
 #       OPTIONS: ---
 # 	LICENSE: AGPLv3+
 #  REQUIREMENTS: ---
 #          BUGS: ---
 #         NOTES: ---
-#        AUTHOR: Jess Portnoy (), <jess.portnoy@kaltura.com>
-#  ORGANIZATION: Kaltura, inc.
+#        AUTHOR: Jess Portnoy (), <jess.portnoy@borhan.com>
+#  ORGANIZATION: Borhan, inc.
 #       CREATED: 03/20/14 07:16:53 EDT
 #      REVISION:  ---
 #===============================================================================
 
 #set -o nounset                              # Treat unset variables as an error
 
-KALTURA_FUNCTIONS_RC=`dirname $0`/kaltura-functions.rc
-if [ ! -r "$KALTURA_FUNCTIONS_RC" ];then
-	OUT="${BRIGHT_RED}ERROR:could not find $KALTURA_FUNCTIONS_RC so, exiting..${NORMAL}"
+BORHAN_FUNCTIONS_RC=`dirname $0`/borhan-functions.rc
+if [ ! -r "$BORHAN_FUNCTIONS_RC" ];then
+	OUT="${BRIGHT_RED}ERROR:could not find $BORHAN_FUNCTIONS_RC so, exiting..${NORMAL}"
 	echo -en $OUT
 	exit 1
 fi
-. $KALTURA_FUNCTIONS_RC
+. $BORHAN_FUNCTIONS_RC
 if [ `id -u` != 0 ];then 
 	echo -e "${BRIGHT_RED}ERROR: please run as super user, exiting..${NORMAL}"
 	exit 3
 fi
-RC_FILE=/etc/kaltura.d/system.ini
+RC_FILE=/etc/borhan.d/system.ini
 if [ ! -r "$RC_FILE" ];then
 	echo -e "${BRIGHT_RED}ERROR: could not find $RC_FILE so, exiting..${NORMAL}"
 	exit 2 
@@ -51,14 +51,14 @@ for PARTITION in '/' $WEB_DIR;do
 		report "Space on $PARTITION" $RC "Good - $PARTITION has $SPACE free space [$OUT]" "`bc <<< $END-$START`"
 	fi
 done
-php /opt/kaltura/app/generator/generate.php php5full
+php /opt/borhan/app/generator/generate.php php5full
 DISTRO=`lsb_release -i -s`
 if [ "$DISTRO" = "Ubuntu" -o "$DISTRO" = "Debian" ];then
         APACHE_USER=www-data
 else
         APACHE_USER=apache
 fi
-chown -R $APACHE_USER.$OS_KALTURA_USER $APP_DIR/cache
+chown -R $APACHE_USER.$OS_BORHAN_USER $APP_DIR/cache
 find $APP_DIR/cache -type d -exec chmod 775 {} \;
 find $APP_DIR/cache -type f -exec chmod 644 {} \;
 for D in $ALL_DAEMONS; do
@@ -103,47 +103,47 @@ for D in $ALL_DAEMONS; do
 	fi
 done
 
-$QUERY_COMMAND kaltura-kmc --queryformat %{version} >/dev/null 2>&1
+$QUERY_COMMAND borhan-bmc --queryformat %{version} >/dev/null 2>&1
 if [ $? -eq 0 ];then
-	KMC_VER=`$QUERY_COMMAND kaltura-kmc --queryformat %{version} `
-	COMP_NAME=kaltura-html5lib
+	BMC_VER=`$QUERY_COMMAND borhan-bmc --queryformat %{version} `
+	COMP_NAME=borhan-html5lib
         COMP_VER=`$QUERY_COMMAND $COMP_NAME --queryformat %{version} >/dev/null 2>&1`
 	if [ $? -eq 0 ];then
 		START=`date +%s.%N`
-		MSG=`check_kmc_config_versions $COMP_NAME $KMC_VER`
+		MSG=`check_bmc_config_versions $COMP_NAME $BMC_VER`
 		RC=$?
 		END=`date +%s.%N`
-		report "$COMP_NAME ver in KMC config.ini" $RC "$MSG" "`bc <<< $END-$START`"
+		report "$COMP_NAME ver in BMC config.ini" $RC "$MSG" "`bc <<< $END-$START`"
 	else
-		echo -e "[${CYAN}$COMP_NAME ver in KMC config.ini${NORMAL}][${BRIGHT_YELLOW}SKIPPED as $COMP_NAME is not installed${NORMAL}]"
+		echo -e "[${CYAN}$COMP_NAME ver in BMC config.ini${NORMAL}][${BRIGHT_YELLOW}SKIPPED as $COMP_NAME is not installed${NORMAL}]"
 	fi
-	COMP_NAME=kaltura-kdp3	
+	COMP_NAME=borhan-bdp3	
         COMP_VER=`$QUERY_COMMAND $COMP_NAME --queryformat %{version} >/dev/null 2>&1`
 	if [ $? -eq 0 ];then
 		START=`date +%s.%N`
-		MSG=`check_kmc_config_versions $COMP_NAME $KMC_VER`
+		MSG=`check_bmc_config_versions $COMP_NAME $BMC_VER`
 		RC=$?
 		END=`date +%s.%N`
-		report "$COMP_NAME ver in KDP3 config.ini" $RC "$MSG" "`bc <<< $END-$START`"
+		report "$COMP_NAME ver in BDP3 config.ini" $RC "$MSG" "`bc <<< $END-$START`"
 	else
-		echo -e "[${CYAN}$COMP_NAME ver in KDP3 config.ini${NORMAL}][${BRIGHT_YELLOW}SKIPPED as $COMP_NAME is not installed${NORMAL}]"
+		echo -e "[${CYAN}$COMP_NAME ver in BDP3 config.ini${NORMAL}][${BRIGHT_YELLOW}SKIPPED as $COMP_NAME is not installed${NORMAL}]"
 	fi
-	COMP_NAME=kaltura-kmc
+	COMP_NAME=borhan-bmc
         COMP_VER=`$QUERY_COMMAND $COMP_NAME --queryformat %{version}`
 	if [ $? -eq 0 ];then
 		START=`date +%s.%N`
-		MSG=`check_kmc_config_versions kaltura-kmc $KMC_VER`
+		MSG=`check_bmc_config_versions borhan-bmc $BMC_VER`
 		RC=$?
 		END=`date +%s.%N`
-		report "$COMP_NAME ver in KMC config.ini" $RC "$MSG" "`bc <<< $END-$START`"
+		report "$COMP_NAME ver in BMC config.ini" $RC "$MSG" "`bc <<< $END-$START`"
 		START=`date +%s.%N`
-		OUT=`php $DIRNAME/get_kmc_swfs.php`
+		OUT=`php $DIRNAME/get_bmc_swfs.php`
 		RC=$?
 		END=`date +%s.%N`
-		report "Get KMC SWFs" $RC "$OUT" "`bc <<< $END-$START`"
+		report "Get BMC SWFs" $RC "$OUT" "`bc <<< $END-$START`"
 		
 	else
-		echo -e "[${CYAN}$COMP_NAME ver in KMC config.ini${NORMAL}][${BRIGHT_YELLOW}SKIPPED as $COMP_NAME is not installed${NORMAL}]"
+		echo -e "[${CYAN}$COMP_NAME ver in BMC config.ini${NORMAL}][${BRIGHT_YELLOW}SKIPPED as $COMP_NAME is not installed${NORMAL}]"
 	fi
 fi
 
@@ -154,10 +154,10 @@ END=`date +%s.%N`
 report "check_testme_page" $RC "$MSG" "`bc <<< $END-$START`"
 
 START=`date +%s.%N`
-MSG=`check_kmc_index_page`
+MSG=`check_bmc_index_page`
 RC=$?
 END=`date +%s.%N`
-report "check_kmc_index_page" $RC "$MSG" "`bc <<< $END-$START`"
+report "check_bmc_index_page" $RC "$MSG" "`bc <<< $END-$START`"
 
 START=`date +%s.%N`
 MSG=`check_admin_console_index_page`
@@ -165,7 +165,7 @@ RC=$?
 END=`date +%s.%N`
 report "check_admin_console_index_page" $RC "$MSG" "`bc <<< $END-$START`"
 
-if $QUERY_COMMAND kaltura-html5lib >/dev/null 2>&1 ;then
+if $QUERY_COMMAND borhan-html5lib >/dev/null 2>&1 ;then
 	START=`date +%s.%N`
 	MSG=`check_studio_index_page`
 	RC=$?
@@ -173,7 +173,7 @@ if $QUERY_COMMAND kaltura-html5lib >/dev/null 2>&1 ;then
 	report "check_studio_index_page" $RC "$MSG" "`bc <<< $END-$START`"
 fi
 
-if $QUERY_COMMAND kaltura-clipapp >/dev/null 2>&1 ;then
+if $QUERY_COMMAND borhan-clipapp >/dev/null 2>&1 ;then
 	START=`date +%s.%N`
 	MSG=`check_clipapp_index_page`
 	RC=$?
@@ -183,8 +183,8 @@ fi
 ADMIN_PARTNER_SECRET=`echo "select admin_secret from partner where id=-2" | mysql -N -h $DB1_HOST -p$DB1_PASS $DB1_NAME -u$DB1_USER  -P$DB1_PORT`
 NOW=`date +%d-%H-%m-%S`
 START=`date +%s.%N`
-if $QUERY_COMMAND kaltura-batch >/dev/null 2>&1 || $QUERY_COMMAND kaltura-front >/dev/null 2>&1 ;then
-	PARTNER_ID=`php $DIRNAME/create_partner.php $ADMIN_PARTNER_SECRET mb-$HOSTNAME@kaltura.com testingpasswd $SERVICE_URL 2>&1`
+if $QUERY_COMMAND borhan-batch >/dev/null 2>&1 || $QUERY_COMMAND borhan-front >/dev/null 2>&1 ;then
+	PARTNER_ID=`php $DIRNAME/create_partner.php $ADMIN_PARTNER_SECRET mb-$HOSTNAME@borhan.com testingpasswd $SERVICE_URL 2>&1`
 	RC=$?
 	END=`date +%s.%N`
 	report "Create Partner" $RC "New PID is $PARTNER_ID" "`bc <<< $END-$START`"
@@ -225,11 +225,11 @@ if $QUERY_COMMAND kaltura-batch >/dev/null 2>&1 || $QUERY_COMMAND kaltura-front 
 			OUT=`php $DIRNAME/mail_notifications.php $PARTNER_ID $PARTNER_ADMIN_SECRET  $SERVICE_URL`
 			report "Mail notification: $OUT" $RC "$OUT" "$TOTAL_T"
 			START=`date +%s.%N`
-			UPLOADED_ENT=`php $DIRNAME/upload_test.php $SERVICE_URL $PARTNER_ID $PARTNER_SECRET $WEB_DIR/content/templates/entry/data/kaltura_logo_animated_blue.flv 2>&1`
+			UPLOADED_ENT=`php $DIRNAME/upload_test.php $SERVICE_URL $PARTNER_ID $PARTNER_SECRET $WEB_DIR/content/templates/entry/data/borhan_logo_animated_blue.flv 2>&1`
 			RC=$?
 			END=`date +%s.%N`
 			TOTAL_T=`bc <<< $TIME`
-			report "Upload content kaltura_logo_animated_blue.flv" $RC "$UPLOADED_ENT" "`bc <<< $END-$START`"
+			report "Upload content borhan_logo_animated_blue.flv" $RC "$UPLOADED_ENT" "`bc <<< $END-$START`"
 			START=`date +%s.%N`
 			CONVERT_SUCCESS=0
 			for i in `seq 1 9`;do
@@ -246,13 +246,13 @@ if $QUERY_COMMAND kaltura-batch >/dev/null 2>&1 || $QUERY_COMMAND kaltura-front 
 				sleep 10
 			done
 			if [ "$CONVERT_SUCCESS" -eq 1 ];then
-				report "kaltura_logo_animated_blue.flv - $UPLOADED_ENT status" $RC "$UPLOADED_ENT converted" "`bc <<< $END-$START`"
+				report "borhan_logo_animated_blue.flv - $UPLOADED_ENT status" $RC "$UPLOADED_ENT converted" "`bc <<< $END-$START`"
 				START=`date +%s.%N`
 				OUT=` php $DIRNAME/create_thumbnail.php $SERVICE_URL $PARTNER_ID $PARTNER_ADMIN_SECRET $UPLOADED_ENT 1 2>&1`
 				curl -s $OUT > /tmp/$UPLOADED_ENT.jpg
 				# this test was relevant when we only supported RHEL/CentOS 6. Now that we support RHEL7, Debian and Ubuntu of multiple versions, it will fail cause the hash will be different per platform and so - disabling it.
 
-				#compare -verbose -metric mae /tmp/$UPLOADED_ENT.jpg $DIRNAME/kaltura_logo_animated_blue_1_sec.jpg /tmp/$UPLOADED_ENT-diff.jpg  2>&1 | grep -q "all: 0 (0)" 
+				#compare -verbose -metric mae /tmp/$UPLOADED_ENT.jpg $DIRNAME/borhan_logo_animated_blue_1_sec.jpg /tmp/$UPLOADED_ENT-diff.jpg  2>&1 | grep -q "all: 0 (0)" 
 				RC=$?
 				END=`date +%s.%N`
 				TOTAL_T=`bc <<< $END-$START`
@@ -323,28 +323,28 @@ if $QUERY_COMMAND kaltura-batch >/dev/null 2>&1 || $QUERY_COMMAND kaltura-front 
 					
 				fi
 			else
-				report "kaltura_logo_animated_blue.flv - $UPLOADED_ENT status" 1 "$UPLOADED_ENT failed to convert." "`bc <<< $END-$START`"
+				report "borhan_logo_animated_blue.flv - $UPLOADED_ENT status" 1 "$UPLOADED_ENT failed to convert." "`bc <<< $END-$START`"
 			fi
 			START=`date +%s.%N`
-			echo "Testing mail sending" |mail -s "Kaltura sanity test email" mb-$HOSTNAME@kaltura.com
+			echo "Testing mail sending" |mail -s "Borhan sanity test email" mb-$HOSTNAME@borhan.com
 			echo -e "${CYAN}Napping 30 seconds to allow mail to be sent out.. ${NORMAL}"
 			sleep 30
-			MSG=`grep mb-$HOSTNAME@kaltura.com $MAIL_LOG `
+			MSG=`grep mb-$HOSTNAME@borhan.com $MAIL_LOG `
 			RC=$?
 			END=`date +%s.%N`
 			if [ $RC -ne 0 ];then
-				report "Could not find an email sending entry for mb-$HOSTNAME@kaltura.com [PID is $PARTNER_ID] in $MAIL_LOG" $RC "" "`bc <<< $END-$START`"
+				report "Could not find an email sending entry for mb-$HOSTNAME@borhan.com [PID is $PARTNER_ID] in $MAIL_LOG" $RC "" "`bc <<< $END-$START`"
 			else
-				report "Found an email sending entry for mb-$HOSTNAME@kaltura.com[PID is $PARTNER_ID] in $MAIL_LOG" $RC "$MSG" "`bc <<< $END-$START`"
+				report "Found an email sending entry for mb-$HOSTNAME@borhan.com[PID is $PARTNER_ID] in $MAIL_LOG" $RC "$MSG" "`bc <<< $END-$START`"
 
 			fi
 
-			if $QUERY_COMMAND kaltura-dwh >> /dev/null 2>&1;then
+			if $QUERY_COMMAND borhan-dwh >> /dev/null 2>&1;then
 				echo -e "${CYAN}Testing analytics, be patient..
 
 Please note: if you are running this test on a clustered ENV, it will fail but this does not mean there is an actual problem.
 The tech information as to why is available here: 
-https://github.com/kaltura/platform-install-packages/issues/106#issuecomment-42837404
+https://github.com/borhan/platform-install-packages/issues/106#issuecomment-42837404
 ${NORMAL}"
   # this is to allow the logrotation to finish.
   sleep 120 
@@ -359,17 +359,17 @@ ${NORMAL}"
 			fi
 
 			START=`date +%s.%N`
-			OUTP=`php $DIRNAME/upload_test.php $SERVICE_URL $PARTNER_ID $PARTNER_SECRET $WEB_DIR/content/templates/entry/data/kaltura_logo_animated_blue.flv 2>&1`
+			OUTP=`php $DIRNAME/upload_test.php $SERVICE_URL $PARTNER_ID $PARTNER_SECRET $WEB_DIR/content/templates/entry/data/borhan_logo_animated_blue.flv 2>&1`
 			RC=$?
 			CLEANOUTPUT=`echo $OUTP|sed 's@"@@g'`
 			OUTP=`echo $CLEANOUTPUT|sed "s@'@@g"`
 			END=`date +%s.%N`
 			TOTAL_T=`bc <<< $TIME`
-			report "Upload content kaltura_logo_animated_green.flv" $RC "$OUTP" "`bc <<< $END-$START`"
+			report "Upload content borhan_logo_animated_green.flv" $RC "$OUTP" "`bc <<< $END-$START`"
 
-			unzip -oqq $WEB_DIR/content/docs/kaltura_batch_upload_falcon.zip -d $WEB_DIR/content/docs
+			unzip -oqq $WEB_DIR/content/docs/borhan_batch_upload_falcon.zip -d $WEB_DIR/content/docs
 			START=`date +%s.%N`
-			OUTP=`php $DIRNAME/upload_bulk.php $SERVICE_URL $PARTNER_ID $PARTNER_ADMIN_SECRET MB $WEB_DIR/content/docs/kaltura_batch_upload_falcon.csv bulkUploadCsv.CSV 2>&1`
+			OUTP=`php $DIRNAME/upload_bulk.php $SERVICE_URL $PARTNER_ID $PARTNER_ADMIN_SECRET MB $WEB_DIR/content/docs/borhan_batch_upload_falcon.csv bulkUploadCsv.CSV 2>&1`
 			RC=$?
 			CLEANOUTPUT=`echo $OUTP|sed 's@"@@g'`
 			OUTP=`echo $CLEANOUTPUT|sed "s@'@@g"`
@@ -378,7 +378,7 @@ ${NORMAL}"
 			report "Upload bulk using CSV" $RC "$OUTP" "`bc <<< $END-$START`"
 
 			START=`date +%s.%N`
-			OUTP=`php $DIRNAME/upload_bulk.php $SERVICE_URL $PARTNER_ID $PARTNER_ADMIN_SECRET MB $WEB_DIR/content/docs/kaltura_batch_upload_falcon.xml bulkUploadXml.XML 2>&1`
+			OUTP=`php $DIRNAME/upload_bulk.php $SERVICE_URL $PARTNER_ID $PARTNER_ADMIN_SECRET MB $WEB_DIR/content/docs/borhan_batch_upload_falcon.xml bulkUploadXml.XML 2>&1`
 			RC=$?
 			CLEANOUTPUT=`echo $OUTP|sed 's@"@@g'`
 			OUTP=`echo $CLEANOUTPUT|sed "s@'@@g"`
@@ -430,13 +430,13 @@ if [ "$WEBCAM_SYNLINK" = /usr/lib/red5/webapps/oflaDemo/streams ]; then
 	report "$TEST_NAME" $RC "$OUTP" "`bc <<< $END-$START`"
 else
 	echo -e "[${CYAN}$TEST_NAME${NORMAL}] ${BRIGHT_YELLOW}[SKIPPED as OflaDemo isn't configured]
-see: https://github.com/kaltura/platform-install-packages/blob/master/doc/install-kaltura-redhat-based.md#configure-red5-server${NORMAL}"
+see: https://github.com/borhan/platform-install-packages/blob/master/doc/install-borhan-redhat-based.md#configure-red5-server${NORMAL}"
 fi
 
 
 echo -e "${BRIGHT_BLUE}
 
-Thank you for running Kaltura! To keep Kaltura viable, stable and well tested, please join the community and help by contributing sanity tests that verify overall platform stability: http://bit.ly/kaltura-ci , and by contributing to the project roadmap by solving simple tasks and challenges: http://bit.ly/kaltura-tasks.
+Thank you for running Borhan! To keep Borhan viable, stable and well tested, please join the community and help by contributing sanity tests that verify overall platform stability: http://bit.ly/borhan-ci , and by contributing to the project roadmap by solving simple tasks and challenges: http://bit.ly/borhan-tasks.
 ${NORMAL}"
 
 #START=`date +%s.%N`

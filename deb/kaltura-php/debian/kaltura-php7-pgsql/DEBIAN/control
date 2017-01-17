@@ -1,15 +1,15 @@
-Package: kaltura-php7-pgsql
-Source: kaltura-php7
+Package: borhan-php7-pgsql
+Source: borhan-php7
 Version: 7.0.0-6
 Architecture: amd64
-Maintainer: Jess Portnoy <jess.portnoy@kaltura.com>
+Maintainer: Jess Portnoy <jess.portnoy@borhan.com>
 Installed-Size: 239
 Pre-Depends: dpkg (>= 1.16.1~)
-Depends: libc6 (>= 2.14), libpq5 (>= 9.3~), phpapi-20151012, kaltura-php7-common (= 7.0.0-6), ucf
+Depends: libc6 (>= 2.14), libpq5 (>= 9.3~), phpapi-20151012, borhan-php7-common (= 7.0.0-6), ucf
 Section: php
 Priority: optional
 Homepage: http://www.php.net/
-Description: PostgreSQL module for kaltura-php7
+Description: PostgreSQL module for borhan-php7
  This package provides a module for PostgreSQL database connections
  directly from PHP scripts.  It also includes the pdo_pgsql module for
  use with the PHP Data Object extension.

@@ -1,8 +1,8 @@
 #!/bin/sh
-rm /opt/kaltura/dwh/logs/*
-logrotate -vvv -f /etc/logrotate.d/kaltura_apache
-su kaltura -c "/opt/kaltura/dwh/etlsource/execute/etl_hourly.sh -p /opt/kaltura/dwh -k /opt/kaltura/pentaho/pdi/kitchen.sh"
-su kaltura -c "/opt/kaltura/dwh/etlsource/execute/etl_update_dims.sh -p /opt/kaltura/dwh -k /opt/kaltura/pentaho/pdi/kitchen.sh"
-su kaltura -c "/opt/kaltura/dwh/etlsource/execute/etl_daily.sh -p /opt/kaltura/dwh -k /opt/kaltura/pentaho/pdi/kitchen.sh"
-su kaltura -c "/opt/kaltura/dwh/etlsource/execute/etl_perform_retention_policy.sh -p /opt/kaltura/dwh -k /opt/kaltura/pentaho/pdi/kitchen.sh"
-su kaltura -c "/opt/kaltura/app/alpha/scripts/dwh/dwh_plays_views_sync.sh >> /opt/kaltura/log/cron.log"
+rm /opt/borhan/dwh/logs/*
+logrotate -vvv -f /etc/logrotate.d/borhan_apache
+su borhan -c "/opt/borhan/dwh/etlsource/execute/etl_hourly.sh -p /opt/borhan/dwh -k /opt/borhan/pentaho/pdi/kitchen.sh"
+su borhan -c "/opt/borhan/dwh/etlsource/execute/etl_update_dims.sh -p /opt/borhan/dwh -k /opt/borhan/pentaho/pdi/kitchen.sh"
+su borhan -c "/opt/borhan/dwh/etlsource/execute/etl_daily.sh -p /opt/borhan/dwh -k /opt/borhan/pentaho/pdi/kitchen.sh"
+su borhan -c "/opt/borhan/dwh/etlsource/execute/etl_perform_retention_policy.sh -p /opt/borhan/dwh -k /opt/borhan/pentaho/pdi/kitchen.sh"
+su borhan -c "/opt/borhan/app/alpha/scripts/dwh/dwh_plays_views_sync.sh >> /opt/borhan/log/cron.log"

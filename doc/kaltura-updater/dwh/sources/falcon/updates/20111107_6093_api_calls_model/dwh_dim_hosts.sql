@@ -1,6 +1,6 @@
-DROP TABLE IF EXISTS `kalturadw`.dwh_dim_hosts;
+DROP TABLE IF EXISTS `borhandw`.dwh_dim_hosts;
 
-CREATE TABLE `kalturadw`.`dwh_dim_hosts` (
+CREATE TABLE `borhandw`.`dwh_dim_hosts` (
   `host_id` INT(11) NOT NULL AUTO_INCREMENT,
   `host_name` VARCHAR(333) NOT NULL DEFAULT '',
   `dwh_creation_date` TIMESTAMP  NOT NULL DEFAULT '0000-00-00 00:00:00',
@@ -9,7 +9,7 @@ CREATE TABLE `kalturadw`.`dwh_dim_hosts` (
    UNIQUE KEY (`host_name`)
 ) ENGINE=MYISAM DEFAULT CHARSET=utf8;
 
-CREATE TRIGGER `kalturadw`.`dwh_dim_hosts_setcreationtime_oninsert` BEFORE INSERT
-    ON `kalturadw`.`dwh_dim_hosts`
+CREATE TRIGGER `borhandw`.`dwh_dim_hosts_setcreationtime_oninsert` BEFORE INSERT
+    ON `borhandw`.`dwh_dim_hosts`
     FOR EACH ROW 
 	SET new.dwh_creation_date = NOW();

@@ -1,14 +1,14 @@
-# Deploying Kaltura using Opscode Chef
+# Deploying Borhan using Opscode Chef
 
-This guide is intended for users of Chef that would like to deploy Kaltura clusters using [Chef recipes](http://docs.opscode.com/essentials_cookbook_recipes.html).   
+This guide is intended for users of Chef that would like to deploy Borhan clusters using [Chef recipes](http://docs.opscode.com/essentials_cookbook_recipes.html).   
 
 ### Before You Get Started Notes
 
-* Please review the [frequently answered questions](https://github.com/kaltura/platform-install-packages/blob/master/doc/kaltura-packages-faq.md) document for general help before posting to the forums or issue queue.
+* Please review the [frequently answered questions](https://github.com/borhan/platform-install-packages/blob/master/doc/borhan-packages-faq.md) document for general help before posting to the forums or issue queue.
 * If you don't know what Chef is, start by reading [An Overview of Chef](http://docs.opscode.com/chef_overview.html).
-* If you're looking to install Kaltura on a signle machine, see: [Installing Kaltura on a Single All-In-One Server (RPM)](https://github.com/kaltura/platform-install-packages/blob/master/doc/install-kaltura-redhat-based.md)
-* If you're looking to deploy a cluster manually or using other automation tools, see [Deploying Kaltura Clusters](https://github.com/kaltura/platform-install-packages/blob/master/doc/rpm-cluster-deployment-instructions.md).
-* [Kaltura Inc.](http://corp.kaltura.com) also provides commercial solutions and services including pro-active platform monitoring, applications, SLA, 24/7 support and professional services. If you're looking for a commercially supported video platform  with integrations to commercial encoders, streaming servers, eCDN, DRM and more - Start a [Free Trial of the Kaltura.com Hosted Platform](http://corp.kaltura.com/free-trial) or learn more about [Kaltura' Commercial OnPrem Edition™](http://corp.kaltura.com/Deployment-Options/Kaltura-On-Prem-Edition). For existing RPM based users, Kaltura offers commercial upgrade options.
+* If you're looking to install Borhan on a signle machine, see: [Installing Borhan on a Single All-In-One Server (RPM)](https://github.com/borhan/platform-install-packages/blob/master/doc/install-borhan-redhat-based.md)
+* If you're looking to deploy a cluster manually or using other automation tools, see [Deploying Borhan Clusters](https://github.com/borhan/platform-install-packages/blob/master/doc/rpm-cluster-deployment-instructions.md).
+* [Borhan Inc.](http://corp.borhan.com) also provides commercial solutions and services including pro-active platform monitoring, applications, SLA, 24/7 support and professional services. If you're looking for a commercially supported video platform  with integrations to commercial encoders, streaming servers, eCDN, DRM and more - Start a [Free Trial of the Borhan.com Hosted Platform](http://corp.borhan.com/free-trial) or learn more about [Borhan' Commercial OnPrem Edition™](http://corp.borhan.com/Deployment-Options/Borhan-On-Prem-Edition). For existing RPM based users, Borhan offers commercial upgrade options.
 
 ## Installing the Chef server
 
@@ -17,8 +17,8 @@ This guide is intended for users of Chef that would like to deploy Kaltura clust
 1. Select your distribution, version and arch and download
     1. Download the RPM or deb package depending on your distribution.   
     1. The post install will provide instructions as to what else needs to be done to set the instance up.   
-1. Obtain chef-repo from https://github.com/kaltura/platform-install-packages.git  
-1. Upload the Kaltura recipes to your Chef server using: `# knife cookbook upload kaltura`
+1. Obtain chef-repo from https://github.com/borhan/platform-install-packages.git  
+1. Upload the Borhan recipes to your Chef server using: `# knife cookbook upload borhan`
 1. We also recommend you use the ready made recipes for MySQL, NFS and NTP which can be taken from here:
     1. http://community.opscode.com/cookbooks/mysql
     1. http://community.opscode.com/cookbooks/nfs
@@ -46,7 +46,7 @@ validation_client_name 'chef-validator'
 ```
 The run: `# chef-client -i 3600`   
 
-**Repeat this action for each node in your Kaltura cluster.**
+**Repeat this action for each node in your Borhan cluster.**
 
 To test it, on the Chef server, run: 
 ```
@@ -55,10 +55,10 @@ To test it, on the Chef server, run:
 You should see your new nodes when running:
 ```
 [root@chef-server ~]# knife node list
-kalturadev
-front.kaltura.dev
-batch.kaltura.dev
-dwh.kaltura.dev
+borhandev
+front.borhan.dev
+batch.borhan.dev
+dwh.borhan.dev
 nfs
 ```
 
@@ -84,8 +84,8 @@ Edit:`path/to/your-chef-repo/cookbooks/nfs/recipes/_common.rb`
 
 At the end of the file add:
 ```
-mount "/opt/kaltura/web" do
-  device "nfs.yourdomain.com:/opt/kaltura/web"
+mount "/opt/borhan/web" do
+  device "nfs.yourdomain.com:/opt/borhan/web"
   fstype "nfs"
   options "rw"
   action [:mount, :enable]
@@ -120,10 +120,10 @@ knife cookbook upload nfs
 knife cookbook upload mysql
 ```
 
-## Loading the Kaltura recipes to your Chef server
+## Loading the Borhan recipes to your Chef server
 ```
-# git clone https://github.com/kaltura/platform-install-packages.git
-# cp -r sources/platform-install-packages/chef-repo/cookbooks/kaltura  /var/chef/cookbooks/kaltura/
+# git clone https://github.com/borhan/platform-install-packages.git
+# cp -r sources/platform-install-packages/chef-repo/cookbooks/borhan  /var/chef/cookbooks/borhan/
 # knife cookbook upload --all
 ```
 Then to verify use `# knife cookbook list`.    
@@ -131,7 +131,7 @@ You should see output along the lines of:
 ```
 [root@chef ~]# knife cookbook list
 build-essential   1.4.2
-kaltura           0.1.0
+borhan           0.1.0
 line              0.5.1
 mysql             4.0.20
 nfs               0.5.0
@@ -140,10 +140,10 @@ openssl           1.1.0
 ```
 
 ## Editing attributes.rb
-The properties of your cluster should be set here: `cookbooks/kaltura/attributes/default.rb`   
+The properties of your cluster should be set here: `cookbooks/borhan/attributes/default.rb`   
 When done editing, run:
 ```
-# knife cookbook upload kaltura
+# knife cookbook upload borhan
 ```
 
 ## Defining recipe run lists
@@ -154,18 +154,18 @@ The syntax for it is:
 ```
 An example cluster deployment will be:
 ```
-# knife node run_list add mynfs kaltura::nfs-server
+# knife node run_list add mynfs borhan::nfs-server
 # knife node run_list add mynfs nfs::server
 # knife node run_list add my-mysql-machine mysql::server 
 # knife node run_list add my-batch-machine nfs 
-# knife node run_list add my-batch-machine kaltura::batch 
-# knife node run_list add my-sphinx-machine kaltura::sphinx
-# knife node run_list add my-sphinx-machine kaltura::db_config
+# knife node run_list add my-batch-machine borhan::batch 
+# knife node run_list add my-sphinx-machine borhan::sphinx
+# knife node run_list add my-sphinx-machine borhan::db_config
 # knife node run_list add my-front-machine nfs 
-# knife node run_list add my-front-machine kaltura::front 
+# knife node run_list add my-front-machine borhan::front 
 # knife node run_list add my-dwh-machine nfs
-# knife node run_list add my-dwh-machine kaltura::dwh 
-# knife node run_list add my-vod-machine kaltura::vod-packager 
+# knife node run_list add my-dwh-machine borhan::dwh 
+# knife node run_list add my-vod-machine borhan::vod-packager 
 ```
 
 
@@ -181,9 +181,9 @@ And deploy the cluster from the "Nodes"->"Edit" menu.
 
 ### Notes 
 
-1. The db_config runs from sphinx because it requires Kaltura's code which there is no reason to deploy on the DB machine.
+1. The db_config runs from sphinx because it requires Borhan's code which there is no reason to deploy on the DB machine.
 2. The above run lists are a recommedation, you can of course run more than one role per node.
-3. The order of the run_list is crucial. NFS needs to happen first. Note that your recipe should include creation of /opt/kaltura/web BEFORE the NFS recipe runs.
+3. The order of the run_list is crucial. NFS needs to happen first. Note that your recipe should include creation of /opt/borhan/web BEFORE the NFS recipe runs.
 
 
 ## Running the Chef client
@@ -215,5 +215,5 @@ root@my-vod-machine:~# chef-client -ldebug
 Please this howto about auto provisioning EC2 images:
 https://learnchef.opscode.com/starter-use-cases/multi-node-ec2/
 
-### Automatic Scaling with Chef and Kaltura API:
-http://blog.kaltura.org/automatic-scaling-with-chef-kaltura-api/
+### Automatic Scaling with Chef and Borhan API:
+http://blog.borhan.org/automatic-scaling-with-chef-borhan-api/

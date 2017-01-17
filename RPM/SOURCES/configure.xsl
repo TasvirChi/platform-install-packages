@@ -535,17 +535,17 @@
 		<Module>
 			<Name>LiveStreamEntry</Name>
 			<Description>LiveStreamEntry</Description>
-			<Class>com.kaltura.media.server.wowza.listeners.LiveStreamEntry</Class>
+			<Class>com.borhan.media.server.wowza.listeners.LiveStreamEntry</Class>
 		</Module>
 		<Module>
 			<Name>ModuleRTMPPublishDebug</Name>
 			<Description>WowzaDebugModule</Description>
-			<Class>com.kaltura.media.server.wowza.ModuleRTMPPublishDebug</Class>
+			<Class>com.borhan.media.server.wowza.ModuleRTMPPublishDebug</Class>
 		</Module>
 		<Module>
 			<Name>CuePointManager</Name>
 			<Description>CuePointManager</Description>
-			<Class>com.kaltura.media.server.wowza.CuePointsManager</Class>
+			<Class>com.borhan.media.server.wowza.CuePointsManager</Class>
 		</Module>
 	</xsl:variable>
 	<xsl:call-template name="apply-copy">
@@ -601,11 +601,11 @@
 										</Property>
 										<!--<Property>-->
 											<!--<Name>ApplicationManagers</Name>-->
-											<!--<Value>com.kaltura.media.server.wowza.CuePointsManager</Value>-->
+											<!--<Value>com.borhan.media.server.wowza.CuePointsManager</Value>-->
 											<!--<Type>String</Type>-->
 										<!--</Property>-->
 										<Property>
-											<Name>KalturaSyncPointsInterval</Name>
+											<Name>BorhanSyncPointsInterval</Name>
 											<Value>4000</Value>
 											<Type>Integer</Type>
 										</Property>
@@ -649,7 +649,7 @@
 			</xsl:text>
 		<xsl:element name="{local-name(.)}">
 			<xsl:choose>
-				<xsl:when test="string(BaseClass) != 'com.kaltura.media.server.wowza.listeners.ServerListener'">
+				<xsl:when test="string(BaseClass) != 'com.borhan.media.server.wowza.listeners.ServerListener'">
 					<xsl:call-template name="apply-copy">
 						<xsl:with-param name="indent">
 			<xsl:text>
@@ -660,13 +660,13 @@
 			</xsl:choose>
 		</xsl:element>
 	</xsl:for-each>
-	<xsl:variable name="kaltura-server-listener">
+	<xsl:variable name="borhan-server-listener">
 		<ServerListener>
-			<BaseClass>com.kaltura.media.server.wowza.listeners.ServerListener</BaseClass>
+			<BaseClass>com.borhan.media.server.wowza.listeners.ServerListener</BaseClass>
 		</ServerListener>
 	</xsl:variable>
 	<xsl:call-template name="apply-copy">
-		<xsl:with-param name="copy-element" select="ext:node-set($kaltura-server-listener)" />
+		<xsl:with-param name="copy-element" select="ext:node-set($borhan-server-listener)" />
 	</xsl:call-template>
 </xsl:template>
 
@@ -691,66 +691,66 @@
 		</xsl:text></xsl:with-param>
 									<xsl:with-param name="set-properties">
 										<Property>
-											<Name>KalturaServerURL</Name>
+											<Name>BorhanServerURL</Name>
 											<Value><xsl:value-of select="$APP_URL" /></Value>
 										</Property>
 										<Property>
-											<Name>KalturaServerAdminSecret</Name>
+											<Name>BorhanServerAdminSecret</Name>
 											<Value><xsl:value-of select="$ADMIN_SECRET" /></Value>
 										</Property>
 										<Property>
-											<Name>KalturaServerTimeout</Name>
+											<Name>BorhanServerTimeout</Name>
 											<Value>180</Value>
 										</Property>
 										<Property>
-											<Name>KalturaServerManagers</Name>
+											<Name>BorhanServerManagers</Name>
 											<!--list of managers to be loaded-->
-											<Value>com.kaltura.media.server.wowza.LiveStreamManager, com.kaltura.media.server.wowza.PushPublishManager</Value>
+											<Value>com.borhan.media.server.wowza.LiveStreamManager, com.borhan.media.server.wowza.PushPublishManager</Value>
 										</Property>
 										<Property>
-											<Name>KalturaServerWebServices</Name>
-											<Value>com.kaltura.media.server.api.services.KalturaLiveService</Value>
+											<Name>BorhanServerWebServices</Name>
+											<Value>com.borhan.media.server.api.services.BorhanLiveService</Value>
 										</Property>
 										<Property>
-											<Name>KalturaServerStatusInterval</Name>
+											<Name>BorhanServerStatusInterval</Name>
 											<!-- the interval in seconds to send the status to the API -->
 											<Value>300</Value>
 										</Property>
 										<Property>
-											<Name>KalturaLiveStreamKeepAliveInterval</Name>
+											<Name>BorhanLiveStreamKeepAliveInterval</Name>
 											<!-- the interval in seconds to update that live stream entry is still broadcasting -->
 											<Value>30</Value>
 										</Property>
 										<Property>
-											<Name>KalturaLiveStreamMaxDvrWindow</Name>
+											<Name>BorhanLiveStreamMaxDvrWindow</Name>
 											<Value>86400</Value>
 										</Property>
 										<Property>
-											<Name>KalturaChannelLockStartTimeOffset</Name>
+											<Name>BorhanChannelLockStartTimeOffset</Name>
 											<Value/>
 										</Property>
 										<Property>
-											<Name>KalturaMaxChannelsLocks</Name>
+											<Name>BorhanMaxChannelsLocks</Name>
 											<Value/>
 										</Property>
 										<Property>
-											<Name>KalturaRecordedChunckMaxDuration</Name>
+											<Name>BorhanRecordedChunckMaxDuration</Name>
 											<Value>60</Value>
 										</Property>
 										<Property>
-											<Name>KalturaServerWebServicesPort</Name>
+											<Name>BorhanServerWebServicesPort</Name>
 											<Value>888</Value>
 										</Property>
 										<Property>
-											<Name>KalturaServerWebServicesHost</Name>
+											<Name>BorhanServerWebServicesHost</Name>
 											<Value>0.0.0.0</Value>
 										</Property>
 										<Property>
-											<Name>KalturaRecordedFileGroup</Name>
-											<Value>kaltura</Value>
+											<Name>BorhanRecordedFileGroup</Name>
+											<Value>borhan</Value>
 										</Property>
 										<Property>
-											<Name>KalturaIsLiveRegistrationMinBufferTime</Name>
+											<Name>BorhanIsLiveRegistrationMinBufferTime</Name>
 											<Value>30</Value>
 										</Property>
 									</xsl:with-param>

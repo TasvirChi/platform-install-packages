@@ -1,20 +1,20 @@
 #!/usr/bin/make -f
-COMP_NAME ?= kaltura-base
+COMP_NAME ?= borhan-base
 
 DEB_VERSION := $(shell dpkg-parsechangelog | egrep '^Version:' | cut -f 2 -d ' ')
 RC_FILE :=../../build/sources.rc
-KALTURA_SERVER_VERSION ?= $(shell egrep '^KALTURA_SERVER_VERSION=' $(RC_FILE) | cut -d = -f 2| sed 's@"@@g')
+BORHAN_SERVER_VERSION ?= $(shell egrep '^BORHAN_SERVER_VERSION=' $(RC_FILE) | cut -d = -f 2| sed 's@"@@g')
 SOURCE_PACKAGING_DIR ?= $(shell egrep '^SOURCE_PACKAGING_DIR=' $(RC_FILE) | cut -d = -f 2| sed 's@"@@g')
-KALTURA_PREFIX ?= $(shell egrep '^KALTURA_PREFIX=' $(RC_FILE) | cut -d = -f 2| sed 's@"@@g')
+BORHAN_PREFIX ?= $(shell egrep '^BORHAN_PREFIX=' $(RC_FILE) | cut -d = -f 2| sed 's@"@@g')
 HTML5LIB_VERSION ?= $(shell egrep '^HTML5LIB_LATEST_VERSION=' $(RC_FILE) | cut -d = -f 2| sed 's@"@@g')
 HTML5_STUDIO_VERSION ?= $(shell egrep '^HTML5_APP_STUDIO_VERSION=' $(RC_FILE) | cut -d = -f 2| sed 's@"@@g')
-KMC_VERSION ?= v$(shell egrep '^KMC_MINUS_V_VERSION=' $(RC_FILE) | cut -d = -f 2| sed 's@"@@g')
-KMC_LOGIN_VERSION ?= v$(shell egrep '^KMC_LOGIN_MINUS_V_VERSION=' $(RC_FILE) | cut -d = -f 2| sed 's@"@@g')
-KDP3WRAPPER_VERSION ?=$(shell egrep '^KDP3WRAPPER_VERSION=' $(RC_FILE) | cut -d = -f 2| sed 's@"@@g')
+BMC_VERSION ?= v$(shell egrep '^BMC_MINUS_V_VERSION=' $(RC_FILE) | cut -d = -f 2| sed 's@"@@g')
+BMC_LOGIN_VERSION ?= v$(shell egrep '^BMC_LOGIN_MINUS_V_VERSION=' $(RC_FILE) | cut -d = -f 2| sed 's@"@@g')
+BDP3WRAPPER_VERSION ?=$(shell egrep '^BDP3WRAPPER_VERSION=' $(RC_FILE) | cut -d = -f 2| sed 's@"@@g')
 include ../includes/build-revision.mk
-archive := $(SOURCE_PACKAGING_DIR)/$(KALTURA_SERVER_VERSION).zip 
-clientlibs_archive := $(SOURCE_PACKAGING_DIR)/clients-generator-$(KALTURA_SERVER_VERSION).zip 
-tree := server-$(KALTURA_SERVER_VERSION)
+archive := $(SOURCE_PACKAGING_DIR)/$(BORHAN_SERVER_VERSION).zip 
+clientlibs_archive := $(SOURCE_PACKAGING_DIR)/clients-generator-$(BORHAN_SERVER_VERSION).zip 
+tree := server-$(BORHAN_SERVER_VERSION)
 
 clean:
 	dh_clean
@@ -22,74 +22,74 @@ clean:
 	rm -rf debian/tmp
 
 $(archive):
-	~/sources/platform-install-packages/build/package_kaltura_core.sh	
-	~/sources/platform-install-packages/build/package_kaltura_clients-generator.sh	
+	~/sources/platform-install-packages/build/package_borhan_core.sh	
+	~/sources/platform-install-packages/build/package_borhan_clients-generator.sh	
 
 $(tree): $(archive)
 	unzip -qq -o $(archive)
 	unzip -qq -o $(clientlibs_archive)
-	mv clients-generator-$(KALTURA_SERVER_VERSION) $(tree)/clients-generator
+	mv clients-generator-$(BORHAN_SERVER_VERSION) $(tree)/clients-generator
 
 build: $(tree)
 
 install: build
 
 binary-indep: install
-	rm -rf $(KALTURA_PREFIX)
-	mkdir -p $(KALTURA_PREFIX)/log
-	mkdir -p $(KALTURA_PREFIX)/var/run
-	mkdir -p $(KALTURA_PREFIX)/tmp
-	mkdir -p $(KALTURA_PREFIX)/web
-	mkdir -p $(KALTURA_PREFIX)/app/cache
-	mkdir -p $(KALTURA_PREFIX)/bin
-	mkdir -p $(KALTURA_PREFIX)/lib
-	mkdir -p $(KALTURA_PREFIX)/include
-	mkdir -p $(KALTURA_PREFIX)/share
-	mkdir -p $(KALTURA_PREFIX)/tmp/convert
-	mkdir -p $(KALTURA_PREFIX)/tmp/thumb/
-	mkdir -p $(KALTURA_PREFIX)/web/tmp/imports
-	mkdir -p $(KALTURA_PREFIX)/web/tmp/convert
-	mkdir -p $(KALTURA_PREFIX)/web/tmp/thumb
-	mkdir -p $(KALTURA_PREFIX)/web/tmp/xml
-	mkdir -p $(KALTURA_PREFIX)/web/dropfolders/monitor
-	mkdir -p $(KALTURA_PREFIX)/web/content/cacheswf
-	mkdir -p $(KALTURA_PREFIX)/web/content/uploads
-	mkdir -p $(KALTURA_PREFIX)/web/content/entry
-	mkdir -p $(KALTURA_PREFIX)web/content//metadata
-	mkdir -p $(KALTURA_PREFIX)/web/content/batchfiles
-	mkdir -p $(KALTURA_PREFIX)/web/content/templates
+	rm -rf $(BORHAN_PREFIX)
+	mkdir -p $(BORHAN_PREFIX)/log
+	mkdir -p $(BORHAN_PREFIX)/var/run
+	mkdir -p $(BORHAN_PREFIX)/tmp
+	mkdir -p $(BORHAN_PREFIX)/web
+	mkdir -p $(BORHAN_PREFIX)/app/cache
+	mkdir -p $(BORHAN_PREFIX)/bin
+	mkdir -p $(BORHAN_PREFIX)/lib
+	mkdir -p $(BORHAN_PREFIX)/include
+	mkdir -p $(BORHAN_PREFIX)/share
+	mkdir -p $(BORHAN_PREFIX)/tmp/convert
+	mkdir -p $(BORHAN_PREFIX)/tmp/thumb/
+	mkdir -p $(BORHAN_PREFIX)/web/tmp/imports
+	mkdir -p $(BORHAN_PREFIX)/web/tmp/convert
+	mkdir -p $(BORHAN_PREFIX)/web/tmp/thumb
+	mkdir -p $(BORHAN_PREFIX)/web/tmp/xml
+	mkdir -p $(BORHAN_PREFIX)/web/dropfolders/monitor
+	mkdir -p $(BORHAN_PREFIX)/web/content/cacheswf
+	mkdir -p $(BORHAN_PREFIX)/web/content/uploads
+	mkdir -p $(BORHAN_PREFIX)/web/content/entry
+	mkdir -p $(BORHAN_PREFIX)web/content//metadata
+	mkdir -p $(BORHAN_PREFIX)/web/content/batchfiles
+	mkdir -p $(BORHAN_PREFIX)/web/content/templates
 	mkdir -p etc/profile.d
 	dh_installdirs
 	for i in "*.xml" "*.template" "*.ttf" "*.xsl" "*.xsd" "*.yml" "*.smil" "*.srt" "*.sql" "*.orig" "*.patch" "*.po" "*.pdf" "*.otf" "*.txt" "*.php" "*.phtml" "*.project" "*.png" "*.properties" "*.sample" "*.swf" "*.sf" "*.swz" "*.uad" "*.prefs" "*.psd" "*.rvmrc" "*.sln" "*.ini" "*.log" ;do find . -iname "$i" -exec chmod 644 {} \; ; done
 	find  $(tree) -name "*.sh" -type f -exec chmod +x {} \;
 	sed -i 's@^IsmIndex@;IsmIndex@g' $(tree)/configurations/plugins.template.ini
-	sed -i "s#^;kmc_version = @KMC_VERSION@#kmc_version = $(KMC_VERSION)#g" $(tree)/configurations/local.template.ini
+	sed -i "s#^;bmc_version = @BMC_VERSION@#bmc_version = $(BMC_VERSION)#g" $(tree)/configurations/local.template.ini
 	sed -i 's@^otp_required_partners\[\]@;otp_required_partners\[\]@g' $(tree)/configurations/local.template.ini
 	sed -i "s@^partner_otp_internal_ips@;partner_otp_internal_ips@g" $(tree)/configurations/local.template.ini
 	sed -i "s#^;html5_version = @HTML5LIB_VERSION@#html5_version = $(HTML5LIB_VERSION)#g" $(tree)/configurations/local.template.ini
 	sed -i "s#^;studio_version = @STUDIO_VERSION@#studio_version = $(HTML5_STUDIO_VERSION)#g" $(tree)/configurations/local.template.ini
-	sed -i "s#^;kdp3_wrapper_version = @KDP3_WRAPPER_VERSION@#kdp3_wrapper_version = $(KDP3WRAPPER_VERSION)#g" $(tree)/configurations/local.template.ini
+	sed -i "s#^;bdp3_wrapper_version = @BDP3_WRAPPER_VERSION@#bdp3_wrapper_version = $(BDP3WRAPPER_VERSION)#g" $(tree)/configurations/local.template.ini
 	sed -i "s#^bin_path_mediainfo = .*#bin_path_mediainfo = mediainfo#g" $(tree)/configurations/local.template.ini
-	sed -i "s#^;kmc_login_version = @KMC_LOGIN_VERSION@#kmc_login_version = $(KMC_LOGIN_VERSION)#g" $(tree)/configurations/local.template.ini
+	sed -i "s#^;bmc_login_version = @BMC_LOGIN_VERSION@#bmc_login_version = $(BMC_LOGIN_VERSION)#g" $(tree)/configurations/local.template.ini
 	sed -i 's@^writers.\(.*\).filters.priority.priority\s*=\s*7@writers.\1.filters.priority.priority=4@g' $(tree)/configurations/logger.template.ini
 	sed -i 's@/sbin/service@/usr/sbin/service@g' $(tree)/configurations/monit/monit.d/*
-	sed -i 's@kaltura_sphinx@kaltura-sphinx@g' $(tree)/configurations/monit/monit.d/sphinx.template.rc
-	sed -i 's@kaltura_batch@kaltura-batch@g' $(tree)/configurations/monit/monit.d/batch.template.rc
-	sed -i 's@kaltura_populate@kaltura-populate@g' $(tree)/configurations/monit/monit.d/sphinx.populate.template.rc
+	sed -i 's@borhan_sphinx@borhan-sphinx@g' $(tree)/configurations/monit/monit.d/sphinx.template.rc
+	sed -i 's@borhan_batch@borhan-batch@g' $(tree)/configurations/monit/monit.d/batch.template.rc
+	sed -i 's@borhan_populate@borhan-populate@g' $(tree)/configurations/monit/monit.d/sphinx.populate.template.rc
 	sed -i 's@httpd@apache2@g' $(tree)/configurations/monit/monit.d/httpd.template.rc
 	sed -i 's@/var/run/memcached/memcached.pid@/var/run/memcached.pid@g' $(tree)/configurations/monit/monit.d/memcached.template.rc
 	sed -i 's@/etc/sysconfig/memcached@/etc/memcached.conf@g' $(tree)/configurations/monit/monit.d/memcached.template.rc
 	rm $(tree)/deployment/base/scripts/init_content/04.dropFolder.-4.template.xml
 	cp debian/batch.ini.template $(tree)/configurations/batch/batch.ini.template
-	cp debian/kaltura-base.sh etc/profile.d/
+	cp debian/borhan-base.sh etc/profile.d/
 	cp debian/KDLOperatorFfmpeg1_1_1.php $(tree)/infra/cdl/kdl/KDLOperatorFfmpeg1_1_1.php
 	sed -i "s@^\(params.ImageMagickCmd\)\s*=.*@\1=convert@" $(tree)/configurations/batch/batch.ini.template
 	sed -i "s@^\(params.mediaInfoCmd\)\s*=.*@\1=mediainfo@" $(tree)/configurations/batch/batch.ini.template
 	sed -i "s@^\(params.mencderCmd\)\s*=.*@\1=mencoder@" $(tree)/configurations/batch/batch.ini.template
-	tar zxf debian/entry_and_uiconf_templates.tar.gz -C $(KALTURA_PREFIX)/web/content 
-	mv $(tree)/clients-generator $(KALTURA_PREFIX)/
-	mv $(tree)/* $(KALTURA_PREFIX)/app/
-	dh_install $(KALTURA_PREFIX)
+	tar zxf debian/entry_and_uiconf_templates.tar.gz -C $(BORHAN_PREFIX)/web/content 
+	mv $(tree)/clients-generator $(BORHAN_PREFIX)/
+	mv $(tree)/* $(BORHAN_PREFIX)/app/
+	dh_install $(BORHAN_PREFIX)
 	dh_install etc/profile.d
 	dh_gencontrol -u-v$(DEB_VERSION) 
 	dh_installdebconf

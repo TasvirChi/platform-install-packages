@@ -5,30 +5,30 @@
         compress
         delaycompress
         notifempty
-        create 640 kaltura kaltura
+        create 640 borhan borhan
         sharedscripts
         postrotate
                 [ -f /var/run/nginx.pid ] && kill -USR1 `cat /var/run/nginx.pid`
         endscript
- 	su root kaltura
+ 	su root borhan
 }
 
-@LOG_DIR@/kaltura_nginx_errors.log {
+@LOG_DIR@/borhan_nginx_errors.log {
         daily
         missingok
         rotate 52
         compress
         delaycompress
         notifempty
-        create 640 kaltura kaltura
+        create 640 borhan borhan
         sharedscripts
         postrotate
                 [ -f /var/run/nginx.pid ] && kill -USR1 `cat /var/run/nginx.pid`
         endscript
- 	su root kaltura
+ 	su root borhan
 }
 
-@LOG_DIR@/kaltura_nginx_access.log {
+@LOG_DIR@/borhan_nginx_access.log {
  rotate 7
  daily
  missingok
@@ -36,8 +36,8 @@
  dateext
  notifempty
  lastaction
-     mv @LOG_DIR@/kaltura_nginx_access.log-`/bin/date +%Y%m%d`.gz @EVENTS_LOGS_DIR@/`hostname`-kaltura_nginx_access.log-`/bin/date +%Y%m%d-%H`.gz
-     service kaltura-nginx reload
+     mv @LOG_DIR@/borhan_nginx_access.log-`/bin/date +%Y%m%d`.gz @EVENTS_LOGS_DIR@/`hostname`-borhan_nginx_access.log-`/bin/date +%Y%m%d-%H`.gz
+     service borhan-nginx reload
  endscript
- su root kaltura
+ su root borhan
 }

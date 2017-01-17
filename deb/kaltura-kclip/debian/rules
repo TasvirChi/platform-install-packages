@@ -4,11 +4,11 @@ DEB_VERSION := $(shell dpkg-parsechangelog | egrep '^Version:' | cut -f 2 -d ' '
 RC_FILE :=../../build/sources.rc
 KCLIP_VERSION ?= $(shell egrep '^KCLIP_VERSION=' $(RC_FILE) | cut -d = -f 2| sed 's@"@@g')
 SOURCE_PACKAGING_DIR ?= $(shell egrep '^SOURCE_PACKAGING_DIR=' $(RC_FILE) | cut -d = -f 2| sed 's@"@@g')
-KALTURA_PREFIX ?= $(shell egrep '^KALTURA_PREFIX=' $(RC_FILE) | cut -d = -f 2| sed 's@"@@g')
-KCLIP_PREFIX=$(KALTURA_PREFIX)/web/flash/kclip
+BORHAN_PREFIX ?= $(shell egrep '^BORHAN_PREFIX=' $(RC_FILE) | cut -d = -f 2| sed 's@"@@g')
+KCLIP_PREFIX=$(BORHAN_PREFIX)/web/flash/kclip
 include ../includes/build-revision.mk
-archive := $(SOURCE_PACKAGING_DIR)/kaltura-kclip-$(KCLIP_VERSION).tar.bz2
-tree := kaltura-kclip
+archive := $(SOURCE_PACKAGING_DIR)/borhan-kclip-$(KCLIP_VERSION).tar.bz2
+tree := borhan-kclip
 
 clean:
 	dh_clean
@@ -16,7 +16,7 @@ clean:
 	rm -rf debian/tmp
 
 $(archive):
-	$(SOURCE_PACKAGING_DIR)/platform-install-packages/build/package_kaltura_kclip.sh	
+	$(SOURCE_PACKAGING_DIR)/platform-install-packages/build/package_borhan_kclip.sh	
 
 $(tree): $(archive)
 	tar jxf $(archive)

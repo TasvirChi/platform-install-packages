@@ -3,27 +3,27 @@
 set -e
 
 if [ "$1" = "configure" ]; then
-    ucf /opt/kaltura/share/php7/mysqlnd/mysqlnd.ini /opt/kaltura/app/configurations/php/mods-available/mysqlnd.ini
+    ucf /opt/borhan/share/php7/mysqlnd/mysqlnd.ini /opt/borhan/app/configurations/php/mods-available/mysqlnd.ini
 fi
 
-dpkg-maintscript-helper mv_conffile /opt/kaltura/app/configurations/php/conf.d/10-mysqlnd.ini /opt/kaltura/app/configurations/php/mods-available/mysqlnd.ini 7.0.0-1 -- "$@";
+dpkg-maintscript-helper mv_conffile /opt/borhan/app/configurations/php/conf.d/10-mysqlnd.ini /opt/borhan/app/configurations/php/mods-available/mysqlnd.ini 7.0.0-1 -- "$@";
 #DEBHELPER#
 
-inidir=/opt/kaltura/app/configurations/php/mods-available
+inidir=/opt/borhan/app/configurations/php/mods-available
 if [ "$1" = "configure" ]; then
-     #update-alternatives --install /usr/bin/php7dismod php7dismod /opt/kaltura/bin/php7dismod 50
-     #update-alternatives --install /usr/bin/php7enmod php7enmod /opt/kaltura/bin/php7enmod 50
+     #update-alternatives --install /usr/bin/php7dismod php7dismod /opt/borhan/bin/php7dismod 50
+     #update-alternatives --install /usr/bin/php7enmod php7enmod /opt/borhan/bin/php7enmod 50
     for dsoname in mysqlnd mysqli pdo_mysql ; do
 	inifile=${dsoname}.ini
-	priority=$(sed -ne "s/^; priority=\([0-9]\+\)$/\\1/p" /opt/kaltura/share/php7/mysqlnd/${inifile})
+	priority=$(sed -ne "s/^; priority=\([0-9]\+\)$/\\1/p" /opt/borhan/share/php7/mysqlnd/${inifile})
 
 	# Register new conffile with UCF
-	cp /opt/kaltura/share/php7/mysqlnd/${inifile} ${inidir}/${inifile}
-	ucf /opt/kaltura/share/php7/mysqlnd/${inifile} ${inidir}/${inifile}
-	#ucfr --force kaltura-php7-mysqlnd ${inidir}/${inifile}
+	cp /opt/borhan/share/php7/mysqlnd/${inifile} ${inidir}/${inifile}
+	ucf /opt/borhan/share/php7/mysqlnd/${inifile} ${inidir}/${inifile}
+	#ucfr --force borhan-php7-mysqlnd ${inidir}/${inifile}
 
 	# Move pre-extension manager conffile
-	dpkg-maintscript-helper mv_conffile /opt/kaltura/app/configurations/php/conf.d/${inifile} ${inidir}/${inifile} 7.0.0-1 -- "$@";
+	dpkg-maintscript-helper mv_conffile /opt/borhan/app/configurations/php/conf.d/${inifile} ${inidir}/${inifile} 7.0.0-1 -- "$@";
 
 	if [ -f "${inidir}/${inifile}.dpkg-new" ]; then
 	    md5sum="$(md5sum ${inidir}/${inifile}.dpkg-new | sed -e 's/ .*//')"
@@ -34,7 +34,7 @@ if [ "$1" = "configure" ]; then
 	fi
 
 	# Enable the module
-	/opt/kaltura/bin/php7enmod ${dsoname}/${priority:-20}
+	/opt/borhan/bin/php7enmod ${dsoname}/${priority:-20}
     done
 fi
 

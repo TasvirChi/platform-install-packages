@@ -2,7 +2,7 @@
 
   To Setup a Remote Storage Following link has the Reference Contents 
 
-  Reference URL : [kalturaCE Amazon s3 storage cloudfront cdn setup](http://www.panda-os.com/2012/11/kaltura-ce-amazon-s3-storage-cloudfront-cdn-setup/#.Uy_7KHUW3h_)
+  Reference URL : [borhanCE Amazon s3 storage cloudfront cdn setup](http://www.panda-os.com/2012/11/borhan-ce-amazon-s3-storage-cloudfront-cdn-setup/#.Uy_7KHUW3h_)
 
 ######Setting up Amazon S3 and getting security credentials
 
@@ -11,17 +11,17 @@
 
 * To set up your amazon S3 bucket, go to (https://console.aws.amazon.com/s3/home) , create a new bucket, and name it.
 
-* Inside this bucket, create a folder called **kaltura**
+* Inside this bucket, create a folder called **borhan**
 
 * Select your new bucket on the left side, click Actions and select **Properties**
 
 * Add more permissions – **Authenticated Users** – check all boxes.
 
-* Select the kaltura folder, click **properties**, go to **Permissions**.
+* Select the borhan folder, click **properties**, go to **Permissions**.
 
 * Add more permissions – Everyone – read and download (you can also right click the folder and select **Make Public**)
 
-  In the Above 6th and 7th Step there is no Permission available, So Just Right click on kaltura Directory and choose     **Make Public**
+  In the Above 6th and 7th Step there is no Permission available, So Just Right click on borhan Directory and choose     **Make Public**
 
   Then we need to add a bucket Policy for your bucket, Granting Object get Permission to any Anonymous User in Amazon S3   Bucket for reading the file.
 
@@ -45,4 +45,4 @@
 ![selection_014](https://raw.githubusercontent.com/blackyboy/Centos-Linux-Stuffs/master/setup-images/setup_amazon_s3_remote_storage.png)
 
 
-  If this Policy was not added, We will face clip not found error when ever uploading a new video to kaltura.
+  If this Policy was not added, We will face clip not found error when ever uploading a new video to borhan.

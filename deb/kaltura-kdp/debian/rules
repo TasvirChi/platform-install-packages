@@ -2,13 +2,13 @@
 
 DEB_VERSION := $(shell dpkg-parsechangelog | egrep '^Version:' | cut -f 2 -d ' ')
 RC_FILE :=../../build/sources.rc
-KDP_VERSION ?= $(shell egrep '^KDP_VERSION=' $(RC_FILE) | cut -d = -f 2| sed 's@"@@g')
+BDP_VERSION ?= $(shell egrep '^BDP_VERSION=' $(RC_FILE) | cut -d = -f 2| sed 's@"@@g')
 SOURCE_PACKAGING_DIR ?= $(shell egrep '^SOURCE_PACKAGING_DIR=' $(RC_FILE) | cut -d = -f 2| sed 's@"@@g')
-KALTURA_PREFIX ?= $(shell egrep '^KALTURA_PREFIX=' $(RC_FILE) | cut -d = -f 2| sed 's@"@@g')
-KDP_PREFIX=$(KALTURA_PREFIX)/web/flash/kdp
+BORHAN_PREFIX ?= $(shell egrep '^BORHAN_PREFIX=' $(RC_FILE) | cut -d = -f 2| sed 's@"@@g')
+BDP_PREFIX=$(BORHAN_PREFIX)/web/flash/bdp
 include ../includes/build-revision.mk
-archive := $(SOURCE_PACKAGING_DIR)/kaltura-kdp-$(KDP_VERSION).tar.bz2
-tree := kaltura-kdp
+archive := $(SOURCE_PACKAGING_DIR)/borhan-bdp-$(BDP_VERSION).tar.bz2
+tree := borhan-bdp
 
 clean:
 	dh_clean
@@ -16,7 +16,7 @@ clean:
 	rm -rf debian/tmp
 
 $(archive):
-	$(SOURCE_PACKAGING_DIR)/platform-install-packages/build/package_kaltura_kdp.sh	
+	$(SOURCE_PACKAGING_DIR)/platform-install-packages/build/package_borhan_bdp.sh	
 
 $(tree): $(archive)
 	tar jxf $(archive)
@@ -27,10 +27,10 @@ install: build
 
 binary-indep: install
 	dh_installdirs
-	rm -rf $(KDP_PREFIX)
-	mkdir -p $(KDP_PREFIX)
-	mv $(tree)/* $(KDP_PREFIX)/
-	dh_install $(KDP_PREFIX)
+	rm -rf $(BDP_PREFIX)
+	mkdir -p $(BDP_PREFIX)
+	mv $(tree)/* $(BDP_PREFIX)/
+	dh_install $(BDP_PREFIX)
 	dh_gencontrol -u-v$(DEB_VERSION) 
 	dh_installdebconf
 	dh_installdeb

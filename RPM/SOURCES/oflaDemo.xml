@@ -29,7 +29,7 @@
 		-->
 		<Streams>
 			<StreamType>record</StreamType>
-			<StorageDir>/opt/kaltura/web/content/webcam</StorageDir>
+			<StorageDir>/opt/borhan/web/content/webcam</StorageDir>
 			<KeyDir>${com.wowza.wms.context.VHostConfigHome}/keys</KeyDir>
 			<!-- LiveStreamPacketizers (separate with commas): cupertinostreamingpacketizer, smoothstreamingpacketizer, sanjosestreamingpacketizer, mpegdashstreamingpacketizer, cupertinostreamingrepeater, smoothstreamingrepeater, sanjosestreamingrepeater, mpegdashstreamingrepeater, dvrstreamingpacketizer, dvrstreamingrepeater -->
 			<LiveStreamPacketizers></LiveStreamPacketizers>

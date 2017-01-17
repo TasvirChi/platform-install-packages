@@ -1,21 +1,21 @@
-%define prefix /opt/kaltura/
-# this isn't really a stand location for placing conf files but we wish to remain compatible with the current config dir tree used by Kaltura
-%define confdir /opt/kaltura/app/configurations/monit
+%define prefix /opt/borhan/
+# this isn't really a stand location for placing conf files but we wish to remain compatible with the current config dir tree used by Borhan
+%define confdir /opt/borhan/app/configurations/monit
 %define logmsg logger -t %{name}/rpm
 
 Summary: Process monitor and restart utility
-Name: kaltura-monit
+Name: borhan-monit
 Version: 5.19.0
 Release: 1
 License: GPLv3
 Group: High Availability Management 
 URL: http://mmonit.com/monit/
 
-Packager: Jess Portnoy <jess.portnoy@kaltura.com>
+Packager: Jess Portnoy <jess.portnoy@borhan.com>
 Vendor: Tildeslash Ltd. 
 
 Source0: http://mmonit.com/monit/dist/monit-%{version}.tar.gz
-Source1: kaltura-monit
+Source1: borhan-monit
 Source2: monit.template.conf
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
 
@@ -59,7 +59,7 @@ make install DESTDIR=$RPM_BUILD_ROOT INSTALL="%{__install} -p -c"
 
 # create folder where state and id are stored
 %{__install} -d -m0755 %{buildroot}%{prefix}/var/monit/
-cp %{SOURCE1} %{buildroot}%{_initrddir}/kaltura-monit
+cp %{SOURCE1} %{buildroot}%{_initrddir}/borhan-monit
 
 %pre
 if ! /usr/bin/id monit &>/dev/null; then
@@ -69,16 +69,16 @@ fi
 
 %post
 if [ "$1" = 1 ];then
-	/sbin/chkconfig --add kaltura-monit
-	/sbin/chkconfig kaltura-monit on
+	/sbin/chkconfig --add borhan-monit
+	/sbin/chkconfig borhan-monit on
 fi
 /sbin/service monit restart &>/dev/null || :
 
 
 %preun
 if [ $1 -eq 0 ]; then
-	service kaltura-monit stop &>/dev/null || :
-	/sbin/chkconfig --del kaltura-monit
+	service borhan-monit stop &>/dev/null || :
+	/sbin/chkconfig --del borhan-monit
 fi
 
 %postun
@@ -95,7 +95,7 @@ fi
 %doc COPYING README* CONTRIBUTORS
 %doc %{prefix}/share/man/man?/*
 %defattr(-, root, root, 0755)
-%{_initrddir}/kaltura-monit
+%{_initrddir}/borhan-monit
 %config %{confdir}/monit.d/
 %defattr(-, root, root, 0600)
 %config %{confdir}/monit.template.conf
@@ -105,54 +105,54 @@ fi
 #%attr(0600, root, root) %config(noreplace) %{confdir}/monit.conf
 
 %changelog
-* Thu Sep 22 2016 David Bezemer <david.bezemer@kaltura.com> - 5.19.0-1
+* Thu Sep 22 2016 David Bezemer <david.bezemer@borhan.com> - 5.19.0-1
 - New Upstream Release, see: https://mmonit.com/monit/changes
 
-* Wed Jun 22 2016 Jess Portnoy <jess.portnoy@kaltura.com> - 5.18-1
+* Wed Jun 22 2016 Jess Portnoy <jess.portnoy@borhan.com> - 5.18-1
 - New Upstream Release, see: https://mmonit.com/monit/changes
 
-* Thu May 8 2015 David Bezemer <david.bezemer@kaltura.com> - 5.13-1
+* Thu May 8 2015 David Bezemer <david.bezemer@borhan.com> - 5.13-1
 - New Upstream Release 5.13
 - Adding MMonit support
 
-* Thu Mar 13 2014 Jess Portnoy <jess.portnoy@kaltura.com> - 5.6-13
+* Thu Mar 13 2014 Jess Portnoy <jess.portnoy@borhan.com> - 5.6-13
 - Generate random monit passwd.
 
-* Thu Mar 13 2014 Jess Portnoy <jess.portnoy@kaltura.com> - 5.6-12
+* Thu Mar 13 2014 Jess Portnoy <jess.portnoy@borhan.com> - 5.6-12
 - Placeholders instead of hard coded host and path to APP_DIR.
 - Commented section about setting up monit over SSL.
 
-* Mon Feb 17 2014 Jess Portnoy <jess.portnoy@kaltura.com> - 5.6-11
-- Fix for https://github.com/kaltura/platform-install-packages/issues/41
+* Mon Feb 17 2014 Jess Portnoy <jess.portnoy@borhan.com> - 5.6-11
+- Fix for https://github.com/borhan/platform-install-packages/issues/41
 
-* Sun Feb 16 2014 Jess Portnoy <jess.portnoy@kaltura.com> - 5.6-10
+* Sun Feb 16 2014 Jess Portnoy <jess.portnoy@borhan.com> - 5.6-10
 - monit.conf needs to be templated because of the email addr.
 
-* Sat Feb 15 2014 Jess Portnoy <jess.portnoy@kaltura.com> - 5.6-9
+* Sat Feb 15 2014 Jess Portnoy <jess.portnoy@borhan.com> - 5.6-9
 - monit.conf: set daemon 10 # Poll every 10 seconds
 
-* Sat Feb 15 2014 Jess Portnoy <jess.portnoy@kaltura.com> - 5.6-8
+* Sat Feb 15 2014 Jess Portnoy <jess.portnoy@borhan.com> - 5.6-8
 - Changed monit confdir.
 
-* Sat Feb 15 2014 Jess Portnoy <jess.portnoy@kaltura.com> - 5.6-7
+* Sat Feb 15 2014 Jess Portnoy <jess.portnoy@borhan.com> - 5.6-7
 - chkconfig monit on.
 - Modications to the init script.
 
-* Sun Jan 12 2013 Jess Portnoy <jess.portnoy@kaltura.com> - 5.6-5
+* Sun Jan 12 2013 Jess Portnoy <jess.portnoy@borhan.com> - 5.6-5
 - Added monit.conf
 
-* Sun Jan 12 2013 Jess Portnoy <jess.portnoy@kaltura.com> - 5.6-4
+* Sun Jan 12 2013 Jess Portnoy <jess.portnoy@borhan.com> - 5.6-4
 - Changes to init script.
 
-* Sun Jan 12 2013 Jess Portnoy <jess.portnoy@kaltura.com> - 5.6-3
+* Sun Jan 12 2013 Jess Portnoy <jess.portnoy@borhan.com> - 5.6-3
 - Only chkconfig on first install.
 
-* Thu Jan 2 2013 Jess Portnoy <jess.portnoy@kaltura.com> - 5.6-2
-- Corrected daemon name to be 'kaltura-monit'
+* Thu Jan 2 2013 Jess Portnoy <jess.portnoy@borhan.com> - 5.6-2
+- Corrected daemon name to be 'borhan-monit'
 
-* Thu Jan 2 2013 Jess Portnoy <jess.portnoy@kaltura.com> - 5.6-1
+* Thu Jan 2 2013 Jess Portnoy <jess.portnoy@borhan.com> - 5.6-1
 - This package was originally taken from the Dag repo.
-- The reason for creating kaltura-monit
+- The reason for creating borhan-monit
 	0. none standard prefix so that one can also install the original monit package if one is inclined or needs it for other packages.
 	1. the monit package is not an official RHEL/CentOS package and we wish to avoid forcing the user into adding additional repos.
 
@@ -217,7 +217,7 @@ fi
 
 * Wed May 17 2006 Dag Wieers <dag@wieers.com> - 4.8.1-1
 - Updated to release 4.8.1.
-- Added /opt/kaltura/app/configurations/monit.d/ and /opt/kaltura/app/monit/lib/monit/. (Michael C. Hoffman)
+- Added /opt/borhan/app/configurations/monit.d/ and /opt/borhan/app/monit/lib/monit/. (Michael C. Hoffman)
 - Creation/removal of user monit. (Michael C. Hoffman)
 
 * Mon May 08 2006 Dag Wieers <dag@wieers.com> - 4.8-1

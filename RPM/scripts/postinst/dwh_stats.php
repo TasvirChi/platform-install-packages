@@ -2,7 +2,7 @@
 if($argc<6){
     die('Usage: '.$argv[0] .' <partner id> <admin secret> <service_url> <start date i.e "01 Jul 2015"> <end date i.e "10 Jul 2015">'."\n");
 }
-require_once('/opt/kaltura/web/content/clientlibs/php5/KalturaClient.php');
+require_once('/opt/borhan/web/content/clientlibs/php5/BorhanClient.php');
 
 // generate a KS
 $userId = null;
@@ -10,26 +10,26 @@ $expiry = null;
 $privileges = null;
 $partnerId=$argv[1];
 $secret = $argv[2];
-$type = KalturaSessionType::ADMIN;
-$config = new KalturaConfiguration($partnerId);
+$type = BorhanSessionType::ADMIN;
+$config = new BorhanConfiguration($partnerId);
 $config->serviceUrl = $argv[3];
 $start_date=date_format(date_create($argv[4]), 'U');
 $end_date=date_format(date_create($argv[5]), 'U');
-$client = new KalturaClient($config);
+$client = new BorhanClient($config);
 $ks = $client->session->start($secret, $userId, $type, $partnerId, $expiry, $privileges);
 $client->setKs($ks);
 
 // set type to TOP_CONTENT
 // reportType can be any of there:
-// https://github.com/kaltura/server/blob/master/api_v3/lib/types/enums/KalturaReportType.php
+// https://github.com/borhan/server/blob/master/api_v3/lib/types/enums/BorhanReportType.php
 $report_type_string='TOP_CONTENT';
-$reportType = constant('KalturaReportType::'.$report_type_string);
-$reportInputFilter = new KalturaReportInputFilter();
+$reportType = constant('BorhanReportType::'.$report_type_string);
+$reportInputFilter = new BorhanReportInputFilter();
 // epoch representation of the start and end dates
 $reportInputFilter->fromDate = $start_date;
 $reportInputFilter->toDate = $end_date;
-// interval can also be KalturaReportInterval::MONTHS;
-$reportInputFilter->interval = KalturaReportInterval::DAYS;
+// interval can also be BorhanReportInterval::MONTHS;
+$reportInputFilter->interval = BorhanReportInterval::DAYS;
 $dimension = null;
 // objectIds: comma separated string of entry ids
 $objectIds = null;
@@ -44,11 +44,11 @@ var_dump($result);
 
 // set type to OPERATION_SYSTEM
 $report_type_string='OPERATION_SYSTEM';
-$reportType = constant('KalturaReportType::'.$report_type_string);
-$reportInputFilter = new KalturaReportInputFilter();
+$reportType = constant('BorhanReportType::'.$report_type_string);
+$reportInputFilter = new BorhanReportInputFilter();
 $reportInputFilter->fromDate = $start_date;
 $reportInputFilter->toDate = $end_date;
-$reportInputFilter->interval = KalturaReportInterval::DAYS;
+$reportInputFilter->interval = BorhanReportInterval::DAYS;
 $dimension = null;
 $objectIds = null;
 echo "Getting $report_type_string total info for ".$argv[4]." - ". $argv[5]."...\n\n";

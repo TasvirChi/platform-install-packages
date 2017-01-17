@@ -13,5 +13,5 @@ server {
     ssl_ciphers  HIGH:!aNULL:!MD5;
     ssl_prefer_server_ciphers   on;
 
-    include /opt/kaltura/nginx/conf/kaltura.conf;
+    include /opt/borhan/nginx/conf/borhan.conf;
 }

@@ -1,7 +1,7 @@
-USE `kalturalog`;
+USE `borhanlog`;
 -- MySQL dump 10.13  Distrib 5.1.73, for redhat-linux-gnu (x86_64)
 --
--- Host: localhost    Database: kalturalog
+-- Host: localhost    Database: borhanlog
 -- ------------------------------------------------------
 -- Server version	5.1.73
 /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
@@ -12,7 +12,7 @@ USE `kalturalog`;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
--- Dumping routines for database 'kalturalog'
+-- Dumping routines for database 'borhanlog'
 --
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 

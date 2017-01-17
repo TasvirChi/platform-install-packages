@@ -1,6 +1,6 @@
-%define prefix /opt/kaltura
+%define prefix /opt/borhan
 Summary: LAME Ain't an MP3 Encoder... but it's the best of all
-Name: kaltura-lame
+Name: borhan-lame
 Version: 3.99.5
 Release: 3 
 License: LGPL
@@ -68,12 +68,12 @@ you will need to install %{name}-devel.
 %{__rm} -rf %{buildroot}
 %{__make} install DESTDIR="%{buildroot}"
 %{__mkdir_p} $RPM_BUILD_ROOT%{_sysconfdir}/profile.d
-cat > $RPM_BUILD_ROOT%{_sysconfdir}/profile.d/kaltura_lame.sh << EOF
+cat > $RPM_BUILD_ROOT%{_sysconfdir}/profile.d/borhan_lame.sh << EOF
 PATH=\$PATH:%{prefix}/bin
 export PATH
 EOF
 %{__mkdir_p} $RPM_BUILD_ROOT%{_sysconfdir}/ld.so.conf.d
-cat > $RPM_BUILD_ROOT%{_sysconfdir}/ld.so.conf.d/kaltura_lame.conf << EOF
+cat > $RPM_BUILD_ROOT%{_sysconfdir}/ld.so.conf.d/borhan_lame.conf << EOF
 %{prefix}/lib
 EOF
 
@@ -101,8 +101,8 @@ execstack -c %{buildroot}%{prefix}/lib/*.so.*.*.* || :
 %doc %{prefix}/share/*
 %{prefix}/bin/lame
 %{prefix}/lib/libmp3lame.so.*
-%config %{_sysconfdir}/ld.so.conf.d/kaltura_lame.conf
-%config %{_sysconfdir}/profile.d/kaltura_lame.sh
+%config %{_sysconfdir}/ld.so.conf.d/borhan_lame.conf
+%config %{_sysconfdir}/profile.d/borhan_lame.sh
 
 %files devel
 %defattr(-, root, root, 0755)
@@ -113,11 +113,11 @@ execstack -c %{buildroot}%{prefix}/lib/*.so.*.*.* || :
 %exclude %{prefix}/lib/libmp3lame.la
 
 %changelog
-* Mon Feb 27 2014 Jess Portnoy <jess.portnoy@kaltura.com> - 3.99.5-3
+* Mon Feb 27 2014 Jess Portnoy <jess.portnoy@borhan.com> - 3.99.5-3
 - Corrected paths to bin and lib dir in profile.d and ld.so.conf.d.
 
-* Mon Feb 5 2014 Jess Portnoy <jess.portnoy@kaltura.com> - 3.99.5-2 
-- Adopted for Kaltura.
+* Mon Feb 5 2014 Jess Portnoy <jess.portnoy@borhan.com> - 3.99.5-2 
+- Adopted for Borhan.
 
 * Sun Mar 11 2012 Dag Wieers <dag@wieers.com> - 3.99.5-1
 - Updated to release 3.99.5.

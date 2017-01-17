@@ -8,8 +8,8 @@
 #  REQUIREMENTS: ---
 #          BUGS: ---
 #         NOTES: ---
-#        AUTHOR: Tan-Tan, <jonathan.kanarek@kaltura.com>
-#  ORGANIZATION: Kaltura, inc.
+#        AUTHOR: Tan-Tan, <jonathan.kanarek@borhan.com>
+#  ORGANIZATION: Borhan, inc.
 #       CREATED: 12/29/13 05:24:47 EST
 #      REVISION:  ---
 #===============================================================================
@@ -28,11 +28,11 @@ if [ ! -r $SOURCES_RC ];then
 fi
 . $SOURCES_RC 
 
-kaltura_install kaltura-ffmpeg-aux $FFMPEG_AUX_VERSION
-kaltura_install kaltura-ffmpeg-aux-devel $FFMPEG_AUX_VERSION
+borhan_install borhan-ffmpeg-aux $FFMPEG_AUX_VERSION
+borhan_install borhan-ffmpeg-aux-devel $FFMPEG_AUX_VERSION
 
-mkdir -p $SOURCE_PACKAGING_DIR/kaltura-segmenter-$SEGMENTER_VERSION
-wget $SEGMENTER_URI -O $SOURCE_PACKAGING_DIR/kaltura-segmenter-$SEGMENTER_VERSION/segmenter.c
+mkdir -p $SOURCE_PACKAGING_DIR/borhan-segmenter-$SEGMENTER_VERSION
+wget $SEGMENTER_URI -O $SOURCE_PACKAGING_DIR/borhan-segmenter-$SEGMENTER_VERSION/segmenter.c
 if [ $? -eq 0 ];then
 	echo "Downloaded segmenter.c"
 else
@@ -41,9 +41,9 @@ else
 fi
 
 cd $SOURCE_PACKAGING_DIR
-tar zcf $RPM_SOURCES_DIR/kaltura-segmenter-$SEGMENTER_VERSION.tar.gz kaltura-segmenter-$SEGMENTER_VERSION
-echo "Packaged into $RPM_SOURCES_DIR/kaltura-segmenter-$SEGMENTER_VERSION.tar.gz"
+tar zcf $RPM_SOURCES_DIR/borhan-segmenter-$SEGMENTER_VERSION.tar.gz borhan-segmenter-$SEGMENTER_VERSION
+echo "Packaged into $RPM_SOURCES_DIR/borhan-segmenter-$SEGMENTER_VERSION.tar.gz"
 		
 if [ -x "`which rpmbuild 2>/dev/null`" ];then
-	rpmbuild -ba $RPM_SPECS_DIR/kaltura-segmenter.spec
+	rpmbuild -ba $RPM_SPECS_DIR/borhan-segmenter.spec
 fi

@@ -1,6 +1,6 @@
 DELIMITER $$
 
-USE `kalturadw`$$
+USE `borhandw`$$
 
 DROP PROCEDURE IF EXISTS `mark_operational_sync_as_done`$$
 
@@ -11,9 +11,9 @@ BEGIN
 	
 	SELECT last_execution_parameter_id, execution_start_time_parameter_id
 	INTO	v_last_execution_parameter_id, v_execution_start_time_parameter_id
-	FROM kalturadw_ds.operational_syncs WHERE operational_sync_name = p_sync_type;
+	FROM borhandw_ds.operational_syncs WHERE operational_sync_name = p_sync_type;
 
-	UPDATE kalturadw_ds.parameters main, kalturadw_ds.parameters start_time	
+	UPDATE borhandw_ds.parameters main, borhandw_ds.parameters start_time	
 	SET main.date_value = start_time.date_value
 	WHERE main.id = v_last_execution_parameter_id AND start_time.id = v_execution_start_time_parameter_id;
 END$$

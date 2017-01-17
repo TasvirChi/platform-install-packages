@@ -130,7 +130,7 @@ LD_LIBRARY_PATH=%{buildroot}%{_libdir} test/TestBench || :
 %{_libdir}/pkgconfig/%{name}.pc
 
 %changelog
-* Sun Sep 18 2016 Jess Portnoy <jess.portnoy@kaltura.com> - 2.0-1
+* Sun Sep 18 2016 Jess Portnoy <jess.portnoy@borhan.com> - 2.0-1
 - Update to version 2.0.
 
 * Fri Feb 12 2016 Simone Caronni <negativo17@gmail.com> - 1.9-1

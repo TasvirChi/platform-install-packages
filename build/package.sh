@@ -8,8 +8,8 @@
 #  REQUIREMENTS: ---
 #          BUGS: ---
 #         NOTES: ---
-#        AUTHOR: Tan-Tan, <jonathan.kanarek@kaltura.com>
-#  ORGANIZATION: Kaltura, inc.
+#        AUTHOR: Tan-Tan, <jonathan.kanarek@borhan.com>
+#  ORGANIZATION: Borhan, inc.
 #       CREATED: 12/17/14
 #      REVISION:  ---
 #===============================================================================
@@ -59,6 +59,6 @@ cd $BUILD_DIR
 ./package_segmenter_source.sh
 ./package_sshpass_source.sh
 
-./package_kaltura.sh
+./package_borhan.sh
 
 

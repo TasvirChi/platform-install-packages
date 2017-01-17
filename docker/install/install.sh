@@ -30,13 +30,13 @@ mysql -e "FLUSH PRIVILEGES"
 
 
 
-# installing kaltura
-/opt/kaltura/bin/kaltura-mysql-settings.sh
+# installing borhan
+/opt/borhan/bin/borhan-mysql-settings.sh
 
 if [ -e /root/install/config.ans ]; then
-	/opt/kaltura/bin/kaltura-config-all.sh /root/install/config.ans
+	/opt/borhan/bin/borhan-config-all.sh /root/install/config.ans
 else
-	/opt/kaltura/bin/kaltura-config-all.sh
+	/opt/borhan/bin/borhan-config-all.sh
 fi
 
 

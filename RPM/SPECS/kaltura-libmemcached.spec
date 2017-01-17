@@ -1,9 +1,9 @@
-%define prefix /opt/kaltura
+%define prefix /opt/borhan
 # Regression tests take a long time, you can skip 'em with this
 %{!?runselftest: %{expand: %%global runselftest 0}}
 %global with_sasl        1
 
-Name:      kaltura-libmemcached
+Name:      borhan-libmemcached
 Summary:   Client library and command line tools for memcached server
 Version:   1.0.16
 Release:   2
@@ -109,7 +109,7 @@ if [ ! -d %{buildroot}%{prefix}/share/man/man1 ]; then
    install -p -m 644 man/*3 %{buildroot}%{prefix}/share/man/man3
 fi
 %{__mkdir_p} $RPM_BUILD_ROOT%{_sysconfdir}/ld.so.conf.d
-cat > $RPM_BUILD_ROOT%{_sysconfdir}/ld.so.conf.d/kaltura_libmemcached.conf << EOF
+cat > $RPM_BUILD_ROOT%{_sysconfdir}/ld.so.conf.d/borhan_libmemcached.conf << EOF
 %{prefix}/lib
 EOF
 
@@ -141,7 +141,7 @@ rm -rf %{buildroot}
 %defattr (-,root,root,-) 
 %doc AUTHORS COPYING README THANKS TODO ChangeLog
 %{prefix}/bin/mem*
-%config %{_sysconfdir}/ld.so.conf.d/kaltura_libmemcached.conf
+%config %{_sysconfdir}/ld.so.conf.d/borhan_libmemcached.conf
 %exclude %{prefix}/lib/lib*.la
 %{prefix}/lib/libhashkit.so.2*
 %{prefix}/lib/libmemcached.so.11*
@@ -172,8 +172,8 @@ rm -rf %{buildroot}
 
 
 %changelog
-* Mon Feb 5 2014 Jess Portnoy <jess.portnoy@kaltura.com> - 1.0.16-2
-- Adopted from Remi's repo, needed for kaltura-{front,batch} packages as they require php-pecl-memcached.
+* Mon Feb 5 2014 Jess Portnoy <jess.portnoy@borhan.com> - 1.0.16-2
+- Adopted from Remi's repo, needed for borhan-{front,batch} packages as they require php-pecl-memcached.
 
 * Mon Feb  4 2013 Remi Collet <remi@fedoraproject.org> - 1.0.16-1
 - update to 1.0.16

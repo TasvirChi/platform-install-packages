@@ -1,4 +1,4 @@
-USE kalturadw;
+USE borhandw;
 
 DROP TABLE IF EXISTS `dwh_dim_upload_token_object_type`;
 CREATE TABLE `dwh_dim_upload_token_object_type` (

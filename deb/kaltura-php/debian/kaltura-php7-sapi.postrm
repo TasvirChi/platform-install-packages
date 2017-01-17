@@ -2,13 +2,13 @@
 
 set -e
 
-phpini=/opt/kaltura/app/configurations/php/@sapi@/php.ini
+phpini=/opt/borhan/app/configurations/php/@sapi@/php.ini
 
 case "$1" in
 purge)
 	# remove the flag to remember the original state
-	if [ -e /opt/kaltura/app/configurations/php/@sapi@/.start ]; then
-	    rm -f /opt/kaltura/app/configurations/php/@sapi@/.start
+	if [ -e /opt/borhan/app/configurations/php/@sapi@/.start ]; then
+	    rm -f /opt/borhan/app/configurations/php/@sapi@/.start
 	fi
 	for ext in '~' '%' .bak .ucf-new .ucf-old .ucf-dist;  do
 	    rm -f $phpini$ext

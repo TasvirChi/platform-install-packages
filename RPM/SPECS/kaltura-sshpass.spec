@@ -1,6 +1,6 @@
-%define prefix /opt/kaltura
+%define prefix /opt/borhan
 Summary: Non-interactive SSH authentication utility
-Name: kaltura-sshpass
+Name: borhan-sshpass
 Version: 1.05
 Release: 1
 License: GPLv2
@@ -33,5 +33,5 @@ more secure public key authentication of SSH instead.
 %{prefix}/bin/sshpass
 
 %changelog
-* Mon Jan 6 2014 Jess Portnoy <jess.portnoy@kaltura.com> - 1.05-1
+* Mon Jan 6 2014 Jess Portnoy <jess.portnoy@borhan.com> - 1.05-1
 - Initial package.

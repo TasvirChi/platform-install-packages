@@ -288,7 +288,7 @@ friendlyName										= Convert Collection
 type												= KAsyncConvertCollection
 scriptPath											= batches/Convert/KAsyncConvertCollectionExe.php
 
-params.expEncoderCmd								= "C:\My\expressionencoder\RunAffinityCmd.exe 1 36000000 powershell -file C:\web\kaltura\batch\batches\Convert\scripts\runee3.ps1 C:\My\expressionencoder\ExpressionEncoder.dll"
+params.expEncoderCmd								= "C:\My\expressionencoder\RunAffinityCmd.exe 1 36000000 powershell -file C:\web\borhan\batch\batches\Convert\scripts\runee3.ps1 C:\My\expressionencoder\ExpressionEncoder.dll"
 
 params.isRemoteInput								= 1
 params.isRemoteOutput								= 1

@@ -1,4 +1,4 @@
-USE kalturadw;
+USE borhandw;
 
 DROP PROCEDURE IF EXISTS load_categories;
 

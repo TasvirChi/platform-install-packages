@@ -1,31 +1,31 @@
 # local TZ to be used by PHP code. Note that it MUST be the same as your DB TZ.
 TIME_ZONE="America/New_York"
 # Apache port
-KALTURA_VIRTUAL_HOST_PORT="443"
-KALTURA_VIRTUAL_HOST_NAME="@HOSTNAME@"
+BORHAN_VIRTUAL_HOST_PORT="443"
+BORHAN_VIRTUAL_HOST_NAME="@HOSTNAME@"
 # host and port
-KALTURA_FULL_VIRTUAL_HOST_NAME="$KALTURA_VIRTUAL_HOST_NAME:$KALTURA_VIRTUAL_HOST_PORT"
+BORHAN_FULL_VIRTUAL_HOST_NAME="$BORHAN_VIRTUAL_HOST_NAME:$BORHAN_VIRTUAL_HOST_PORT"
 # operational DB user and passwd
-DB1_NAME="kaltura"
-DB1_USER="kaltura"
+DB1_NAME="borhan"
+DB1_USER="borhan"
 PROTOCOL="https"
-SERVICE_URL="$PROTOCOL://$KALTURA_FULL_VIRTUAL_HOST_NAME"
+SERVICE_URL="$PROTOCOL://$BORHAN_FULL_VIRTUAL_HOST_NAME"
 SPHINX_SERVER1="@HOSTNAME@"
 SPHINX_SERVER2=" "
 SPHINX_DB_HOST="@HOSTNAME@"
 SPHINX_DB_PORT="3306"
-# user name for the Kaltura Admin Console, MUST be in the form of an email
+# user name for the Borhan Admin Console, MUST be in the form of an email
 ADMIN_CONSOLE_ADMIN_MAIL="user@name.com"
-# passwd for the Kaltura Admin Console
+# passwd for the Borhan Admin Console
 ADMIN_CONSOLE_PASSWORD="mypasswd"
-# for installs that have no remote CDN storage, use the same as $KALTURA_VIRTUAL_HOST_NAME
+# for installs that have no remote CDN storage, use the same as $BORHAN_VIRTUAL_HOST_NAME
 CDN_HOST="@HOSTNAME@"
 # display name used when sending the 'welcome' mail.
-ENVIRONMENT_NAME="Kaltura Video Platform"
+ENVIRONMENT_NAME="Borhan Video Platform"
 # what web I/F would you want to enable, options:
 # 0 - All web interfaces 
-# 1 - Kaltura Management Console [KMC], Hosted Apps, HTML5 lib and ClipAp
-# 2 - KAC - Kaltura Admin Console
+# 1 - Borhan Management Console [BMC], Hosted Apps, HTML5 lib and ClipAp
+# 2 - KAC - Borhan Admin Console
 CONFIG_CHOICE="0"
 # are we working over SSL? needed since, if so, we perform cert validity checks
 IS_SSL="y"
@@ -68,7 +68,7 @@ IS_NGINX_SSL="N"
 # NGINX SSL PORT - note, if you have Apache running over SSL as well and on port 443, do not select 443 here too
 # VOD_PACKAGER_SSL_PORT=8443
 WWW_HOST="@API_HOST_TO_USE_FOR_NGINX@"
-# Range of ip addresses belonging to internal kaltura servers
+# Range of ip addresses belonging to internal borhan servers
 # The range is used when checking service actions permissions and allowing to access certain services without KS from the internal servers.
 # The default is only good for testing, on a production ENV you should adjust according to your network.
 IP_RANGE="0.0.0.0-255.255.255.255"

@@ -11,8 +11,8 @@
 ### END INIT INFO
 
 PATH=/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin
-DAEMON=/opt/kaltura/nginx/sbin/nginx
-PID_FILE=/opt/kaltura/nginx/logs/nginx.pid
+DAEMON=/opt/borhan/nginx/sbin/nginx
+PID_FILE=/opt/borhan/nginx/logs/nginx.pid
 NAME=nginx
 DESC=nginx
 

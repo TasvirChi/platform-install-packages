@@ -1,4 +1,4 @@
-/opt/kaltura/log/nginx/*.log {
+/opt/borhan/log/nginx/*.log {
 	daily
 	missingok
 	rotate 52
@@ -13,6 +13,6 @@
 		fi; \
 	endscript
 	postrotate
-		[ ! -f /opt/kaltura/nginx/logs/nginx.pid ] || kill -USR1 `cat /opt/kaltura/nginx/logs/nginx.pid`
+		[ ! -f /opt/borhan/nginx/logs/nginx.pid ] || kill -USR1 `cat /opt/borhan/nginx/logs/nginx.pid`
 	endscript
 }

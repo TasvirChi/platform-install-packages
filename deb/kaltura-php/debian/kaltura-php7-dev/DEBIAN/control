@@ -1,10 +1,10 @@
-Package: kaltura-php7-dev
-Source: kaltura-php7
+Package: borhan-php7-dev
+Source: borhan-php7
 Version: 7.0.0-6
 Architecture: amd64
-Maintainer: Jess Portnoy <jess.portnoy@kaltura.com>
+Maintainer: Jess Portnoy <jess.portnoy@borhan.com>
 Installed-Size: 4406
-Depends: autoconf (>= 2.63), automake (>= 1.11), libssl-dev, libtool (>= 2.2), shtool, kaltura-php7-common (>= 7.0.0-6)
+Depends: autoconf (>= 2.63), automake (>= 1.11), libssl-dev, libtool (>= 2.2), shtool, borhan-php7-common (>= 7.0.0-6)
 Conflicts: libtool (<< 2.2)
 Section: php
 Priority: optional

@@ -1,6 +1,6 @@
 DELIMITER $$
 
-USE `kalturadw`$$
+USE `borhandw`$$
 
 DROP PROCEDURE IF EXISTS `do_tables_to_new`$$
 
@@ -13,7 +13,7 @@ BEGIN
 
 	SELECT is_copied, column_name
 	INTO v_copied, v_column
-	FROM kalturadw_ds.tables_to_new
+	FROM borhandw_ds.tables_to_new
 	WHERE greater_than_or_equal_date_id = p_greater_than_or_equal_date_id AND 
 	      	less_than_date_id = p_less_than_date_id AND 
 		table_name = p_table_name;
@@ -25,7 +25,7 @@ BEGIN
 		FROM (
 			SELECT  column_name
 	                FROM information_schema.COLUMNS
-        	        WHERE CONCAT(table_schema,'.',table_name) IN (CONCAT('kalturadw.',p_table_name),CONCAT('kalturadw.',p_table_name,'_new'))
+        	        WHERE CONCAT(table_schema,'.',table_name) IN (CONCAT('borhandw.',p_table_name),CONCAT('borhandw.',p_table_name,'_new'))
 			 GROUP BY column_name
 			 HAVING COUNT(*) > 1
 			 ORDER BY MIN(ordinal_position)
@@ -39,7 +39,7 @@ BEGIN
 		EXECUTE stmt;
 		DEALLOCATE PREPARE stmt;
 
-		UPDATE kalturadw_ds.tables_to_new SET is_copied = 1 
+		UPDATE borhandw_ds.tables_to_new SET is_copied = 1 
 		WHERE greater_than_or_equal_date_id = p_greater_than_or_equal_date_id AND
                 less_than_date_id = p_less_than_date_id AND
                 table_name = p_table_name;
@@ -62,7 +62,7 @@ BEGIN
 	DECLARE c_partitions 
 	CURSOR FOR 
 	SELECT greater_than_or_equal_date_id, less_than_date_id, table_name
-	FROM kalturadw_ds.tables_to_new
+	FROM borhandw_ds.tables_to_new
 	ORDER BY less_than_date_id;
 	DECLARE CONTINUE HANDLER FOR NOT FOUND SET done = 1;
 	

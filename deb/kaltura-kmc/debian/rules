@@ -2,15 +2,15 @@
 
 DEB_VERSION := $(shell dpkg-parsechangelog | egrep '^Version:' | cut -f 2 -d ' ')
 RC_FILE :=../../build/sources.rc
-KMC_VERSION ?= v$(shell egrep '^KMC_MINUS_V_VERSION=' $(RC_FILE) | cut -d = -f 2| sed 's@"@@g')
+BMC_VERSION ?= v$(shell egrep '^BMC_MINUS_V_VERSION=' $(RC_FILE) | cut -d = -f 2| sed 's@"@@g')
 SOURCE_PACKAGING_DIR ?= $(shell egrep '^SOURCE_PACKAGING_DIR=' $(RC_FILE) | cut -d = -f 2| sed 's@"@@g')
-KALTURA_PREFIX ?= $(shell egrep '^KALTURA_PREFIX=' $(RC_FILE) | cut -d = -f 2| sed 's@"@@g')
-KMC_PREFIX=$(KALTURA_PREFIX)/web/flash/kmc
+BORHAN_PREFIX ?= $(shell egrep '^BORHAN_PREFIX=' $(RC_FILE) | cut -d = -f 2| sed 's@"@@g')
+BMC_PREFIX=$(BORHAN_PREFIX)/web/flash/bmc
 HTML5LIB_VERSION ?= $(shell egrep '^HTML5LIB_LATEST_VERSION=' $(RC_FILE) | cut -d = -f 2| sed 's@"@@g')
 KCLIP_VERSION ?= $(shell egrep '^KCLIP_VERSION=' $(RC_FILE) | cut -d = -f 2| sed 's@"@@g')
 include ../includes/build-revision.mk
-archive := $(SOURCE_PACKAGING_DIR)/kaltura-kmc-$(KMC_VERSION).tar.bz2
-tree := kaltura-kmc-$(KMC_VERSION)
+archive := $(SOURCE_PACKAGING_DIR)/borhan-bmc-$(BMC_VERSION).tar.bz2
+tree := borhan-bmc-$(BMC_VERSION)
 
 clean:
 	dh_clean
@@ -18,7 +18,7 @@ clean:
 	rm -rf debian/tmp
 
 $(archive):
-	$(SOURCE_PACKAGING_DIR)/platform-install-packages/build/package_kaltura_kmc.sh	
+	$(SOURCE_PACKAGING_DIR)/platform-install-packages/build/package_borhan_bmc.sh	
 
 $(tree): $(archive)
 	tar jxf $(archive)
@@ -29,14 +29,14 @@ install: build
 
 binary-indep: install
 	dh_installdirs
-	rm -rf $(KMC_PREFIX)
-	mkdir -p $(KMC_PREFIX) $(KALTURA_PREFIX)/web/content/docs
-	mv $(tree)/* $(KMC_PREFIX)/
-	sed -i "s#html5_version =.*#html5_version = $(HTML5LIB_VERSION)#g" $(KMC_PREFIX)/$(KMC_VERSION)/config.ini 
-	sed -i "s#\(widgets.kClip.*version\) =.*#\1 = $(KCLIP_VERSION)#g" $(KMC_PREFIX)/$(KMC_VERSION)/config.ini 
-	dos2unix $(KMC_PREFIX)/$(KMC_VERSION)/config.ini
-	cp -r $(KMC_PREFIX)/doc/* $(KALTURA_PREFIX)/web/content/docs
-	dh_install $(KALTURA_PREFIX)
+	rm -rf $(BMC_PREFIX)
+	mkdir -p $(BMC_PREFIX) $(BORHAN_PREFIX)/web/content/docs
+	mv $(tree)/* $(BMC_PREFIX)/
+	sed -i "s#html5_version =.*#html5_version = $(HTML5LIB_VERSION)#g" $(BMC_PREFIX)/$(BMC_VERSION)/config.ini 
+	sed -i "s#\(widgets.kClip.*version\) =.*#\1 = $(KCLIP_VERSION)#g" $(BMC_PREFIX)/$(BMC_VERSION)/config.ini 
+	dos2unix $(BMC_PREFIX)/$(BMC_VERSION)/config.ini
+	cp -r $(BMC_PREFIX)/doc/* $(BORHAN_PREFIX)/web/content/docs
+	dh_install $(BORHAN_PREFIX)
 	dh_gencontrol -u-v$(DEB_VERSION) 
 	dh_installdebconf
 	dh_installdeb

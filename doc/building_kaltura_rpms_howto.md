@@ -4,13 +4,13 @@ rpm-build gcc gcc-c++ git redhat-rpm-config svn wget dos2unix
 
 Extra repos
 ===========
-Extra repos are not needed for installing Kaltura but MUST be configured in order to build some Kaltura dependencies:
+Extra repos are not needed for installing Borhan but MUST be configured in order to build some Borhan dependencies:
 EPEL (https://fedoraproject.org/wiki/EPEL), rpmforge (http://repoforge.org/use) and ATRPMS (http://dl.atrpms.net)
 Alternatively, you can look up needed additional packages at http://pkgs.org
 
 GIT repo
 ========
-\# git clone https://github.com/kaltura/platform-install-packages
+\# git clone https://github.com/borhan/platform-install-packages
 
 ~/rpmbuild dir structure
 ========================
@@ -30,7 +30,7 @@ drwxrwxr-x  2 jess jess 36864 Apr  7 03:06 SRPMS
 
 platform-install-packages/RPM/.rpmmacros
 ========================================
-This file specifies vars used in the RPM spec files, currently holds versions of supporting components, for instance, kaltura-kmc needs to know what kmc-login ver to take, etc.
+This file specifies vars used in the RPM spec files, currently holds versions of supporting components, for instance, borhan-bmc needs to know what bmc-login ver to take, etc.
 When components are upgraded, this file needs to be edited.
 In the build ENV, it should reside at ~/.rpmmacros
 
@@ -70,7 +70,7 @@ under build/rpm-specific:
 Deployment instructions
 ================================
 Each deployment has instructions here:
-https://kaltura.atlassian.net/wiki/display/QAC/QA.Core+Production+Deployments
+https://borhan.atlassian.net/wiki/display/QAC/QA.Core+Production+Deployments
 That includes the new versions for updated components as well as PHP/SQL scripts to run.
 The versions should be updated in platform-install-packages/build/sources.rc
 
@@ -78,7 +78,7 @@ Step by step release process
 ============================
 0. run build/rpm-specific/setrep.sh on the repo server
 
-1. read instructions at: https://kaltura.atlassian.net/wiki/display/QAC/QA.Core+Production+Deployments
+1. read instructions at: https://borhan.atlassian.net/wiki/display/QAC/QA.Core+Production+Deployments
 
 2. update versions in platform-install-packages/build/sources.rc and ~/.rpmmacros if applicable.
 
@@ -88,9 +88,9 @@ Step by step release process
 This will update the Core version in the various relevant spec files
 
 5. update specs for additional components according to versions in the deployment doc, i.e:
-if KMC is of a new version then update 'Version' in kaltura-kmc.spec, for kdp3, update kaltura-kdp3.spec, etc
+if BMC is of a new version then update 'Version' in borhan-bmc.spec, for bdp3, update borhan-bdp3.spec, etc
 
-6. Add changelog entries according to what is stated in the deployment doc to each component, for instance this is one for kaltura-base - the Core package:
+6. Add changelog entries according to what is stated in the deployment doc to each component, for instance this is one for borhan-base - the Core package:
 - Ver Bounce to 9.13.0
 - PLAT-307 - FFMpeg 2.1.3 integration 
 - PLAT-914 - FileSyncImport - re-use curl 
@@ -100,10 +100,10 @@ if KMC is of a new version then update 'Version' in kaltura-kmc.spec, for kdp3, 
 - SUP-1567 - Problem to duplicate KSR from admin console. 
 - SUP-1625 - Avoid creating notification jobs when no notification email is configured
 
-7. for the modified components, run the respective package_*.sh script, for instance, if KMC was updated run:
-platform-install-packages/build/package_kaltura_kmc.sh
-for KDP3 run:
-platform-install-packages/build/package_kaltura_kdp3.sh
+7. for the modified components, run the respective package_*.sh script, for instance, if BMC was updated run:
+platform-install-packages/build/package_borhan_bmc.sh
+for BDP3 run:
+platform-install-packages/build/package_borhan_bdp3.sh
 and so on.
 If a new package is introduces, make sure to create a wrapper script for it as well, in addition to the RPM spec file. 
 
@@ -122,6 +122,6 @@ one more, no need to repackage for that.
 $ platform-install-packages/build/push_rpm.sh /path/to/rpm
 this will push the RPMs to the origin server using SCP, sign it and generate new metadata with createrepo.
 
-10. run sanity on the test machine using kaltura-sanity.sh and make sure all passes successfully.
+10. run sanity on the test machine using borhan-sanity.sh and make sure all passes successfully.
 
 11. run build/set_stable_rep.sh on the repo machine.

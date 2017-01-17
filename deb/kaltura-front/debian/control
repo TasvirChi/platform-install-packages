@@ -1,21 +1,21 @@
-Source: kaltura-front
+Source: borhan-front
 Section: net
 Priority: extra
-Maintainer: Jess Portnoy <jess.portnoy@kaltura.com>
+Maintainer: Jess Portnoy <jess.portnoy@borhan.com>
 
-Package: kaltura-front
+Package: borhan-front
 Architecture: all
-Depends: ${shlibs:Depends},apache2-mpm-prefork,php5-cli|kaltura-php7-cli,php5-mysql|kaltura-php7-mysql,php5-xsl|kaltura-php7-xsl,php5-curl|kaltura-php7-curl,php5-gmp|kaltura-php7-gmp,php5-gd|kaltura-php7-gd,php5-mcrypt|kaltura-php7-mcrypt, php-apc|kaltura-php7-apcu, php5-memcache|kaltura-php7-memcache, imagemagick, libapache2-mod-php5|kaltura-libapache2-mod-php7,libssh2-php|kaltura-php7-ssh2,libapache2-mod-xsendfile,libjpeg62,sshpass,kaltura-ffmpeg,kaltura-ffmpeg-aux,openssl,memcached,kaltura-base,mediainfo,libxml2-utils
-Description: Kaltura Open Source Video Platform - frontend server 
- Kaltura is the world's first Open Source Online Video Platform, transforming the way people work, learn, 
- and entertain using online video. The Kaltura platform empowers media applications with advanced video 
+Depends: ${shlibs:Depends},apache2-mpm-prefork,php5-cli|borhan-php7-cli,php5-mysql|borhan-php7-mysql,php5-xsl|borhan-php7-xsl,php5-curl|borhan-php7-curl,php5-gmp|borhan-php7-gmp,php5-gd|borhan-php7-gd,php5-mcrypt|borhan-php7-mcrypt, php-apc|borhan-php7-apcu, php5-memcache|borhan-php7-memcache, imagemagick, libapache2-mod-php5|borhan-libapache2-mod-php7,libssh2-php|borhan-php7-ssh2,libapache2-mod-xsendfile,libjpeg62,sshpass,borhan-ffmpeg,borhan-ffmpeg-aux,openssl,memcached,borhan-base,mediainfo,libxml2-utils
+Description: Borhan Open Source Video Platform - frontend server 
+ Borhan is the world's first Open Source Online Video Platform, transforming the way people work, learn, 
+ and entertain using online video. The Borhan platform empowers media applications with advanced video 
  management, publishing, and monetization tools that increase their reach and monetization and simplify 
- their video operations. Kaltura improves productivity and interaction among millions of employees by providing 
+ their video operations. Borhan improves productivity and interaction among millions of employees by providing 
  enterprises powerful online video tools for boosting internal knowledge sharing, training, and collaboration, 
- and for more effective marketing. Kaltura offers next generation learning for millions of students and teachers 
+ and for more effective marketing. Borhan offers next generation learning for millions of students and teachers 
  by providing educational institutions disruptive online video solutions for improved teaching, learning, and 
  increased engagement across campuses and beyond. 
- For more information visit: http://corp.kaltura.com, http://www.kaltura.org and http://www.html5video.org.
+ For more information visit: http://corp.borhan.com, http://www.borhan.org and http://www.html5video.org.
  .
  This package sets up a server as a front node.
  .

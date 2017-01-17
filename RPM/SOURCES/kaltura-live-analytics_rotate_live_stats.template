@@ -1,4 +1,4 @@
-/opt/kaltura/log/nginx/live_access_log.gz{
+/opt/borhan/log/nginx/live_access_log.gz{
     nodateext
     rotate 60
     missingok
@@ -7,6 +7,6 @@
         [ ! -f /var/run/nginx.pid ] || kill -USR1 `cat /var/run/nginx.pid`
     endscript
    lastaction
-    /opt/kaltura/bin/kaltura_register_log.sh @CASSANDRA_HOST@
+    /opt/borhan/bin/borhan_register_log.sh @CASSANDRA_HOST@
    endscript
 }

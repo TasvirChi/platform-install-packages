@@ -1,2 +1,2 @@
-DROP TABLE kalturadw.dwh_hourly_events_devices;
-RENAME TABLE kalturadw.dwh_hourly_events_devices_new TO kalturadw.dwh_hourly_events_devices;
+DROP TABLE borhandw.dwh_hourly_events_devices;
+RENAME TABLE borhandw.dwh_hourly_events_devices_new TO borhandw.dwh_hourly_events_devices;

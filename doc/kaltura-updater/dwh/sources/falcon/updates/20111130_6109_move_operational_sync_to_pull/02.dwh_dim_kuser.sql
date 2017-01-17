@@ -1,6 +1,6 @@
-DROP TABLE IF EXISTS `kalturadw`.`dwh_dim_kusers_new`;
+DROP TABLE IF EXISTS `borhandw`.`dwh_dim_kusers_new`;
 
-CREATE TABLE `kalturadw`.`dwh_dim_kusers_new` (
+CREATE TABLE `borhandw`.`dwh_dim_kusers_new` (
   `kuser_id` INT NOT NULL ,
   `screen_name` VARCHAR(127) DEFAULT 'missing value',
   `full_name` VARCHAR(40) DEFAULT 'missing value',
@@ -59,7 +59,7 @@ CREATE TABLE `kalturadw`.`dwh_dim_kusers_new` (
   KEY `operational_measures_updated_at` (`operational_measures_updated_at`)
 ) ENGINE=INNODB  DEFAULT CHARSET=utf8;
 
-INSERT INTO `kalturadw`.`dwh_dim_kusers_new` 
+INSERT INTO `borhandw`.`dwh_dim_kusers_new` 
 	(`kuser_id`, 
 	`screen_name`, 
 	`full_name`, 
@@ -166,12 +166,12 @@ INSERT INTO `kalturadw`.`dwh_dim_kusers_new`
 	`indexed_partner_data_int`, 
 	`indexed_partner_data_string`, 
 	`is_admin`
-	FROM kalturadw.dwh_dim_kusers;
+	FROM borhandw.dwh_dim_kusers;
 
-DROP TABLE kalturadw.dwh_dim_kusers;
-RENAME TABLE kalturadw.dwh_dim_kusers_new TO kalturadw.dwh_dim_kusers;
+DROP TABLE borhandw.dwh_dim_kusers;
+RENAME TABLE borhandw.dwh_dim_kusers_new TO borhandw.dwh_dim_kusers;
 
-CREATE TRIGGER `kalturadw`.`dwh_dim_kusers_setcreationtime_oninsert` BEFORE INSERT
-    ON `kalturadw`.`dwh_dim_kusers`
+CREATE TRIGGER `borhandw`.`dwh_dim_kusers_setcreationtime_oninsert` BEFORE INSERT
+    ON `borhandw`.`dwh_dim_kusers`
     FOR EACH ROW 
 	SET new.dwh_creation_date = NOW();

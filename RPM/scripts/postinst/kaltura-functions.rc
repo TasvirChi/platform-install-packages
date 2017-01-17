@@ -1,9 +1,9 @@
 # if we happen to already have system.ini lets source it
-RC_FILE=/etc/kaltura.d/system.ini
+RC_FILE=/etc/borhan.d/system.ini
 if [  -r "$RC_FILE" ];then
 	. $RC_FILE
 else
-	BASE_DIR=/opt/kaltura
+	BASE_DIR=/opt/borhan
 fi
 COLORS_RC=`dirname $0`/colors.sh
 if [ -r $COLORS_RC ];then
@@ -16,9 +16,9 @@ fi
 if [ -r $BASE_DIR/app/configurations/consent_msgs ];then
 	. $BASE_DIR/app/configurations/consent_msgs 
 fi
-CONSENT_FILE=/opt/kaltura/bin/contact.rc
-SPHINX_DAEMON=kaltura-sphinx
-BATCH_DAEMON=kaltura-batch
+CONSENT_FILE=/opt/borhan/bin/contact.rc
+SPHINX_DAEMON=borhan-sphinx
+BATCH_DAEMON=borhan-batch
 MEMCACHE_DAEMON=memcached
 
 DISTRO=`lsb_release -i -s`
@@ -35,22 +35,22 @@ if [ "$DISTRO" = "Ubuntu" -o "$DISTRO" = "Debian" ];then
 else
 	APACHE_DAEMON=httpd
 	MYSQL_DAEMON=mysqld
-	MONIT_DAEMON=kaltura-monit
+	MONIT_DAEMON=borhan-monit
 	INIT_CONFIG_UTIL=chkconfig
 	ALL_DAEMONS="$APACHE_DAEMON $SPHINX_DAEMON $BATCH_DAEMON $MONIT_DAEMON $MEMCACHE_DAEMON"
 	PACKAGE_TYPE=rpm
 	QUERY_COMMAND="rpm -q"
 	MAIL_LOG=/var/log/maillog
 fi
-POST_INST_MAIL_SUBJECT='Your new Kaltura server is up! and 6 Quick Tips For Smooth Kaltura Maintenance'
+POST_INST_MAIL_SUBJECT='Your new Borhan server is up! and 6 Quick Tips For Smooth Borhan Maintenance'
 POST_INST_MAIL_TMPL=$BASE_DIR/app/configurations/post_inst_mail
 
-ANALYTICS_SERVER_URI="http://installytics.kaltura.org/report"
-NEWSLETTER_URL="https://agentcontribs.kaltura.org/newsletter_subscribe.php"
+ANALYTICS_SERVER_URI="http://installytics.borhan.org/report"
+NEWSLETTER_URL="https://agentcontribs.borhan.org/newsletter_subscribe.php"
 NEWSLETTER_MSG="
-To keep up with the bi-weekly Kaltura releases, and stay up to date with 
+To keep up with the bi-weekly Borhan releases, and stay up to date with 
 the latest news, security and bug updates, and connect with the global
-Kaltura community - sign up for our regular Kaltura Community updates.
+Borhan community - sign up for our regular Borhan Community updates.
 Please enter your email to sign up, or enter NO to pass.
 "
 
@@ -62,9 +62,9 @@ call_base_config()
 		. $ANSFILE
 	fi
 	if [ ! -r $BASE_DIR/app/base-config.lock ];then
-		`dirname $0`/kaltura-base-config.sh $ANSFILE
+		`dirname $0`/borhan-base-config.sh $ANSFILE
 	else
-		echo -e "${CYAN}base-config skipped as /opt/kaltura/app/base-config.lock was found. Remove the lock to reconfigure.${NORMAL}"
+		echo -e "${CYAN}base-config skipped as /opt/borhan/app/base-config.lock was found. Remove the lock to reconfigure.${NORMAL}"
 	fi
 
 }
@@ -180,20 +180,20 @@ is_self_signed()
 
 configure_apache_ssl()
 {
-	KALTURA_SSL_CONFFILE=$1
+	BORHAN_SSL_CONFFILE=$1
 	if [ -f /etc/httpd/conf.d/ssl.conf ];then
 		echo "Moving /etc/httpd/conf.d/ssl.conf to /etc/httpd/conf.d/ssl.conf.ks.bak."
 		mv /etc/httpd/conf.d/ssl.conf /etc/httpd/conf.d/ssl.conf.ks.bak
 	fi
-	sed -i "s#@SSL_CERTIFICATE_FILE@#$CRT_FILE#g" $KALTURA_SSL_CONFFILE
-	sed -i "s#@SSL_CERTIFICATE_KEY_FILE@#$KEY_FILE#g" $KALTURA_SSL_CONFFILE
-	ln -fs $KALTURA_SSL_CONFFILE /etc/httpd/conf.d/  
+	sed -i "s#@SSL_CERTIFICATE_FILE@#$CRT_FILE#g" $BORHAN_SSL_CONFFILE
+	sed -i "s#@SSL_CERTIFICATE_KEY_FILE@#$KEY_FILE#g" $BORHAN_SSL_CONFFILE
+	ln -fs $BORHAN_SSL_CONFFILE /etc/httpd/conf.d/  
 }
 
 send_post_inst_msg()
 {
 	MAILTO=$1
-	mail -s "$POST_INST_MAIL_SUBJECT" -r "Kaltura Video Platform <kaltura@$KALTURA_VIRTUAL_HOST_NAME>" $MAILTO < $POST_INST_MAIL_TMPL 
+	mail -s "$POST_INST_MAIL_SUBJECT" -r "Borhan Video Platform <borhan@$BORHAN_VIRTUAL_HOST_NAME>" $MAILTO < $POST_INST_MAIL_TMPL 
 	
 }
 send_install_becon()
@@ -219,7 +219,7 @@ send_install_becon()
 		ERR_LINE=$4
 	fi
 	#echo $ERR_LINE 
-        RC_FILE=/etc/kaltura.d/system.ini
+        RC_FILE=/etc/borhan.d/system.ini
         if [ -r "$RC_FILE" ];then
         	. $RC_FILE
 	fi
@@ -264,18 +264,18 @@ send_install_becon()
 	# if this is an RHEL based distro then it would have this file.
 	# checking this instead of which rpm because it is possible to install rpm on a Debiab/Ubuntu system
 	if [ "$PACKAGE_TYPE" = rpm ] ;then
-		KALTURA_VERSION=`rpm -qa kaltura-base --queryformat %{version}`
-		KALTURA_REVISION=`rpm -qa kaltura-base --queryformat %{release}`
+		BORHAN_VERSION=`rpm -qa borhan-base --queryformat %{version}`
+		BORHAN_REVISION=`rpm -qa borhan-base --queryformat %{release}`
 	elif [ "$PACKAGE_TYPE" = deb ];then
-		KALTURA_VERSION=`dpkg-query -W -f'${Version}' kaltura-base|awk -F "-" '{print $1}'`
-		KALTURA_REVISION=`dpkg-query -W -f'${Version}' kaltura-base | awk -F "+" '{print $2}'`
+		BORHAN_VERSION=`dpkg-query -W -f'${Version}' borhan-base|awk -F "-" '{print $1}'`
+		BORHAN_REVISION=`dpkg-query -W -f'${Version}' borhan-base | awk -F "+" '{print $2}'`
 	fi
 	REVISION=`lsb_release -r|awk '{print $NF}'`
         CODENAME=`lsb_release -i|awk '{print $NF}'`
         RELEASE="$CODENAME-$REVISION"
 
-	curl -i -X POST -H 'Content-Type: application/json' -d '{"event_type": "'$ACTION'", "server_role": "'$ROLE'", "user_email": "'$CONTACT_MAIL'", "machine_id": "'$MACHINE_ID'", "installation_id": "'$INSTALL_ID'", "timestamp": "'$EPOCH'", "kernel_version": "'`uname -r`'", "machine_arch": "'`uname -m`'","linux_flavor":"'$RELEASE'","is_ssl": "'$IS_SSL'", "service_url": "'$SERVICE_URL'","install_err_line": "'$ERR_LINE'","timezone": "'$TIMEZONE'","package_type":"'$PACKAGE_TYPE'","kaltura_version": "'$KALTURA_VERSION'","package_revision": "'$KALTURA_REVISION'"}' $ANALYTICS_SERVER_URI &>/dev/null
-	 curl --data "event_type=$ACTION&server_role=$ROLE&user_email=$CONTACT_MAIL&machine_id=$MACHINE_ID&installation_id=$INSTALL_ID&timestamp=`date +%s`&kernel_version=`uname -r`&machine_arch=`uname -m`&linux_flavor=$RELEASE&service_url=$SERVICE_URL&install_err_line=$ERR_LINE&timezone=$TIMEZONE&package_type=$PACKAGE_TYPE&kaltura_version=$KALTURA_VERSION&package_revision=$KALTURA_REVISION&subscribed_for_ce_updates=$SUBSCRIBE4UPDATES" https://installytics.kaltura.org/report/add_rec.php 
+	curl -i -X POST -H 'Content-Type: application/json' -d '{"event_type": "'$ACTION'", "server_role": "'$ROLE'", "user_email": "'$CONTACT_MAIL'", "machine_id": "'$MACHINE_ID'", "installation_id": "'$INSTALL_ID'", "timestamp": "'$EPOCH'", "kernel_version": "'`uname -r`'", "machine_arch": "'`uname -m`'","linux_flavor":"'$RELEASE'","is_ssl": "'$IS_SSL'", "service_url": "'$SERVICE_URL'","install_err_line": "'$ERR_LINE'","timezone": "'$TIMEZONE'","package_type":"'$PACKAGE_TYPE'","borhan_version": "'$BORHAN_VERSION'","package_revision": "'$BORHAN_REVISION'"}' $ANALYTICS_SERVER_URI &>/dev/null
+	 curl --data "event_type=$ACTION&server_role=$ROLE&user_email=$CONTACT_MAIL&machine_id=$MACHINE_ID&installation_id=$INSTALL_ID&timestamp=`date +%s`&kernel_version=`uname -r`&machine_arch=`uname -m`&linux_flavor=$RELEASE&service_url=$SERVICE_URL&install_err_line=$ERR_LINE&timezone=$TIMEZONE&package_type=$PACKAGE_TYPE&borhan_version=$BORHAN_VERSION&package_revision=$BORHAN_REVISION&subscribed_for_ce_updates=$SUBSCRIBE4UPDATES" https://installytics.borhan.org/report/add_rec.php 
 
 #	set +x
 	trap 'my_trap_handler ${LINENO} ${$?}' ERR
@@ -287,12 +287,12 @@ my_trap_handler()
         LASTLINE="$1"            # argument 1: last line of error occurence
         LASTERR="$2"             # argument 2: error code of last command
 	if [ "$PACKAGE_TYPE" = rpm ] ;then
-        	POSTINST_VER=`rpm -q kaltura-postinst`
+        	POSTINST_VER=`rpm -q borhan-postinst`
 	elif [ "$PACKAGE_TYPE" = deb ];then
-		POSTINST_VER=`dpkg-query -W -f'${Version}' kaltura-postinst|awk -F "-" '{print $1}'`
+		POSTINST_VER=`dpkg-query -W -f'${Version}' borhan-postinst|awk -F "-" '{print $1}'`
 	fi
-	if [ -d /opt/kaltura/log ];then
-		TAR_PATH=/opt/kaltura/log/log_`date +%d_%m_%y_%H_%M`.tar.gz	
+	if [ -d /opt/borhan/log ];then
+		TAR_PATH=/opt/borhan/log/log_`date +%d_%m_%y_%H_%M`.tar.gz	
                 echo -en "
 
 ${BRIGHT_RED}$MYSELF FAILED with: $LASTERR on line $LASTLINE${NORMAL}
@@ -300,9 +300,9 @@ ${BRIGHT_RED}$MYSELF FAILED with: $LASTERR on line $LASTLINE${NORMAL}
 Archving logs to $TAR_PATH...
 "
 
-		mkdir -p /tmp/tmpdir_kaltura
-		cp /opt/kaltura/log/*log /tmp/tmpdir_kaltura
-		cd /tmp/tmpdir_kaltura
+		mkdir -p /tmp/tmpdir_borhan
+		cp /opt/borhan/log/*log /tmp/tmpdir_borhan
+		cd /tmp/tmpdir_borhan
 		tar zcf $TAR_PATH *log
 	fi	
 	if [ -r $CONSENT_FILE ];then
@@ -376,9 +376,9 @@ check_if_upgrade()
 {
 	trap - ERR
 	if [ "$PACKAGE_TYPE" = rpm ];then
-		CUR_BASE_VERSION=`rpm -qa kaltura-base --queryformat %{version}-%{release}`
+		CUR_BASE_VERSION=`rpm -qa borhan-base --queryformat %{version}-%{release}`
 	elif [ "$PACKAGE_TYPE" = deb ];then
-		CUR_BASE_VERSION=`dpkg-query -W -f'${Version}' kaltura-base|awk -F "-" '{print $1}'`
+		CUR_BASE_VERSION=`dpkg-query -W -f'${Version}' borhan-base|awk -F "-" '{print $1}'`
 	fi
 	LAST_BASE_VERSION=`cat $BASE_DIR/bin/last_base_ver 2> /dev/null`
 	if [ "$CUR_BASE_VERSION" = "$LAST_BASE_VERSION" ];then
@@ -391,9 +391,9 @@ check_if_upgrade()
 write_last_base_version()
 {
 	if [ "$PACKAGE_TYPE" = rpm ];then
-		CUR_BASE_VERSION=`rpm -qa kaltura-base --queryformat %{version}-%{release}`
+		CUR_BASE_VERSION=`rpm -qa borhan-base --queryformat %{version}-%{release}`
 	elif [ "$PACKAGE_TYPE" = deb ];then
-		CUR_BASE_VERSION=`dpkg-query -W -f'${Version}' kaltura-base|awk -F "-" '{print $1}'`
+		CUR_BASE_VERSION=`dpkg-query -W -f'${Version}' borhan-base|awk -F "-" '{print $1}'`
 	fi
 	echo "$CUR_BASE_VERSION" > $BASE_DIR/bin/last_base_ver
 }
@@ -449,12 +449,12 @@ check_start_page()
 {
 	# requesting the service URL should get a HTTP 301 to start page
 	START_PAGE=`curl -ks "$SERVICE_URL"  | grep 'The document has moved '|sed 's@.*a href="\(.*\)".*@\1@g'`
-	curl -ks $START_PAGE | grep 'Kaltura Video Platfrom - Home Page' -q
+	curl -ks $START_PAGE | grep 'Borhan Video Platfrom - Home Page' -q
 	if [ $? -eq 0 ];then
-		echo "Successfully found 'Kaltura Video Platfrom - Home Page' on page $START_PAGE"
+		echo "Successfully found 'Borhan Video Platfrom - Home Page' on page $START_PAGE"
 		return 0
 	else
-		echo "Did not find 'Kaltura Video Platfrom - Home Page' on page $START_PAGE :("
+		echo "Did not find 'Borhan Video Platfrom - Home Page' on page $START_PAGE :("
 		return 1
 	fi	
 } 
@@ -462,7 +462,7 @@ check_start_page()
 check_testme_page()
 {
 	TESTME_PAGE=`curl -ks "$SERVICE_URL/api_v3/testme"  | grep 'The document has moved '|sed 's@.*a href="\(.*\)".*@\1@g'`
-	GOOD_STRING='Kaltura - Test Me Console'
+	GOOD_STRING='Borhan - Test Me Console'
 	curl -ks $TESTME_PAGE | grep "$GOOD_STRING" -q
 	if [ $? -eq 0 ];then
 		echo "Successfully found '$GOOD_STRING' on page $TESTME_PAGE"
@@ -472,10 +472,10 @@ check_testme_page()
 		return 1
 	fi	
 } 
-check_kmc_index_page()
+check_bmc_index_page()
 {
-	GOOD_STRING='Kaltura - Open Source Video Platform'
-	curl -ks "$SERVICE_URL/kmc"  | grep -q "$GOOD_STRING"
+	GOOD_STRING='Borhan - Open Source Video Platform'
+	curl -ks "$SERVICE_URL/bmc"  | grep -q "$GOOD_STRING"
 	if [ $? -eq 0 ];then
 		echo "Successfully found '$GOOD_STRING'"
 		return 0
@@ -514,9 +514,9 @@ check_clipapp_index_page()
 	# this looks like a weird 'GOOD' string but this what it outputs when requesting it with no params
 	GOOD_STRING='Invalid partner id'
 	if [ "$PACKAGE_TYPE" = rpm ];then
-		CLIPAPP_VERSION=`rpm -qa kaltura-clipapp --queryformat %{version}`
+		CLIPAPP_VERSION=`rpm -qa borhan-clipapp --queryformat %{version}`
 	elif [ "$PACKAGE_TYPE" = deb ];then
-		CLIPAPP_VERSION=`dpkg-query -W -f'${Version}' kaltura-clipapp|awk -F "-" '{print $1}'`
+		CLIPAPP_VERSION=`dpkg-query -W -f'${Version}' borhan-clipapp|awk -F "-" '{print $1}'`
 	fi
 	curl -ks "$SERVICE_URL/apps/clipapp/v$CLIPAPP_VERSION/index.php"  | grep -q "$GOOD_STRING"
 	if [ $? -eq 0 ];then
@@ -530,7 +530,7 @@ check_clipapp_index_page()
 check_admin_console_index_page()
 {
 	AC_PAGE=`curl -ks "$SERVICE_URL/admin_console"  | grep 'The document has moved '|sed 's@.*a href="\(.*\)".*@\1@g'`
-	GOOD_STRING='Kaltura Admin Console'
+	GOOD_STRING='Borhan Admin Console'
 	curl -ks $AC_PAGE | grep "$GOOD_STRING" -q
 	if [ $? -eq 0 ];then
 		echo "Successfully found '$GOOD_STRING' on page $AC_PAGE"
@@ -543,7 +543,7 @@ check_admin_console_index_page()
 
 test_red5_conn()
 {
-	$BASE_DIR/bin/fms_push_file_monitor.sh $BASE_DIR/web/content/templates/entry/data/kmc_logo.flv rtmp://$RED5_HOST/oflaDemo/
+	$BASE_DIR/bin/fms_push_file_monitor.sh $BASE_DIR/web/content/templates/entry/data/bmc_logo.flv rtmp://$RED5_HOST/oflaDemo/
 	RC=$?
 	return $RC 
 
@@ -567,9 +567,9 @@ report()
 	echo -e "[${CYAN}$TNAME${NORMAL}] [${COLOR}$STAT, RC: $RC${NORMAL}] - [$TIME]"
 #	echo -e "$TNAME,,`hostname`,$MESSAGE,$RC, $TIME" >> /tmp/`hostname`-reportme.`date +%d_%m_%Y`.csv
 	if [ "$PACKAGE_TYPE" = rpm ];then
-		CUR_BASE_VERSION=`rpm -qa kaltura-base --queryformat %{version}`
+		CUR_BASE_VERSION=`rpm -qa borhan-base --queryformat %{version}`
 	elif [ "$PACKAGE_TYPE" = deb ];then
-		CUR_BASE_VERSION=`dpkg-query -W -f'${Version}' kaltura-base|awk -F "-" '{print $1}'`
+		CUR_BASE_VERSION=`dpkg-query -W -f'${Version}' borhan-base|awk -F "-" '{print $1}'`
 	fi
 	echo "INSERT INTO csi_log VALUES(NULL,'$TNAME','`hostname`',`date +%s`,\"$MESSAGE\",$RC,$TIME,'$CUR_BASE_VERSION');" >> /tmp/`hostname`-reportme.`date +%d_%m_%Y`.sql
 }
@@ -579,7 +579,7 @@ check_missing_web_files()
 	MISSING_LIST="/tmp/missing_web_files_`date +%d_%m_%Y`"
 	TMP_MISSING_LIST="/tmp/missing_web_files_tmp_`date +%d_%m_%Y`"
 	# query to get all ui_confs
-	for i in `echo "select conf_file_path from ui_conf" | mysql -N -h $DB1_HOST -u $DB1_USER -P$DB1_PORT -p$DB1_PASS kaltura`;do 
+	for i in `echo "select conf_file_path from ui_conf" | mysql -N -h $DB1_HOST -u $DB1_USER -P$DB1_PORT -p$DB1_PASS borhan`;do 
 		if [ -r "$WEB_DIR/$i" ];then 
 			# run line by line over the XML to find the paths
 			while read L;do 
@@ -605,23 +605,23 @@ check_missing_web_files()
 	fi
 }
 
-check_kmc_config_versions()
+check_bmc_config_versions()
 {
         COMP_NAME=$1
-        KMC_VER=$2
+        BMC_VER=$2
 #	set -x
 	if [ "$PACKAGE_TYPE" = rpm ];then
         	COMP_VER=`rpm -q $COMP_NAME --queryformat %{version}`
 	elif [ "$PACKAGE_TYPE" = deb ];then
 		COMP_VER=`dpkg-query -W -f'${Version}' $COMP_NAME|awk -F "-" '{print $1}'`
 	fi
-                grep -q $COMP_VER /opt/kaltura/web/flash/kmc/$KMC_VER/config.ini -m1
+                grep -q $COMP_VER /opt/borhan/web/flash/bmc/$BMC_VER/config.ini -m1
                 RC=$?
 		if [ $RC -eq 0 ];then
-			echo "$COMP_NAME $COMP_VER found in /opt/kaltura/web/flash/kmc/$KMC_VER/config.ini"
+			echo "$COMP_NAME $COMP_VER found in /opt/borhan/web/flash/bmc/$BMC_VER/config.ini"
 			return $RC
 		else
-			echo "$COMP_NAME $COMP_VER NOT found in /opt/kaltura/web/flash/kmc/$KMC_VER/config.ini"
+			echo "$COMP_NAME $COMP_VER NOT found in /opt/borhan/web/flash/bmc/$BMC_VER/config.ini"
 			return $RC
 		fi
 }

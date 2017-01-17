@@ -1,32 +1,32 @@
-%define prefix /opt/kaltura/play-server
-%define kaltura_user kaltura
-Summary: Kaltura Open Source Video Platform - Play Server 
-Name: kaltura-play-server
+%define prefix /opt/borhan/play-server
+%define borhan_user borhan
+Summary: Borhan Open Source Video Platform - Play Server 
+Name: borhan-play-server
 Version: 1.1
 Release: 6
 License: AGPLv3+
 Group: Server/Platform 
-Source0: https://github.com/kaltura/play-server/archive/kaltura-play-server-v%{version}.zip
+Source0: https://github.com/borhan/play-server/archive/borhan-play-server-v%{version}.zip
 
-URL: https://github.com/kaltura/play-server 
+URL: https://github.com/borhan/play-server 
 Buildroot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
-Requires:  kaltura-postinst, memcached, npm, nodejs, kaltura-ffmpeg
+Requires:  borhan-postinst, memcached, npm, nodejs, borhan-ffmpeg
 BuildRequires: memcached-devel, node-gyp, id3lib-devel,npm
 
 %description
-Kaltura is the world's first Open Source Online Video Platform, transforming the way people work, 
+Borhan is the world's first Open Source Online Video Platform, transforming the way people work, 
 learn, and entertain using online video. 
-The Kaltura platform empowers media applications with advanced video management, publishing, 
+The Borhan platform empowers media applications with advanced video management, publishing, 
 and monetization tools that increase their reach and monetization and simplify their video operations. 
-Kaltura improves productivity and interaction among millions of employees by providing enterprises 
+Borhan improves productivity and interaction among millions of employees by providing enterprises 
 powerful online video tools for boosting internal knowledge sharing, training, and collaboration, 
-and for more effective marketing. Kaltura offers next generation learning for millions of students and 
+and for more effective marketing. Borhan offers next generation learning for millions of students and 
 teachers by providing educational institutions disruptive online video solutions for improved teaching,
 learning, and increased engagement across campuses and beyond. 
-For more information visit: http://corp.kaltura.com, http://www.kaltura.org and http://www.html5video.org.
+For more information visit: http://corp.borhan.com, http://www.borhan.org and http://www.html5video.org.
 
 
-The Kaltura platform enables video management, publishing, syndication and monetization, 
+The Borhan platform enables video management, publishing, syndication and monetization, 
 as well as providing a robust framework for managing rich-media applications, 
 and developing a variety of online workflows for video. 
 
@@ -76,42 +76,42 @@ echo "
 #####################################################################################################################################
 Installation of %{name} %{version} completed
 Please run 
-# /opt/kaltura/bin/%{name}-config.sh [/path/to/answer/file]
+# /opt/borhan/bin/%{name}-config.sh [/path/to/answer/file]
 To finalize the setup.
 #####################################################################################################################################
 "
 chmod +x %{prefix}/bin/play-server.sh
 if [ $1 -eq 1 ]; then
-	ln -sf %{prefix}/bin/play-server.sh %{_initrddir}/kaltura-play-server
-	ln -s /opt/kaltura/bin/ffmpeg %{prefix}/bin/
-	/sbin/chkconfig --add kaltura-play-server
+	ln -sf %{prefix}/bin/play-server.sh %{_initrddir}/borhan-play-server
+	ln -s /opt/borhan/bin/ffmpeg %{prefix}/bin/
+	/sbin/chkconfig --add borhan-play-server
 	npm install -g node-gyp
 else
-	service kaltura-play-server restart
+	service borhan-play-server restart
 fi
 
 %preun
 if [ $1 -eq 0 ]; then
-    /sbin/service kaltura-play-server stop > /dev/null 2>&1
-    /sbin/chkconfig --del kaltura-play-server
+    /sbin/service borhan-play-server stop > /dev/null 2>&1
+    /sbin/chkconfig --del borhan-play-server
 fi
 
 %files
 %{prefix}
 
 %changelog
-* Thu Jun 25 2015 Jess Portnoy <jess.portnoy@kaltura.com> - 1.1-6
-- https://github.com/kaltura/play-server/pull/172 merged.
+* Thu Jun 25 2015 Jess Portnoy <jess.portnoy@borhan.com> - 1.1-6
+- https://github.com/borhan/play-server/pull/172 merged.
 
-* Tue Jun 2 2015 Jess Portnoy <jess.portnoy@kaltura.com> - 1.1-5
+* Tue Jun 2 2015 Jess Portnoy <jess.portnoy@borhan.com> - 1.1-5
 - Precompile needed modules.
 - Added build deps
-- symlink ffmpeg from kaltura-ffmpeg to /play-server/prefix/bin ffmpeg
+- symlink ffmpeg from borhan-ffmpeg to /play-server/prefix/bin ffmpeg
 
-* Sun May 31 2015 Jess Portnoy <jess.portnoy@kaltura.com> - 1.1-3
+* Sun May 31 2015 Jess Portnoy <jess.portnoy@borhan.com> - 1.1-3
 - Added needed dirs
 - Add to init
 
-* Thu May 28 2015 Jess Portnoy <jess.portnoy@kaltura.com> - 1.1-1
+* Thu May 28 2015 Jess Portnoy <jess.portnoy@borhan.com> - 1.1-1
 - Initial release.
 

@@ -1,7 +1,7 @@
 #!/usr/bin/env sh
 echo "Exporting schemas and routines"
 
-SCHEMAS="kaltura kalturadw kalturadw_bisources kalturadw_ds kalturalog kaltura_sphinx_log"
+SCHEMAS="borhan borhandw borhandw_bisources borhandw_ds borhanlog borhan_sphinx_log"
 
 if [ -z $1 ]; then
 	echo "Call script like: export-structure.sh <root-user> <root-pw> <export path>"

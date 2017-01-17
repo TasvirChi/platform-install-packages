@@ -7,14 +7,14 @@ if (count($argv)<5){
 function upload($client,$fileData,$title,$conv_profile=null,$type=null)
 {
 	try{
-		$uploadToken = new KalturaUploadToken();
+		$uploadToken = new BorhanUploadToken();
 		$result = $client->uploadToken->add($uploadToken);
 		$tok=$result->id;
 		$resume = null;
 		$finalChunk = null;
 		$resumeAt = null;
 		$result = $client->uploadToken->upload($tok, $fileData, $resume, $finalChunk, $resumeAt);
-		$entry = new KalturaBaseEntry();
+		$entry = new BorhanBaseEntry();
 		$entry->name = $title;
 		$entry->tags = 'Example';
 		$entry->description = 'Example Entry Description';
@@ -22,7 +22,7 @@ function upload($client,$fileData,$title,$conv_profile=null,$type=null)
 			$entry->conversionProfileId = $conv_profile;	
 		}
 		if (!isset($type)){
-			$type = KalturaEntryType::AUTOMATIC;
+			$type = BorhanEntryType::AUTOMATIC;
 		}
 		$result = $client->baseEntry->addfromuploadedfile($entry, $tok, $type);
 		$id=$result->id;
@@ -38,7 +38,7 @@ $secret=$argv[3];
 $asset_file = $argv[4];
 $basedir=dirname(__FILE__);
 require_once($basedir.'/create_session.php');
-$client=generate_ks($service_url,$partnerId,$secret,$type=KalturaSessionType::USER,$userId=null);
+$client=generate_ks($service_url,$partnerId,$secret,$type=BorhanSessionType::USER,$userId=null);
 $ext=explode(".",$asset_file);
 $id=upload($client,$asset_file,date ("U",time()).'.'.$ext[1],null,null);
 error_log($id."\n",3,$entry_queue);

@@ -1,4 +1,4 @@
-kaltura-html5lib (2.51-1) lynx; urgency=low
+borhan-html5lib (2.51-1) lynx; urgency=low
 
   * FEC-5890 - DFP pre-mid-post with skip: Video sound is playing during mid roll when performing seek over mid roll cue point
   * SUP-9337 - Captions on iPhone not displaying since KS is missing the 'disableentitlementforentry' priviliedge
@@ -24,9 +24,9 @@ kaltura-html5lib (2.51-1) lynx; urgency=low
   * fix that instead of interval we set a timeout after we get result
   * Change default IMA3 companion ResourceType to ALL
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Mon, 19 Dec 2016 17:08:41 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Mon, 19 Dec 2016 17:08:41 +0000
 
-kaltura-html5lib (2.50-1) lynx; urgency=low
+borhan-html5lib (2.50-1) lynx; urgency=low
 
   * FEC-6260 - Regression: DFP Pre-mid-post: Video is playing 5 seconds with spinner during 10-15th seconds (right before the midrol)
   * FEC-6260 - Regression: DFP Pre-mid-post: Video is playing 5 seconds with spinner during 10-15th seconds (right before the midrol)
@@ -44,7 +44,7 @@ kaltura-html5lib (2.50-1) lynx; urgency=low
   * Reciever performance improvements
   * Unload Chromecast media player immediately on changeMedia
   * Show splash screen on IDLE or change media on Chromecast
-  * Send raw kaltura plugin data to chrome cast
+  * Send raw borhan plugin data to chrome cast
   * SUP-9527 - Player info plugin displaying number of impressions instead of number of plays
   * SUP-9648 - Issue is in udrm in IE
   * FEC-6242 - Silver light error msg on Edge browser - Player is not uploaded
@@ -59,11 +59,11 @@ kaltura-html5lib (2.50-1) lynx; urgency=low
   * Reciever performance improvements
   * Unload Chromecast media player immediately on changeMedia
   * Show splash screen on IDLE or change media on Chromecast
-  * Send raw kaltura plugin data to chrome cast
+  * Send raw borhan plugin data to chrome cast
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Tue, 22 Nov 2016 17:09:41 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Tue, 22 Nov 2016 17:09:41 +0000
 
-kaltura-html5lib (2.48-1) lynx; urgency=low
+borhan-html5lib (2.48-1) lynx; urgency=low
 
   * SUP-8883 - V2 player custom styles "Button's icon color" are not saved
   * FEC-5966 - Regression:uDRM:WV cenc: black screen with loading spinner in case of performing consecutive seek when player in pause mode
@@ -96,7 +96,7 @@ kaltura-html5lib (2.48-1) lynx; urgency=low
   * FEC-6043 - Playlist with DFP overlay - Video does not start playing after tapping on first entry
   * FEC-6044 - Playlist with Vast overlay - Loading spinner displayed endlessly after tapping on Play button
   * FEC-6046 - Vast mod-rolls : Video does not play continuous loading symbol displayed
-  * FEC-6047 - Kaltura Live with Vast : Pre Roll ad and video is not getting played on Android
+  * FEC-6047 - Borhan Live with Vast : Pre Roll ad and video is not getting played on Android
   * SUP-6782 - inquiry as to mobile thumbnail embed - number of clicks to start a video
   * FEC-6057 - Regression: Seek is not working on any entry on 2.45.rc5
   * FEC-6058 - Regression:MPEG_Dash Clear\DRM :MultiAudioTracks: There is no ability to switch audio tracks (Only one audio track displayed on IE11)
@@ -111,7 +111,7 @@ kaltura-html5lib (2.48-1) lynx; urgency=low
   * FEC-6090 - Vast midroll - No matter to witch point you seek video continue after first midrol (20th sec)
   * FEC-5898 - Set hls.js to be on by default
   * FEC-6102 - shaka throws an exception on change media
-  * FEC-6106 - MPEG_Dash: Playlist: Video stuck with loading spinner after performing seek before tapping on play (occurs only with debugKalturaPlayer)
+  * FEC-6106 - MPEG_Dash: Playlist: Video stuck with loading spinner after performing seek before tapping on play (occurs only with debugBorhanPlayer)
   * FEC-6027 - MPEG_Dash: Playlist: Second video stuck after whole playlist and first video (one more time) finished to play(IE11 only)
   * SUP-8992 - Player version 2.46 not responsive for mobile devices
   * FEC-6104 - HLSOSMF/HLSJS : DFP pre-mid-post roll: scrubber jumps on pre-roll after performing seek and tapping on play button
@@ -120,9 +120,9 @@ kaltura-html5lib (2.48-1) lynx; urgency=low
   * FEC-6116 - DFP pre-mid-post : Skip is shown from the beginning of AD while choosing playlist list at first 5 sec
   * FEC-6119 - Player doesn't recover from restarting fmle streaming - stuck with disabled control bar
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Fri, 23 Sep 2016 15:42:52 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Fri, 23 Sep 2016 15:42:52 +0000
 
-kaltura-html5lib (2.47-1) lynx; urgency=low
+borhan-html5lib (2.47-1) lynx; urgency=low
 
   * FEC-5898 - Set hls.js to be on by default
   * SUP-8648 - Live stream doesn't play after the first click with thumbnail embed
@@ -131,9 +131,9 @@ kaltura-html5lib (2.47-1) lynx; urgency=low
   * SUP-8724 - Hovering menu blocking info tab
   * SUP-7848 - Enable DVR in Manual live streams
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Mon, 05 Sep 2016 15:06:54 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Mon, 05 Sep 2016 15:06:54 +0000
 
-kaltura-html5lib (2.46-1) kajam; urgency=low
+borhan-html5lib (2.46-1) kajam; urgency=low
 
   * FEC-5691 - Chrome cast - Different events are sent when you activate casting via Google Cast or via Chromecast plugin
   * FEC-5762 - Chrome cast - Kanalony - Event 99 is sent duplicated
@@ -176,15 +176,15 @@ kaltura-html5lib (2.46-1) kajam; urgency=low
   * FEC-5847 - Add audio selector plugin to studio
   * FEC-5835 - Chromecast -DFP preroll - AD is not playing before the video (is playing after a video, as post roll)
   * FEC-5849 - Chromecast: receiver logo displayed over player area during playing from MAC
-  * FEC-5852 - Regression:Kaltura Live with DVR: DVR scrubber is shown at left side of a player on MS edge instead of right
+  * FEC-5852 - Regression:Borhan Live with DVR: DVR scrubber is shown at left side of a player on MS edge instead of right
   * Chromecast ui/x
   * Support studio mobile simulation mode
   * Mobile skin disabled by default
   * block video tag poster for user agent cordova SDK (mobile devices)
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Tue, 02 Aug 2016 19:02:12 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Tue, 02 Aug 2016 19:02:12 +0000
 
-kaltura-html5lib (2.45-1) kajam; urgency=low
+borhan-html5lib (2.45-1) kajam; urgency=low
 
   * FEC-5525 - Chrome cast - Seek event (17) is thrown when you click on replay
   * FEC-5527 - Chromecast - no events rare sent after replay
@@ -247,7 +247,7 @@ kaltura-html5lib (2.45-1) kajam; urgency=low
   * FEC-5702 - UI fixes
   * FEC-5687 - Mobile skin - Long title is not cut on mobiles
   * FEC-5658 - Mobile skin - player's icons are flickering when you you click on Next video in playlist
-  * FEC-5689 - Playlist with watermark - Tapping on the watermark does not open Kaltura site in a new tab
+  * FEC-5689 - Playlist with watermark - Tapping on the watermark does not open Borhan site in a new tab
   * FEC-5721 - Mobile skin - Learn more on DFP is not clickable on Android
   * FEC-5728 - Native iOS - Play button is not shown when you close plugin (for example Report)
   * FEC-5732 - Native iOS - Aditional second is added to the video if you drag till the end of video
@@ -265,9 +265,9 @@ kaltura-html5lib (2.45-1) kajam; urgency=low
   * support native SDK messaging from mobile web to work samelessly with the receiver
   * Turn off mobile skin for this version
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Tue, 05 Jul 2016 19:33:39 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Tue, 05 Jul 2016 19:33:39 +0000
 
-kaltura-html5lib (2.44-1) kajam; urgency=low
+borhan-html5lib (2.44-1) kajam; urgency=low
 
   * FEC-5518 - Expose PTS in HLS JS player
   * SUP-8167
@@ -277,14 +277,14 @@ kaltura-html5lib (2.44-1) kajam; urgency=low
   * FEC-5419 - Buffer, interruption,
   * FEC-5549 - MultiAudioTracks: Select audio button disabled on Edge browser
   * FEC-5548 - Add ability to pass captions array via external captions event
-  * FEM-460 - Handle Kaltura.OverrideLicneseURL in MobileSDK/EmbedPlayerNativeComponent
+  * FEM-460 - Handle Borhan.OverrideLicneseURL in MobileSDK/EmbedPlayerNativeComponent
   * FEC-484 - Version Tag
   * FEC-5457 - expose new event for external full screen
-  * FEC-5395 - hlsjs- heartbeat: trackSessionStart event not reported when playing kaltura live with dvr
+  * FEC-5395 - hlsjs- heartbeat: trackSessionStart event not reported when playing borhan live with dvr
   * FEC-5567 - uDRM:WVCENC:Video is stuck with wrong current time instead of playing after performing seek from the end of video to beginning
   * SUP-7410
   * FEC-5569 - uDRM: Rate selector is not working
-  * FEC-5573 - Add ‘ setKDPAttribute’ support for ‘visible’ property in controlBarContainer and topBarContainer
+  * FEC-5573 - Add ‘ setBDPAttribute’ support for ‘visible’ property in controlBarContainer and topBarContainer
   * FEC-5575 - Setting DASH source multiple times while in init state crashes playback
   * FEM-385 - Android | Native sdk | Multi audio/Captions support
   * FEC-3682 - live HLS: Each time player buffers, the latency increases
@@ -312,11 +312,11 @@ kaltura-html5lib (2.44-1) kajam; urgency=low
   * Fix support for HLS AES as DRM source
   * Update DASH everywhere package to v4.1.1
   * updated Chromecast application ID in all test pages
-  * Add captions force webVTT flag for kaltura API on-the-fly generated webvtt captions
+  * Add captions force webVTT flag for borhan API on-the-fly generated webvtt captions
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Fri, 03 Jun 2016 15:22:00 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Fri, 03 Jun 2016 15:22:00 +0000
 
-kaltura-html5lib (2.43-1) kajam; urgency=low
+borhan-html5lib (2.43-1) kajam; urgency=low
 
   * FEC-5259 - Set Doubleclick request ads timeout check only when play start
   * FEC-4430 - Related videos with auto continue - each entry plays twice
@@ -324,7 +324,7 @@ kaltura-html5lib (2.43-1) kajam; urgency=low
   * SUP-7211 - Progress Bar color on iOS SDK
   * FEC-5376 - Update Youbora Plugin to cover passing bitrate in all playback contexts
   * OPF-4120 - Report CDN to youbora
-  * SUP-7693 - Typo in KMC studio Enable embed.ly embeds
+  * SUP-7693 - Typo in BMC studio Enable embed.ly embeds
   * FEC-5129 - LC Dual screen: the dual screen menu appears over moderation screen
   * FEC-5353 - kanalony: change service name and action name
   * FEC-5292 - kanalony: remove "event:" from events names
@@ -372,7 +372,7 @@ kaltura-html5lib (2.43-1) kajam; urgency=low
   * FEC-5468 - Share&Embed: a video is not blurred on clicking 'Share'
   * FEC-4725 - ChromeCast: player stack when you Stop casting from the middle of a video
   * FEC-5494 - HLS JS : Only auto displayed after opening flavor selector when playing VOD/Live entry with multiple bitrates (IE11 Only)
-  * SUP-7729 - Frames of Kaltura Secret protected videos are visible to unauthenticated user
+  * SUP-7729 - Frames of Borhan Secret protected videos are visible to unauthenticated user
   * FEC-5482 - MultiAudioTracks: Active language should be highlighted after opening "Select audio" button
   * SUP-7780 - IVQ - Quitting before editing a new quiz creates a non functioning quiz in My Media
   * FEC-5381 - webcast-sometimes after stop/start when changing the player view the video doesn't display
@@ -387,9 +387,9 @@ kaltura-html5lib (2.43-1) kajam; urgency=low
   * add support for custom receiver logo url in Chromecast
   * Update HLS.JS to v0.6.1 Add version print out when in debug mode*
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Sun, 08 May 2016 18:46:32 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Sun, 08 May 2016 18:46:32 +0000
 
-kaltura-html5lib (2.41-1) kajam; urgency=low
+borhan-html5lib (2.41-1) kajam; urgency=low
 
   * FEC-4777 - Updated DVR Layout for Player
   * SUP-7065 - Content Drop-off - Play-through Ratio 121%
@@ -475,9 +475,9 @@ kaltura-html5lib (2.41-1) kajam; urgency=low
   * New HLS-OSMF plugin
   * Fix decimal point issues in different culture settings of systems in silverlight*
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Fri, 11 Mar 2016 15:12:27 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Fri, 11 Mar 2016 15:12:27 +0000
 
-kaltura-html5lib (2.40-1) kajam; urgency=low
+borhan-html5lib (2.40-1) kajam; urgency=low
 
   * FEC-4659 - webcast live - clicking pause/play, the player jumps back a few seconds
   * FEC-4471 - HLS OSMF - external stream stuck during manual throttling
@@ -501,7 +501,7 @@ kaltura-html5lib (2.40-1) kajam; urgency=low
   * Doubleclick - Fallback to Flash on Microsoft Edge
   * KMS-10787 - In-Video Quizzes: Channel playlist - 'almost done' screen is not shown
   * FEC-4580 - Enhanced Advertising > Content playback flow for web
-  * FEC-4541 - update API documentation in player.kaltura.com documentation
+  * FEC-4541 - update API documentation in player.borhan.com documentation
   * FEC-4475 - player iOS SDK throws error when loading an image entry
   * FEC-4723 - Allow player to select dash+widevine on Android
   * SUP-7123 - Layout of the play-button has been changed in the new version
@@ -511,9 +511,9 @@ kaltura-html5lib (2.40-1) kajam; urgency=low
   * TR-196 - It is possible for a user to remove share link permanently (for the session at least)
   * SUP-7156 - Playback issues with Embed Code
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Sun, 14 Feb 2016 15:54:10 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Sun, 14 Feb 2016 15:54:10 +0000
 
-kaltura-html5lib (2.39-1) kajam; urgency=low
+borhan-html5lib (2.39-1) kajam; urgency=low
 
   * FEC-4308 - Player mobile skin
   * FEC-4512 - Mobile Skin - Long Title is cut on portrait mode
@@ -546,30 +546,30 @@ kaltura-html5lib (2.39-1) kajam; urgency=low
   * FEC-4573 - DRM playback: after refreshing test page ,the replay doesn't works properly on FF
   * FEC-4575 - Mobile Skin: Clicking on play button disables share (share was ed before)
   * FEC-4465 - High cpu usage when there are many slides (>30)
-  * FEC-4456 - HLS OSMF - the spinner appears during DVR playing if to stop and re-run Kaltura stream
-  * FEC-4459 - HLS OSMF - take around 10-12 seconds to switch from DVR to Kaltura Live
-  * FEC-4462 - HLS OSMF - Seek in Kaltura DVR take more time than in previous player version
-  * FEC-4458 - HLS OSMF - Kaltura Live with DVR loaded with 40-50 seconds of delay
-  * FEC-4567 - Regression: Kaltura Live without DVR stuck at beginning for 10-15 second
+  * FEC-4456 - HLS OSMF - the spinner appears during DVR playing if to stop and re-run Borhan stream
+  * FEC-4459 - HLS OSMF - take around 10-12 seconds to switch from DVR to Borhan Live
+  * FEC-4462 - HLS OSMF - Seek in Borhan DVR take more time than in previous player version
+  * FEC-4458 - HLS OSMF - Borhan Live with DVR loaded with 40-50 seconds of delay
+  * FEC-4567 - Regression: Borhan Live without DVR stuck at beginning for 10-15 second
   * WEBC-632 - Use the creation time for answer-on-air instead of relative time
-  * FEC-4460 - HLS OSMF - the Kaltura live's time isn't synchronized with the timer - 1 minute difference
-  * FEC-4457 - HLS OSMF - After Kaltura Live stopped, the DVR started from 1 minute
-  * FEC-4452 - HLS OSMF - the DVR timer of the Kaltura live stopped to update after several seconds
-  * FEC-4451 - HLS OSMF - the timer for Kaltura live isn't updated
+  * FEC-4460 - HLS OSMF - the Borhan live's time isn't synchronized with the timer - 1 minute difference
+  * FEC-4457 - HLS OSMF - After Borhan Live stopped, the DVR started from 1 minute
+  * FEC-4452 - HLS OSMF - the DVR timer of the Borhan live stopped to update after several seconds
+  * FEC-4451 - HLS OSMF - the timer for Borhan live isn't updated
   * FEC-4582 - Playlist with moderation: if select other entry during moderation screen ed ,the video blurred
   * FEC-4536 - Mobile Skin - Multi streams box is located in center of a player
   * FEC-4596 - Regression: empty playlist in full screen mode displayed on the half of the screen
   * WEBC-644 - webcast embed - cancel button isn't in the right place (and fonts are wrong)
   * FEC-4471 - HLS OSMF - external stream (WhetherNation) stuck during manual throttling
   * FEC-4581 - It takes too long to start playing live (HLS)
-  * FEC-4594 - HLS OSMF - Kaltura Live without DVR and VOD periodically stuck for 2-3 seconds during throttling
+  * FEC-4594 - HLS OSMF - Borhan Live without DVR and VOD periodically stuck for 2-3 seconds during throttling
   * FEC-4612 - mac/iPad - after preforming stop/start in the encoder the video doesn't return until refresh the page
   * FEC-4611 - embed webcast - the message on the player when on off air mode is cut due to QnA
   * KMS-9595 - In Video Quizzes: Seek to the end of video via end button is not working in HDS (playhead continue to play and cue-points are not pop-upped)
   * SUP-6931 - Support for inlineScripting RESOLVED
   * KMS-9632 - In Video Quizzes: General: Skip for now is hidden in case of showing question when plugin option list is ed
   * FEC-4615 - session Android and iOS
-  * SUP-6773 - Kaltura player v2.36.2 - live stream with pre-roll ads mixed audio
+  * SUP-6773 - Borhan player v2.36.2 - live stream with pre-roll ads mixed audio
   * KMS-9871 - In Video Quizzes: Player puts different questions on the same cue-point after seek from pause (causes to add few questions in one cuepoint)(youtube entry)
   * FEC-4645 - Hidden Playlist - Next/Previous buttons not display during video playing on iPad
   * FEC-4638 - Vertical responsive playlist distorted after the browser resized
@@ -593,9 +593,9 @@ kaltura-html5lib (2.39-1) kajam; urgency=low
   * FEC-4682 - Regression - dfp overly is shown on wrong place on Android 6.0
   * OSMF-HLS plugin Buffers Refactor
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Sun, 17 Jan 2016 16:02:43 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Sun, 17 Jan 2016 16:02:43 +0000
 
-kaltura-html5lib (2.38.1-1) kajam; urgency=low
+borhan-html5lib (2.38.1-1) kajam; urgency=low
 
   * TR-552 - CaaS widgets with playlist - On iOS thumbnail is out of alignment
   * FEC-4565 - Send Notification in native bridge crashes
@@ -603,19 +603,19 @@ kaltura-html5lib (2.38.1-1) kajam; urgency=low
   * FEC-4562 - Channel Playlist - chapters thumbnail doesn't change
   * Fix mobile inlineScript loading
 
-kaltura-html5lib (2.37.3-1) kajam; urgency=low
+borhan-html5lib (2.37.3-1) kajam; urgency=low
 
   * patch simplePhpXMLProxy.php to disallow requests that are not over HTTP[s]
-  * patch UiConfResult.php - https://github.com/kaltura/mwEmbed/pull/2308/files
+  * patch UiConfResult.php - https://github.com/borhan/mwEmbed/pull/2308/files
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Sun, 06 Dec 2015 16:05:40 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Sun, 06 Dec 2015 16:05:40 +0000
 
-kaltura-html5lib (2.37-1) kajam; urgency=low
+borhan-html5lib (2.37-1) kajam; urgency=low
 
   * FEC-4253 - Captioning flyout does not disappear as expected
   * FEC-4063 - Share&Embed: white lines appear after click on some social network icon on FireFox
   * FEC-3982 - Related videos are stretched on fullscreen
-  * FEC-3937 - Player Share is hardcoded to cdnapi.kaltura.com
+  * FEC-3937 - Player Share is hardcoded to cdnapi.borhan.com
   * FEC-4158 - Strings plugin should support per localization key overrides
   * FEC-2823 - Google Analytics configuration in Studio is wrong
   * FEC-4296 - Playlists should support setting playlist width in percentage
@@ -634,7 +634,7 @@ kaltura-html5lib (2.37-1) kajam; urgency=low
   * FEC-4349 - Fix native callout on Android
   * FEC-4336 - evars and props do not get updated in playlist
   * SUP-6097 - Changing playbackRate modifies number of captions
-  * PLAT-3590 - Replace existing og:tags in KMC Preview & Embed links to support HTML5 playback on Facebook and Embedly
+  * PLAT-3590 - Replace existing og:tags in BMC Preview & Embed links to support HTML5 playback on Facebook and Embedly
   * FEC-4394 - Seek race condition prevent seek events propagation in native player
   * FEC-4367 - moderation plugin: Thank you message not localized
   * FEC-4328 - Support hide cursor durring fullscreen playback
@@ -652,9 +652,9 @@ kaltura-html5lib (2.37-1) kajam; urgency=low
 
 
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Fri, 20 Nov 2015 14:11:22 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Fri, 20 Nov 2015 14:11:22 +0000
 
-kaltura-html5lib (2.36-1) kajam; urgency=low
+borhan-html5lib (2.36-1) kajam; urgency=low
 
   * SUP-5808 - Watermark test page uses outdated attribute names
   * SUP-5902 - Video Invisible For Contrast Function of Windows OS
@@ -668,9 +668,9 @@ kaltura-html5lib (2.36-1) kajam; urgency=low
   * FEC-4055 - Android not being able to play stream on Onprem solution, and works fine on SaaS
   * SUP-5971 - [2.34 Regression] EmbedPlayer.EnableIpadHTMLControls=false no longer shows native controls
   * FEC-4162 - Channel playlist - playlist button look disabled in live event that had not start
-  * FEC-4151 - v2.35 Error: Using non-prodcution version of kaltura player library.
+  * FEC-4151 - v2.35 Error: Using non-prodcution version of borhan player library.
   * FEC-4179 - airPlay plugin doesn't work
-  * FEC-4080 - Kaltura Live with DVR through HLS failed to be load
+  * FEC-4080 - Borhan Live with DVR through HLS failed to be load
   * FEC-4200 - Channel playlist: No Vast pre-roll playing before LC entries on iPad
   * FEC-4219 - Channel playlist: YouTube entry failed to be start on iPhone if previous entry also has been YouTube
   * FEC-3127 - Playlist should support playlist scroll to current entry
@@ -692,16 +692,16 @@ kaltura-html5lib (2.36-1) kajam; urgency=low
   * Channel playlist dual screen support
   * Changed checking for Vast Element in ad XML to explicitely look for an element node.
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Fri, 23 Oct 2015 12:39:51 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Fri, 23 Oct 2015 12:39:51 +0000
 
-kaltura-html5lib (2.35.5-1) jupiter; urgency=low
+borhan-html5lib (2.35.5-1) jupiter; urgency=low
 
   * IVQ release
 
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Fri, 09 Oct 2015 11:43:52 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Fri, 09 Oct 2015 11:43:52 +0000
 
-kaltura-html5lib (2.35-1) jupiter; urgency=low
+borhan-html5lib (2.35-1) jupiter; urgency=low
 
   * FEC-4021 - Video is not playing on IOS9 while it has overly
   * FEC-4012 - Seek on ios 9 : presents only sound on DFP midroll
@@ -728,7 +728,7 @@ kaltura-html5lib (2.35-1) jupiter; urgency=low
   * FEC-4069 - Support load with KS with slashes parameterization ( does not work ?ks param )
   * SUP-5512 - Download link not working in versions 2.33
   * FEC-4066 - The player don`t display the sync point and the Admin player plays HLS instead of HDS.
-  * FEC-2522 - Support DFP VAST VPAID engine: Kaltura cuePoints, API invocation and partial mediaProxy cuePoint override
+  * FEC-2522 - Support DFP VAST VPAID engine: Borhan cuePoints, API invocation and partial mediaProxy cuePoint override
   * FEC-4087 - Re-evaluate mediaName before sending the 1st event
   * FEC-2693 - Lecture Capture: the LC menu appears also for VOD entries, if LC and VOD included in playlist
   * FEC-4088 - The mixed playlist with youtube entries doesn't work properly
@@ -746,7 +746,7 @@ kaltura-html5lib (2.35-1) jupiter; urgency=low
   * FEC-4091 - Auto play and auto continue don't work for YouTube playlist
   * FEC-4090 - spinner stuck on youtube entry after seek
   * FEC-4074 - Tokenization for v2.34
-  * FEC-4096 - YouTube playlist: the playlist doesn't load if delivery type is Kaltura auto or HDS
+  * FEC-4096 - YouTube playlist: the playlist doesn't load if delivery type is Borhan auto or HDS
   * FEC-4095 - Source not found player error
   * FEC-3820 - ad pod events are not sent to reporting server
   * FEC-3559 - allow overriding the ServiceUrl and CdnUrl completely by passing respective flashvars
@@ -754,11 +754,11 @@ kaltura-html5lib (2.35-1) jupiter; urgency=low
   * SUP-5849 - Scrubber arrow location with aspect ratio
   * KMS-8879 - Channel Playlist - Cannot handle upcoming Live/Webcast event
   * FEC-4100 - YouTube playlist: need to tap twice on screen in order to pause YouTube entry on Android and iOS
-  * FEC-4099 - Youtube and KMC playlist: impossible to change playing entry from YouTube to KMC or vice versa on Android and iOS
+  * FEC-4099 - Youtube and BMC playlist: impossible to change playing entry from YouTube to BMC or vice versa on Android and iOS
   * FEC-4098 - YouTube playlist disabled after player loads on Android or iOS devices
   * FEC-4097 - YouTube playlist with auto play - the video doesn't start, black screen appears on Android and iOS devices
   * FEC-4092 - YouTube playlist: black screen in player area appears after refreshing the test page
-  * FEC-4093 - Lecture Capture: the LC menu/controls appear also for Kaltura live entries in combined playlist
+  * FEC-4093 - Lecture Capture: the LC menu/controls appear also for Borhan live entries in combined playlist
   * FEC-3974 - "wrong reference id" message does not appear when using wrong reference id as source
   * FEC-4131 - can't play live with ad stitching specific stream
   * FEC-4122 - Lecture capture - Video plays in the main screen when stream is selected
@@ -766,9 +766,9 @@ kaltura-html5lib (2.35-1) jupiter; urgency=low
   * New HLS-OSMF plugin
   * Improved IE8 detection *
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Thu, 17 Sep 2015 14:41:30 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Thu, 17 Sep 2015 14:41:30 +0000
 
-kaltura-html5lib (2.34-1) jupiter; urgency=low
+borhan-html5lib (2.34-1) jupiter; urgency=low
 
   * SUP-5551 - Source selector doesn't work after changing media
   * SUP-5535 - Large Play button - Bug in "Custom styles"
@@ -786,9 +786,9 @@ kaltura-html5lib (2.34-1) jupiter; urgency=low
   * SUP-4911 - Postmedia - autoMute parameter is cached
   * SUP-4721 - Play button disappears in 2.30 player in IE + iframe embed when in full screen 
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Thu, 20 Aug 2015 15:52:52 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Thu, 20 Aug 2015 15:52:52 +0000
 
-kaltura-html5lib (2.33-1) jupiter; urgency=low
+borhan-html5lib (2.33-1) jupiter; urgency=low
 
   * FEC-677 - volumeControl plugin should support verical layout
   * FEC-3331 - Support server side playback Rate where not available client side or no progressive stream
@@ -796,7 +796,7 @@ kaltura-html5lib (2.33-1) jupiter; urgency=low
   * FEC-1755 - Adobe Analytics Omniture Heartbeat AppMeasurement player implmenation
   * FEC-3509 - Design OTT Player Skin
   * FEC-3733 - Anonymous user
-  * FEC-2900 - Implement embedly player.js interface for player API against kaltura player
+  * FEC-2900 - Implement embedly player.js interface for player API against borhan player
   * SUP-4886 - Disabling the Livstream redirect
   * SUP-5119 - Playback rate selector issue
   * SUP-4976 - changeMedia issue on Android 5.0
@@ -810,15 +810,15 @@ kaltura-html5lib (2.33-1) jupiter; urgency=low
   * SUP-5357 - Pause button stop working
   * SUP-5349 - Unable to change preferred bitrate in source selector
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Fri, 24 Jul 2015 22:11:53 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Fri, 24 Jul 2015 22:11:53 +0000
 
-kaltura-html5lib (2.32.1-1) jupiter; urgency=low
+borhan-html5lib (2.32.1-1) jupiter; urgency=low
 
   * Support MSE/EME only on Chrome 
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Sun, 12 Jul 2015 05:42:41 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Sun, 12 Jul 2015 05:42:41 +0000
 
-kaltura-html5lib (2.32-1) jupiter; urgency=low
+borhan-html5lib (2.32-1) jupiter; urgency=low
 
   * FEC-3632 - Supprot all tremor ad substitutions
   * FEC-3640 - Support large play button when DFP ads are paused.
@@ -830,7 +830,7 @@ kaltura-html5lib (2.32-1) jupiter; urgency=low
   * SUP-4277 - Mediahuis - Windows Phone 8.1 black screen on playback
   * SUP-4182 - Firefox issue with right click menu
   * SUP-4564 - Image while broadcasting live audio stream
-  * SUP-3568 - Change Iframe title from "Kaltura Embed Player iFrame" to the player's title
+  * SUP-3568 - Change Iframe title from "Borhan Embed Player iFrame" to the player's title
   * SUP-4998 - Query - Defining one thumbnail URL for all entries while using thumbnail embed
   * SUP-5070 - abChecker plugin not working
   * SUP-4857 - Accessibility issue
@@ -838,9 +838,9 @@ kaltura-html5lib (2.32-1) jupiter; urgency=low
   * SUP-5002 - Captions issue with player version 2.31 in Desktop and Android
   * SUP-3590 - Translating error message from English to Dutch
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Sun, 28 Jun 2015 08:47:47 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Sun, 28 Jun 2015 08:47:47 +0000
 
-kaltura-html5lib (2.31-1) jupiter; urgency=low
+borhan-html5lib (2.31-1) jupiter; urgency=low
 
   * FEC-3185 - Add paging ability to core playlist
   * FEC-3504 - Add playSessionId to each playmanifest
@@ -850,7 +850,7 @@ kaltura-html5lib (2.31-1) jupiter; urgency=low
   * SUP-4589 - GroovyGecko - Google Analytics urchinCode plugin
   * SUP-4509 - Downloading a specific flavor
   * SUP-4237 - Rate Selector - speed conversion not working properly
-  * SUP-3568 - Change Iframe title from "Kaltura Embed Player iFrame" to the player's title
+  * SUP-3568 - Change Iframe title from "Borhan Embed Player iFrame" to the player's title
   * SUP-4621 - Player Analytics regression around statistics properties
   * SUP-3383 - "Install Flash" message not shown on IE8
   * SUP-3590 - Translating error message from English to Dutch
@@ -859,9 +859,9 @@ kaltura-html5lib (2.31-1) jupiter; urgency=low
   * SUP-4678 - Full screen issue in Android Galaxy Note and Galaxy S3
   * 
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Sun, 31 May 2015 12:18:40 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Sun, 31 May 2015 12:18:40 +0000
 
-kaltura-html5lib (2.30-1) jupiter; urgency=low
+borhan-html5lib (2.30-1) jupiter; urgency=low
 
   * FEC-3100 - Support DFP player identification
   * SUP-3177 - [v2.20] Player stuck when seeking on Firefox/OSX, webm flavor
@@ -884,10 +884,10 @@ kaltura-html5lib (2.30-1) jupiter; urgency=low
 
 
 
- -- Jess Portnoy <jess.portnoy@kaltura.org>  Tue, 05 May 2015 22:10:55 +0000
+ -- Jess Portnoy <jess.portnoy@borhan.org>  Tue, 05 May 2015 22:10:55 +0000
 
-kaltura-html5lib (2.29-1) jupiter; urgency=low
+borhan-html5lib (2.29-1) jupiter; urgency=low
 
   - First package
 
- -- Jess Portnoy <jess.portnoy@kaltura.com>  Sun, 12 Apr  2013 18:02:43 +0200
+ -- Jess Portnoy <jess.portnoy@borhan.com>  Sun, 12 Apr  2013 18:02:43 +0200

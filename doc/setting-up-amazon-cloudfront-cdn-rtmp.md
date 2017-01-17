@@ -23,12 +23,12 @@ There was our s3 storage will be listed as we have done in above Step,
 Prefix must be our Directory which was created in s3 bucket
 
 Note : There is no slash after /st
-Note : There is no slash after /kaltura
+Note : There is no slash after /borhan
 
 ```
 RTMP Delivery Base URL:   rtmp://s22xxxxxxxxxxx.cloudfront.net/cfx/st
 
-RTMP stream URL prefix:   /kaltura
+RTMP stream URL prefix:   /borhan
 ```
 
 ![selection_011](https://raw.githubusercontent.com/blackyboy/Centos-Linux-Stuffs/master/setup-images/setting_up_amazon_cloudfront_cdn_for_rtmp_1.png)
@@ -38,4 +38,4 @@ RTMP stream URL prefix:   /kaltura
 
 This will make works both RTMP & RTMPE Video Streaming.
 
-Bunch of thanks to @jessp01 from Kaltura team for guiding me.
+Bunch of thanks to @jessp01 from Borhan team for guiding me.

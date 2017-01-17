@@ -48,9 +48,9 @@ dh_php7 - register configuration snippets to the PHP 5
 =cut
 
 # auto-generated do not edit
-our $API=`grep '#define PHP_API_VERSION' /opt/kaltura/include/php/main/php.h|sed 's/#define PHP_API_VERSION //'`;
-our $MODULE_DIR = `/opt/kaltura/bin/php-config --extension-dir`;
-our $SERVER_VERSION = `/opt/kaltura/bin/php-config --version`;
+our $API=`grep '#define PHP_API_VERSION' /opt/borhan/include/php/main/php.h|sed 's/#define PHP_API_VERSION //'`;
+our $MODULE_DIR = `/opt/borhan/bin/php-config --extension-dir`;
+our $SERVER_VERSION = `/opt/borhan/bin/php-config --version`;
 
 
 
@@ -73,7 +73,7 @@ sub php7_api_installdir
 sub php7_conf_installdir
 {
 	my $type = shift;
-	return "opt/kaltura/app/configurations/php/${type}-available/"
+	return "opt/borhan/app/configurations/php/${type}-available/"
 }
 
 =head1 SYNOPSIS
@@ -183,7 +183,7 @@ is incorporated into this dependency line.
 Modules are handled specially and are determined by the B<mod> type. Modules can
 either have a I<.conf> or I<.load> suffix.  In that case the file is interpreted
 as module load file or module configuration file respectively and is installed to
-I</opt/kaltura/app/configurations/php/mods-available>.  If the file is ending with a I<.so> suffix it is
+I</opt/borhan/app/configurations/php/mods-available>.  If the file is ending with a I<.so> suffix it is
 interpreted as actual module shared object and is installed to the PHP 5 module
 directory.  Moreover, if a I<.load> file is installed the configuration is
 activated in the maintainer script at installation time.
@@ -331,12 +331,12 @@ foreach my $package ((@{$dh{DOPACKAGES}}))
 				my $conf_name = $file;
 				$conf_name =~ s/\.[^.]+$//;
 
-				if ($dir =~ m#opt/kaltura/app/configurations/php/mods-available# and $file =~ m#.(load|conf)$#)
+				if ($dir =~ m#opt/borhan/app/configurations/php/mods-available# and $file =~ m#.(load|conf)$#)
 				{
 					verbose_print("package $package appears	to be a web server module\n");
 					push @{$PACKAGE_TYPE{'has_a_module'}}, $conf_name if $file =~ m/\.load/;
 				}
-				if ($dir =~ m#opt/kaltura/app/configurations/php/conf-available# and $file =~ m#.conf$#)
+				if ($dir =~ m#opt/borhan/app/configurations/php/conf-available# and $file =~ m#.conf$#)
 				{
 					verbose_print("package $package appears	to contain a global configuration file \n");
 					push @{$PACKAGE_TYPE{'has_a_conf_file'}}, $conf_name;

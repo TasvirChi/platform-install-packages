@@ -1,4 +1,4 @@
-USE `kalturadw`;
+USE `borhandw`;
 
 DROP TABLE IF EXISTS `dwh_daily_ingestion`;
 
@@ -25,5 +25,5 @@ CREATE TABLE `dwh_daily_ingestion` (
 PARTITION BY RANGE (date_id)
 (PARTITION @PARTITION_NAME@ VALUES LESS THAN (@PARTITION_VALUE@) ENGINE = InnoDB);
 
-CALL kalturadw.add_monthly_partition_for_table('dwh_daily_ingestion');
+CALL borhandw.add_monthly_partition_for_table('dwh_daily_ingestion');
 

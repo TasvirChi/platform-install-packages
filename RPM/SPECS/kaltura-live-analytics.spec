@@ -1,20 +1,20 @@
-%define prefix /opt/kaltura 
-Summary: Kaltura Server release file and package configuration
-Name: kaltura-live-analytics
+%define prefix /opt/borhan 
+Summary: Borhan Server release file and package configuration
+Name: borhan-live-analytics
 Version: v0.5.26
 Release: 14
 License: AGPLv3+
 Group: Server/Platform 
-URL: http://kaltura.org
+URL: http://borhan.org
 Source0: register-file-deps-jars.tar.gz
 Source1: %{name}_config.template.properties 
 Source2: %{name}_log4j.properties
-Source3: https://github.com/kaltura/live_analytics/releases/download/%{version}/KalturaLiveAnalytics.war
-Source4: https://github.com/kaltura/live_analytics/releases/download/%{version}/live-analytics-driver.jar
-Source5: https://github.com/kaltura/live_analytics/releases/download/%{version}/register-file.jar
+Source3: https://github.com/borhan/live_analytics/releases/download/%{version}/BorhanLiveAnalytics.war
+Source4: https://github.com/borhan/live_analytics/releases/download/%{version}/live-analytics-driver.jar
+Source5: https://github.com/borhan/live_analytics/releases/download/%{version}/register-file.jar
 Source6: http://repo.maven.apache.org/maven2/com/sun/xml/ws/jaxws-ri/2.2.10/jaxws-ri-2.2.10.zip
 Source7: %{name}_nginx_live.template.conf
-Source8: https://raw.githubusercontent.com/kaltura/live_analytics/v0.5/setup/create_cassandra_tables.cql
+Source8: https://raw.githubusercontent.com/borhan/live_analytics/v0.5/setup/create_cassandra_tables.cql
 Source9: %{name}_register_log.sh
 Source10: %{name}_live_stats
 Source11: %{name}_rotate_live_stats.template
@@ -24,11 +24,11 @@ Source14: %{name}_cassandra.service
 
 BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root
 BuildArch: noarch
-Requires: dsc22 cassandra22 tomcat java-1.8.0-openjdk  kaltura-spark
+Requires: dsc22 cassandra22 tomcat java-1.8.0-openjdk  borhan-spark
 
 %description
-Kaltura Server release file. This package contains yum 
-configuration for the Kaltura RPM Repository, as well as the public
+Borhan Server release file. This package contains yum 
+configuration for the Borhan RPM Repository, as well as the public
 GPG keys used to sign them.
 
 
@@ -49,7 +49,7 @@ cp %{SOURCE3} $RPM_BUILD_ROOT/var/lib/tomcat/webapps/
 cp %{SOURCE4} %{SOURCE5} $RPM_BUILD_ROOT%{prefix}/lib
 cp %{SOURCE8} $RPM_BUILD_ROOT%{prefix}/app/configurations/live_analytics/cassandra
 chmod +x %{SOURCE9}
-cp %{SOURCE9} $RPM_BUILD_ROOT%{prefix}/bin/kaltura_register_log.sh
+cp %{SOURCE9} $RPM_BUILD_ROOT%{prefix}/bin/borhan_register_log.sh
 cp %{SOURCE12} $RPM_BUILD_ROOT%{prefix}/bin/live-analytics-driver.sh
 cp %{SOURCE10} $RPM_BUILD_ROOT%{prefix}/app/configurations/live_analytics/cron/live_stats
 cp %{SOURCE11} $RPM_BUILD_ROOT%{prefix}/app/configurations/live_analytics/logrotate/live_stats.template
@@ -88,7 +88,7 @@ fi
 %preun
 if [ "$1" = 0 ] ; then
 	service live-analytics-driver stop
-	for FILE in /usr/lib/systemd/system/live-analytics-driver.service /etc/init.d/live-analytics-driver /etc/cron.d/kaltura_live_stats /etc/logrotate.d/kaltura_live_stats /etc/nginx/conf.d/live.conf ;do
+	for FILE in /usr/lib/systemd/system/live-analytics-driver.service /etc/init.d/live-analytics-driver /etc/cron.d/borhan_live_stats /etc/logrotate.d/borhan_live_stats /etc/nginx/conf.d/live.conf ;do
 		if [ -r $FILE ];then
 			rm $FILE
 		fi
@@ -110,9 +110,9 @@ fi
 %config %{prefix}/app/configurations/live_analytics/cron/*
 %config %{prefix}/app/configurations/live_analytics/nginx/*
 %config %{prefix}/app/configurations/live_analytics/driver/*
-/var/lib/tomcat/webapps/KalturaLiveAnalytics.war
+/var/lib/tomcat/webapps/BorhanLiveAnalytics.war
 /usr/share/tomcat/lib/*jar
 
 %changelog
-* Sat Dec 3 2016 jess.portnoy@kaltura.com <Jess Portnoy> - 12.6.0-1
+* Sat Dec 3 2016 jess.portnoy@borhan.com <Jess Portnoy> - 12.6.0-1
 - First release

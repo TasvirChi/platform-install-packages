@@ -1,16 +1,16 @@
-Package: kaltura-php7-sqlite
-Source: kaltura-php7
+Package: borhan-php7-sqlite
+Source: borhan-php7
 Version: 7.0.0-6
 Architecture: amd64
-Maintainer: Jess Portnoy <jess.portnoy@kaltura.com>
+Maintainer: Jess Portnoy <jess.portnoy@borhan.com>
 Installed-Size: 141
 Pre-Depends: dpkg (>= 1.16.1~)
-Depends: libc6 (>= 2.14), libsqlite3-0 (>= 3.7.4), phpapi-20151012, kaltura-php7-common (= 7.0.0-6), ucf
+Depends: libc6 (>= 2.14), libsqlite3-0 (>= 3.7.4), phpapi-20151012, borhan-php7-common (= 7.0.0-6), ucf
 Breaks: roundcube-sqlite (<< 0.7.1-2)
 Section: php
 Priority: optional
 Homepage: http://www.php.net/
-Description: SQLite module for kaltura-php7
+Description: SQLite module for borhan-php7
  This package provides a module allowing you to use the SQLite self-contained
  database engine from within your PHP scripts, eliminating the need for a full
  SQL server installation like MySQL or PostgreSQL.  It also includes the

@@ -3,7 +3,7 @@ if (count($argv)<2){
     echo __FILE__ . ' <admin_secret> <service_url> <flavor_id>'."\n";
     exit (1);
 }
-require_once('/opt/kaltura/web/content/clientlibs/php5/KalturaClient.php');
+require_once('/opt/borhan/web/content/clientlibs/php5/BorhanClient.php');
 require_once(__DIR__.'/create_session.php');
 $userId = null;
 $expiry = null;
@@ -11,23 +11,23 @@ $privileges = null;
 // get with:
 // mysql> select admin_secret from partner where id=0\G
 $secret = $argv[1];
-$type = KalturaSessionType::ADMIN;
+$type = BorhanSessionType::ADMIN;
 $partnerId=0;
 $service_url= $argv[2];
 $flavor_id=$argv[3];
-$client=generate_ks($service_url,$partnerId,$secret,$type=KalturaSessionType::ADMIN,$userId=null,$expiry = null,$privileges = null);
-$flavorParams = new KalturaFlavorParams();
+$client=generate_ks($service_url,$partnerId,$secret,$type=BorhanSessionType::ADMIN,$userId=null,$expiry = null,$privileges = null);
+$flavorParams = new BorhanFlavorParams();
 try{
 $results = $client->flavorParams->delete($flavor_id);
-}catch(KalturaException $ex){
+}catch(BorhanException $ex){
 	echo $ex->getMessage();
 	exit (1);
 }
-$filter = new KalturaFlavorParamsFilter();
+$filter = new BorhanFlavorParamsFilter();
 $filter->idEqual = $flavor_id;
 try{
 	$results = $client->flavorParams->listAction($filter, null);
-}catch(KalturaException $ex){
+}catch(BorhanException $ex){
 	echo $ex->getMessage();
 	exit (1);
 }

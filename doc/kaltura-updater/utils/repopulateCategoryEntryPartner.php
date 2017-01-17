@@ -15,7 +15,7 @@ if ( !$dbh ) {
  die();
 }
 
-mysql_select_db('kaltura');
+mysql_select_db('borhan');
 
 $partner_id = @$argv[3];  
 if ( $partner_id == null ) {

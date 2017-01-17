@@ -1,4 +1,4 @@
-USE `kalturadw`;
+USE `borhandw`;
 /*View structure for view dwh_dim_partners_v */
 
 /*!50001 DROP TABLE IF EXISTS `dwh_dim_partners_v` */;

@@ -1,6 +1,6 @@
 DELIMITER $$
 
-USE `kalturadw`$$
+USE `borhandw`$$
 
 DROP PROCEDURE IF EXISTS `calc_entries_sizes`$$
 
@@ -10,13 +10,13 @@ BEGIN
 	SET v_date = DATE(p_date_id);
 	UPDATE aggr_managment SET start_time = NOW() WHERE aggr_name = 'storage_usage' AND date_id = p_date_id;
 	
-	DELETE FROM kalturadw.dwh_fact_entries_sizes WHERE entry_size_date_id = p_date_id;
+	DELETE FROM borhandw.dwh_fact_entries_sizes WHERE entry_size_date_id = p_date_id;
 	
 	DROP TABLE IF EXISTS today_file_sync_subset; 
 	
 	CREATE TEMPORARY TABLE today_file_sync_subset AS
 	SELECT DISTINCT s.id, s.partner_id, IFNULL(a.entry_id, object_id) entry_id, object_id, object_type, object_sub_type, IFNULL(file_size, 0) file_size
-	FROM kalturadw.dwh_dim_file_sync s LEFT OUTER JOIN kalturadw.dwh_dim_flavor_asset a
+	FROM borhandw.dwh_dim_file_sync s LEFT OUTER JOIN borhandw.dwh_dim_flavor_asset a
 	ON (object_type = 4 AND s.object_id = a.id AND a.entry_id IS NOT NULL AND a.ri_ind =0 AND s.partner_id = a.partner_id)
 	WHERE s.updated_at BETWEEN v_date AND v_date + INTERVAL 1 DAY
 	AND object_type IN (1,4)
@@ -44,7 +44,7 @@ BEGIN
 	DROP TABLE IF EXISTS deleted_flavors;
 	CREATE TEMPORARY TABLE deleted_flavors AS 
 	SELECT DISTINCT partner_id, entry_id, id
-	FROM kalturadw.dwh_dim_flavor_asset FORCE INDEX (deleted_at)
+	FROM borhandw.dwh_dim_flavor_asset FORCE INDEX (deleted_at)
 	WHERE STATUS = 3 AND deleted_at BETWEEN v_date AND v_date + INTERVAL 1 DAY;
 		
 	BEGIN
@@ -65,7 +65,7 @@ BEGIN
 			END IF;
 			INSERT INTO today_sizes
 				SELECT partner_id, v_deleted_flavor_entry_id, object_id, object_type, object_sub_type, 0 file_size
-				FROM kalturadw.dwh_dim_file_sync
+				FROM borhandw.dwh_dim_file_sync
 				WHERE object_id = v_deleted_flavor_id AND object_type = 4 AND updated_at < v_date AND file_size > 0
 			ON DUPLICATE KEY UPDATE
 				file_size = VALUES(file_size);
@@ -77,7 +77,7 @@ BEGIN
 	
 	DROP TABLE IF EXISTS today_deleted_entries;
 	CREATE TEMPORARY TABLE today_deleted_entries AS 
-	SELECT entry_id FROM kalturadw.dwh_dim_entries
+	SELECT entry_id FROM borhandw.dwh_dim_entries
 	WHERE modified_at BETWEEN v_date AND v_date + INTERVAL 1 DAY
 	AND partner_id NOT IN (100  , -1  , -2  , 0 , 99 )
 	AND entry_status_id = 3
@@ -92,7 +92,7 @@ BEGIN
 	DROP TABLE IF EXISTS yesterday_file_sync_subset; 
 	CREATE TEMPORARY TABLE yesterday_file_sync_subset AS
 	SELECT f.id, f.partner_id, f.object_id, f.object_type, f.object_sub_type, IFNULL(f.file_size, 0) file_size
-	FROM today_sizes today, kalturadw.dwh_dim_file_sync f
+	FROM today_sizes today, borhandw.dwh_dim_file_sync f
 	WHERE f.object_id = today.object_id
 	AND f.partner_id = today.partner_id
 	AND f.object_type = today.object_type
@@ -114,7 +114,7 @@ BEGIN
 	WHERE max_id.id = original.id;
 	
 	
-	INSERT INTO kalturadw.dwh_fact_entries_sizes (partner_id, entry_id, entry_additional_size_kb, entry_size_date, entry_size_date_id)
+	INSERT INTO borhandw.dwh_fact_entries_sizes (partner_id, entry_id, entry_additional_size_kb, entry_size_date, entry_size_date_id)
 	SELECT t.partner_id, t.entry_id, ROUND(SUM(t.file_size - IFNULL(Y.file_size, 0))/1024, 3) entry_additional_size_kb,v_date, p_date_id 
 	FROM today_sizes t LEFT OUTER JOIN yesterday_sizes Y 
 	ON t.object_id = Y.object_id
@@ -130,7 +130,7 @@ BEGIN
 	DROP TABLE IF EXISTS deleted_entries;
 	CREATE TEMPORARY TABLE deleted_entries AS
 		SELECT es.partner_id partner_id, es.entry_id entry_id, v_date entry_size_date, p_date_id entry_size_date_id, -SUM(entry_additional_size_kb) entry_additional_size_kb
-		FROM kalturadw.dwh_dim_entries e USE INDEX (modified_at) INNER JOIN kalturadw.dwh_fact_entries_sizes es
+		FROM borhandw.dwh_dim_entries e USE INDEX (modified_at) INNER JOIN borhandw.dwh_fact_entries_sizes es
 		WHERE e.modified_at BETWEEN v_date AND v_date + INTERVAL 1 DAY
 		AND e.entry_id = es.entry_id 
 		AND e.partner_id = es.partner_id 
@@ -140,12 +140,12 @@ BEGIN
 		GROUP BY es.partner_id, es.entry_id
 		HAVING SUM(entry_additional_size_kb) > 0;
 	
-	INSERT INTO kalturadw.dwh_fact_entries_sizes (partner_id, entry_id, entry_size_date, entry_size_date_id, entry_additional_size_kb)
+	INSERT INTO borhandw.dwh_fact_entries_sizes (partner_id, entry_id, entry_size_date, entry_size_date_id, entry_additional_size_kb)
 		SELECT partner_id, entry_id, entry_size_date, entry_size_date_id, entry_additional_size_kb FROM deleted_entries
 	ON DUPLICATE KEY UPDATE 
 		entry_additional_size_kb = VALUES(entry_additional_size_kb);
 	
-	CALL kalturadw.calc_aggr_day_partner_storage(v_date);
+	CALL borhandw.calc_aggr_day_partner_storage(v_date);
 	UPDATE aggr_managment SET end_time = NOW() WHERE aggr_name = 'storage_usage' AND date_id = p_date_id;
 END$$
 

@@ -15,7 +15,7 @@ if ( !$dbh ) {
  die();
 }
 
-mysql_select_db('kaltura');
+mysql_select_db('borhan');
 
 $partners = mysql_query("select * from partner");
 

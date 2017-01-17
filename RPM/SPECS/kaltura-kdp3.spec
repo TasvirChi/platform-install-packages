@@ -1,32 +1,32 @@
-%define prefix /opt/kaltura
-Name:	kaltura-kdp3	
+%define prefix /opt/borhan
+Name:	borhan-bdp3	
 Version: v3.9.9
 Epoch: 1 
 Release: 2
-Summary: Kaltura Dynamic Player
+Summary: Borhan Dynamic Player
 License: AGPLv3+	
-URL: https://github.com/kaltura/kdp/releases/tag/%{version}
+URL: https://github.com/borhan/bdp/releases/tag/%{version}
 Source0: %{name}-%{version}.tar.gz
 Source2: %{name}-v3.9.7.tar.gz
 Source3: %{name}-v3.9.8.tar.gz
 BuildRoot:	%(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
 BuildArch: noarch
 
-Requires: kaltura-base, httpd	
+Requires: borhan-base, httpd	
 
 %description
-Kaltura is the world's first Open Source Online Video Platform, transforming the way people work, 
+Borhan is the world's first Open Source Online Video Platform, transforming the way people work, 
 learn, and entertain using online video. 
-The Kaltura platform empowers media applications with advanced video management, publishing, 
+The Borhan platform empowers media applications with advanced video management, publishing, 
 and monetization tools that increase their reach and monetization and simplify their video operations. 
-Kaltura improves productivity and interaction among millions of employees by providing enterprises 
+Borhan improves productivity and interaction among millions of employees by providing enterprises 
 powerful online video tools for boosting internal knowledge sharing, training, and collaboration, 
-and for more effective marketing. Kaltura offers next generation learning for millions of students and 
+and for more effective marketing. Borhan offers next generation learning for millions of students and 
 teachers by providing educational institutions disruptive online video solutions for improved teaching,
 learning, and increased engagement across campuses and beyond. 
-For more information visit: http://corp.kaltura.com, http://www.kaltura.org and http://www.html5video.org.
+For more information visit: http://corp.borhan.com, http://www.borhan.org and http://www.html5video.org.
 
-This package installs the KDP Flash player.
+This package installs the BDP Flash player.
 
 %prep
 %setup -qn %{version} 
@@ -37,43 +37,43 @@ cd -
 %build
 
 %install
-mkdir -p $RPM_BUILD_ROOT%{prefix}/web/flash/kdp3
+mkdir -p $RPM_BUILD_ROOT%{prefix}/web/flash/bdp3
 mkdir -p $RPM_BUILD_ROOT%{prefix}/web/content
-for i in %{kdp3_vers};do
-	cp -r %{_builddir}/$i $RPM_BUILD_ROOT/%{prefix}/web/flash/kdp3/
+for i in %{bdp3_vers};do
+	cp -r %{_builddir}/$i $RPM_BUILD_ROOT/%{prefix}/web/flash/bdp3/
 done
-	cp -r %{_builddir}/%{version} $RPM_BUILD_ROOT/%{prefix}/web/flash/kdp3/
+	cp -r %{_builddir}/%{version} $RPM_BUILD_ROOT/%{prefix}/web/flash/bdp3/
 %clean
 rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root,-)
-%{prefix}/web/flash/kdp3
+%{prefix}/web/flash/bdp3
 
 
 %changelog
-* Thu Jul 10 2014 Jess Portnoy <jess.portnoy@kaltura.com> - v3.9.9-1
+* Thu Jul 10 2014 Jess Portnoy <jess.portnoy@borhan.com> - v3.9.9-1
 - New rel.
 
-* Sun Mar 9 2014 Jess Portnoy <jess.portnoy@kaltura.com> - v3.9.8-1
+* Sun Mar 9 2014 Jess Portnoy <jess.portnoy@borhan.com> - v3.9.8-1
 - SUP-1430 - Closed Captions won't show in livestream + prerolls 
 - SUP-1498 - Video is not Auto played After Ad served. 
 - SUP-1508 - [Internet Broadcasting] Closed Captioning won't work with flashvar. 
 
-* Mon Feb 3 2014 Jess Portnoy <jess.portnoy@kaltura.com> - v3.9.7-3
+* Mon Feb 3 2014 Jess Portnoy <jess.portnoy@borhan.com> - v3.9.7-3
 - Since these widgets typically reside on NFS and served from another machine there is not need for the Apache dep.
 
-* Sat Feb 1 2014 Jess Portnoy <jess.portnoy@kaltura.com> - 3.9.7-1
+* Sat Feb 1 2014 Jess Portnoy <jess.portnoy@borhan.com> - 3.9.7-1
 - Added support in "allowUserPauseAds" flashvar that will allow the user to pause ad playback.
 - Fix DFXP styling: now subtitles will inherit the body style if no inlina style was set.
 - SUP-1355 - Pass "AdParameters" value to VPAID SWF
 - FEC-833 - Fix "Live" button functionality
 
-* Wed Jan 14 2014 Jess Portnoy <jess.portnoy@kaltura.com> - 3.0.0-3
+* Wed Jan 14 2014 Jess Portnoy <jess.portnoy@borhan.com> - 3.0.0-3
 - Added uiconf.
 
-* Sun Jan 12 2014 Jess Portnoy <jess.portnoy@kaltura.com> - 3.0.0-2
-- KDP v3.9.3 added.
+* Sun Jan 12 2014 Jess Portnoy <jess.portnoy@borhan.com> - 3.0.0-2
+- BDP v3.9.3 added.
 
-* Sun Jan 12 2014 Jess Portnoy <jess.portnoy@kaltura.com> - 3.0.0-1
+* Sun Jan 12 2014 Jess Portnoy <jess.portnoy@borhan.com> - 3.0.0-1
 - initial package.

@@ -1,6 +1,6 @@
 DELIMITER $$
 
-USE `kalturadw_ds`$$
+USE `borhandw_ds`$$
 
 DROP PROCEDURE IF EXISTS `transfer_cycle_partition`$$
 
@@ -35,9 +35,9 @@ BEGIN
 		IF ((LENGTH(AGGR_DATE) > 0) && (LENGTH(aggr_names) > 0)) THEN
 		
 			SET @s = CONCAT(
-				'INSERT INTO kalturadw.aggr_managment(aggr_name, aggr_day, aggr_day_int, hour_id, is_calculated)
+				'INSERT INTO borhandw.aggr_managment(aggr_name, aggr_day, aggr_day_int, hour_id, is_calculated)
 				SELECT aggr_name, date(aggr_date), aggr_date, aggr_hour, 0
-				FROM (SELECT DISTINCT aggr_name FROM kalturadw.aggr_managment) a, 
+				FROM (SELECT DISTINCT aggr_name FROM borhandw.aggr_managment) a, 
 					(select distinct ',aggr_date, ' aggr_date,' ,aggr_hour,' aggr_hour 
 					 from ',src_table,
 					' where ',partition_field,' = ',p_cycle_id,') ds

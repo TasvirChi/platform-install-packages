@@ -1,6 +1,6 @@
 /*
 SQLyog Community v8.7 
-MySQL - 5.1.37-log : Database - kaltura
+MySQL - 5.1.37-log : Database - borhan
 *********************************************************************
 */
 
@@ -12,7 +12,7 @@ MySQL - 5.1.37-log : Database - kaltura
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
-USE `kalturadw`;
+USE `borhandw`;
 
 /*Table structure for table `batch_job_sep` */
 

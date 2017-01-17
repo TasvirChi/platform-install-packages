@@ -1,12 +1,12 @@
-Source: kaltura-php7-apcu
+Source: borhan-php7-apcu
 Section: php
 Priority: optional
-Maintainer: Jess Portnoy <jess.portnoy@kaltura.com>
-Build-Depends: debhelper (>= 9), kaltura-php7-dev (>= 7.0.0), kaltura-php7-cli (>= 7.0.0), pkg-php-tools (>= 1.6)
+Maintainer: Jess Portnoy <jess.portnoy@borhan.com>
+Build-Depends: debhelper (>= 9), borhan-php7-dev (>= 7.0.0), borhan-php7-cli (>= 7.0.0), pkg-php-tools (>= 1.6)
 Standards-Version: 3.9.5
 Homepage: http://pecl.php.net/package/APCu
 
-Package: kaltura-php7-apcu
+Package: borhan-php7-apcu
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Replaces: php5-user-cache, php-apc (<< 4.0.0)
@@ -20,11 +20,11 @@ Description: APC User Cache for PHP 7
  variables locally, it is not distributed like MemcacheD, but they can
  be used together for optimal caching.
 
-Package: kaltura-php7-apc
+Package: borhan-php7-apc
 Architecture: all
 Section: oldlibs
 Priority: extra
-Depends: kaltura-php7-apcu, ${misc:Depends}
+Depends: borhan-php7-apcu, ${misc:Depends}
 Description: APC User Cache for PHP 7 (transitional package)
  This is a dummy transition package that can be safely removed once no
  package depend on it.

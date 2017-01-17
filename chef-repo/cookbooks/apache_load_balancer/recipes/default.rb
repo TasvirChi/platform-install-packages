@@ -2,7 +2,7 @@
 # Cookbook Name:: loadbal
 # Recipe:: default
 #
-# Copyright 2014, Kaltura, inc. 
+# Copyright 2014, Borhan, inc. 
 #
 case node['platform_family']
 		when 'rhel'

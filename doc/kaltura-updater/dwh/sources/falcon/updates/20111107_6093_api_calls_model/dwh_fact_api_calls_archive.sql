@@ -1,4 +1,4 @@
-USE kalturadw;
+USE borhandw;
 
 DROP TABLE IF EXISTS `dwh_fact_api_calls_archive`;
 CREATE TABLE `dwh_fact_api_calls_archive` (

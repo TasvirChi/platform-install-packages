@@ -1,12 +1,12 @@
-Source: kaltura-pentaho
+Source: borhan-pentaho
 Section: java
 Priority: extra
-Maintainer: Jess Portnoy <jess.portnoy@kaltura.com>
+Maintainer: Jess Portnoy <jess.portnoy@borhan.com>
 
-Package: kaltura-pentaho
+Package: borhan-pentaho
 Architecture: amd64
 Depends: 
  default-jre (>= 1.7.0)
 Description: Pentaho Open Source Data Integration Community Edition (CE). 
- This is used by kaltura-dwh.
+ This is used by borhan-dwh.
  .

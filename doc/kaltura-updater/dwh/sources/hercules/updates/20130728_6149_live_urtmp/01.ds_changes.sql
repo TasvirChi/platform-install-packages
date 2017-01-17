@@ -1,12 +1,12 @@
-INSERT INTO kalturadw_ds.processes (id, process_name, max_files_per_cycle) VALUES (10, 'bandwidth_usage_AKAMAI_LIVE_URTMP', 50);
+INSERT INTO borhandw_ds.processes (id, process_name, max_files_per_cycle) VALUES (10, 'bandwidth_usage_AKAMAI_LIVE_URTMP', 50);
 
 
-INSERT INTO kalturadw.dwh_dim_bandwidth_source (bandwidth_source_id,bandwidth_source_name, is_live) VALUES (9, 'akamai_live_urtmp',1);
+INSERT INTO borhandw.dwh_dim_bandwidth_source (bandwidth_source_id,bandwidth_source_name, is_live) VALUES (9, 'akamai_live_urtmp',1);
 
-INSERT INTO kalturadw.dwh_dim_http_delivery_source(process_id,bandwidth_source_id,file_regex) 
+INSERT INTO borhandw.dwh_dim_http_delivery_source(process_id,bandwidth_source_id,file_regex) 
 VALUES (10,9,'_172678\\.|_213019\\.');
 
-INSERT INTO kalturadw_ds.staging_areas
+INSERT INTO borhandw_ds.staging_areas
         (id,
         process_id,
         source_table,

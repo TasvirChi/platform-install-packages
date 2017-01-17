@@ -6,9 +6,9 @@ RC_FILE :=../../build/sources.rc
 SPHINX_VERSION ?= $(shell egrep '^SPHINX_VERSION=' $(RC_FILE) | cut -d = -f 2| sed 's@"@@g')
 SOURCE_PACKAGING_DIR ?= $(shell egrep '^SOURCE_PACKAGING_DIR=' $(RC_FILE) | cut -d = -f 2| sed 's@"@@g')
 include ../includes/build-revision.mk
-tree := kaltura-sphinx-$(SPHINX_VERSION)
+tree := borhan-sphinx-$(SPHINX_VERSION)
 archive := $(SOURCE_PACKAGING_DIR)/$(tree).tar.gz
-BASE_PREFIX=opt/kaltura/sphinx
+BASE_PREFIX=opt/borhan/sphinx
 # These are used for cross-compiling and for saving the configure script
 # from having to guess our platform (since we know it already)
 DEB_HOST_GNU_TYPE   ?= $(shell dpkg-architecture -qDEB_HOST_GNU_TYPE)
@@ -33,7 +33,7 @@ $(tree): $(archive)
 config.status: $(tree) 
 	dh_testdir
 	CFLAGS="$(CFLAGS)" CPPFLAGS="$(CPPFLAGS)" LDFLAGS="$(LDFLAGS)" cd $(tree) && ./configure \
-	--sysconfdir=/opt/kaltura/app/configurations/sphinx \
+	--sysconfdir=/opt/borhan/app/configurations/sphinx \
 	--with-mysql \
 	--with-iconv \
 	--enable-id64 \
@@ -56,7 +56,7 @@ clean:
 	dh_testdir
 	dh_testroot
 	rm -f build-stamp config.log
-	rm -rf opt/ kaltura-sphinx-$(SPHINX_VERSION)/
+	rm -rf opt/ borhan-sphinx-$(SPHINX_VERSION)/
 	dh_quilt_unpatch
 	dh_clean 
 
@@ -84,7 +84,7 @@ binary-arch: build install
 	dh_install $(BASE_PREFIX)
 	dh_installdebconf	
 	dh_installinit
-	dh_installinit --init-script=kaltura-populate.init --name=kaltura-populate
+	dh_installinit --init-script=borhan-populate.init --name=borhan-populate
 	dh_installman
 	dh_link
 	dh_strip

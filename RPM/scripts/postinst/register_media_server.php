@@ -1,7 +1,7 @@
 #!/usr/bin/php
 <?php
 
-require_once('/opt/kaltura/app/clients/php5/KalturaClient.php');
+require_once('/opt/borhan/app/clients/php5/BorhanClient.php');
 
 $xml_file_path="/usr/local/WowzaStreamingEngine/conf/Server.xml";
 
@@ -9,13 +9,13 @@ $xml_file_path="/usr/local/WowzaStreamingEngine/conf/Server.xml";
 /**
  * @param $xml_file_path
  * @param $admin_secret
- * @return KalturaClient
+ * @return BorhanClient
  */
 function initClient ($xml_file_path, $admin_secret) {
-    $config = new KalturaConfiguration();
+    $config = new BorhanConfiguration();
     $config->serviceUrl = getValueFromXml($xml_file_path,"Server/Properties/Property[1]/Value").'/';
-    $client = new KalturaClient($config);
-    $result = $client->session->start($admin_secret, null, KalturaSessionType::ADMIN, -5, null, null);
+    $client = new BorhanClient($config);
+    $result = $client->session->start($admin_secret, null, BorhanSessionType::ADMIN, -5, null, null);
     $client->setKs($result);
     return $client;
 }
@@ -30,7 +30,7 @@ function registerMediaServer ($xml_file_path, $client, $sys_hostname) {
     $media_server_default_port = 1935;
     $media_server_default_protocol = "http";
 
-    $serverNode = new KalturaWowzaMediaServerNode();
+    $serverNode = new BorhanWowzaMediaServerNode();
     $serverNode->name = $sys_hostname.$media_server_tag;
     $serverNode->systemName = '';
     $serverNode->description = 'Registered using '. __FILE__;
@@ -39,7 +39,7 @@ function registerMediaServer ($xml_file_path, $client, $sys_hostname) {
     $serverNode->liveServiceProtocol = $media_server_default_protocol;
     try {
         (array)$res = $client->serverNode->add($serverNode);
-    } catch (KalturaException $ex) {
+    } catch (BorhanException $ex) {
                 if ($ex->getCode() == 'HOST_NAME_ALREADY_EXISTS'){
                         logToFIle($ex->getMessage());
                         exit(0);
