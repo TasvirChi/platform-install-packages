@@ -117,11 +117,11 @@ FDK_RPM_PACKAGE_NAME=borhan-libfdk-aac
 
 # mencoder
 MENCODER_VERSION=3.4.6
-MENCODER_URI="https://github.com/borhan/server-bin-linux-64bit/releases/download/1.0.0/mencoder-dir-$MENCODER_VERSION.tar.bz2"
+MENCODER_URI="https://github.com/bordar/server-bin-linux-64bit/releases/download/1.0.0/mencoder-dir-$MENCODER_VERSION.tar.bz2"
 
 # segmenter
 SEGMENTER_VERSION=1.0
-SEGMENTER_URI="https://github.com/borhan/server-bin-linux-64bit/raw/master/segmenter/segmenter.c"
+SEGMENTER_URI="https://github.com/bordar/server-bin-linux-64bit/raw/master/segmenter/segmenter.c"
 
 # sshpass
 SSHPASS_VERSION=1.05
@@ -142,18 +142,18 @@ MONIT_VERSION=5.19.0
 MONIT_URI="http://mmonit.com/monit/dist/monit-$MONIT_VERSION.tar.gz"
 
 # Borhan Core build vars:
-BORHAN_CORE_URI="https://github.com/borhan/server/archive/$BORHAN_SERVER_VERSION.zip"
+BORHAN_CORE_URI="https://github.com/bordar/server/archive/$BORHAN_SERVER_VERSION.zip"
 BORHAN_TEMPLATES_URI="svn+ssh://$SVN_USER@kelev.borhan.com/usr/local/kalsource/on-premise/trunk/packaging/templates"
 
 # Borhan clients generator
-BORHAN_CLIENTS_GENERATOR_URI="https://github.com/borhan/clients-generator/archive/$BORHAN_SERVER_VERSION.zip"
+BORHAN_CLIENTS_GENERATOR_URI="https://github.com/bordar/clients-generator/archive/$BORHAN_SERVER_VERSION.zip"
 
 # Borhan nginx-vod-module:
 BORHAN_NGINX_VOD_VERSION=1.12
-BORHAN_NGINX_VOD_URI="https://github.com/borhan/nginx-vod-module/archive/$BORHAN_NGINX_VOD_VERSION.zip"
+BORHAN_NGINX_VOD_URI="https://github.com/bordar/nginx-vod-module/archive/$BORHAN_NGINX_VOD_VERSION.zip"
 
 BORHAN_NGINX_AKAMAI_TOKEN_VALIDATE_VERSION=1.0.1
-BORHAN_NGINX_AKAMAI_TOKEN_VALIDATE_URI="https://github.com/borhan/nginx-akamai-token-validate-module/archive/$BORHAN_NGINX_AKAMAI_TOKEN_VALIDATE_VERSION.zip"
+BORHAN_NGINX_AKAMAI_TOKEN_VALIDATE_URI="https://github.com/bordar/nginx-akamai-token-validate-module/archive/$BORHAN_NGINX_AKAMAI_TOKEN_VALIDATE_VERSION.zip"
 
 NGINX_VTS_VERSION=v0.1.10
 NGINX_VTS_URI="https://github.com/vozlt/nginx-module-vts/archive/$NGINX_VTS_VERSION.zip"
@@ -162,17 +162,17 @@ NGINX_RTMP_VERSION=v1.1.10
 NGINX_RTMP_URI="https://github.com/arut/nginx-rtmp-module/archive/$NGINX_RTMP_VERSION.zip"
 
 BORHAN_NGINX_SECURE_TOKEN_VERSION=1.1
-BORHAN_NGINX_SECURE_TOKEN_URI="https://github.com/borhan/nginx-secure-token-module/archive/$BORHAN_NGINX_SECURE_TOKEN_VERSION.zip"
+BORHAN_NGINX_SECURE_TOKEN_URI="https://github.com/bordar/nginx-secure-token-module/archive/$BORHAN_NGINX_SECURE_TOKEN_VERSION.zip"
 NGINX_VERSION=1.10.2
 NGINX_URI="http://nginx.org/download/nginx-$NGINX_VERSION.tar.gz"
 
 # Borhan Streaming lib build vars:
 BORHAN_MEDIASERVER_VERSION="3.2.0"
-BORHAN_MEDIASERVER_URI="https://github.com/borhan/media-server/releases/download/rel-$BORHAN_MEDIASERVER_VERSION/BorhanWowzaServer-install-$BORHAN_MEDIASERVER_VERSION.zip"
+BORHAN_MEDIASERVER_URI="https://github.com/bordar/media-server/releases/download/rel-$BORHAN_MEDIASERVER_VERSION/BorhanWowzaServer-install-$BORHAN_MEDIASERVER_VERSION.zip"
 BORHAN_MEDIASERVER_RPM_NAME=borhan-media-server
 
 BORHAN_PLAYSERVER_VERSION="v1.1"
-BORHAN_PLAYSERVER_URI="https://github.com/borhan/play-server/archive/$BORHAN_PLAYSERVER_VERSION.zip"
+BORHAN_PLAYSERVER_URI="https://github.com/bordar/play-server/archive/$BORHAN_PLAYSERVER_VERSION.zip"
 BORHAN_PLAYSERVER_RPM_NAME=borhan-play-server
 
 # Borhan BMC:
@@ -180,18 +180,18 @@ BMC_MINUS_V_VERSION=5.41.2
 BMC_VERSION=v$BMC_MINUS_V_VERSION
 BMC_LOGIN_MINUS_V_VERSION=1.2.8
 BMC_LOGIN_VERSION=v$BMC_LOGIN_MINUS_V_VERSION
-BMC_URI="https://github.com/borhan/bmc/releases/download/$BMC_VERSION/$BMC_VERSION.zip"
-BMC_LOGIN_URI="https://github.com/borhan/bmc-login/releases/download/$BMC_LOGIN_VERSION/$BMC_LOGIN_VERSION.zip"
+BMC_URI="https://github.com/bordar/bmc/releases/download/$BMC_VERSION/$BMC_VERSION.zip"
+BMC_LOGIN_URI="https://github.com/bordar/bmc-login/releases/download/$BMC_LOGIN_VERSION/$BMC_LOGIN_VERSION.zip"
 BMC_UICONF_URI="svn+ssh://$SVN_USER@kelev.borhan.com/usr/local/kalsource/uiconf/borhan/bmc"
 BMC_RPM_NAME="borhan-bmc"
 BMC_DOC_VERSION="master"
-BMC_DOC_URI="https://github.com/borhan/bmc-docs/archive/$BMC_DOC_VERSION.zip"
+BMC_DOC_URI="https://github.com/bordar/bmc-docs/archive/$BMC_DOC_VERSION.zip"
 
 # Borhan BDP3:
 # we bundle a few vers at each release:
 BDP3_VERSIONS="v3.9.7 v3.9.8 v3.9.9"
 BDP3_LATEST_VERSION="v3.9.9"
-BDP3_BASE_URI="https://github.com/borhan/bdp/releases/download/"
+BDP3_BASE_URI="https://github.com/bordar/bdp/releases/download/"
 BDP3_UICONF_URI="svn+ssh://$SVN_USER@kelev.borhan.com/usr/local/kalsource/uiconf/borhan/bmc/appstudio/bdp3"
 BDP3_RPM_NAME="borhan-bdp3"
 
@@ -220,20 +220,20 @@ BDP_RPM_NAME="borhan-bdp"
 # we bundle a few vers at each release:
 CLIPAPP_NO_V_VERSION="1.3"
 CLIPAPP_VERSION="v$CLIPAPP_NO_V_VERSION"
-CLIPAPP_URI="https://github.com/borhan/clipapp/archive/$CLIPAPP_VERSION.zip"
+CLIPAPP_URI="https://github.com/bordar/clipapp/archive/$CLIPAPP_VERSION.zip"
 CLIPAPP_RPM_NAME="borhan-clipapp"
 
 # Borhan kRecord
 # we bundle a few vers at each release:
 KRECORD_VERSION="v1.7.1"
-KRECORD_URI="https://github.com/borhan/krecord/releases/download/$KRECORD_VERSION/$KRECORD_VERSION.zip"
+KRECORD_URI="https://github.com/bordar/krecord/releases/download/$KRECORD_VERSION/$KRECORD_VERSION.zip"
 KRECORD_RPM_NAME="borhan-krecord"
 
 # Borhan BCW
 # we bundle a few vers at each release:
 BCW_VERSION="v2.2.6"
 BCW_UICONF_VERSIONS="v2.1.4 v2.1.5"
-BCW_URI="https://github.com/borhan/bcw/releases/download/$BCW_VERSION/$BCW_VERSION.zip"
+BCW_URI="https://github.com/bordar/bcw/releases/download/$BCW_VERSION/$BCW_VERSION.zip"
 BCW_UICONF_URI="svn+ssh://$SVN_USER@kelev.borhan.com/usr/local/kalsource/uiconf/borhan/bmc/bcw"
 BCW_UICONF_GENERIC_URI="svn+ssh://$SVN_USER@kelev.borhan.com/usr/local/kalsource/uiconf/borhan/generic/bcw_2.1.5"
 BCW_UICONF_EDITOR_URI="svn+ssh://$SVN_USER@kelev.borhan.com/usr/local/kalsource/uiconf/bcweditor/locales/en_US"
@@ -242,7 +242,7 @@ BCW_RPM_NAME="borhan-bcw"
 
 # Borhan kUpload
 KUPLOAD_VERSION="v1.2.16"
-KUPLOAD_URI="https://github.com/borhan/kupload/releases/download/$KUPLOAD_VERSION/$KUPLOAD_VERSION.zip"
+KUPLOAD_URI="https://github.com/bordar/kupload/releases/download/$KUPLOAD_VERSION/$KUPLOAD_VERSION.zip"
 KUPLOAD_RPM_NAME="borhan-kupload"
 
 # Borhan KVPM
@@ -272,19 +272,19 @@ FLEX_WRAPPER_RPM_NAME="borhan-flexwrapper"
 # HTML5 lib
 HTML5LIB_LATEST_VERSION="v2.51"
 HTML5LIB_VERSIONS="v2.14 v2.37 v2.37.1 v2.38.3 v2.42 v2.44 v2.45 v2.45.1 v2.46 v2.47 $HTML5LIB_LATEST_VERSION"
-HTML5LIB_BASE_URI="https://github.com/borhan/mwEmbed/tarball/"
+HTML5LIB_BASE_URI="https://github.com/bordar/mwEmbed/tarball/"
 HTML5LIB_RPM_NAME="borhan-html5lib"
 
 # Borhan DWH
 DWH_VERSION="Kajam-11.3.0"
-DWH_URI="https://github.com/borhan/dwh/archive/$DWH_VERSION.zip"
+DWH_URI="https://github.com/bordar/dwh/archive/$DWH_VERSION.zip"
 DWH_RPM_NAME="borhan-dwh"
 
 
 # App Studio HTML5:
 HTML5_APP_STUDIO_VERSION="v2.0.8"
 HTML5_APP_STUDIO_ARCHIVE_NAME=studio_$HTML5_APP_STUDIO_VERSION.zip
-HTML5_APP_STUDIO_URI="https://github.com/borhan/player-studio/releases/download/$HTML5_APP_STUDIO_VERSION/$HTML5_APP_STUDIO_ARCHIVE_NAME"
+HTML5_APP_STUDIO_URI="https://github.com/bordar/player-studio/releases/download/$HTML5_APP_STUDIO_VERSION/$HTML5_APP_STUDIO_ARCHIVE_NAME"
 HTML5_APP_STUDIO_RPM_NAME=borhan-html5-studio
 HTML5_APP_STUDIO_NORMALIZED_ARCHIVE_NAME=$HTML5_APP_STUDIO_RPM_NAME-$HTML5_APP_STUDIO_VERSION.zip
 
@@ -300,12 +300,12 @@ WOWZA_URI="https://www.wowza.com/downloads/WowzaStreamingEngine-`echo $WOWZA_VER
 
 # live analytics 
 LIVE_ANALYTICS_VERSION=v0.5.26
-LIVE_ANALYTICS_WAR_URI="https://github.com/borhan/live_analytics/releases/download/$LIVE_ANALYTICS_VERSION/BorhanLiveAnalytics.war"
-LIVE_ANALYTICS_DRIVER_URI="https://github.com/borhan/live_analytics/releases/download/$LIVE_ANALYTICS_VERSION/live-analytics-driver.jar"
-LIVE_ANALYTICS_REGISTER_FILE_URI="https://github.com/borhan/live_analytics/releases/download/$LIVE_ANALYTICS_VERSION/register-file.jar"
+LIVE_ANALYTICS_WAR_URI="https://github.com/bordar/live_analytics/releases/download/$LIVE_ANALYTICS_VERSION/BorhanLiveAnalytics.war"
+LIVE_ANALYTICS_DRIVER_URI="https://github.com/bordar/live_analytics/releases/download/$LIVE_ANALYTICS_VERSION/live-analytics-driver.jar"
+LIVE_ANALYTICS_REGISTER_FILE_URI="https://github.com/bordar/live_analytics/releases/download/$LIVE_ANALYTICS_VERSION/register-file.jar"
 
 
 # live analytics frontend
 LIVE_ANALYTICS_FRONT_END_VERSION=v2.6
-LIVE_ANALYTICS_FRONT_END_URI="https://github.com/borhan/live-analytics-front-end/releases/download/$LIVE_ANALYTICS_FRONT_END_VERSION/$LIVE_ANALYTICS_FRONT_END_VERSION.zip"
+LIVE_ANALYTICS_FRONT_END_URI="https://github.com/bordar/live-analytics-front-end/releases/download/$LIVE_ANALYTICS_FRONT_END_VERSION/$LIVE_ANALYTICS_FRONT_END_VERSION.zip"
 LIVE_ANALYTICS_FRONT_END_PACKAGE_NAME="borhan-live-analytics-front"

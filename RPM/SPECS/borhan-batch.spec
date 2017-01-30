@@ -246,10 +246,10 @@ service httpd restart
 - Ver Bounce to 10.21.0
 
 * Thu Sep 16 2015 jess.portnoy@borhan.com <Jess Portnoy> - 10.20.0-3
-- https://github.com/borhan/server/pull/3197
+- https://github.com/bordar/server/pull/3197
 
 * Thu Sep 16 2015 jess.portnoy@borhan.com <Jess Portnoy> - 10.20.0-2
-- https://github.com/borhan/server/pull/3183
+- https://github.com/bordar/server/pull/3183
 
 * Mon Sep 7 2015 jess.portnoy@borhan.com <Jess Portnoy> - 10.20.0-1
 - Ver Bounce to 10.20.0

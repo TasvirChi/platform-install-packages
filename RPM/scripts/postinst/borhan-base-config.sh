@@ -74,7 +74,7 @@ fi
 if ! rpm -q borhan-base;then
         echo -e "${BRIGHT_RED}Exiting as borhan-base is not installed.
 This MAY be because the installation of it was skipped do to SELinux being in 'Enforcing' mode.
-Please review: https://github.com/borhan/platform-install-packages/blob/master/doc/install-borhan-redhat-based.md#disable-selinux---required-currently-borhan-cant-run-properly-with-selinux
+Please review: https://github.com/bordar/platform-install-packages/blob/master/doc/install-borhan-redhat-based.md#disable-selinux---required-currently-borhan-cant-run-properly-with-selinux
 And re-run:
 # yum install borhan-server
 

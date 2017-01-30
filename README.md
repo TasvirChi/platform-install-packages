@@ -7,20 +7,20 @@ To enable the of use standard binary packages and package managers to deploy the
 This project features official deployment packages to install the Borhan platform on a server or cluster environments using native OS package managers.
 
 * **[Learn more & keep track on the project page](http://borhan.github.io/platform-install-packages/)**.    
-* [Read Latest Project Status](https://github.com/borhan/platform-install-packages/blob/master/doc/project-status-updates.md).
+* [Read Latest Project Status](https://github.com/bordar/platform-install-packages/blob/master/doc/project-status-updates.md).
 * [See the Build and Test Reports on the Continuous Integration system](http://installrepo.borhan.org/reports/ci/).    
-+ Visit the [Borhan Platform Packages CI Project](https://github.com/borhan/platform-continuous-integration) and help by contributing automatic sanity tests.
-* Track the development of the [Borhan Platform Packages CI Project](https://github.com/borhan/platform-continuous-integration).
++ Visit the [Borhan Platform Packages CI Project](https://github.com/bordar/platform-continuous-integration) and help by contributing automatic sanity tests.
+* Track the development of the [Borhan Platform Packages CI Project](https://github.com/bordar/platform-continuous-integration).
 * [Borhan Inc.](http://corp.borhan.com) also provides commercial solutions and services including pro-active platform monitoring, applications, SLA, 24/7 support and professional services. If you're looking for a commercially supported video platform  with integrations to commercial encoders, streaming servers, eCDN, DRM and more - Start a [Free Trial of the Borhan.com Hosted Platform](http://corp.borhan.com/free-trial) or learn more about [Borhan' Commercial OnPrem Edition™](http://corp.borhan.com/Deployment-Options/Borhan-On-Prem-Edition). For existing RPM based users, Borhan offers commercial upgrade options.
-* Please refer to the [Frequently Asked Questions document](https://github.com/borhan/platform-install-packages/blob/master/doc/borhan-packages-faq.md) before opening new issues or forum threads.
+* Please refer to the [Frequently Asked Questions document](https://github.com/bordar/platform-install-packages/blob/master/doc/borhan-packages-faq.md) before opening new issues or forum threads.
 
 ## How you can help
 Thank you for running Borhan and pushing the limits of online video! By joining the Borhan community and contributing you will help grow the platform, and keeping it open, stable and accessible to all. You can contribute meaningfully to the project from day one:    
 
-+ By contributing sanity tests that verify overall platform stability - [Join the Borhan CI Project](https://github.com/borhan/platform-continuous-integration).
++ By contributing sanity tests that verify overall platform stability - [Join the Borhan CI Project](https://github.com/bordar/platform-continuous-integration).
 + By solving [simple tasks and challenges that advance the platform roadmap](http://bit.ly/borhan-tasks).
-+ By testing the platform components, including various deployment settings and environments, and network settings, [reporting issues and feature requests](https://github.com/borhan/platform-install-packages/issues) and [pushing pull-requests](https://help.github.com/articles/creating-a-pull-request) that patch bugs.
-+ By creating [documentation](https://github.com/borhan/platform-install-packages/tree/master/doc), demos and examples.
++ By testing the platform components, including various deployment settings and environments, and network settings, [reporting issues and feature requests](https://github.com/bordar/platform-install-packages/issues) and [pushing pull-requests](https://help.github.com/articles/creating-a-pull-request) that patch bugs.
++ By creating [documentation](https://github.com/bordar/platform-install-packages/tree/master/doc), demos and examples.
 + By translating Borhan and the documentation.
 + By filling out the [2015 Community Survey](http://surveys.borhan.org/index.php/877436/lang-en)
 
@@ -32,18 +32,18 @@ Contact the authors or email community@borhan.org if you have other ideas.
 
 ## Documentation and Guides
 
-* [**Frequently Asked Questions**](https://github.com/borhan/platform-install-packages/blob/master/doc/borhan-packages-faq.md)
-* [Single-server All-In-One RedHat based Linux distros Installation (including FC, RHEL and CentOS)](https://github.com/borhan/platform-install-packages/blob/master/doc/install-borhan-redhat-based.md).
-* [Single-server All-In-One deb based Linux distros Installation (Debian/Ubuntu)](https://github.com/borhan/platform-install-packages/blob/master/doc/install-borhan-deb-based.md).
-* [Single-server All-In-One Docker container Installation](https://github.com/borhan/platform-install-packages/blob/master/doc/install-docker.md).
-* [Deploying a Borhan Cluster (RPM)](https://github.com/borhan/platform-install-packages/blob/master/doc/rpm-cluster-deployment-instructions.md)
-* [Deploying a Borhan Cluster (deb)](https://github.com/borhan/platform-install-packages/blob/master/doc/deb-cluster-deployment-instructions.md)
-* [Deploying Borhan using Opscode Chef (RPM)](https://github.com/borhan/platform-install-packages/blob/master/doc/rpm-chef-cluster-deployment.md)
-* [Deploying Borhan using Vagrant (RPM)](https://github.com/borhan/platform-install-packages/tree/master/vagrant)
-* [Upgrade from pre-RPM versions](https://github.com/borhan/platform-install-packages/tree/master/doc/borhan-updater)
-* [Setting up Borhan platform monitoring](https://github.com/borhan/platform-install-packages/blob/master/doc/platform-monitors.md)
-* [Required Open Ports to run Borhan](https://github.com/borhan/platform-install-packages/blob/master/doc/borhan-required-ports.md)
-* [Deploy Local Repository for Offline Install](https://github.com/borhan/platform-install-packages/blob/master/doc/deploy-local-rpm-repo-offline-install.md)
+* [**Frequently Asked Questions**](https://github.com/bordar/platform-install-packages/blob/master/doc/borhan-packages-faq.md)
+* [Single-server All-In-One RedHat based Linux distros Installation (including FC, RHEL and CentOS)](https://github.com/bordar/platform-install-packages/blob/master/doc/install-borhan-redhat-based.md).
+* [Single-server All-In-One deb based Linux distros Installation (Debian/Ubuntu)](https://github.com/bordar/platform-install-packages/blob/master/doc/install-borhan-deb-based.md).
+* [Single-server All-In-One Docker container Installation](https://github.com/bordar/platform-install-packages/blob/master/doc/install-docker.md).
+* [Deploying a Borhan Cluster (RPM)](https://github.com/bordar/platform-install-packages/blob/master/doc/rpm-cluster-deployment-instructions.md)
+* [Deploying a Borhan Cluster (deb)](https://github.com/bordar/platform-install-packages/blob/master/doc/deb-cluster-deployment-instructions.md)
+* [Deploying Borhan using Opscode Chef (RPM)](https://github.com/bordar/platform-install-packages/blob/master/doc/rpm-chef-cluster-deployment.md)
+* [Deploying Borhan using Vagrant (RPM)](https://github.com/bordar/platform-install-packages/tree/master/vagrant)
+* [Upgrade from pre-RPM versions](https://github.com/bordar/platform-install-packages/tree/master/doc/borhan-updater)
+* [Setting up Borhan platform monitoring](https://github.com/bordar/platform-install-packages/blob/master/doc/platform-monitors.md)
+* [Required Open Ports to run Borhan](https://github.com/bordar/platform-install-packages/blob/master/doc/borhan-required-ports.md)
+* [Deploy Local Repository for Offline Install](https://github.com/bordar/platform-install-packages/blob/master/doc/deploy-local-rpm-repo-offline-install.md)
 
 
 

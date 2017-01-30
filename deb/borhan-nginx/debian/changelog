@@ -6,7 +6,7 @@ borhan-nginx (1.10.2-3) lynx; urgency=low
 
 borhan-nginx (1.10.2-2) lynx; urgency=low
 
-  * New Nginx vod module - 1.11. See https://github.com/borhan/nginx-vod-module/releases/tag/1.11
+  * New Nginx vod module - 1.11. See https://github.com/bordar/nginx-vod-module/releases/tag/1.11
 
  -- Jess Portnoy <jess.portnoy@borhan.org>  Tue, 06 Dec 2016 13:15:43 +0000
 
@@ -19,7 +19,7 @@ borhan-nginx (1.10.2-1) lynx; urgency=low
 
 borhan-nginx (1.8.1-4) lynx; urgency=low
 
-  * New Nginx vod module - 1.10. See https://github.com/borhan/nginx-vod-module/releases/tag/1.10
+  * New Nginx vod module - 1.10. See https://github.com/bordar/nginx-vod-module/releases/tag/1.10
 
  -- Jess Portnoy <jess.portnoy@borhan.org>  Sun, 21 Aug 2016 15:19:16 +0000
 

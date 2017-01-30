@@ -419,7 +419,7 @@ borhan-base (10.17.0-3) UNRELEASED; urgency=low
 borhan-base (10.17.0-2) jupiter; urgency=low
 
   * Do not compile against FDK and faac as distributing the binary with such support violates license.   
-    See:   https://github.com/borhan/platform-install-packages/issues/392, https://trac.ffmpeg.org/ticket/4735 
+    See:   https://github.com/bordar/platform-install-packages/issues/392, https://trac.ffmpeg.org/ticket/4735 
 
  -- Jess Portnoy <jess.portnoy@borhan.org>  Wed, 05 Aug 2015 14:17:56 +0000
 
@@ -447,7 +447,7 @@ borhan-base (10.16.0-1) jupiter; urgency=low
 
 borhan-base (10.15.0-1) jupiter; urgency=low
 
-  * Local patch for https://github.com/borhan/server/pull/2838 
+  * Local patch for https://github.com/bordar/server/pull/2838 
   * Disable MySQL strict mode when deploying DB
   * Added HTTP notification templates to deployment
   * PLAT-3178 - eCDN: KES multicast
@@ -509,7 +509,7 @@ borhan-base (10.12.0-1) jupiter; urgency=low
   * SUP-4739 - Player's download button does not work in KMS
   * PLAT-2204 - Can't add thumb cuepoint of sub type chapter without a slide
   * PLAT-2987 - Auto-Intermediate-source flow for sources that processable only by Mencoder
-  * https://github.com/borhan/server/blob/Jupiter-10.12.0-typeReflectorError/api_v3/lib/BorhanTypeReflector.php
+  * https://github.com/bordar/server/blob/Jupiter-10.12.0-typeReflectorError/api_v3/lib/BorhanTypeReflector.php
 
 
  -- Jess Portnoy <jess.portnoy@borhan.org>  Sun, 31 May 2015 12:13:26 +0000
@@ -527,7 +527,7 @@ borhan-base (10.11.0-1) jupiter; urgency=low
   * PLAT-2387 - manual dispatch error
   * PLAT-2934 - clip_test script fails
   * PLAT-2940 - groupUser->list return fatal error
-  * https://github.com/borhan/server/pull/2561
+  * https://github.com/bordar/server/pull/2561
 
  -- Jess Portnoy <jess.portnoy@borhan.org>  Sun, 17 May 2015 12:31:51 +0000
 

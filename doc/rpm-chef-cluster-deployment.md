@@ -4,10 +4,10 @@ This guide is intended for users of Chef that would like to deploy Borhan cluste
 
 ### Before You Get Started Notes
 
-* Please review the [frequently answered questions](https://github.com/borhan/platform-install-packages/blob/master/doc/borhan-packages-faq.md) document for general help before posting to the forums or issue queue.
+* Please review the [frequently answered questions](https://github.com/bordar/platform-install-packages/blob/master/doc/borhan-packages-faq.md) document for general help before posting to the forums or issue queue.
 * If you don't know what Chef is, start by reading [An Overview of Chef](http://docs.opscode.com/chef_overview.html).
-* If you're looking to install Borhan on a signle machine, see: [Installing Borhan on a Single All-In-One Server (RPM)](https://github.com/borhan/platform-install-packages/blob/master/doc/install-borhan-redhat-based.md)
-* If you're looking to deploy a cluster manually or using other automation tools, see [Deploying Borhan Clusters](https://github.com/borhan/platform-install-packages/blob/master/doc/rpm-cluster-deployment-instructions.md).
+* If you're looking to install Borhan on a signle machine, see: [Installing Borhan on a Single All-In-One Server (RPM)](https://github.com/bordar/platform-install-packages/blob/master/doc/install-borhan-redhat-based.md)
+* If you're looking to deploy a cluster manually or using other automation tools, see [Deploying Borhan Clusters](https://github.com/bordar/platform-install-packages/blob/master/doc/rpm-cluster-deployment-instructions.md).
 * [Borhan Inc.](http://corp.borhan.com) also provides commercial solutions and services including pro-active platform monitoring, applications, SLA, 24/7 support and professional services. If you're looking for a commercially supported video platform  with integrations to commercial encoders, streaming servers, eCDN, DRM and more - Start a [Free Trial of the Borhan.com Hosted Platform](http://corp.borhan.com/free-trial) or learn more about [Borhan' Commercial OnPrem Edition™](http://corp.borhan.com/Deployment-Options/Borhan-On-Prem-Edition). For existing RPM based users, Borhan offers commercial upgrade options.
 
 ## Installing the Chef server
@@ -17,7 +17,7 @@ This guide is intended for users of Chef that would like to deploy Borhan cluste
 1. Select your distribution, version and arch and download
     1. Download the RPM or deb package depending on your distribution.   
     1. The post install will provide instructions as to what else needs to be done to set the instance up.   
-1. Obtain chef-repo from https://github.com/borhan/platform-install-packages.git  
+1. Obtain chef-repo from https://github.com/bordar/platform-install-packages.git  
 1. Upload the Borhan recipes to your Chef server using: `# knife cookbook upload borhan`
 1. We also recommend you use the ready made recipes for MySQL, NFS and NTP which can be taken from here:
     1. http://community.opscode.com/cookbooks/mysql
@@ -122,7 +122,7 @@ knife cookbook upload mysql
 
 ## Loading the Borhan recipes to your Chef server
 ```
-# git clone https://github.com/borhan/platform-install-packages.git
+# git clone https://github.com/bordar/platform-install-packages.git
 # cp -r sources/platform-install-packages/chef-repo/cookbooks/borhan  /var/chef/cookbooks/borhan/
 # knife cookbook upload --all
 ```

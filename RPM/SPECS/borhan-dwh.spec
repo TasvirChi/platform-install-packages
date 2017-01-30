@@ -6,8 +6,8 @@ Version: 11.3.0
 Release: 1
 License: AGPLv3+
 Group: Server/Platform 
-Source0: https://github.com/borhan/dwh/archive/%{name}-Kajam-%{version}.zip
-URL: https://github.com/borhan/dwh/tree/master 
+Source0: https://github.com/bordar/dwh/archive/%{name}-Kajam-%{version}.zip
+URL: https://github.com/bordar/dwh/tree/master 
 Buildroot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 Requires: borhan-base,borhan-pentaho,jre, borhan-postinst 
 BuildArch: noarch

@@ -7,7 +7,7 @@ Release: 1
 Epoch: 0 
 License: AGPLv3+
 Group: Server/Platform 
-Source0: https://github.com/borhan/mwEmbed/tarball/%{name}-%{version}.tar.gz 
+Source0: https://github.com/bordar/mwEmbed/tarball/%{name}-%{version}.tar.gz 
 Source1: simplePhpXMLProxy.php
 Source2: borhan-html5lib-v2.14.tar.gz
 Source3: borhan-html5lib-v2.37.tar.gz
@@ -19,7 +19,7 @@ Source8: borhan-html5lib-v2.45.tar.gz
 Source9: borhan-html5lib-v2.45.1.tar.gz
 Source10: borhan-html5lib-v2.46.tar.gz
 
-URL: https://github.com/borhan/mwEmbed 
+URL: https://github.com/bordar/mwEmbed 
 Buildroot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildArch: noarch
 Requires: php, borhan-base
@@ -1333,7 +1333,7 @@ find /opt/borhan/web/html5/html5lib -type d -name cache -exec chown -R 48 {} \;
   - SUP-1461 captions does not work in IE8
 
 * Sun Feb 9 2014 Jess Portnoy <jess.portnoy@borhan.com> - v2.1.1-6
-- Fixed https://github.com/borhan/platform-install-packages/issues/24
+- Fixed https://github.com/bordar/platform-install-packages/issues/24
 
 * Tue Jan 28 2014 Jess Portnoy <jess.portnoy@borhan.com> - v2.1.1-5
 - LocalSettings.php is ALWAYS the same, it has no custom data, why not just bring it as part of the package??

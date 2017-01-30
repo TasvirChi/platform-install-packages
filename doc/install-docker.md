@@ -5,11 +5,11 @@ This guide describes docker container installation of an all-in-one Borhan serve
 
 #### Table of Contents
 
-[Prerequites](https://github.com/borhan/platform-install-packages/blob/master/doc/install-docker.md#prerequites)
+[Prerequites](https://github.com/bordar/platform-install-packages/blob/master/doc/install-docker.md#prerequites)
 
-[Step-by-step Installation](https://github.com/borhan/platform-install-packages/blob/master/doc/install-docker.md#step-by-step-installation)
+[Step-by-step Installation](https://github.com/bordar/platform-install-packages/blob/master/doc/install-docker.md#step-by-step-installation)
 
-[Unattended Installation](https://github.com/borhan/platform-install-packages/blob/master/doc/install-docker.md#unattended-installation)
+[Unattended Installation](https://github.com/bordar/platform-install-packages/blob/master/doc/install-docker.md#unattended-installation)
 
 ## Prerequites
 
@@ -22,7 +22,7 @@ Installed [Docker Engine](https://docs.docker.com/engine/installation).
 * When installing, you will be prompted for each server's resolvable hostname. Note that it is crucial that all host names will be resolvable by other servers in the cluster (and outside the cluster for front machines). Before installing, verify that your /etc/hosts file is properly configured and that all Borhan server hostnames are resolvable in your network.
 
 ### Running the image
-Borhan requires certain ports to be open for proper operation. [See the list of required open ports](https://github.com/borhan/platform-install-packages/blob/master/doc/borhan-required-ports.md).
+Borhan requires certain ports to be open for proper operation. [See the list of required open ports](https://github.com/bordar/platform-install-packages/blob/master/doc/borhan-required-ports.md).
 The container already documented to expose 80, 443 and 1935 ports, make sue to run it using -p option to enable access to these ports.
 
 ### Start Borhan container
@@ -37,7 +37,7 @@ docker run -d --name=borhan -p 80:80 -p 443:443 -p 1935:1935 borhan/server
 ``` 
 
 Your install will now automatically perform all install tasks.
-[See more details about the configuration process](https://github.com/borhan/platform-install-packages/blob/master/doc/install-borhan-redhat-based.md#start-of-borhan-configuration).
+[See more details about the configuration process](https://github.com/bordar/platform-install-packages/blob/master/doc/install-borhan-redhat-based.md#start-of-borhan-configuration).
 
 **Your Borhan installation is now complete.**
 
@@ -45,7 +45,7 @@ Your install will now automatically perform all install tasks.
 All Borhan scripts accept an answer file as their first argument.
 In order to preform an unattended [silent] install:
 
- - Create **config.ans** file according to [template](https://github.com/borhan/platform-install-packages/blob/master/doc/borhan.template.ans).
+ - Create **config.ans** file according to [template](https://github.com/bordar/platform-install-packages/blob/master/doc/borhan.template.ans).
  - Copy to file into the container: 
 ```bash
 # docker cp config.ans borhan:/root/install/

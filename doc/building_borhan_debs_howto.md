@@ -17,7 +17,7 @@ Ubuntu build ENV: You must also make sure the multiverse repo is enabled.
 
 GIT repo
 ========
-$ git clone https://github.com/borhan/platform-install-packages
+$ git clone https://github.com/bordar/platform-install-packages
 
 dir structure
 ========================

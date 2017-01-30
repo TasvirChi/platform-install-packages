@@ -93,7 +93,7 @@ find %{_sysconfdir}/logrotate.d -type l -name "borhan_*" -exec rm {} \;
  
 * Thu Dec 8 2016 jess.portnoy@borhan.com <Jess Portnoy> - 1.0.32-4
 - Support installing Wowza in interactive mode
-- https://github.com/borhan/platform-install-packages/pull/573
+- https://github.com/bordar/platform-install-packages/pull/573
 
 * Tue Dec 6 2016 jess.portnoy@borhan.com <Jess Portnoy> - 1.0.32-3
 - Added RTMP port selection prompt to borhan-nginx-config.sh, default is 1935.
@@ -105,16 +105,16 @@ find %{_sysconfdir}/logrotate.d -type l -name "borhan_*" -exec rm {} \;
 - Don't escpae '#' char in the MySQL super passwd.
 
 * Fri Sep 9 2016 jess.portnoy@borhan.com <Jess Portnoy> - 1.0.31-24
-- https://github.com/borhan/platform-install-packages/pull/566
+- https://github.com/bordar/platform-install-packages/pull/566
 
 * Mon Sep 5 2016 jess.portnoy@borhan.com <Jess Portnoy> - 1.0.31-23
 - Use the borhan-mediainfo package instead of mediainfo
 
 * Thu Aug 25 2016 Jess Portnoy <jess.portnoy@borhan.com> - 1.0.31-21
-- https://github.com/borhan/platform-install-packages/pull/562
+- https://github.com/bordar/platform-install-packages/pull/562
 
 * Tue Aug 9 2016 Jess Portnoy <jess.portnoy@borhan.com> - 1.0.31-20
-- https://github.com/borhan/platform-install-packages/pull/557/files
+- https://github.com/bordar/platform-install-packages/pull/557/files
 
 * Thu Jul 21 2016 Jess Portnoy <jess.portnoy@borhan.com> - 1.0.31-19
 - Fix trapping of RC
@@ -129,20 +129,20 @@ find %{_sysconfdir}/logrotate.d -type l -name "borhan_*" -exec rm {} \;
 - Quote ENV_NAME
 
 * Thu Mar 31 2016 Jess Portnoy <jess.portnoy@borhan.com> - 1.0.31-6
-- https://github.com/borhan/platform-install-packages/issues/516
+- https://github.com/bordar/platform-install-packages/issues/516
 
 * Tue Mar 15 2016 Jess Portnoy <jess.portnoy@borhan.com> - 1.0.31-5
 - When writing to /opt/borhan/app/configurations/sphinx/populate/`hostname`.ini use `hostname` as 'sphinxServer'
   Reported by Waldemar Żurowski.
 
 * Fri Mar 11 2016 Jess Portnoy <jess.portnoy@borhan.com> - 1.0.31-4
-- https://github.com/borhan/platform-install-packages/issues/529
+- https://github.com/bordar/platform-install-packages/issues/529
 
 * Tue Feb 16 2016 Jess Portnoy <jess.portnoy@borhan.com> - 1.0.31-3
-- https://github.com/borhan/platform-install-packages/pull/521
+- https://github.com/bordar/platform-install-packages/pull/521
 
 * Fri Feb 12 2016 Jess Portnoy <jess.portnoy@borhan.com> - 1.0.31-2
-- https://github.com/borhan/platform-install-packages/issues/516 
+- https://github.com/bordar/platform-install-packages/issues/516 
 - Removed useless old commented code blocks 
 - Call rpm -q borhan-html5-studio --queryformat %{version} once and use a var
 
@@ -150,7 +150,7 @@ find %{_sysconfdir}/logrotate.d -type l -name "borhan_*" -exec rm {} \;
 - Fix borhan-drop-db.sh output.
 
 * Fri Feb 5 2016 Jess Portnoy <jess.portnoy@borhan.com> - 1.0.30-15
-- https://github.com/borhan/platform-install-packages/commit/72020d49ce30dffa4683a4d7853f983b3f8b852f
+- https://github.com/bordar/platform-install-packages/commit/72020d49ce30dffa4683a4d7853f983b3f8b852f
 
 * Mon Feb 1 2016 Jess Portnoy <jess.portnoy@borhan.com> - 1.0.30-14
 - Call monit monitor all in borhan-sanity.sh
@@ -174,7 +174,7 @@ find %{_sysconfdir}/logrotate.d -type l -name "borhan_*" -exec rm {} \;
 - If we're running on PHP >= 5.4, install Zend Opcache.
 
 * Fri Dec 4 2015 Jess Portnoy <jess.portnoy@borhan.com> - 1.0.30-5
-- https://github.com/borhan/platform-install-packages/issues/497
+- https://github.com/bordar/platform-install-packages/issues/497
 
 * Wed Nov 25 2015 Jess Portnoy <jess.portnoy@borhan.com> - 1.0.30-4
 - the value returned into USER_EXISTS is a string so "!=" and not "-ne".
@@ -232,10 +232,10 @@ Templates can still have default umask since there's nothing secret there.
 - http://forum.borhan.org/t/borhan-fails-to-install-on-ubuntu-14-04-3-lts/3491/6
 
 * Fri Sep 25 2015 Jess Portnoy <jess.portnoy@borhan.com> - 1.0.28-16
-- https://github.com/borhan/platform-install-packages/issues/60
+- https://github.com/bordar/platform-install-packages/issues/60
 
 * Fri Sep 18 2015 Jess Portnoy <jess.portnoy@borhan.com> - 1.0.28-15
-- https://github.com/borhan/platform-install-packages/issues/443
+- https://github.com/bordar/platform-install-packages/issues/443
 
 * Tue Sep 15 2015 Jess Portnoy <jess.portnoy@borhan.com> - 1.0.28-12
 - replace @APP_REMOTE_ADDR_HEADER_SALT@ token.
@@ -244,13 +244,13 @@ Templates can still have default umask since there's nothing secret there.
 - When the port is 80 or 443, do not concat the port to the service URL.
   This is important when you want to do SSL offloading..
 * Mon Aug 10 2015 Jess Portnoy <jess.portnoy@borhan.com> - 1.0.28-7
-- https://github.com/borhan/platform-install-packages/pull/425
+- https://github.com/bordar/platform-install-packages/pull/425
 
 * Sun Aug 9 2015 Jess Portnoy <jess.portnoy@borhan.com> - 1.0.28-6
 - use lsb_release -c -d to report linux_flavor to analytics.
 
 * Mon Aug 3 2015 Jess Portnoy <jess.portnoy@borhan.com> - 1.0.28-5
-- https://github.com/borhan/platform-install-packages/pull/430
+- https://github.com/bordar/platform-install-packages/pull/430
 
 * Fri Jul 31 2015 Jess Portnoy <jess.portnoy@borhan.com> - 1.0.28-3
 - Increase waiting period for daemons to be started by monit to 120s.
@@ -285,7 +285,7 @@ Templates can still have default umask since there's nothing secret there.
 - use $SUPER_USER when dropping db, do not assume root
 
 * Thu Jun 18 2015 Jess Portnoy <jess.portnoy@borhan.com> - 1.0.26-4
-- https://github.com/borhan/platform-install-packages/issues/413
+- https://github.com/bordar/platform-install-packages/issues/413
 
 * Sun Jun 1 2015 Jess Portnoy <jess.portnoy@borhan.com> - 1.0.26-2
 - Corrected typo in nginx-config
@@ -349,7 +349,7 @@ Templates can still have default umask since there's nothing secret there.
 - Remove resriction to MySQL 5.1 since it seems to work fine with it now
 
 * Fri Nov 28 2014 Jess Portnoy <jess.portnoy@borhan.com> - 1.0.22-1
-- Fix for https://github.com/borhan/platform-install-packages/issues/234
+- Fix for https://github.com/bordar/platform-install-packages/issues/234
 
 * Tue Nov 25 2014 Jess Portnoy <jess.portnoy@borhan.com> - 1.0.21-9
 - Init BEGINNERS_TUTORIAL_URL, QUICK_START_GUIDE_URL, FORUMS_URLS outside the interactive block as it applies to silent installs too.
@@ -358,7 +358,7 @@ Templates can still have default umask since there's nothing secret there.
 - escape root's MySQL passwd with ".
 
 * Wed Nov 19 2014 Jess Portnoy <jess.portnoy@borhan.com> - 1.0.21-6
-- Until they merge: https://github.com/borhan/server/pull/1880..
+- Until they merge: https://github.com/bordar/server/pull/1880..
 
 * Tue Nov 18 2014 Jess Portnoy <jess.portnoy@borhan.com> - 1.0.21-5
 - Added call to sphinx-schema-upgrade.sh from borhan-sphinx-config.sh.
@@ -409,7 +409,7 @@ Templates can still have default umask since there's nothing secret there.
 - We do not want to reload Apache during base because if this is a reconfig, there would already be a symlink under /etc/httpd/conf.d/ pointing to the borhan apache config, base will replace the actual values with the template and so, Apache will not load.
 
 * Sun Aug 31 2014 Jess Portnoy <jess.portnoy@borhan.com> - 1.0.18-1
-- Fix for https://github.com/borhan/platform-install-packages/issues/215.
+- Fix for https://github.com/bordar/platform-install-packages/issues/215.
 
 * Sun Aug 24 2014 Jess Portnoy <jess.portnoy@borhan.com> - 1.0.17-16
 - Replace new tokens in init_data.
@@ -460,7 +460,7 @@ Templates can still have default umask since there's nothing secret there.
 - Reload apache post base config so cache is cleared.
 
 * Tue Jun 10 2014 Jess Portnoy <jess.portnoy@borhan.com> - 1.0.14-3
-- https://github.com/borhan/platform-install-packages/pull/153
+- https://github.com/bordar/platform-install-packages/pull/153
 
 * Mon Jun 2 2014 Jess Portnoy <jess.portnoy@borhan.com> - 1.0.14-2
 - Our analytics server moved to a new castle.
@@ -476,13 +476,13 @@ Templates can still have default umask since there's nothing secret there.
 - Added license info to scripts header. thank you David Kohen for pointing this out.
 
 * Thu May 15 2014 Jess Portnoy <jess.portnoy@borhan.com> - 1.0.13-2
-- Following https://github.com/borhan/platform-install-packages/pull/128.
+- Following https://github.com/bordar/platform-install-packages/pull/128.
 
 * Wed May 14 2014 Jess Portnoy <jess.portnoy@borhan.com> - 1.0.13-1
-- Fix for https://github.com/borhan/platform-install-packages/issues/122
+- Fix for https://github.com/bordar/platform-install-packages/issues/122
 
 * Mon May 12 2014 Jess Portnoy <jess.portnoy@borhan.com> - 1.0.12-32
-- Fixes https://github.com/borhan/platform-install-packages/pull/119
+- Fixes https://github.com/bordar/platform-install-packages/pull/119
 
 * Sun May 11 2014 Jess Portnoy <jess.portnoy@borhan.com> - 1.0.12-31
 - Check if NFS volume is already mounted, if not, mount and exit if that fails.
@@ -497,7 +497,7 @@ Templates can still have default umask since there's nothing secret there.
 - ans file has passwds in it and must be 600.
 
 * Sat Apr 26 2014 Jess Portnoy <jess.portnoy@borhan.com> - 1.0.12-8
-- https://github.com/borhan/platform-install-packages/issues/99
+- https://github.com/bordar/platform-install-packages/issues/99
 
 * Sat Apr 26 2014 Jess Portnoy <jess.portnoy@borhan.com> - 1.0.12-6
 - [master 1112364] no need for these functions to accept machine as param. They check the services locally.
@@ -575,7 +575,7 @@ Templates can still have default umask since there's nothing secret there.
 - Base - exit if something failed.
 
 * Wed Mar 5 2014 Jess Portnoy <jess.portnoy@borhan.com> - 1.0.7-21
-- Fix for https://github.com/borhan/platform-install-packages/issues/57
+- Fix for https://github.com/bordar/platform-install-packages/issues/57
 
 * Mon Mar 3 2014 Jess Portnoy <jess.portnoy@borhan.com> - 1.0.7-20
 - borhan-db-update.sh by David Bezemer.
@@ -586,11 +586,11 @@ Templates can still have default umask since there's nothing secret there.
 - Fix consent code flow to work with ans file.
 
 * Fri Feb 27 2014 Jess Portnoy <jess.portnoy@borhan.com> - 1.0.7-15
-- Fix for https://github.com/borhan/platform-install-packages/issues/47
+- Fix for https://github.com/bordar/platform-install-packages/issues/47
 
 * Fri Feb 27 2014 Jess Portnoy <jess.portnoy@borhan.com> - 1.0.7-14
 - Added explanation on how to increase log level to DEBUG, see:
-  https://github.com/borhan/platform-install-packages/issues/51  
+  https://github.com/bordar/platform-install-packages/issues/51  
 
 * Wed Feb 25 2014 Jess Portnoy <jess.portnoy@borhan.com> - 1.0.7-10
 - https://github.com/mobcdi/platform-install-packages/commit/00d06299204b5b3a7314b8e705a75e73ae2de017
@@ -636,7 +636,7 @@ Templates can still have default umask since there's nothing secret there.
 - Only do the update if the record is missing.
 
 * Tue Feb 18 2014 Jess Portnoy <jess.portnoy@borhan.com> - 1.0.5-22
-- https://github.com/borhan/platform-install-packages/issues/28
+- https://github.com/bordar/platform-install-packages/issues/28
  
 * Mon Feb 17 2014 Jess Portnoy <jess.portnoy@borhan.com> - 1.0.5-20
 - Have hostname as default for Red5.
@@ -674,7 +674,7 @@ Templates can still have default umask since there's nothing secret there.
 - Replace toks in studio.ini.
 
 * Fri Feb 7 2014 Jess Portnoy <jess.portnoy@borhan.com> - 1.0.4-11
-- Fixes https://github.com/borhan/platform-install-packages/issues/21
+- Fixes https://github.com/bordar/platform-install-packages/issues/21
 - Add logging to file during DWH setup.
 - Batch: only configure Borhan vhost in the event the service URL is local.
 

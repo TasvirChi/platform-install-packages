@@ -123,7 +123,7 @@ fi
 - Commented section about setting up monit over SSL.
 
 * Mon Feb 17 2014 Jess Portnoy <jess.portnoy@borhan.com> - 5.6-11
-- Fix for https://github.com/borhan/platform-install-packages/issues/41
+- Fix for https://github.com/bordar/platform-install-packages/issues/41
 
 * Sun Feb 16 2014 Jess Portnoy <jess.portnoy@borhan.com> - 5.6-10
 - monit.conf needs to be templated because of the email addr.

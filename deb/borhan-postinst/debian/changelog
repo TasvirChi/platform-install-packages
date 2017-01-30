@@ -1,6 +1,6 @@
 borhan-postinst (1.0.31-1) kajam; urgency=low
 
-  *  https://github.com/borhan/platform-install-packages/pull/521
+  *  https://github.com/bordar/platform-install-packages/pull/521
 
  -- Jess Portnoy <jess.portnoy@borhan.org>  Tue, 16 Feb 2016 14:35:33 +0000
 

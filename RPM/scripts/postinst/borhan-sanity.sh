@@ -344,7 +344,7 @@ if $QUERY_COMMAND borhan-batch >/dev/null 2>&1 || $QUERY_COMMAND borhan-front >/
 
 Please note: if you are running this test on a clustered ENV, it will fail but this does not mean there is an actual problem.
 The tech information as to why is available here: 
-https://github.com/borhan/platform-install-packages/issues/106#issuecomment-42837404
+https://github.com/bordar/platform-install-packages/issues/106#issuecomment-42837404
 ${NORMAL}"
   # this is to allow the logrotation to finish.
   sleep 120 
@@ -430,7 +430,7 @@ if [ "$WEBCAM_SYNLINK" = /usr/lib/red5/webapps/oflaDemo/streams ]; then
 	report "$TEST_NAME" $RC "$OUTP" "`bc <<< $END-$START`"
 else
 	echo -e "[${CYAN}$TEST_NAME${NORMAL}] ${BRIGHT_YELLOW}[SKIPPED as OflaDemo isn't configured]
-see: https://github.com/borhan/platform-install-packages/blob/master/doc/install-borhan-redhat-based.md#configure-red5-server${NORMAL}"
+see: https://github.com/bordar/platform-install-packages/blob/master/doc/install-borhan-redhat-based.md#configure-red5-server${NORMAL}"
 fi
 
 

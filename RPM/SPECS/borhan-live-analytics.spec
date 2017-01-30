@@ -9,9 +9,9 @@ URL: http://borhan.org
 Source0: register-file-deps-jars.tar.gz
 Source1: %{name}_config.template.properties 
 Source2: %{name}_log4j.properties
-Source3: https://github.com/borhan/live_analytics/releases/download/%{version}/BorhanLiveAnalytics.war
-Source4: https://github.com/borhan/live_analytics/releases/download/%{version}/live-analytics-driver.jar
-Source5: https://github.com/borhan/live_analytics/releases/download/%{version}/register-file.jar
+Source3: https://github.com/bordar/live_analytics/releases/download/%{version}/BorhanLiveAnalytics.war
+Source4: https://github.com/bordar/live_analytics/releases/download/%{version}/live-analytics-driver.jar
+Source5: https://github.com/bordar/live_analytics/releases/download/%{version}/register-file.jar
 Source6: http://repo.maven.apache.org/maven2/com/sun/xml/ws/jaxws-ri/2.2.10/jaxws-ri-2.2.10.zip
 Source7: %{name}_nginx_live.template.conf
 Source8: https://raw.githubusercontent.com/borhan/live_analytics/v0.5/setup/create_cassandra_tables.cql

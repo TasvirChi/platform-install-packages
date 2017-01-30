@@ -7,11 +7,11 @@ Version: 3.2.0
 Release: 1
 License: AGPLv3+
 Group: Server/Platform 
-Source0: https://github.com/borhan/media-server/releases/download/rel-%{version}/BorhanWowzaServer-install-%{version}.zip 
+Source0: https://github.com/bordar/media-server/releases/download/rel-%{version}/BorhanWowzaServer-install-%{version}.zip 
 #Source1: %{postinst_dir}/%{name}-config.sh
 #Source2: %{postinst_dir}/borhan-functions.rc
 
-URL: https://github.com/borhan/media-server 
+URL: https://github.com/bordar/media-server 
 Buildroot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 Requires:  jre >= 1.7.0, borhan-postinst, ant >= 1.8.2 , php >= 5.3.0
 BuildArch: noarch

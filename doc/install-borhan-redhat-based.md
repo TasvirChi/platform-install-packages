@@ -5,23 +5,23 @@ This guide describes RPM installation of an all-in-one Borhan server and applies
 [Borhan Inc.](http://corp.borhan.com) also provides commercial solutions and services including pro-active platform monitoring, applications, SLA, 24/7 support and professional services. If you're looking for a commercially supported video platform  with integrations to commercial encoders, streaming servers, eCDN, DRM and more - Start a [Free Trial of the Borhan.com Hosted Platform](http://corp.borhan.com/free-trial) or learn more about [Borhan' Commercial OnPrem Edition™](http://corp.borhan.com/Deployment-Options/Borhan-On-Prem-Edition). For existing RPM based users, Borhan offers commercial upgrade options.
 
 #### Table of Contents
-[Prerequites](https://github.com/borhan/platform-install-packages/blob/master/doc/pre-requisites.md)
+[Prerequites](https://github.com/bordar/platform-install-packages/blob/master/doc/pre-requisites.md)
 
-[Non-SSL Step-by-step Installation](https://github.com/borhan/platform-install-packages/blob/master/doc/install-borhan-redhat-based.md#non-ssl-step-by-step-installation)
+[Non-SSL Step-by-step Installation](https://github.com/bordar/platform-install-packages/blob/master/doc/install-borhan-redhat-based.md#non-ssl-step-by-step-installation)
 
-[SSL Step-by-step Installation](https://github.com/borhan/platform-install-packages/blob/master/doc/install-borhan-redhat-based.md#ssl-step-by-step-installation)
+[SSL Step-by-step Installation](https://github.com/bordar/platform-install-packages/blob/master/doc/install-borhan-redhat-based.md#ssl-step-by-step-installation)
 
-[Unattended Installation](https://github.com/borhan/platform-install-packages/blob/master/doc/install-borhan-redhat-based.md#unattended-installation)
+[Unattended Installation](https://github.com/bordar/platform-install-packages/blob/master/doc/install-borhan-redhat-based.md#unattended-installation)
 
-[Upgrade Borhan](https://github.com/borhan/platform-install-packages/blob/master/doc/install-borhan-redhat-based.md#upgrade-borhan)
+[Upgrade Borhan](https://github.com/bordar/platform-install-packages/blob/master/doc/install-borhan-redhat-based.md#upgrade-borhan)
 
-[Remove Borhan](https://github.com/borhan/platform-install-packages/blob/master/doc/install-borhan-redhat-based.md#remove-borhan)
+[Remove Borhan](https://github.com/bordar/platform-install-packages/blob/master/doc/install-borhan-redhat-based.md#remove-borhan)
 
-[Troubleshooting](https://github.com/borhan/platform-install-packages/blob/master/doc/install-borhan-redhat-based.md#troubleshooting)
+[Troubleshooting](https://github.com/bordar/platform-install-packages/blob/master/doc/install-borhan-redhat-based.md#troubleshooting)
 
-[Additional Information](https://github.com/borhan/platform-install-packages/blob/master/doc/install-borhan-redhat-based.md#additional-information)
+[Additional Information](https://github.com/bordar/platform-install-packages/blob/master/doc/install-borhan-redhat-based.md#additional-information)
 
-[How to contribute](https://github.com/borhan/platform-install-packages/blob/master/doc/CONTRIBUTERS.md)
+[How to contribute](https://github.com/bordar/platform-install-packages/blob/master/doc/CONTRIBUTERS.md)
 
 ## Non-SSL Step-by-step Installation
 
@@ -31,7 +31,7 @@ This guide describes RPM installation of an all-in-one Borhan server and applies
 * Before you begin, make sure you're logged in as the system root. Root access is required to install Borhan, and you should execute ```sudo -i``` or ```su -```to make sure that you are indeed root.
 
 #### Firewall requirements
-Borhan requires certain ports to be open for proper operation. [See the list of required open ports](https://github.com/borhan/platform-install-packages/blob/master/doc/borhan-required-ports.md).
+Borhan requires certain ports to be open for proper operation. [See the list of required open ports](https://github.com/bordar/platform-install-packages/blob/master/doc/borhan-required-ports.md).
 If you're just testing and don't mind an open system, you can use the below to disbale iptables altogether:
 ```bash
 iptables -F
@@ -220,7 +220,7 @@ Your install will now automatically perform all install tasks.
   * To verify the validity of your certificate, you can then use [SSLShoper's SSL Check Utility](http://www.sslshopper.com/ssl-checker.html).
 
 #### Firewall requirements
-Borhan requires certain ports to be open for proper operation. [See the list of required open ports](https://github.com/borhan/platform-install-packages/blob/master/doc/borhan-required-ports.md).
+Borhan requires certain ports to be open for proper operation. [See the list of required open ports](https://github.com/bordar/platform-install-packages/blob/master/doc/borhan-required-ports.md).
 If you're just testing and don't mind an open system, you can use the below to disbale iptables altogether:
 ```bash
 iptables -F
@@ -371,7 +371,7 @@ Your install will now automatically perform all install tasks.
 
 ## Note about using Wowza as media server
 you can use Wowza as media server instead of Red5. For webcam recording using Wowza, please follow:
-https://github.com/borhan/media-server/blob/3.0.9/Installation.md#for-webcam-recording-servers
+https://github.com/bordar/media-server/blob/3.0.9/Installation.md#for-webcam-recording-servers
 And then run /opt/borhan/bin/borhan-red5-config.sh providing the Wowza IP/hostname.
 
 ### SSL Certificate Configuration
@@ -397,7 +397,7 @@ Finally, run: ```/etc/init.d/borhan-monit restart```
 
 ## Unattended Installation
 All Borhan scripts accept an answer file as their first argument.
-In order to preform an unattended [silent] install, simply edit the [template](https://github.com/borhan/platform-install-packages/blob/master/doc/borhan.template.ans) and pass it along to borhan-config-all.sh.
+In order to preform an unattended [silent] install, simply edit the [template](https://github.com/bordar/platform-install-packages/blob/master/doc/borhan.template.ans) and pass it along to borhan-config-all.sh.
 
 ## Upgrade Borhan
 *This will only work if the initial install was using this packages based install, it will not work for old Borhan deployments using the PHP installers*
@@ -459,10 +459,10 @@ For posting questions, please go to:
 (http://forum.borhan.org)
 
 ## Additional Information
-* Please review the [frequently answered questions](https://github.com/borhan/platform-install-packages/blob/master/doc/borhan-packages-faq.md) document for general help before posting to the forums or issue queue.
-* This guide describes the installation and upgrade of an all-in-one machine where all the Borhan components are installed on the same server. For cluster deployments, please refer to [cluster deployment document](http://bit.ly/kipp-cluster-yum), or [Deploying Borhan using Opscode Chef](https://github.com/borhan/platform-install-packages/blob/master/doc/rpm-chef-cluster-deployment.md).
+* Please review the [frequently answered questions](https://github.com/bordar/platform-install-packages/blob/master/doc/borhan-packages-faq.md) document for general help before posting to the forums or issue queue.
+* This guide describes the installation and upgrade of an all-in-one machine where all the Borhan components are installed on the same server. For cluster deployments, please refer to [cluster deployment document](http://bit.ly/kipp-cluster-yum), or [Deploying Borhan using Opscode Chef](https://github.com/bordar/platform-install-packages/blob/master/doc/rpm-chef-cluster-deployment.md).
 * To learn about monitoring, please refer to [configuring platform monitors](http://bit.ly/kipp-monitoring).
-* Testers using virtualization: [@DBezemer](https://github.com/borhan) created a basic CentOS 6.4 template virtual server vailable here in OVF format: https://www.dropbox.com/s/luai7sk8nmihrkx/20140306_CentOS-base.zip
+* Testers using virtualization: [@DBezemer](https://github.com/bordar) created a basic CentOS 6.4 template virtual server vailable here in OVF format: https://www.dropbox.com/s/luai7sk8nmihrkx/20140306_CentOS-base.zip
 * Alternatively you can find VMWare images at - http://www.thoughtpolice.co.uk/vmware/ --> Make sure to only use compatible OS images; either RedHat or CentOS 5.n, 6.n or FedoraCore 18+.
 * Two working solutions to the AWS EC2 email limitations are:
   * Using SendGrid as your mail service ([setting up ec2 with Sendgrid and postfix](http://www.zoharbabin.com/configure-ssmtp-or-postfix-to-send-email-via-sendgrid-on-centos-6-3-ec2)).

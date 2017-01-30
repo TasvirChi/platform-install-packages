@@ -19,7 +19,7 @@ Requires: java-1.8.0-openjdk,ant, borhan-monit, borhan-base, redhat-lsb-core
 BuildArch: noarch
 BuildRequires: unzip
 #Source0: WowzaStreamingEngine-%{wowza_version}-linux-x64-installer.run
-Source1: https://github.com/borhan/media-server/releases/download/rel-%{media_server_version}/BorhanWowzaServer-install-%{media_server_version}.zip
+Source1: https://github.com/bordar/media-server/releases/download/rel-%{media_server_version}/BorhanWowzaServer-install-%{media_server_version}.zip
 Source2: WowzaStreamingEngine.service
 Source3: WowzaStreamingEngineManager.service
 Source4: build.xml

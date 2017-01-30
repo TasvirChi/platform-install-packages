@@ -50,4 +50,4 @@ enabled = 1
 ```
 
 ## Install Borhan
-Follow the desired install guide ([cluster deployment](https://github.com/borhan/platform-install-packages/blob/master/doc/rpm-cluster-deployment-instructions.md) or [all-in-one install](https://github.com/borhan/platform-install-packages/blob/master/doc/install-borhan-redhat-based.md)), skipping the "Auto Set the Borhan install repository URLs" step.
+Follow the desired install guide ([cluster deployment](https://github.com/bordar/platform-install-packages/blob/master/doc/rpm-cluster-deployment-instructions.md) or [all-in-one install](https://github.com/bordar/platform-install-packages/blob/master/doc/install-borhan-redhat-based.md)), skipping the "Auto Set the Borhan install repository URLs" step.

@@ -6,9 +6,9 @@ Version: 1.1
 Release: 6
 License: AGPLv3+
 Group: Server/Platform 
-Source0: https://github.com/borhan/play-server/archive/borhan-play-server-v%{version}.zip
+Source0: https://github.com/bordar/play-server/archive/borhan-play-server-v%{version}.zip
 
-URL: https://github.com/borhan/play-server 
+URL: https://github.com/bordar/play-server 
 Buildroot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 Requires:  borhan-postinst, memcached, npm, nodejs, borhan-ffmpeg
 BuildRequires: memcached-devel, node-gyp, id3lib-devel,npm
@@ -101,7 +101,7 @@ fi
 
 %changelog
 * Thu Jun 25 2015 Jess Portnoy <jess.portnoy@borhan.com> - 1.1-6
-- https://github.com/borhan/play-server/pull/172 merged.
+- https://github.com/bordar/play-server/pull/172 merged.
 
 * Tue Jun 2 2015 Jess Portnoy <jess.portnoy@borhan.com> - 1.1-5
 - Precompile needed modules.

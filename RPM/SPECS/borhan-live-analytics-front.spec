@@ -8,7 +8,7 @@ Release: 1
 License: AGPLv3+
 Group: Server/Platform 
 Source0: %{name}-%{version}.tar.bz2 
-URL: https://github.com/borhan/live-analytics-front-end/releases/download/%{version}/%{version}.zip 
+URL: https://github.com/bordar/live-analytics-front-end/releases/download/%{version}/%{version}.zip 
 Buildroot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildArch: noarch
 Requires: borhan-base

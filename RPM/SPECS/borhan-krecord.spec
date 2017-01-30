@@ -49,7 +49,7 @@ rm -rf %{buildroot}
 
 %changelog
 * Wed Feb 3 2016 Jess Portnoy <jess.portnoy@borhan.com> - v1.7.1-1
-- https://github.com/borhan/krecord/releases/tag/v1.7.1
+- https://github.com/bordar/krecord/releases/tag/v1.7.1
 
 * Mon Feb 3 2014 Jess Portnoy <jess.portnoy@borhan.com> - v1.7.0-2
 - Since these widgets typically reside on NFS and served from another machine there is not need for the Apache dep.

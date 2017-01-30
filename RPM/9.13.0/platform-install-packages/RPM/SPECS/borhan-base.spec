@@ -13,7 +13,7 @@ Version: 9.14.0
 Release: 7 
 License: AGPLv3+
 Group: Server/Platform 
-Source0: https://github.com/borhan/server/archive/IX-%{version}.zip 
+Source0: https://github.com/bordar/server/archive/IX-%{version}.zip 
 Source1: borhan.apache.ssl.conf.template 
 # 22/01/14 due to a bug, can be removed in the next version:
 Source2: 01.conversionProfile.99.template.xml
@@ -25,7 +25,7 @@ Source7: dwh.template
 Source8: 01.uiConf.99.template.xml
 Source9: plugins.template.ini
 Source10: entry_and_uiconf_templates.tar.gz
-# fixes https://github.com/borhan/platform-install-packages/issues/37
+# fixes https://github.com/bordar/platform-install-packages/issues/37
 Source11: clear_cache.sh
 # monit templates
 Source12: mysqld.template.rc
@@ -41,7 +41,7 @@ Source21: borhan_batch_upload_falcon.zip
 Source22: 01.UserRole.99.template.xml
 Source23: 04.flavorParams.ini
 Source24: 04.liveParams.ini
-URL: https://github.com/borhan/server/tree/IX-%{version}
+URL: https://github.com/bordar/server/tree/IX-%{version}
 Buildroot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildArch: noarch
 Requires: rsync,mail,mysql,borhan-monit,borhan-postinst,cronie, php-cli, php-xml, php-curl, php-mysql,php-gd,php-gmp, php-imap, php-ldap,ntp,mailx
@@ -119,7 +119,7 @@ sed -i 's@^writers.\(.*\).filters.priority.priority\s*=\s*7@writers.\1.filters.p
 sed -i 's#\(@DWH_DIR@\)$#\1 -k %{prefix}/pentaho/pdi/kitchen.sh#g' $RPM_BUILD_ROOT%{prefix}/app/configurations/cron/dwh.template
 rm $RPM_BUILD_ROOT%{prefix}/app/generator/sources/android/DemoApplication/libs/libWVphoneAPI.so
 rm $RPM_BUILD_ROOT%{prefix}/app/configurations/.project
-# see https://github.com/borhan/platform-install-packages/issues/58 - these are taken care of on lines 139 though 144:
+# see https://github.com/bordar/platform-install-packages/issues/58 - these are taken care of on lines 139 though 144:
 rm $RPM_BUILD_ROOT%{prefix}/app/configurations/monit/monit.d/*template*
 
 # we bring our own for borhan-front and borhan-batch.
@@ -349,7 +349,7 @@ fi
   It causes issues and isn;t needed.
 
 * Tue Mar 20 2014 Jess Portnoy <jess.portnoy@borhan.com> - 9.12.0-6
-- https://github.com/borhan/server/commit/4d47c158774ebd41b0a60e6af20f0beab02d459d did not make it in so, reapplying the patch.
+- https://github.com/bordar/server/commit/4d47c158774ebd41b0a60e6af20f0beab02d459d did not make it in so, reapplying the patch.
 
 * Tue Mar 18 2014 Jess Portnoy <jess.portnoy@borhan.com> - 9.12.0-5
 - Don't run upgrade scripts if not INIs.
@@ -358,7 +358,7 @@ fi
 - Generate random monit passwd.
 
 * Thu Mar 13 2014 Jess Portnoy <jess.portnoy@borhan.com> - 9.12.0-2
-- Fix for https://github.com/borhan/platform-install-packages/issues/71
+- Fix for https://github.com/bordar/platform-install-packages/issues/71
 
 * Sun Mar 9 2014 Jess Portnoy <jess.portnoy@borhan.com> - 9.12.0-1
 - Ver Bounce to 9.12.0
@@ -381,13 +381,13 @@ fi
 
 
 * Wed Mar 5 2014 Jess Portnoy <jess.portnoy@borhan.com> - 9.11.0-16
-- Place holder for Chain. See: https://github.com/borhan/platform-install-packages/issues/57
+- Place holder for Chain. See: https://github.com/bordar/platform-install-packages/issues/57
   
 * Fri Feb 27 2014 Jess Portnoy <jess.portnoy@borhan.com> - 9.11.0-15
-- Fixes https://github.com/borhan/platform-install-packages/issues/50
+- Fixes https://github.com/bordar/platform-install-packages/issues/50
 
 * Fri Feb 27 2014 Jess Portnoy <jess.portnoy@borhan.com> - 9.11.0-14
-- https://github.com/borhan/platform-install-packages/issues/51
+- https://github.com/bordar/platform-install-packages/issues/51
 
 * Tue Feb 25 2014 Jess Portnoy <jess.portnoy@borhan.com> - 9.11.0-11
 - Update version number.
@@ -430,10 +430,10 @@ fi
 - Added alias for allkaltlog and changed kaltlog. Suggestion by David Bezemer.
 
 * Thu Feb 13 2014 Jess Portnoy <jess.portnoy@borhan.com> - 9.9.0-42
-- Fix for https://github.com/borhan/platform-install-packages/issues/37
+- Fix for https://github.com/bordar/platform-install-packages/issues/37
 
 * Wed Feb 12 2014 Jess Portnoy <jess.portnoy@borhan.com> - 9.9.0-39
-- Fix https://github.com/borhan/platform-install-packages/issues/34
+- Fix https://github.com/bordar/platform-install-packages/issues/34
 
 * Tue Feb 11 2014 Jess Portnoy <jess.portnoy@borhan.com> - 9.9.0-38
 - Removed IsMindex plugin from template.
@@ -445,18 +445,18 @@ fi
 - Only gen client libs if conf files are in place.
 
 * Sun Feb 9 2014 Jess Portnoy <jess.portnoy@borhan.com> - 9.9.0-31
-- Fix for https://github.com/borhan/platform-install-packages/issues/28
+- Fix for https://github.com/bordar/platform-install-packages/issues/28
 
 * Sun Feb 9 2014 Jess Portnoy <jess.portnoy@borhan.com> - 9.9.0-30
-- Fix for https://github.com/borhan/platform-install-packages/issues/25:
+- Fix for https://github.com/bordar/platform-install-packages/issues/25:
 disable Audit plugin.
 - Fix def. flavor creation.
 
 * Sun Feb 9 2014 Jess Portnoy <jess.portnoy@borhan.com> - 9.9.0-29
-- Fix for https://github.com/borhan/platform-install-packages/issues/23.
+- Fix for https://github.com/bordar/platform-install-packages/issues/23.
 
 * Fri Feb 7 2014 Jess Portnoy <jess.portnoy@borhan.com> - 9.9.0-28
-- Fix for https://github.com/borhan/installer/issues/5
+- Fix for https://github.com/bordar/installer/issues/5
 
 * Wed Feb 5 2014 Jess Portnoy <jess.portnoy@borhan.com> - 9.9.0-27
 - Fixed the conversion template for p99. Include flav. ID 19.

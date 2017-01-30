@@ -8,7 +8,7 @@ License: AGPLv3+
 Group: Server/Platform 
 Source0: %{name}-%{version}.tar.bz2 
 Source1: studio.template.ini
-URL: https://github.com/borhan/player-studio/releases/download/%{version}/studio_%{version}.zip 
+URL: https://github.com/bordar/player-studio/releases/download/%{version}/studio_%{version}.zip 
 Buildroot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildArch: noarch
 
@@ -91,10 +91,10 @@ rm -rf %{buildroot}
     FEC-964 line in all dropboxes is asymmetric
 
 * Thu Feb 13 2014 Jess Portnoy <jess.portnoy@borhan.com> - v0.3-3
-- Fixes the other points in https://github.com/borhan/platform-install-packages/issues/30.
+- Fixes the other points in https://github.com/bordar/platform-install-packages/issues/30.
 
 * Thu Feb 13 2014 Jess Portnoy <jess.portnoy@borhan.com> - v0.3-2
-- Fixes  https://github.com/borhan/platform-install-packages/issues/30
+- Fixes  https://github.com/bordar/platform-install-packages/issues/30
 'Also /opt/borhan/apps/studio/v0.3/ contains the zip archive that contains the same files as the directory, and should be cleaned up'
 * Tue Jan 28 2014 Jess Portnoy <jess.portnoy@borhan.com> - v0.3-1
 - initial package.

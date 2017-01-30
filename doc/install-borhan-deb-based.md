@@ -7,21 +7,21 @@ The processes was tested on Debian 8 and Ubuntu 14.04 but is expected to work on
 [Borhan Inc.](http://corp.borhan.com) also provides commercial solutions and services including pro-active platform monitoring, applications, SLA, 24/7 support and professional services. If you're looking for a commercially supported video platform  with integrations to commercial encoders, streaming servers, eCDN, DRM and more - Start a [Free Trial of the Borhan.com Hosted Platform](http://corp.borhan.com/free-trial) or learn more about [Borhan' Commercial OnPrem Edition™](http://corp.borhan.com/Deployment-Options/Borhan-On-Prem-Edition). Please note that this service in only offered for RHEL based distros. 
 
 #### Table of Contents
-[Prerequites](https://github.com/borhan/platform-install-packages/blob/master/doc/pre-requisites.md)
+[Prerequites](https://github.com/bordar/platform-install-packages/blob/master/doc/pre-requisites.md)
 
-[Step-by-step Installation](https://github.com/borhan/platform-install-packages/blob/master/doc/install-borhan-deb-based.md#step-by-step-installation)
+[Step-by-step Installation](https://github.com/bordar/platform-install-packages/blob/master/doc/install-borhan-deb-based.md#step-by-step-installation)
 
-[Unattended Installation](https://github.com/borhan/platform-install-packages/blob/master/doc/install-borhan-deb-based.md#unattended-installation)
+[Unattended Installation](https://github.com/bordar/platform-install-packages/blob/master/doc/install-borhan-deb-based.md#unattended-installation)
 
-[Upgrade Borhan](https://github.com/borhan/platform-install-packages/blob/master/doc/install-borhan-deb-based.md#upgrade-borhan)
+[Upgrade Borhan](https://github.com/bordar/platform-install-packages/blob/master/doc/install-borhan-deb-based.md#upgrade-borhan)
 
-[Remove Borhan](https://github.com/borhan/platform-install-packages/blob/master/doc/install-borhan-deb-based.md#remove-borhan)
+[Remove Borhan](https://github.com/bordar/platform-install-packages/blob/master/doc/install-borhan-deb-based.md#remove-borhan)
 
-[Troubleshooting](https://github.com/borhan/platform-install-packages/blob/master/doc/install-borhan-deb-based.md#troubleshooting)
+[Troubleshooting](https://github.com/bordar/platform-install-packages/blob/master/doc/install-borhan-deb-based.md#troubleshooting)
 
-[Additional Information](https://github.com/borhan/platform-install-packages/blob/master/doc/install-borhan-redhat-based.md#additional-information)
+[Additional Information](https://github.com/bordar/platform-install-packages/blob/master/doc/install-borhan-redhat-based.md#additional-information)
 
-[How to contribute](https://github.com/borhan/platform-install-packages/blob/master/doc/CONTRIBUTERS.md)
+[How to contribute](https://github.com/bordar/platform-install-packages/blob/master/doc/CONTRIBUTERS.md)
 
 ## Step-by-step Installation
 
@@ -31,7 +31,7 @@ The processes was tested on Debian 8 and Ubuntu 14.04 but is expected to work on
 * Before you begin, make sure you're logged in as the system root. Root access is required to install Borhan, and you should execute ```sudo -i``` or ```su -```to make sure that you are indeed root.
 
 #### Firewall requirements
-Borhan requires certain ports to be open for proper operation. [See the list of required open ports](https://github.com/borhan/platform-install-packages/blob/master/doc/borhan-required-ports.md).
+Borhan requires certain ports to be open for proper operation. [See the list of required open ports](https://github.com/bordar/platform-install-packages/blob/master/doc/borhan-required-ports.md).
 If you're just testing and don't mind an open system, you can use the below to disbale iptables altogether:
 ```bash
 iptables -F
@@ -148,7 +148,7 @@ In order to perform a manual step by step install, simply copy the commands and 
 **Your Borhan installation is now complete.**
 
 ## Unattended Installation
-Edit the debconf [response file template](https://github.com/borhan/platform-install-packages/blob/Jupiter-10.16.0/deb/borhan_debconf_response.sh) by replacing all tokens with relevant values.
+Edit the debconf [response file template](https://github.com/bordar/platform-install-packages/blob/Jupiter-10.16.0/deb/borhan_debconf_response.sh) by replacing all tokens with relevant values.
 and run it as root:
 ```
 ./borhan_debconf_response.sh
@@ -215,10 +215,10 @@ For posting questions, please go to:
 (http://forum.borhan.org)
 
 ## Additional Information
-* Please review the [frequently answered questions](https://github.com/borhan/platform-install-packages/blob/master/doc/borhan-packages-faq.md) document for general help before posting to the forums or issue queue.
-* This guide describes the installation and upgrade of an all-in-one machine where all the Borhan components are installed on the same server. For cluster deployments, please refer to [cluster deployment document](http://bit.ly/kipp-cluster-yum), or [Deploying Borhan using Opscode Chef](https://github.com/borhan/platform-install-packages/blob/master/doc/rpm-chef-cluster-deployment.md).
+* Please review the [frequently answered questions](https://github.com/bordar/platform-install-packages/blob/master/doc/borhan-packages-faq.md) document for general help before posting to the forums or issue queue.
+* This guide describes the installation and upgrade of an all-in-one machine where all the Borhan components are installed on the same server. For cluster deployments, please refer to [cluster deployment document](http://bit.ly/kipp-cluster-yum), or [Deploying Borhan using Opscode Chef](https://github.com/bordar/platform-install-packages/blob/master/doc/rpm-chef-cluster-deployment.md).
 * To learn about monitoring, please refer to [configuring platform monitors](http://bit.ly/kipp-monitoring).
-* Testers using virtualization: [@DBezemer](https://github.com/borhan) created a basic CentOS 6.4 template virtual server vailable here in OVF format: https://www.dropbox.com/s/luai7sk8nmihrkx/20140306_CentOS-base.zip
+* Testers using virtualization: [@DBezemer](https://github.com/bordar) created a basic CentOS 6.4 template virtual server vailable here in OVF format: https://www.dropbox.com/s/luai7sk8nmihrkx/20140306_CentOS-base.zip
 * Alternatively you can find VMWare images at - http://www.thoughtpolice.co.uk/vmware/ --> Make sure to only use compatible OS images; either RedHat or CentOS 5.n, 6.n or FedoraCore 18+.
 * Two working solutions to the AWS EC2 email limitations are:
   * Using SendGrid as your mail service ([setting up ec2 with Sendgrid and postfix](http://www.zoharbabin.com/configure-ssmtp-or-postfix-to-send-email-via-sendgrid-on-centos-6-3-ec2)).

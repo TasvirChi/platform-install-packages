@@ -301,7 +301,7 @@ fi
 * Wed Aug 5 2015 Jess Portnoy <jess.portnoy@borhan.com> - 2.1.3-7
 - Do not compile against FDK and faac as distributing the binary with such support violates license.
   See:
-  https://github.com/borhan/platform-install-packages/issues/392
+  https://github.com/bordar/platform-install-packages/issues/392
   https://trac.ffmpeg.org/ticket/4735
 
 * Mon Jul 7 2014 Jess Portnoy <jess.portnoy@borhan.com> - 2.1.3-1

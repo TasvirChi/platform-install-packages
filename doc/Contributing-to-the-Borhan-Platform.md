@@ -21,11 +21,11 @@ Which Repositories Should I Contribute To?
 =================================
 The main repos are:
 
-* https://github.com/borhan/platform-install-packages - The Platform Install Packages and Scripts
-* https://github.com/borhan/server - The Core Backend (The Borhan Server)
-* https://github.com/borhan/mwEmbed - The Borhan JS Player Framework (aka Universal or v2 Player)
-* https://github.com/borhan/bmc - The Borhan Management Console (aka BMC)
-* https://github.com/borhan/player-studio - The HTML5 Player Studio (aka Studio v2)
+* https://github.com/bordar/platform-install-packages - The Platform Install Packages and Scripts
+* https://github.com/bordar/server - The Core Backend (The Borhan Server)
+* https://github.com/bordar/mwEmbed - The Borhan JS Player Framework (aka Universal or v2 Player)
+* https://github.com/bordar/bmc - The Borhan Management Console (aka BMC)
+* https://github.com/bordar/player-studio - The HTML5 Player Studio (aka Studio v2)
 
 If you are uncertain which project a specific code belongs to, please run:
 
@@ -41,10 +41,10 @@ $ rpm -qf /opt/borhan/app/batch/bootstrap.php
 borhan-base-9.16.0-1.noarch
 
 $ rpm -qi borhan-base | grep URL
-URL         : https://github.com/borhan/server/tree/IX-9.16.0
+URL         : https://github.com/bordar/server/tree/IX-9.16.0
 ```
 
-In this case, the file belongs to Borhan's Core at `https://github.com/borhan/server`
+In this case, the file belongs to Borhan's Core at `https://github.com/bordar/server`
 
 Reporting issues
 ================

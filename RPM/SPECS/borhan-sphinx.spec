@@ -157,11 +157,11 @@ fi
 - No need to generate logrotate file here as it's taken care of by borhan-base with /opt/borhan/app/configurations/logrotate/borhan_sphinx
 
 * Wed Mar 16 2016 Jess Portnoy <jess.portnoy@borhan.com> - 2.2.1.r4097-18
-- https://github.com/borhan/platform-install-packages/pull/532
-- https://github.com/borhan/platform-install-packages/pull/533
+- https://github.com/bordar/platform-install-packages/pull/532
+- https://github.com/bordar/platform-install-packages/pull/533
 
 * Wed Oct 7 2015 Jess Portnoy <jess.portnoy@borhan.com> - 2.2.1.r4097-17
-- https://github.com/borhan/platform-install-packages/issues/454
+- https://github.com/bordar/platform-install-packages/issues/454
 
 * Mon Feb 3 2014 Jess Portnoy <jess.portnoy@borhan.com> - 2.2.1.r4097-15 
 - Start Sphinx and pop at init.

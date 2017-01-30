@@ -6,7 +6,7 @@
  
 -    for ( ;; ) {
 +    //for ( ;; ) {
-+    // see https://github.com/borhan/nginx-vod-module/#nginx-patch
++    // see https://github.com/bordar/nginx-vod-module/#nginx-patch
 +    while (u->length) {
  
          size = b->end - b->last;

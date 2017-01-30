@@ -37,7 +37,7 @@ if [ "$BORHAN_SHORT_SERVER_VERSION" = "$BORHAN_SERVER_REMOTE_VERSION" ];then
 	BORHAN_SERVER_REMOTE_REVISION=`yum info borhan-base | grep Release|awk -F ": " '{print $2}'`
 	BORHAN_SERVER_NEXT_REVISION=`expr $BORHAN_SERVER_REMOTE_REVISION + 1`
 fi
-wget https://github.com/borhan/server/archive/$BORHAN_SERVER_VERSION.zip -O /home/jess/rpmbuild/SOURCES/$BORHAN_SERVER_VERSION.zip 
+wget https://github.com/bordar/server/archive/$BORHAN_SERVER_VERSION.zip -O /home/jess/rpmbuild/SOURCES/$BORHAN_SERVER_VERSION.zip 
 unzip -qo -j /home/jess/rpmbuild/SOURCES/$BORHAN_SERVER_VERSION.zip server-$BORHAN_SERVER_VERSION/configurations/base.ini -d "tmp/"
 BMC_LOGIN_VERSION=`grep ^bmc_login_version tmp/base.ini |awk -F "=" '{print $2}'|sed 's@\s*@@g'`
 BMC_VERSION=`grep ^bmc_version tmp/base.ini |awk -F "=" '{print $2}'|sed 's@\s*@@g'`
@@ -56,7 +56,7 @@ if [ "$HTML5_APP_STUDIO_VERSION" = "$HTML5_APP_STUDIO_REMOTE_VERSION" ];then
 	HTML5_APP_STUDIO_NEXT_REVISION=`expr $HTML5_APP_STUDIO_REMOTE_REVISION + 1`
 fi
 HTML5LIB_DEFAULT_BRANCH=`curl https://api.github.com/repos/borhan/mwembed -s |grep default_branch| sed 's/"default_branch":\s*"\(.*\)",/\1/' | sed 's@\s*@@g'`
-wget --no-check-certificate https://github.com/borhan/mwEmbed/raw/$HTML5LIB_DEFAULT_BRANCH/includes/DefaultSettings.php -O tmp/DefaultSettings.php; 
+wget --no-check-certificate https://github.com/bordar/mwEmbed/raw/$HTML5LIB_DEFAULT_BRANCH/includes/DefaultSettings.php -O tmp/DefaultSettings.php; 
 dos2unix tmp/DefaultSettings.php
 HTML5LIB_VERSION="v`grep wgMwEmbedVersion tmp/DefaultSettings.php |sed 's@^\s*$wgMwEmbedVersion\s*=\s*.\([0-9.]*\)..@\1@'`"
 HTML5LIB_NEXT_REVISION=1

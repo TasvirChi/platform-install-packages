@@ -1,6 +1,6 @@
 borhan-dwh (11.3.0-2) kajam; urgency=low
 
-  * Cleaner fix for https://github.com/borhan/platform-install-packages/pull/545 
+  * Cleaner fix for https://github.com/bordar/platform-install-packages/pull/545 
 
  -- Jess Portnoy <jess.portnoy@borhan.org>  Tue, 09 Aug 2016 13:57:50 +0000
 

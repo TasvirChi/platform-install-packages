@@ -33,7 +33,7 @@ Borhan 9x bin, installing & configuring
 # 1 Normal installation
 Before upgrading any Borhan release. You should first install and verify that the new Borhan release is working correctly. Installing Borhan has been  documented on github. It is advised you use the new RPM based installation. 
 
-https://github.com/borhan/platform-install-packages/blob/master/doc/install-borhan-redhat-based.md#non-ssl-step-by-step-installation
+https://github.com/bordar/platform-install-packages/blob/master/doc/install-borhan-redhat-based.md#non-ssl-step-by-step-installation
 
 ### 1.1 Verify
 After successfully installing Borhan. First run:

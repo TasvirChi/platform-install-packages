@@ -606,7 +606,7 @@ borhan-html5lib (2.38.1-1) kajam; urgency=low
 borhan-html5lib (2.37.3-1) kajam; urgency=low
 
   * patch simplePhpXMLProxy.php to disallow requests that are not over HTTP[s]
-  * patch UiConfResult.php - https://github.com/borhan/mwEmbed/pull/2308/files
+  * patch UiConfResult.php - https://github.com/bordar/mwEmbed/pull/2308/files
 
  -- Jess Portnoy <jess.portnoy@borhan.org>  Sun, 06 Dec 2015 16:05:40 +0000
 

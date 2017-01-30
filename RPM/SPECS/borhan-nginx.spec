@@ -89,7 +89,7 @@ Conflicts: nginx
 nginx [engine x] is an HTTP and reverse proxy server, as well as
 a mail proxy server.
 This is a custom Nginx build for the Borhan VOD module.
-Please see: https://github.com/borhan/nginx-vod-module for more info.
+Please see: https://github.com/bordar/nginx-vod-module for more info.
 
 %package debug
 Summary: debug version of nginx
@@ -400,7 +400,7 @@ fi
 - Compiled against FFMPEG 3.1.3
 
 * Sun Aug 21 2016 Jess Portnoy <jess.portnoy@borhan.com> - 1.8.1-8
-- New Nginx vod module - 1.10. See https://github.com/borhan/nginx-vod-module/releases/tag/1.10
+- New Nginx vod module - 1.10. See https://github.com/bordar/nginx-vod-module/releases/tag/1.10
 
 * Tue Jul 05 2016 David Bezemer <david.bezemer@borhan.com> - 1.8.1-7
 - New Nginx vod module - 1.9 - fixes segfaults with XFF headers
@@ -429,7 +429,7 @@ fi
 - add vod_expires / vod_expires_live settings
 
 * Thu Jan 14 2016 Jess Portnoy <jess.portnoy@borhan.com> - 1.8.0-12
-- https://github.com/borhan/nginx-vod-module/pull/210
+- https://github.com/bordar/nginx-vod-module/pull/210
 
 * Tue Jan 12 2016 Jess Portnoy <jess.portnoy@borhan.com> - 1.8.0-10
 - decryption
@@ -479,7 +479,7 @@ fi
 - Borhan Nginx modules are now tagged.
 
 * Sun Dec 7 2014 Jess Portnoy <jess.portnoy@borhan.com> - 1.6.2-2
-- Nginx precompiled with https://github.com/borhan/nginx-vod-module
+- Nginx precompiled with https://github.com/bordar/nginx-vod-module
 
 * Tue Sep 16 2014 Sergey Budnevitch <sb@nginx.com>
 - epoch added to the EPEL7/CentOS7 spec to override EPEL one

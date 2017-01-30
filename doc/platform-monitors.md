@@ -3,12 +3,12 @@
 ### Before You Get Started Notes
 
 * If you see a `#` at the beginning of a line, this line should be run as `root`.
-* Please review the [frequently answered questions](https://github.com/borhan/platform-install-packages/blob/master/doc/borhan-packages-faq.md) document for general help before posting to the forums or issue queue.
+* Please review the [frequently answered questions](https://github.com/bordar/platform-install-packages/blob/master/doc/borhan-packages-faq.md) document for general help before posting to the forums or issue queue.
 * [Borhan Inc.](http://corp.borhan.com) also provides commercial solutions and services including pro-active platform monitoring, applications, SLA, 24/7 support and professional services. If you're looking for a commercially supported video platform  with integrations to commercial encoders, streaming servers, eCDN, DRM and more - Start a [Free Trial of the Borhan.com Hosted Platform](http://corp.borhan.com/free-trial) or learn more about [Borhan' Commercial OnPrem Edition™](http://corp.borhan.com/Deployment-Options/Borhan-On-Prem-Edition). For existing RPM based users, Borhan offers commercial upgrade options.
 
 ### Using JaM - a PHP monitoring system that supports storing PHP errors (events) into different storage backends
 JaM packages are available in the Borhan CE repository, for instructions see:
-https://github.com/borhan/jam#basic-setup
+https://github.com/bordar/jam#basic-setup
 
 ### Borhan specific monitors
 The Borhan server includes extensive monitoring scripts, making use of our PHP5 API.   

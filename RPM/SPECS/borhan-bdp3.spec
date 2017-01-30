@@ -5,7 +5,7 @@ Epoch: 1
 Release: 2
 Summary: Borhan Dynamic Player
 License: AGPLv3+	
-URL: https://github.com/borhan/bdp/releases/tag/%{version}
+URL: https://github.com/bordar/bdp/releases/tag/%{version}
 Source0: %{name}-%{version}.tar.gz
 Source2: %{name}-v3.9.7.tar.gz
 Source3: %{name}-v3.9.8.tar.gz

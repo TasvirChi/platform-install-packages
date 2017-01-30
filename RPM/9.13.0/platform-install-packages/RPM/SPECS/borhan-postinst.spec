@@ -152,7 +152,7 @@ fi
 - Base - exit if something failed.
 
 * Wed Mar 5 2014 Jess Portnoy <jess.portnoy@borhan.com> - 1.0.7-21
-- Fix for https://github.com/borhan/platform-install-packages/issues/57
+- Fix for https://github.com/bordar/platform-install-packages/issues/57
 
 * Mon Mar 3 2014 Jess Portnoy <jess.portnoy@borhan.com> - 1.0.7-20
 - borhan-db-update.sh by David Bezemer.
@@ -163,11 +163,11 @@ fi
 - Fix consent code flow to work with ans file.
 
 * Fri Feb 27 2014 Jess Portnoy <jess.portnoy@borhan.com> - 1.0.7-15
-- Fix for https://github.com/borhan/platform-install-packages/issues/47
+- Fix for https://github.com/bordar/platform-install-packages/issues/47
 
 * Fri Feb 27 2014 Jess Portnoy <jess.portnoy@borhan.com> - 1.0.7-14
 - Added explanation on how to increase log level to DEBUG, see:
-  https://github.com/borhan/platform-install-packages/issues/51  
+  https://github.com/bordar/platform-install-packages/issues/51  
 
 * Wed Feb 25 2014 Jess Portnoy <jess.portnoy@borhan.com> - 1.0.7-10
 - https://github.com/mobcdi/platform-install-packages/commit/00d06299204b5b3a7314b8e705a75e73ae2de017
@@ -213,7 +213,7 @@ fi
 - Only do the update if the record is missing.
 
 * Tue Feb 18 2014 Jess Portnoy <jess.portnoy@borhan.com> - 1.0.5-22
-- https://github.com/borhan/platform-install-packages/issues/28
+- https://github.com/bordar/platform-install-packages/issues/28
  
 * Mon Feb 17 2014 Jess Portnoy <jess.portnoy@borhan.com> - 1.0.5-20
 - Have hostname as default for Red5.
@@ -251,7 +251,7 @@ fi
 - Replace toks in studio.ini.
 
 * Fri Feb 7 2014 Jess Portnoy <jess.portnoy@borhan.com> - 1.0.4-11
-- Fixes https://github.com/borhan/platform-install-packages/issues/21
+- Fixes https://github.com/bordar/platform-install-packages/issues/21
 - Add logging to file during DWH setup.
 - Batch: only configure Borhan vhost in the event the service URL is local.
 

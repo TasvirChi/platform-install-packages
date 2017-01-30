@@ -58,5 +58,5 @@ If you have any questions, please feel free to ask questions on the Borhan commu
 References
 ----------
 * [Borhan ClipApp Live Demo](http://showcase.borhan.com/demos/clipapp/index.php?cb=1410466358).
-* [ClipApp ActionScript Code](https://github.com/borhan/clipper).
-* [ClipApp Javascript/PHP Code](https://github.com/borhan/clipapp).
+* [ClipApp ActionScript Code](https://github.com/bordar/clipper).
+* [ClipApp Javascript/PHP Code](https://github.com/bordar/clipapp).

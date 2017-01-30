@@ -7,7 +7,7 @@ Release: 1
 Epoch:0 
 License: AGPLv3+
 Group: Server/Platform 
-Source0: https://github.com/borhan/mwEmbed/tarball/%{name}-%{version}.tar.gz 
+Source0: https://github.com/bordar/mwEmbed/tarball/%{name}-%{version}.tar.gz 
 Source1: LocalSettings.php
 Source2: borhan-html5lib-v2.1.1.tar.gz
 Source3: borhan-html5lib-v2.3.tar.gz
@@ -89,7 +89,7 @@ rm -rf %{buildroot}
   - SUP-1461 captions does not work in IE8
 
 * Sun Feb 9 2014 Jess Portnoy <jess.portnoy@borhan.com> - v2.1.1-6
-- Fixed https://github.com/borhan/platform-install-packages/issues/24
+- Fixed https://github.com/bordar/platform-install-packages/issues/24
 
 * Tue Jan 28 2014 Jess Portnoy <jess.portnoy@borhan.com> - v2.1.1-5
 - LocalSettings.php is ALWAYS the same, it has no custom data, why not just bring it as part of the package??

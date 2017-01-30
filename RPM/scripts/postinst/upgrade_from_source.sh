@@ -32,7 +32,7 @@ mv /tmp/server/configurations /tmp/server/configurations.git
 cp -rp /tmp/server/* $APP_DIR/
 cp -rp /tmp/server/.git $APP_DIR/
 BORHAN_VERSION=`rpm -q borhan-base --queryformat %{version}`
-GITHUB_PLATFORM_INSTALL_PACKAGES_REPO_URL="https://github.com/borhan/platform-install-packages/raw/Lynx-$BORHAN_VERSION"
+GITHUB_PLATFORM_INSTALL_PACKAGES_REPO_URL="https://github.com/bordar/platform-install-packages/raw/Lynx-$BORHAN_VERSION"
 
 curl -L $GITHUB_PLATFORM_INSTALL_PACKAGES_REPO_URL/RPM/SOURCES/KDLOperatorFfmpeg1_1_1.php > $APP_DIR/infra/cdl/kdl/KDLOperatorFfmpeg1_1_1.php
 curl -L $GITHUB_PLATFORM_INSTALL_PACKAGES_REPO_URL/RPM/SOURCES/navigation.xml > $APP_DIR/admin_console/configs/navigation.xml

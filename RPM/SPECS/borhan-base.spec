@@ -14,10 +14,10 @@ Version: 12.8.0
 Release: 12
 License: AGPLv3+
 Group: Server/Platform 
-Source0: https://github.com/borhan/server/archive/%{codename}-%{version}.zip 
+Source0: https://github.com/bordar/server/archive/%{codename}-%{version}.zip 
 Source4: emails_en.template.ini
 Source10: entry_and_uiconf_templates.tar.gz
-# fixes https://github.com/borhan/platform-install-packages/issues/37
+# fixes https://github.com/bordar/platform-install-packages/issues/37
 Source11: clear_cache.sh
 # monit templates
 Source13: sphinx.template.rc 
@@ -34,7 +34,7 @@ Source26: borhan_batch.template
 Source32: KDLOperatorFfmpeg1_1_1.php
 #Source33: kuserPeer.php
 Source34: clients-generator-%{codename}-%{version}.zip
-URL: https://github.com/borhan/server/tree/%{codename}-%{version}
+URL: https://github.com/bordar/server/tree/%{codename}-%{version}
 Buildroot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 BuildArch: noarch
 Requires: rsync,mysql,borhan-monit,borhan-postinst,cronie, php-cli, php-xml, php-curl, php-mysql, php-gd, php-gmp, php-ldap, php-mbstring, php-process, ntp, mailx
@@ -361,7 +361,7 @@ fi
 - Ver Bounce to 12.5.0
 
 * Tue Nov 8 2016 jess.portnoy@borhan.com <Jess Portnoy> - 12.4.0-13
-- Fix Sphinx config https://github.com/borhan/server/pull/4869/files
+- Fix Sphinx config https://github.com/bordar/server/pull/4869/files
 
 * Mon Nov 7 2016 jess.portnoy@borhan.com <Jess Portnoy> - 12.4.0-12
 - PLAT-6135 - Get end date of last event of a series
@@ -706,12 +706,12 @@ fi
 
 * Tue Nov 3 2015 jess.portnoy@borhan.com <Jess Portnoy> - 11.1.0-8
 - Fix manual HLS live streaming:
-  https://github.com/borhan/server/pull/3430
+  https://github.com/bordar/server/pull/3430
   http://forum.borhan.org/t/manual-live-stream-not-happening/3782/11
 
 * Mon Nov 2 2015 jess.portnoy@borhan.com <Jess Portnoy> - 11.1.0-7
-- https://github.com/borhan/server/pull/3420
-- https://github.com/borhan/server/pull/3421
+- https://github.com/bordar/server/pull/3420
+- https://github.com/bordar/server/pull/3421
 
 * Mon Oct 26 2015 jess.portnoy@borhan.com <Jess Portnoy> - 11.1.0-1
 - Ver Bounce to 11.1.0
@@ -737,7 +737,7 @@ fi
 - New ffmpeg version [2.7.2]
 
 * Mon Oct 5 2015 Jess Portnoy <jess.portnoy@borhan.com> - 10.21.0-6
-- https://github.com/borhan/platform-install-packages/issues/455
+- https://github.com/bordar/platform-install-packages/issues/455
 
 * Mon Sep 21 2015 Jess Portnoy <jess.portnoy@borhan.com> - 10.21.0-1
 - Ver Bounce to 10.21.0
@@ -746,8 +746,8 @@ fi
 - SUP-3920 - Downloading Error when trying to download the original CSV file
 
 * Wed Sep 16 2015 jess.portnoy@borhan.com <Jess Portnoy> - 10.20.0-9
-- https://github.com/borhan/server/pull/3194
-- https://github.com/borhan/server/pull/3187
+- https://github.com/bordar/server/pull/3194
+- https://github.com/bordar/server/pull/3187
 
 * Mon Sep 7 2015 jess.portnoy@borhan.com <Jess Portnoy> - 10.20.0-1
 - Ver Bounce to 10.20.0
@@ -761,7 +761,7 @@ fi
 - Ver Bounce to 10.19.0
 
 * Thu Aug 20 2015 jess.portnoy@borhan.com <Jess Portnoy> - 10.18.0-11
-- https://github.com/borhan/server/pull/3066
+- https://github.com/bordar/server/pull/3066
 
 * Thu Aug 20 2015 jess.portnoy@borhan.com <Jess Portnoy> - 10.18.0-10
 - PLAT-3659 - baseEntry->addfromUploadedFile fails for data entry 
@@ -788,11 +788,11 @@ fi
 * Wed Aug 5 2015 jess.portnoy@borhan.com <Jess Portnoy> - 10.17.0-8
 - Do not compile against FDK and faac as distributing the binary with such support violates license.
   See:
-  https://github.com/borhan/platform-install-packages/issues/392
+  https://github.com/bordar/platform-install-packages/issues/392
   https://trac.ffmpeg.org/ticket/4735
 
 * Thu Jul 30 2015 jess.portnoy@borhan.com <Jess Portnoy> - 10.17.0-4
-- https://github.com/borhan/server/pull/2943
+- https://github.com/bordar/server/pull/2943
 
 * Mon Jul 27 2015 jess.portnoy@borhan.com <Jess Portnoy> - 10.17.0-2
 - Changed kaltlog alias to grep pattern 'PHP ' and not 'PHP' since that catches things like 'IZLe9ciBPHPcaiToJfOgv0w96eKrocGEm4oiL8piQreTaUmKbZaUk6wop7RM' which arent errors at all.
@@ -807,16 +807,16 @@ fi
 - PLAT-3458 - WV flavor does not created
 
 * Mon Jul 13 2015 Jess Portnoy <jess.portnoy@borhan.com> - 10.16.0-2
-- https://github.com/borhan/server/pull/2838 merged so SOURCE31 is no longer needed.
+- https://github.com/bordar/server/pull/2838 merged so SOURCE31 is no longer needed.
 
 * Mon Jul 13 2015 Jess Portnoy <jess.portnoy@borhan.com> - 10.16.0-1
 - Ver Bounce to 10.16.0
 
 * Sun Jul 12 2015 Jess Portnoy <jess.portnoy@borhan.com> - 10.15.0-8
-- https://github.com/borhan/server/pull/2844#event-353800482
+- https://github.com/bordar/server/pull/2844#event-353800482
 
 * Fri Jul 10 2015 Jess Portnoy <jess.portnoy@borhan.com> - 10.15.0-7
-- Local patch for https://github.com/borhan/server/pull/2838
+- Local patch for https://github.com/bordar/server/pull/2838
 
 * Thu Jul 9 2015 Jess Portnoy <jess.portnoy@borhan.com> - 10.15.0-6
 - Disable MySQL strict mode when deploying DB
@@ -851,7 +851,7 @@ fi
 - Ver Bounce to 10.15.0
 
 * Sun Jun 28 2015 Jess Portnoy <jess.portnoy@borhan.com> - 10.14.0-7
-- https://github.com/borhan/server/pull/2751
+- https://github.com/bordar/server/pull/2751
 
 * Sun Jun 28 2015 Jess Portnoy <jess.portnoy@borhan.com> - 10.14.0-6
 - SUP-4393 - Downloading screen recording from KMS saved as tmp file
@@ -862,7 +862,7 @@ fi
 - PLAT-3059 - BorhanNullableBoolean in format=json
 
 * Sun Jun 21 2015 Jess Portnoy <jess.portnoy@borhan.com> - 10.14.0-3
-- https://github.com/borhan/server/pull/2707
+- https://github.com/bordar/server/pull/2707
 
 * Tue Jun 16 2015 Jess Portnoy <jess.portnoy@borhan.com> - 10.14.0-1
 - Ver Bounce to 10.14.0
@@ -886,7 +886,7 @@ fi
 - SUP-4739 - Player's download button does not work in KMS
 - PLAT-2204 - Can't add thumb cuepoint of sub type chapter without a slide
 - PLAT-2987 - Auto-Intermediate-source flow for sources that processable only by Mencoder
-- https://github.com/borhan/server/blob/Jupiter-10.12.0-typeReflectorError/api_v3/lib/BorhanTypeReflector.php
+- https://github.com/bordar/server/blob/Jupiter-10.12.0-typeReflectorError/api_v3/lib/BorhanTypeReflector.php
 
 * Tue May 19 2015 Jess Portnoy <jess.portnoy@borhan.com> - 10.12.0-1
 - Ver Bounce to 10.12.0
@@ -903,13 +903,13 @@ fi
 - PLAT-2387 - manual dispatch error 
 - PLAT-2934 - clip_test script fails 
 - PLAT-2940 - groupUser->list return fatal error
-- https://github.com/borhan/server/pull/2561 
+- https://github.com/bordar/server/pull/2561 
 
 * Tue May 5 2015 Jess Portnoy <jess.portnoy@borhan.com> - 10.11.0-1
 - Ver Bounce to 10.11.0
 
 * Tue May 5 2015 Jess Portnoy <jess.portnoy@borhan.com> - 10.10.0-3
-- Tmp patch for https://github.com/borhan/server/pull/2522 and https://github.com/borhan/server/pull/2521
+- Tmp patch for https://github.com/bordar/server/pull/2522 and https://github.com/bordar/server/pull/2521
 
 * Mon May 4 2015 Jess Portnoy <jess.portnoy@borhan.com> - 10.10.0-2
 - PLAT-2042 - Borhan MRSS Ingest for PostMedia (TR next)
@@ -955,7 +955,7 @@ fi
 - PLAT-2646 - Predictive Tags: Suggested tags displayed twice
 
 * Thu Apr 2 2015 Jess Portnoy <jess.portnoy@borhan.com> - 10.8.0-10
-- Tmp patch due to https://github.com/borhan/platform-install-packages/issues/367
+- Tmp patch due to https://github.com/bordar/platform-install-packages/issues/367
 
 * Mon Mar 23 2015 Jess Portnoy <jess.portnoy@borhan.com> - 10.8.0-3
 - Stop monit before starting upgrade, restart when done.
@@ -996,7 +996,7 @@ fi
 - SUP-3644 - Changing feed's XML without changing the feed's url
 
 * Tue Feb 15 2015 Jess Portnoy <jess.portnoy@borhan.com> - 10.5.0-3
-- For this one: https://github.com/borhan/server/pull/2258
+- For this one: https://github.com/bordar/server/pull/2258
 
 * Wed Feb 11 2015 Jess Portnoy <jess.portnoy@borhan.com> - 10.5.0-1
 - Ver Bounce to 10.5.0
@@ -1042,8 +1042,8 @@ fi
 - Added app/release-notes.md and app/license.txt
 
 * Mon Dec 15 2014 Jess Portnoy <jess.portnoy@borhan.com> - 10.0.0-8
-- https://github.com/borhan/server/pull/2009
-- https://github.com/borhan/server/pull/2010
+- https://github.com/bordar/server/pull/2009
+- https://github.com/bordar/server/pull/2010
  
 * Thu Dec 11 2014 Jess Portnoy <jess.portnoy@borhan.com> - 10.0.0-3
 - call service instead of /etc/init.d
@@ -1152,7 +1152,7 @@ fi
 - PLAT-1510 - Multi-stream sources and Watermarking
 
 * Tue Jul 1 2014 Jess Portnoy <jess.portnoy@borhan.com> - 9.18.0-3
-- https://github.com/borhan/server/pull/1397/files#diff-0
+- https://github.com/bordar/server/pull/1397/files#diff-0
 
 * Sun Jun 29 2014 Jess Portnoy <jess.portnoy@borhan.com> - 9.18.0-1
 - Ver Bounce to 9.18.0
@@ -1189,7 +1189,7 @@ fi
 - SUP-2119 - Issue with adding a new user
 
 * Tue Jun 10 2014 Jess Portnoy <jess.portnoy@borhan.com> - 9.16.0-2
-- Fix for https://github.com/borhan/platform-install-packages/issues/147
+- Fix for https://github.com/bordar/platform-install-packages/issues/147
 * Wed May 21 2014 Jess Portnoy <jess.portnoy@borhan.com> - 9.16.0-1
 - Ver Bounce to 9.16.0
 - PLAT-974 - add partner Reference ID to BMC and Multi-Account console
@@ -1279,7 +1279,7 @@ fi
   It causes issues and isn;t needed.
 
 * Tue Mar 20 2014 Jess Portnoy <jess.portnoy@borhan.com> - 9.12.0-6
-- https://github.com/borhan/server/commit/4d47c158774ebd41b0a60e6af20f0beab02d459d did not make it in so, reapplying the patch.
+- https://github.com/bordar/server/commit/4d47c158774ebd41b0a60e6af20f0beab02d459d did not make it in so, reapplying the patch.
 
 * Tue Mar 18 2014 Jess Portnoy <jess.portnoy@borhan.com> - 9.12.0-5
 - Don't run upgrade scripts if not INIs.
@@ -1288,7 +1288,7 @@ fi
 - Generate random monit passwd.
 
 * Thu Mar 13 2014 Jess Portnoy <jess.portnoy@borhan.com> - 9.12.0-2
-- Fix for https://github.com/borhan/platform-install-packages/issues/71
+- Fix for https://github.com/bordar/platform-install-packages/issues/71
 
 * Sun Mar 9 2014 Jess Portnoy <jess.portnoy@borhan.com> - 9.12.0-1
 - Ver Bounce to 9.12.0
@@ -1311,13 +1311,13 @@ fi
 
 
 * Wed Mar 5 2014 Jess Portnoy <jess.portnoy@borhan.com> - 9.11.0-16
-- Place holder for Chain. See: https://github.com/borhan/platform-install-packages/issues/57
+- Place holder for Chain. See: https://github.com/bordar/platform-install-packages/issues/57
   
 * Fri Feb 27 2014 Jess Portnoy <jess.portnoy@borhan.com> - 9.11.0-15
-- Fixes https://github.com/borhan/platform-install-packages/issues/50
+- Fixes https://github.com/bordar/platform-install-packages/issues/50
 
 * Fri Feb 27 2014 Jess Portnoy <jess.portnoy@borhan.com> - 9.11.0-14
-- https://github.com/borhan/platform-install-packages/issues/51
+- https://github.com/bordar/platform-install-packages/issues/51
 
 * Tue Feb 25 2014 Jess Portnoy <jess.portnoy@borhan.com> - 9.11.0-11
 - Update version number.
@@ -1360,10 +1360,10 @@ fi
 - Added alias for allkaltlog and changed kaltlog. Suggestion by David Bezemer.
 
 * Thu Feb 13 2014 Jess Portnoy <jess.portnoy@borhan.com> - 9.9.0-42
-- Fix for https://github.com/borhan/platform-install-packages/issues/37
+- Fix for https://github.com/bordar/platform-install-packages/issues/37
 
 * Wed Feb 12 2014 Jess Portnoy <jess.portnoy@borhan.com> - 9.9.0-39
-- Fix https://github.com/borhan/platform-install-packages/issues/34
+- Fix https://github.com/bordar/platform-install-packages/issues/34
 
 * Tue Feb 11 2014 Jess Portnoy <jess.portnoy@borhan.com> - 9.9.0-38
 - Removed IsMindex plugin from template.
@@ -1375,18 +1375,18 @@ fi
 - Only gen client libs if conf files are in place.
 
 * Sun Feb 9 2014 Jess Portnoy <jess.portnoy@borhan.com> - 9.9.0-31
-- Fix for https://github.com/borhan/platform-install-packages/issues/28
+- Fix for https://github.com/bordar/platform-install-packages/issues/28
 
 * Sun Feb 9 2014 Jess Portnoy <jess.portnoy@borhan.com> - 9.9.0-30
-- Fix for https://github.com/borhan/platform-install-packages/issues/25:
+- Fix for https://github.com/bordar/platform-install-packages/issues/25:
 disable Audit plugin.
 - Fix def. flavor creation.
 
 * Sun Feb 9 2014 Jess Portnoy <jess.portnoy@borhan.com> - 9.9.0-29
-- Fix for https://github.com/borhan/platform-install-packages/issues/23.
+- Fix for https://github.com/bordar/platform-install-packages/issues/23.
 
 * Fri Feb 7 2014 Jess Portnoy <jess.portnoy@borhan.com> - 9.9.0-28
-- Fix for https://github.com/borhan/installer/issues/5
+- Fix for https://github.com/bordar/installer/issues/5
 
 * Wed Feb 5 2014 Jess Portnoy <jess.portnoy@borhan.com> - 9.9.0-27
 - Fixed the conversion template for p99. Include flav. ID 19.

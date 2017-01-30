@@ -163,9 +163,9 @@ rm -rf %{buildroot}
 - Ver Bounce to 11.13.0
 
 * Thu Mar 31 2016 jess.portnoy@borhan.com <Jess Portnoy> - 11.12.0-2
-- https://github.com/borhan/platform-install-packages/issues/516
+- https://github.com/bordar/platform-install-packages/issues/516
 * Thu Mar 31 2016 jess.portnoy@borhan.com <Jess Portnoy> - 11.12.0-2
-- https://github.com/borhan/platform-install-packages/issues/536
+- https://github.com/bordar/platform-install-packages/issues/536
 
 * Mon Mar 28 2016 jess.portnoy@borhan.com <Jess Portnoy> - 11.12.0-1
 - Ver Bounce to 11.12.0

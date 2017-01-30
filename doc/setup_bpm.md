@@ -7,7 +7,7 @@ When prompted, please provide the Borhan API host, the admin console partner mai
 *NOTE: these are all default values for the activiti app, you may want to modify them later*
 *NOTE1: the script automates the steps described here: https://github.com/jessp01/server/blob/additions-to-bpmn-howto/release-notes.md#business-process-management-integration
 
-* Obtain https://github.com/borhan/platform-install-packages/blob/Jupiter-10.5.0/doc/flow.transcript.bpmn and request: $HOSTNAME:8080/activiti-explorer
+* Obtain https://github.com/bordar/platform-install-packages/blob/Jupiter-10.5.0/doc/flow.transcript.bpmn and request: $HOSTNAME:8080/activiti-explorer
 * Login with user: kermit;passwd: kermit
 * Swith to the 'Manage' tab and under the sub tab 'Deployments' hit 'Upload new'.
 * Choose the flow.transcript.bpmn from your disk to upload

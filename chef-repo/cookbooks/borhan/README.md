@@ -5,7 +5,7 @@ Installs and configures Borhan - the Open Source Video Platform.
 
 This cookbook deploys (installs and configures) complete Borhan clusters and all required nodes and packages. It can be used to install and maintain Borhan clusters,and to simplify deployment scaling.
 Read more at -
-https://github.com/borhan/platform-install-packages/blob/master/doc/rpm-chef-cluster-deployment.md
+https://github.com/bordar/platform-install-packages/blob/master/doc/rpm-chef-cluster-deployment.md
 
 About Borhan:  
 

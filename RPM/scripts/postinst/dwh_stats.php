@@ -21,7 +21,7 @@ $client->setKs($ks);
 
 // set type to TOP_CONTENT
 // reportType can be any of there:
-// https://github.com/borhan/server/blob/master/api_v3/lib/types/enums/BorhanReportType.php
+// https://github.com/bordar/server/blob/master/api_v3/lib/types/enums/BorhanReportType.php
 $report_type_string='TOP_CONTENT';
 $reportType = constant('BorhanReportType::'.$report_type_string);
 $reportInputFilter = new BorhanReportInputFilter();

@@ -10,7 +10,7 @@ The Open Source Borhan Platform is provided under the [AGPLv3 license](http://ww
 [Borhan Inc.](http://corp.borhan.com) also provides commercial solutions and services including pro-active platform monitoring, applications, SLA, 24/7 support and professional services. If you're looking for a commercially supported video platform  with integrations to commercial encoders, streaming servers, eCDN, DRM and more - Start a [Free Trial of the Borhan.com Hosted Platform](http://corp.borhan.com/free-trial) or learn more about [Borhan' Commercial OnPrem Edition™](http://corp.borhan.com/Deployment-Options/Borhan-On-Prem-Edition). For existing RPM based users, Borhan offers commercial upgrade options.
 
 ### How to contribute
-We value contributions from our CE user base very much. To make a contribution, follow the [See our CONTRIBUTERS doc](https://github.com/borhan/platform-install-packages/blob/IX-9.19.0/doc/CONTRIBUTERS.md).
+We value contributions from our CE user base very much. To make a contribution, follow the [See our CONTRIBUTERS doc](https://github.com/bordar/platform-install-packages/blob/IX-9.19.0/doc/CONTRIBUTERS.md).
 
 
 ### Changing Apache configurations post install.
@@ -23,7 +23,7 @@ For instance, you may want to change the service URL, port or protocol.
 Edit the answers file you've used to install Borhan, then run:   
 `# /opt/borhan/bin/borhan-front-config.sh /path/to/updated/ans/file`
 
-If you've lost your installation answers file, you can recreate one using the [Borhan Install Answers File Example](https://github.com/borhan/platform-install-packages/blob/master/doc/borhan.template.ans).
+If you've lost your installation answers file, you can recreate one using the [Borhan Install Answers File Example](https://github.com/bordar/platform-install-packages/blob/master/doc/borhan.template.ans).
 
 #### For deb packages:
 ```
@@ -48,7 +48,7 @@ On rare ocaasions, you may encounter the need to deploy Borhan on an offline env
 On such cases, the solution is to download the packages, deploy a local repository and install from it instead of the online repository.   
 **Note** that when following this path, you will need to re-deploy your local repository for every new version upgrade.
 
-To perform an offline install, follow the [Deploy Local Repository for Offline Install guide](https://github.com/borhan/platform-install-packages/blob/master/doc/deploy-local-rpm-repo-offline-install.md).
+To perform an offline install, follow the [Deploy Local Repository for Offline Install guide](https://github.com/bordar/platform-install-packages/blob/master/doc/deploy-local-rpm-repo-offline-install.md).
 
 ### Fresh Database Installation
 
@@ -109,7 +109,7 @@ Or use the wrapper script to run all steps:
 
 In order to remove the Analytics DBs and repopulate them:
 
-0. Backup all Borhan DBs using: https://github.com/borhan/platform-install-packages/blob/Jupiter-10.2.0/doc/rpm-cluster-deployment-instructions.md#backup-and-restore-practices 
+0. Backup all Borhan DBs using: https://github.com/bordar/platform-install-packages/blob/Jupiter-10.2.0/doc/rpm-cluster-deployment-instructions.md#backup-and-restore-practices 
 1. Drop the current DWH DBs: 
 ```
 PASSW=$MYSQL_SUPER_USER_PASSWD 

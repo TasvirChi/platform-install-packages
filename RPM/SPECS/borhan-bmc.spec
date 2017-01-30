@@ -6,7 +6,7 @@ Summary: Borhan Management Console
 
 Group: System Management	
 License: AGPLv3+	
-URL: https://github.com/borhan/bmc 
+URL: https://github.com/bordar/bmc 
 Source0: %{name}-%{version}.tar.bz2
 Source1: bmc_config.ini
 BuildRoot:	%(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
